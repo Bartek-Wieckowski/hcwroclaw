@@ -5,6 +5,7 @@
   --hc-yellow: #fdf001;
   --accent-color: #007cc7;
   --accent-color-more: #203647;
+  --accent-color-grey: #888;
 
   --bg-body-black: #231f20;
   --bg-body-white: #fff;
@@ -89,7 +90,7 @@ body {
   line-height: 1.6;
   transition: all 0.3s ease;
   overflow-x: hidden;
-  height: 200vh;
+  
 }
 
 h1,
@@ -121,6 +122,14 @@ img {
   height: auto;
 }
 
+main {
+  background-color: var(--hc-red);
+  height: 200vh;
+}
+section {
+  position: relative;
+  max-width: 1980px;
+}
 .container {
   max-width: 1300px;
   margin-inline: auto;

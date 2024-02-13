@@ -1,6 +1,6 @@
 .navbar {
-  border-top: 1px solid var(--text-color);
-  border-bottom: 1px solid var(--text-color);
+  border-top: 1px solid var(--accent-color-grey);
+  border-bottom: 1px solid var(--accent-color-grey);
   padding: 1rem 0;
   text-align: right;
 }
@@ -30,6 +30,7 @@
 }
 .hamburgerClose {
   align-self: flex-end;
+  margin-top: 1rem;
 }
 
 @media screen and (min-width: 992px) {

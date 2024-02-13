@@ -22,7 +22,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <GameCalendar />
         <Header />
+        <main>
         {children}
+        </main>
         <Footer />
       </body>
     </html>

@@ -1,7 +1,11 @@
 .menuItem {
   width: 90%;
-  border-bottom: 1px solid var(--text-color);
+  border-bottom: 1px solid var(--accent-color-grey);
   text-align: center;
+  transition: all 0.3s ease;
+}
+.active {
+  color: var(--hc-yellow);
 }
 
 @media screen and (min-width: 992px) {
@@ -9,5 +13,19 @@
     width: unset;
     border-bottom: unset;
     text-align: unset;
+  }
+  .menuItem::after {
+    opacity: 0;
+    visibility: hidden;
+    content: '';
+    display: block;
+    width: 90%;
+    height: 2px;
+    margin-inline: auto;
+    background-color: var(--hc-red);
+  }
+  .menuItem:hover::after {
+    opacity: 1;
+    visibility: visible;
   }
 }

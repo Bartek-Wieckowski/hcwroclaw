@@ -2,4 +2,5 @@
   position: sticky;
   top: 0;
   background-color: var(--bg-body-black);
+  z-index: var(--z-fixed);
 }
