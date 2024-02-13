@@ -6,6 +6,9 @@
   --accent-color: #007cc7;
   --accent-color-more: #203647;
 
+  --bg-body-black: #231f20;
+  --bg-body-white: #fff;
+
   --biggest-font-size: 3.5rem;
   --big-font-size: 3rem;
   --huge-font-size: 1.75rem;
@@ -29,12 +32,15 @@
 
   --z-back: -10;
   --z-normal: 1;
+  --z-hamburgerMenu: 5;
   --z-tooltip: 10;
   --z-fixed: 100;
   --z-modal: 1000;
+
+  --header-height: 11.5rem;
 }
 
-@media screen and (min-width: 968px) {
+@media screen and (min-width: 992px) {
   :root {
     --biggest-font-size: 5.5rem;
     --big-font-size: 4.5rem;
@@ -78,10 +84,12 @@ body {
   margin: 0;
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
-  background-color: var(--hc-black);
+  background-color: var(--bg-body-white);
   color: var(--text-color);
   line-height: 1.6;
   transition: all 0.3s ease;
+  overflow-x: hidden;
+  height: 200vh;
 }
 
 h1,
@@ -105,6 +113,7 @@ ul {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 img {
@@ -112,9 +121,9 @@ img {
   height: auto;
 }
 
-main {
+.container {
   max-width: 1300px;
-  margin-block: 2rem;
   margin-inline: auto;
-  padding-inline: 1.5rem;
+  padding-inline: 15px;
+  background-color: var(--bg-body-black);
 }
