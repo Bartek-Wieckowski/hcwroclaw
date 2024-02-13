@@ -1,0 +1,51 @@
+.navbar {
+  border-top: 1px solid var(--text-color);
+  border-bottom: 1px solid var(--text-color);
+  padding: 1rem 0;
+  text-align: right;
+}
+.navbarList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: 2rem;
+  position: fixed;
+  right: -100%;
+  top: 0;
+  height: 100vh;
+  width: 60%;
+  background-color: var(--bg-body-black);
+  transition: all 0.3s ease;
+  z-index: var(--z-hamburgerMenu);
+}
+.active {
+  right: 0;
+}
+.hamburger,
+.hamburgerClose {
+  margin-right: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.hamburgerClose {
+  align-self: flex-end;
+}
+
+@media screen and (min-width: 992px) {
+  .navbarList {
+    flex-direction: row;
+    justify-content: start;
+    max-width: 1300px;
+    margin-inline: auto;
+    padding-inline: 15px;
+    position: static;
+    height: unset;
+    width: unset;
+    z-index: unset;
+  }
+  .hamburger,
+  .hamburgerClose {
+    display: none;
+  }
+}
