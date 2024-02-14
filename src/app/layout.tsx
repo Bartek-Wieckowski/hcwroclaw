@@ -4,6 +4,7 @@ import './globals.css';
 import GameCalendar from '@/components/GameCalendar/GameCalendar';
 import Footer from '@/components/Footer/Footer';
 import Header from '@/components/Header/Header';
+import Providers from '@/lib/queryProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,12 +21,12 @@ export default function RootLayout({
   return (
     <html lang="pl">
       <body className={inter.className}>
-        <GameCalendar />
-        <Header />
-        <main>
-        {children}
-        </main>
-        <Footer />
+        <Providers>
+          <GameCalendar />
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
