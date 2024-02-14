@@ -8,8 +8,8 @@ export const navbarLinks = [
     path: '/team',
   },
   {
-    title: 'Informacje',
-    path: '/information',
+    title: 'Klub',
+    path: '/club',
   },
   {
     title: 'Kontakt',
