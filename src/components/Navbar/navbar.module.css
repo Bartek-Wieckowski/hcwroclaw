@@ -18,6 +18,7 @@
   background-color: var(--bg-body-black);
   transition: all 0.3s ease;
   z-index: var(--z-hamburgerMenu);
+  text-transform: uppercase;
 }
 .active {
   right: 0;
