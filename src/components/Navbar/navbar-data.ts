@@ -15,4 +15,8 @@ export const navbarLinks = [
     title: 'Kontakt',
     path: '/contact',
   },
+  {
+    title: 'Zostań sponsorem',
+    path: '/sponsors',
+  },
 ];
