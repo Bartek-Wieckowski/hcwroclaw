@@ -1,9 +1,10 @@
+import GameCalendarSlider from './GameCalendarSlider/GameCalendarSlider';
 
 function GameCalendar() {
   return (
-    <div>
-      GameCalendar bar
-    </div>
+    <section>
+      <GameCalendarSlider />
+    </section>
   );
 }
 
