@@ -5,6 +5,7 @@ import GameCalendar from '@/components/GameCalendar/GameCalendar';
 import Footer from '@/components/Footer/Footer';
 import Header from '@/components/Header/Header';
 import Providers from '@/lib/queryProvider';
+import Sponsors from '@/components/Sponsors/Sponsors';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -25,6 +26,7 @@ export default function RootLayout({
           <GameCalendar />
           <Header />
           <main>{children}</main>
+          <Sponsors/>
           <Footer />
         </Providers>
       </body>
