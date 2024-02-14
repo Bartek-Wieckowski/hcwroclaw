@@ -5,6 +5,7 @@ import { navbarLinks } from './navbar-data';
 import { BiMenuAltRight, BiX } from 'react-icons/bi';
 import { useState } from 'react';
 import useClickOutside from '@/hooks/useClickOutside';
+import SocialMediaIcons from '../SocialMediaIcons/SocialMediaIcons';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,26 +17,32 @@ function Navbar() {
 
   return (
     <nav className={styles.navbar}>
-      <ul
-        ref={ref}
-        className={`${styles.navbarList} ${isOpen ? styles.active : ''}`}
-      >
-        <BiX
+      <div className={styles.navbarWrapper}>
+        <ul
+          ref={ref}
+          className={`${styles.navbarList} ${isOpen ? styles.active : ''}`}
+        >
+          <BiX
+            role="button"
+            tabIndex={0}
+            className={styles.hamburgerClose}
+            onClick={() => setIsOpen((prev) => !prev)}
+          />
+          {navbarLinks.map((navLink) => (
+            <MenuLink navLink={navLink} key={navLink.title} />
+          ))}
+          <SocialMediaIcons />
+        </ul>
+        <BiMenuAltRight
           role="button"
           tabIndex={0}
-          className={styles.hamburgerClose}
+          className={styles.hamburger}
           onClick={() => setIsOpen((prev) => !prev)}
         />
-        {navbarLinks.map((navLink) => (
-          <MenuLink navLink={navLink} key={navLink.title} />
-        ))}
-      </ul>
-      <BiMenuAltRight
-        role="button"
-        tabIndex={0}
-        className={styles.hamburger}
-        onClick={() => setIsOpen((prev) => !prev)}
-      />
+        <small className={styles.trainingInfo}>
+          Treningi: wtorek i czwartek 23:00 <br /> Lodowisko Wrocław
+        </small>
+      </div>
     </nav>
   );
 }

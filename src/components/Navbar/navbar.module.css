@@ -4,6 +4,11 @@
   padding: 1rem 0;
   text-align: right;
 }
+.navbarWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .navbarList {
   display: flex;
   flex-direction: column;
@@ -29,25 +34,41 @@
   font-size: 2rem;
   cursor: pointer;
 }
+.hamburger {
+  order: 2;
+}
 .hamburgerClose {
   align-self: flex-end;
   margin-top: 1rem;
 }
+.trainingInfo {
+  margin-left: 1rem;
+}
 
 @media screen and (min-width: 992px) {
-  .navbarList {
-    flex-direction: row;
-    justify-content: start;
+  .navbarWrapper {
+    display: flex;
+
     max-width: 1300px;
     margin-inline: auto;
     padding-inline: 15px;
+  }
+  .navbarList {
+    flex-direction: row;
+    justify-content: start;
     position: static;
     height: unset;
     width: unset;
     z-index: unset;
   }
+  .navbarList > ul {
+    display: none;
+  }
   .hamburger,
   .hamburgerClose {
     display: none;
+  }
+  .trainingInfo {
+    margin-left: unset;
   }
 }
