@@ -1,6 +1,7 @@
 :root {
   --text-color: #fff;
-  --hc-red: #fe0103;
+  /* --hc-red: #fe0103; */
+  --hc-red: #ce1127;
   --hc-black: #010207;
   --hc-yellow: #fdf001;
   --accent-color: #007cc7;
