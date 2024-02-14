@@ -1,0 +1,114 @@
+{
+  "gameCalendarData": [
+    {
+      "id": 1,
+      "gameType": "liga",
+      "date": "2024-02-13",
+      "firstTeamName": "HC Wrocław",
+      "firstTeamLogo": "https://scontent-waw1-1.xx.fbcdn.net/v/t39.30808-6/347588651_288996000133293_926809775528152161_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=9c7eae&_nc_ohc=D9acKml1TAUAX8XTQ91&_nc_ht=scontent-waw1-1.xx&oh=00_AfAciT4ii-SMMrRZpX_7-E7Y5ofPqPxs9nWbYiySHBCnTw&oe=65D23183",
+      "firstTeamGoals": "3",
+      "secondTeamName": "Klub Hokejowy Wilki",
+      "secondTeamLogo": "https://images.leaguerepublic.com/data/images/792871746/115.png",
+      "secondTeamGoals": "2"
+    },
+    {
+      "id": 2,
+      "gameType": "liga",
+      "date": "2024-02-14",
+      "firstTeamName": "Pingwinki Poznań",
+      "firstTeamLogo": "https://images.leaguerepublic.com/data/images/979967530/115.jpg",
+      "firstTeamGoals": "1",
+      "secondTeamName": "HC Wrocław",
+      "secondTeamLogo": "https://scontent-waw1-1.xx.fbcdn.net/v/t39.30808-6/347588651_288996000133293_926809775528152161_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=9c7eae&_nc_ohc=D9acKml1TAUAX8XTQ91&_nc_ht=scontent-waw1-1.xx&oh=00_AfAciT4ii-SMMrRZpX_7-E7Y5ofPqPxs9nWbYiySHBCnTw&oe=65D23183",
+      "secondTeamGoals": "1"
+    },
+    {
+      "id": 3,
+      "gameType": "sparing",
+      "date": "2024-02-15",
+      "firstTeamName": "HC Wrocław",
+      "firstTeamLogo": "https://scontent-waw1-1.xx.fbcdn.net/v/t39.30808-6/347588651_288996000133293_926809775528152161_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=9c7eae&_nc_ohc=D9acKml1TAUAX8XTQ91&_nc_ht=scontent-waw1-1.xx&oh=00_AfAciT4ii-SMMrRZpX_7-E7Y5ofPqPxs9nWbYiySHBCnTw&oe=65D23183",
+      "firstTeamGoals": "2",
+      "secondTeamName": "Orlik Opole",
+      "secondTeamLogo": "https://images.leaguerepublic.com/data/images/89210807/115.png",
+      "secondTeamGoals": "4"
+    },
+    {
+      "id": 4,
+      "gameType": "liga",
+      "date": "2024-02-16",
+      "firstTeamName": "HC Wrocław",
+      "firstTeamLogo": "https://scontent-waw1-1.xx.fbcdn.net/v/t39.30808-6/347588651_288996000133293_926809775528152161_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=9c7eae&_nc_ohc=D9acKml1TAUAX8XTQ91&_nc_ht=scontent-waw1-1.xx&oh=00_AfAciT4ii-SMMrRZpX_7-E7Y5ofPqPxs9nWbYiySHBCnTw&oe=65D23183",
+      "firstTeamGoals": "5",
+      "secondTeamName": "Mamuty Poznań",
+      "secondTeamLogo": "https://images.leaguerepublic.com/data/images/398369035/115.png",
+      "secondTeamGoals": "3"
+    },
+    {
+      "id": 5,
+      "gameType": "sparing",
+      "date": "2024-02-17",
+      "firstTeamName": "HC Wrocław",
+      "firstTeamLogo": "https://scontent-waw1-1.xx.fbcdn.net/v/t39.30808-6/347588651_288996000133293_926809775528152161_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=9c7eae&_nc_ohc=D9acKml1TAUAX8XTQ91&_nc_ht=scontent-waw1-1.xx&oh=00_AfAciT4ii-SMMrRZpX_7-E7Y5ofPqPxs9nWbYiySHBCnTw&oe=65D23183",
+      "firstTeamGoals": "1",
+      "secondTeamName": "Siekiera Szamocin",
+      "secondTeamLogo": "https://images.leaguerepublic.com/data/images/452161906/115.png",
+      "secondTeamGoals": "0"
+    },
+    {
+      "id": 6,
+      "gameType": "liga",
+      "date": "2024-02-18",
+      "firstTeamName": "WTH Wrocław",
+      "firstTeamLogo": "https://images.leaguerepublic.com/data/images/606331559/115.png",
+      "firstTeamGoals": "0",
+      "secondTeamName": "HC Wrocław",
+      "secondTeamLogo": "https://scontent-waw1-1.xx.fbcdn.net/v/t39.30808-6/347588651_288996000133293_926809775528152161_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=9c7eae&_nc_ohc=D9acKml1TAUAX8XTQ91&_nc_ht=scontent-waw1-1.xx&oh=00_AfAciT4ii-SMMrRZpX_7-E7Y5ofPqPxs9nWbYiySHBCnTw&oe=65D23183",
+      "secondTeamGoals": "2"
+    },
+    {
+      "id": 7,
+      "gameType": "sparing",
+      "date": "2024-02-19",
+      "firstTeamName": "HC Wrocław",
+      "firstTeamLogo": "https://scontent-waw1-1.xx.fbcdn.net/v/t39.30808-6/347588651_288996000133293_926809775528152161_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=9c7eae&_nc_ohc=D9acKml1TAUAX8XTQ91&_nc_ht=scontent-waw1-1.xx&oh=00_AfAciT4ii-SMMrRZpX_7-E7Y5ofPqPxs9nWbYiySHBCnTw&oe=65D23183",
+      "firstTeamGoals": "4",
+      "secondTeamName": "WTH Wrocław",
+      "secondTeamLogo": "https://images.leaguerepublic.com/data/images/606331559/115.png",
+      "secondTeamGoals": "1"
+    },
+    {
+      "id": 8,
+      "gameType": "liga",
+      "date": "2024-02-20",
+      "firstTeamName": "HC Wrocław",
+      "firstTeamLogo": "https://scontent-waw1-1.xx.fbcdn.net/v/t39.30808-6/347588651_288996000133293_926809775528152161_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=9c7eae&_nc_ohc=D9acKml1TAUAX8XTQ91&_nc_ht=scontent-waw1-1.xx&oh=00_AfAciT4ii-SMMrRZpX_7-E7Y5ofPqPxs9nWbYiySHBCnTw&oe=65D23183",
+      "firstTeamGoals": "2",
+      "secondTeamName": "Klub Hokejowy Wilki",
+      "secondTeamLogo": "https://images.leaguerepublic.com/data/images/792871746/115.png",
+      "secondTeamGoals": "2"
+    },
+    {
+      "id": 9,
+      "gameType": "liga",
+      "date": "2024-02-21",
+      "firstTeamName": "HC Wrocław",
+      "firstTeamLogo": "https://scontent-waw1-1.xx.fbcdn.net/v/t39.30808-6/347588651_288996000133293_926809775528152161_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=9c7eae&_nc_ohc=D9acKml1TAUAX8XTQ91&_nc_ht=scontent-waw1-1.xx&oh=00_AfAciT4ii-SMMrRZpX_7-E7Y5ofPqPxs9nWbYiySHBCnTw&oe=65D23183",
+      "firstTeamGoals": "3",
+      "secondTeamName": "Pingwinki Poznań",
+      "secondTeamLogo": "https://images.leaguerepublic.com/data/images/979967530/115.jpg",
+      "secondTeamGoals": "3"
+    },
+    {
+      "id": 10,
+      "gameType": "sparing",
+      "date": "2024-02-22",
+      "firstTeamName": "Klub Hokejowy Wilki",
+      "firstTeamLogo": "https://images.leaguerepublic.com/data/images/792871746/115.png",
+      "firstTeamGoals": "2",
+      "secondTeamName": "HC Wrocław",
+      "secondTeamLogo": "https://scontent-waw1-1.xx.fbcdn.net/v/t39.30808-6/347588651_288996000133293_926809775528152161_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=9c7eae&_nc_ohc=D9acKml1TAUAX8XTQ91&_nc_ht=scontent-waw1-1.xx&oh=00_AfAciT4ii-SMMrRZpX_7-E7Y5ofPqPxs9nWbYiySHBCnTw&oe=65D23183",
+      "secondTeamGoals": "1"
+    }
+  ]
+}
