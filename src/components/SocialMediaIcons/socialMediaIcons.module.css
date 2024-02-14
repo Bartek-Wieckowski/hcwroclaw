@@ -1,0 +1,41 @@
+@keyframes bounce {
+  0% {
+    top: 0;
+  }
+  30% {
+    top: -10px;
+  }
+  60% {
+    top: -5px;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+.socialMediaWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.socialMediaItem {
+  font-size: 2rem;
+}
+.socialMediaLink {
+  position: relative;
+  display: block;
+}
+.socialMediaLink:hover {
+  animation: bounce 0.3s ease;
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 992px) {
+  .socialMediaWrapper {
+    justify-content: flex-start;
+    padding-left: 1.5rem;
+  }
+}
