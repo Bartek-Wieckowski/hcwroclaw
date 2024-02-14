@@ -4,6 +4,7 @@ import Link from 'next/link';
 import logo from '@/assets/images/logo-no-bg.png';
 import logoText from '@/assets/images/text-club-name.png';
 import styles from './logobar.module.css';
+import SocialMediaIcons from '../SocialMediaIcons/SocialMediaIcons';
 
 function Logobar() {
   return (
@@ -24,6 +25,7 @@ function Logobar() {
           className={styles.logoText}
         />
       </Link>
+      <SocialMediaIcons/>
     </div>
   );
 }
