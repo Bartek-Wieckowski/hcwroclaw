@@ -2,15 +2,9 @@
 import Link from 'next/link';
 import styles from './menuLink.module.css';
 import { usePathname } from 'next/navigation';
+import { NavLinkType } from '@/types/Link.type';
 
-type navLink = {
-  navLink: {
-    title: string;
-    path: string;
-  };
-};
-
-function MenuLink({ navLink }: navLink) {
+function MenuLink({ navLink }: NavLinkType) {
   const pathName = usePathname();
   return (
     <li className={styles.menuItem}>
