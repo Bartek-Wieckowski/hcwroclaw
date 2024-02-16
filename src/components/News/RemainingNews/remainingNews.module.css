@@ -24,7 +24,7 @@
   height: 100%;
   display: block;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: var(--border-radius-img);
 }
 .remainingNewsDetails {
   display: flex;
