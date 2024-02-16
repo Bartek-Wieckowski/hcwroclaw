@@ -1,0 +1,49 @@
+.playerWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 600px;
+  margin-inline: auto;
+  padding: 2rem 0;
+}
+.playerWrapper:not(:last-child) {
+  border-bottom: 1px solid var(--accent-color-grey-layout);
+}
+.playerImageWrapper {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+  position: relative;
+}
+.playerImage {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.playerDetails {
+  margin-left: 28px;
+  display: flex;
+}
+.playerDetailsNumber {
+  font-weight: var(--font-semi);
+  font-size: 20px;
+  line-height: 28px;
+  margin-right: 28px;
+  color: var(--hc-red);
+  width: 24px;
+}
+
+.playerDetailsName {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: var(--font-semi);
+  text-transform: uppercase;
+}
+.playerDetailsPosition {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--accent-color-grey);
+}
