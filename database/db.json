@@ -110,5 +110,43 @@
       "secondTeamLogo": "https://scontent-waw1-1.xx.fbcdn.net/v/t39.30808-6/347588651_288996000133293_926809775528152161_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=9c7eae&_nc_ohc=D9acKml1TAUAX8XTQ91&_nc_ht=scontent-waw1-1.xx&oh=00_AfAciT4ii-SMMrRZpX_7-E7Y5ofPqPxs9nWbYiySHBCnTw&oe=65D23183",
       "secondTeamGoals": "1"
     }
+  ],
+  "news": [
+    {
+      "id":"1",
+      "date": "11-02-2024",
+      "author": "admin",
+      "title": "DZISIAJ ROZEGRAMY DOŚĆ WAŻNY MECZ Z DRUŻYNĄ KHL Poznań.",
+      "desc": "DZISIAJ ROZEGRAMY DOŚĆ WAŻNY MECZ Z DRUŻYNĄ KHL Poznań. ZBLIŻAMY SIĘ DUŻYMI KROKAMI DO PLAY-OFF. WIĘC PUNKTY BĘDĄ BARDZO ISTOTNE W ROZSTAWIENIU Z LEPSZYMI DRUŻYNAMI Z GÓRY TABELI. ALL READY TO FIGHT",
+      "img": "https://scontent-waw1-1.xx.fbcdn.net/v/t39.30808-6/417492629_373567585374034_4414927642087372234_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=d8d9c5&_nc_ohc=-yfhPJ8UjTQAX-gC1M5&_nc_ht=scontent-waw1-1.xx&oh=00_AfAd98BhKzMF0t8975Mx_VsUmCdBl5ooCypCBNNInunQcw&oe=65D225DC",
+      "slug": "dzisiaj-rozegramy-dosc-wazny-mecz-z-druzyna-khl-poznan"
+    },
+    {
+      "id": "2",
+      "date": "04-01-2024",
+      "author": "admin",
+      "title": "Dojechał nowy set ze Szwecji dla Goalie#29",
+      "desc": "Dojechał nowy set ze Szwecji dla Goalie#29 Podziękowania dla William Gramme i Anders Gramme  AIK Hockey / Huddinge Hockey / Lone Star Brahmas. Stort tack Anders för din hjälp och att du fick bra utrustning från William. CCM Hockey (pavel khomchenko) Hälsningar från Wrocław Mvh Alexander",
+      "img": "https://scontent-waw1-1.xx.fbcdn.net/v/t39.30808-6/415984189_255552667550738_6214499324416092121_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=dd5e9f&_nc_ohc=IMBFU9LpFP8AX8a6GjT&_nc_ht=scontent-waw1-1.xx&oh=00_AfD3nLSh_L2lsNPTwO8rArWa7O3VPsWht4qUNPH451p-GQ&oe=65D2B4D6",
+      "slug": "dojechal-nowy-set-ze-szwecji-dla-goalie29"
+    },
+    {
+      "id": "3",
+      "date": "03-01-2024",
+      "author": "admin",
+      "title": "Przed rozpoczęciem roku 2024 zaczęliśmy nową przygodę z hokejem poza granicami naszego kraju.",
+      "desc": "Przed rozpoczęciem roku 2024 zaczęliśmy nową przygodę z hokejem poza granicami naszego kraju. Dzięki zaprzyjaźnionej drużynie HC Dragon rozpoczynamy naszą przygodę w krainie słynącej z hokeja na lodzie i dobrego piwa, kraj te to Česká republika. W planach na rok 2024 mamy zamiar odwiedzać nowe zimowe stadiony, nowe hekejowe kluby przynajmniej raz w miesiącu.Karuzela niech się kręci w hokejowym temacie. Jeszcze raz bardzo dziękujemy HC Dragon za wspólnie spędzony czas na lodzie, miłą gościnę i dobrą zabawę. Moc děkuji a zdravím z Vratislavi",
+      "img": "https://scontent-waw1-1.xx.fbcdn.net/v/t39.30808-6/413037464_254774257628579_3121439176342626327_n.jpg?stp=dst-jpg_p600x600&_nc_cat=106&ccb=1-7&_nc_sid=dd5e9f&_nc_ohc=08KT7ZSgrfsAX9jxFgY&_nc_oc=AQmPLvCW6nWyw32N9_hKKQ4cRlypfLycfLECHN2PGCAsP3DvggiE43Ew0k3ag1-LqX0&_nc_ht=scontent-waw1-1.xx&oh=00_AfDii-erVPi-sQRqWElCEzGmchTV9dii5HGram2ru6s8zA&oe=65D33D4E",
+      "slug": "przed-rozpoczeciem-roku-2024-zaczelismy-nowa-przygode-z-hokejem-poza-granicami-naszego-kraju"
+    },
+    {
+      "id": "4",
+      "date": "11-12-2023",
+      "author": "admin",
+      "title": "NIESTETY WCZORAJSZY MECZ Wielkopolska Liga Hokejowa HC Wrocław vs WTH Wrocław.",
+      "desc": "NIESTETY WCZORAJSZY MECZ Wielkopolska Liga Hokejowa HC Wrocław vs WTH Wrocław. ZAKOŃCZYŁ SIĘ DOŚĆ MOCNO W PLECY BO 0:6 CHOĆ WYNIK MÓGŁ BYĆ DUŻO LEPSZY DLA NASZEJ DRUŻYNY. W NASZYM WYKONANIU ZABRAKŁO SKUTECZNOŚCI W WYKOŃCZENIACH AKCJI NIEKTÓRYM ZDROWIE NIE POZWOLIŁO ZAGRAĆ NA 100% SWOICH MOŻLIWOŚĆ CHOĆ WALKA BYŁA BARDZO WYRÓWNANA PRZEZ CAŁE SPOTKANIE. OCZYWIŚCIE NIE OBYŁO SIĘ BEZ KAR😜 GRATY DLA ZWYCIĘZCÓW A MY IDZIEMY DALEJ DO PRZODU BĘDZIE CZAS NA REWANŻ POZDRO",
+      "img": "https://scontent-waw1-1.xx.fbcdn.net/v/t39.30808-6/409976179_240514319054573_3789569819050229388_n.jpg?stp=dst-jpg_s960x960&_nc_cat=106&ccb=1-7&_nc_sid=dd5e9f&_nc_ohc=B0cu5i61t8kAX_5X4I8&_nc_ht=scontent-waw1-1.xx&oh=00_AfB_H1IOV2uxD2SZIQ7FAkRnKPHTByskVTbxIsbUfoupLw&oe=65D3A35E",
+      "slug": "niestety-wczorajszy-mecz-wielkopolska-liga-hokejowa-hc-wroclaw-vs-wth-wroclaw"
+    }
   ]
 }
