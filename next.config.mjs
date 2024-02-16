@@ -10,6 +10,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'images.leaguerepublic.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'assets.nhle.com',
+      },
     ],
   },
 };
