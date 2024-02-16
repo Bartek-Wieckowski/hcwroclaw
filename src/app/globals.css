@@ -160,3 +160,28 @@ section {
 .swiper-button-prev {
   color: black !important;
 }
+.swiper-pagination {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  justify-content: flex-end;
+  bottom: 20px !important;
+  right: 25px;
+}
+.swiper-pagination-bullet {
+  width: 40px !important;
+  height: 40px !important;
+  margin: 0 10px !important;
+  border: 2px solid #fff !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  color: #fff !important;
+  cursor: pointer !important;
+  transition: all 0.25s ease-in-out !important;
+}
+.swiper-pagination-bullet-active {
+  border-color: var(--hc-red) !important;
+  background: var(--hc-red) !important;
+}
