@@ -13,7 +13,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   gap: 2rem;
   position: fixed;
   right: -100%;
@@ -55,7 +55,7 @@
   }
   .navbarList {
     flex-direction: row;
-    justify-content: start;
+    justify-content: flex-start;
     position: static;
     height: unset;
     width: unset;
