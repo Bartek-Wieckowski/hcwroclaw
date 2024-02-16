@@ -46,7 +46,7 @@
   :root {
     --biggest-font-size: 5.5rem;
     --big-font-size: 4.5rem;
-    --huge-font-size: 3rem;
+    --huge-font-size: 2rem;
     --h1-font-size: 1.5rem;
     --h2-font-size: 1.25rem;
     --normal-font-size: 1rem;
@@ -124,7 +124,6 @@ img {
 
 main {
   background-color: var(--hc-red);
-  height: 200vh;
 }
 section {
   position: relative;
