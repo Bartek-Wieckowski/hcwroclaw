@@ -9,7 +9,7 @@ const RemainingNews = ({ news }: NewsType) => {
  
   return (
     <div>
-      <h2 className={styles.remainingNewsTitle}>Pozostałe aktualności</h2>
+      <h2 className={`layoutH2effect ${styles.remainingNewsTitle}`}>Pozostałe aktualności</h2>
       <div className={styles.remainingNewsGrid}>
         {news.map((item) => (
           <Link

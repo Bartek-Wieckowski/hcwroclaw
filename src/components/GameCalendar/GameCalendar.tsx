@@ -1,8 +1,9 @@
 import GameCalendarSlider from './GameCalendarSlider/GameCalendarSlider';
+import styles from "./gameCalendar.module.css"
 
 function GameCalendar() {
   return (
-    <section>
+    <section className={styles.gameCalendarSection}>
       <GameCalendarSlider />
     </section>
   );

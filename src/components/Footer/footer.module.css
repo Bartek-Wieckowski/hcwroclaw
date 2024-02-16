@@ -1,5 +1,5 @@
 .footer {
-  border-top: 1px solid var(--accent-color-grey);
+  border-top: 1px solid var(--accent-color-grey-layout);
   background-color: var(--bg-body-black);
   padding-block: 0.5rem;
 }
@@ -49,7 +49,7 @@
 
   .leftSide {
     order: 1;
-    border-right: 1px solid var(--accent-color-grey);
+    border-right: 1px solid var(--accent-color-grey-layout);
     justify-self: unset;
   }
   .rightSide {
