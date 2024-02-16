@@ -113,7 +113,7 @@
   ],
   "news": [
     {
-      "id":"1",
+      "id": "1",
       "date": "11-02-2024",
       "author": "admin",
       "title": "DZISIAJ ROZEGRAMY DOŚĆ WAŻNY MECZ Z DRUŻYNĄ KHL Poznań.",
@@ -147,6 +147,113 @@
       "desc": "NIESTETY WCZORAJSZY MECZ Wielkopolska Liga Hokejowa HC Wrocław vs WTH Wrocław. ZAKOŃCZYŁ SIĘ DOŚĆ MOCNO W PLECY BO 0:6 CHOĆ WYNIK MÓGŁ BYĆ DUŻO LEPSZY DLA NASZEJ DRUŻYNY. W NASZYM WYKONANIU ZABRAKŁO SKUTECZNOŚCI W WYKOŃCZENIACH AKCJI NIEKTÓRYM ZDROWIE NIE POZWOLIŁO ZAGRAĆ NA 100% SWOICH MOŻLIWOŚĆ CHOĆ WALKA BYŁA BARDZO WYRÓWNANA PRZEZ CAŁE SPOTKANIE. OCZYWIŚCIE NIE OBYŁO SIĘ BEZ KAR😜 GRATY DLA ZWYCIĘZCÓW A MY IDZIEMY DALEJ DO PRZODU BĘDZIE CZAS NA REWANŻ POZDRO",
       "img": "https://scontent-waw1-1.xx.fbcdn.net/v/t39.30808-6/409976179_240514319054573_3789569819050229388_n.jpg?stp=dst-jpg_s960x960&_nc_cat=106&ccb=1-7&_nc_sid=dd5e9f&_nc_ohc=B0cu5i61t8kAX_5X4I8&_nc_ht=scontent-waw1-1.xx&oh=00_AfB_H1IOV2uxD2SZIQ7FAkRnKPHTByskVTbxIsbUfoupLw&oe=65D3A35E",
       "slug": "niestety-wczorajszy-mecz-wielkopolska-liga-hokejowa-hc-wroclaw-vs-wth-wroclaw"
+    }
+  ],
+  "players": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "position": "forward",
+      "jerseyNumber": 10,
+      "imgPlayer": "https://assets.nhle.com/mugs/nhl/default-skater.png"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "position": "defense",
+      "jerseyNumber": 5,
+      "imgPlayer": "https://assets.nhle.com/mugs/nhl/default-skater.png"
+    },
+    {
+      "id": 3,
+      "name": "Mike Johnson",
+      "position": "goalie",
+      "jerseyNumber": 30,
+      "imgPlayer": "https://assets.nhle.com/mugs/nhl/default-skater.png"
+    },
+    {
+      "id": 4,
+      "name": "Emily Brown",
+      "position": "forward",
+      "jerseyNumber": 22,
+      "imgPlayer": "https://assets.nhle.com/mugs/nhl/default-skater.png"
+    },
+    {
+      "id": 5,
+      "name": "David Wilson",
+      "position": "forward",
+      "jerseyNumber": 17,
+      "imgPlayer": "https://assets.nhle.com/mugs/nhl/default-skater.png"
+    },
+    {
+      "id": 6,
+      "name": "Sarah Taylor",
+      "position": "forward",
+      "jerseyNumber": 8,
+      "imgPlayer": "https://assets.nhle.com/mugs/nhl/default-skater.png"
+    },
+    {
+      "id": 7,
+      "name": "Michael Clark",
+      "position": "defense",
+      "jerseyNumber": 2,
+      "imgPlayer": "https://assets.nhle.com/mugs/nhl/default-skater.png"
+    },
+    {
+      "id": 8,
+      "name": "Emma White",
+      "position": "forward",
+      "jerseyNumber": 12,
+      "imgPlayer": "https://assets.nhle.com/mugs/nhl/default-skater.png"
+    },
+    {
+      "id": 9,
+      "name": "Chris Evans",
+      "position": "goalie",
+      "jerseyNumber": 35,
+      "imgPlayer": "https://assets.nhle.com/mugs/nhl/default-skater.png"
+    },
+    {
+      "id": 10,
+      "name": "Olivia Adams",
+      "position": "defense",
+      "jerseyNumber": 4,
+      "imgPlayer": "https://assets.nhle.com/mugs/nhl/default-skater.pngg"
+    },
+    {
+      "id": 11,
+      "name": "Matthew Harris",
+      "position": "defense",
+      "jerseyNumber": 27,
+      "imgPlayer": "https://assets.nhle.com/mugs/nhl/default-skater.pngg"
+    },
+    {
+      "id": 12,
+      "name": "Sophia Martinez",
+      "position": "forward",
+      "jerseyNumber": 9,
+      "imgPlayer": "https://assets.nhle.com/mugs/nhl/default-skater.pngg"
+    },
+    {
+      "id": 13,
+      "name": "Andrew Thompson",
+      "position": "forward",
+      "jerseyNumber": 14,
+      "imgPlayer": "https://assets.nhle.com/mugs/nhl/default-skater.pngg"
+    },
+    {
+      "id": 14,
+      "name": "Isabella Rodriguez",
+      "position": "defense",
+      "jerseyNumber": 23,
+      "imgPlayer": "https://assets.nhle.com/mugs/nhl/default-skater.pngg"
+    },
+    {
+      "id": 15,
+      "name": "James Lee",
+      "position": "forward",
+      "jerseyNumber": 18,
+      "imgPlayer": "https://assets.nhle.com/mugs/nhl/default-skater.pngg"
     }
   ]
 }
