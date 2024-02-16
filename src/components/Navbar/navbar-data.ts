@@ -1,7 +1,7 @@
 export const navbarLinks = [
   {
     title: 'Aktualności',
-    path: '/news',
+    path: '/',
   },
   {
     title: 'Drużyna',
