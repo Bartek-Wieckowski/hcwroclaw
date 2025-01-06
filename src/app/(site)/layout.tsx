@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import './globals.css';
+import '../globals.css';
 import GameCalendar from '@/components/GameCalendar/GameCalendar';
 import Footer from '@/components/Footer/Footer';
 import Header from '@/components/Header/Header';
@@ -26,7 +26,7 @@ export default function RootLayout({
           <GameCalendar />
           <Header />
           <main>{children}</main>
-          <Sponsors/>
+          <Sponsors />
           <Footer />
         </Providers>
       </body>
