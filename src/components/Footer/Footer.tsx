@@ -1,9 +1,9 @@
 import styles from './footer.module.css';
 import Image from 'next/image';
 import logo from '@/assets/images/logo-no-bg.png';
-import { navbarLinks } from '../Navbar/navbar-data';
 import FooterLink from './FooterLink/FooterLink';
 import SocialMediaIcons from '../SocialMediaIcons/SocialMediaIcons';
+import { navbarLinks } from '../Navbar/navbar-data';
 
 function Footer() {
   return (

@@ -1,11 +1,12 @@
 'use client';
+
 import MenuLink from './MenuLink/MenuLink';
 import styles from './navbar.module.css';
-import { navbarLinks } from './navbar-data';
-import { BiMenuAltRight, BiX } from 'react-icons/bi';
-import { useState } from 'react';
 import useClickOutside from '@/hooks/useClickOutside';
 import SocialMediaIcons from '../SocialMediaIcons/SocialMediaIcons';
+import { useState } from 'react';
+import { navbarLinks } from './navbar-data';
+import { BiMenuAltRight, BiX } from 'react-icons/bi';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);

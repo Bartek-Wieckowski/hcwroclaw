@@ -1,15 +1,16 @@
-import { NewsType } from '@/types/News.type';
 import styles from './remainingNews.module.css';
 import Image from 'next/image';
-import { findDotAndCutText, truncateText } from '@/utils/helpers';
-import { BiSolidStar } from 'react-icons/bi';
 import Link from 'next/link';
+import { NewsType } from '@/types/News.type';
+import { BiSolidStar } from 'react-icons/bi';
+import { findDotAndCutText, truncateText } from '@/utils/helpers';
 
 const RemainingNews = ({ news }: NewsType) => {
- 
   return (
     <div>
-      <h2 className={`layoutH2effect ${styles.remainingNewsTitle}`}>Pozostałe aktualności</h2>
+      <h2 className={`layoutH2effect ${styles.remainingNewsTitle}`}>
+        Pozostałe aktualności
+      </h2>
       <div className={styles.remainingNewsGrid}>
         {news.map((item) => (
           <Link

@@ -1,11 +1,11 @@
 'use client';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Scrollbar, A11y, Pagination } from 'swiper/modules';
+
 import Image from 'next/image';
 import styles from './teamSlider.module.css';
 import 'swiper/css';
 import 'swiper/css/pagination';
-
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Scrollbar, A11y, Pagination } from 'swiper/modules';
 import { teamImagesSlider } from './teamImagesSlider-data';
 
 function TeamSlider() {

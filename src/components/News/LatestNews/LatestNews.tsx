@@ -1,9 +1,9 @@
-import { singleNewsType } from '@/types/News.type';
-import { findDotAndCutText } from '@/utils/helpers';
-import { BiSolidStar } from 'react-icons/bi';
 import Image from 'next/image';
 import styles from './latestNews.module.css';
 import Link from 'next/link';
+import { singleNewsType } from '@/types/News.type';
+import { findDotAndCutText } from '@/utils/helpers';
+import { BiSolidStar } from 'react-icons/bi';
 
 type LatestNewsProps = {
   news: singleNewsType;

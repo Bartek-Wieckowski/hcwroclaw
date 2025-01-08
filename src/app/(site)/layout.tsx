@@ -1,11 +1,12 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import '../globals.css';
 import GameCalendar from '@/components/GameCalendar/GameCalendar';
 import Footer from '@/components/Footer/Footer';
 import Header from '@/components/Header/Header';
 import Providers from '@/lib/queryProvider';
 import Sponsors from '@/components/Sponsors/Sponsors';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import { SanityLive } from '@/sanity/lib/live';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -28,6 +29,7 @@ export default function RootLayout({
           <main>{children}</main>
           <Sponsors />
           <Footer />
+          <SanityLive />
         </Providers>
       </body>
     </html>

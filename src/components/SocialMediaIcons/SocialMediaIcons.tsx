@@ -1,6 +1,6 @@
-import { BiLogoFacebook, BiLogoInstagramAlt } from 'react-icons/bi';
 import styles from './socialMediaIcons.module.css';
 import Link from 'next/link';
+import { BiLogoFacebook, BiLogoInstagramAlt } from 'react-icons/bi';
 
 function SocialMediaIcons() {
   return (

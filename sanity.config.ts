@@ -12,8 +12,10 @@ import { structureTool } from 'sanity/structure';
 import { apiVersion, dataset, projectId } from './src/sanity/env';
 import { schema } from './src/sanity/schemaTypes';
 import { structure } from './src/sanity/structure';
+import Logo from './src/sanity/assets/Logo';
 
 export default defineConfig({
+  icon: Logo,
   basePath: '/studio',
   projectId,
   dataset,

@@ -1,10 +1,13 @@
+import styles from './gameCalendar.module.css';
 import GameCalendarSlider from './GameCalendarSlider/GameCalendarSlider';
-import styles from "./gameCalendar.module.css"
+import { getGamesCalendarQuery } from '@/sanity/lib/queries';
+import { sanityFetch } from '@/sanity/lib/live';
 
-function GameCalendar() {
+async function GameCalendar() {
+  const { data: games } = await sanityFetch({ query: getGamesCalendarQuery });
   return (
     <section className={styles.gameCalendarSection}>
-      <GameCalendarSlider />
+      <GameCalendarSlider games={games} />
     </section>
   );
 }
