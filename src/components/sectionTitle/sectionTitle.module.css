@@ -1,0 +1,15 @@
+.title {
+  font-family: var(--font-roboto-bold);
+  font-size: var(--h2-font-size);
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.primaryColor {
+  color: var(--text-color);
+}
+
+.secondaryColor {
+  color: var(--hc-red);
+}

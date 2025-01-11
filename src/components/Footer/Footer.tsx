@@ -1,9 +1,9 @@
 import styles from './footer.module.css';
 import Image from 'next/image';
 import logo from '@/assets/images/logo-no-bg.png';
-import FooterLink from './FooterLink/FooterLink';
-import SocialMediaIcons from '../SocialMediaIcons/SocialMediaIcons';
-import { navbarLinks } from '../Navbar/navbar-data';
+import FooterLink from './footerLink/FooterLink';
+import SocialMediaIcons from '../socialMediaIcons/SocialMediaIcons';
+import { navbarLinks } from '../navbar/navbar-data';
 
 function Footer() {
   return (
@@ -26,7 +26,9 @@ function Footer() {
                   <FooterLink key={footerLink.title} footerLink={footerLink} />
                 ))}
               </ul>
-              <SocialMediaIcons />
+              <div className={styles.footerSocialMediaWrapper}>
+                <SocialMediaIcons className={styles.footerSocialMedia} />
+              </div>
             </div>
           </div>
         </div>

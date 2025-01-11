@@ -9,15 +9,8 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'scontent-waw1-1.xx.fbcdn.net',
-      },
-      {
-        protocol: 'https',
-        hostname: 'images.leaguerepublic.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'assets.nhle.com',
+        hostname: 'developedbybart.pl',
+        port: '',
       },
     ],
   },

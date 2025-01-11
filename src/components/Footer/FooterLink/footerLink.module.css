@@ -1,14 +1,18 @@
+.footerItem {
+  font-family: var(--font-roboto-bold);
+  font-size: var(--normal-font-size);
+}
 .footerItem::after {
-    opacity: 0;
-    visibility: hidden;
-    content: '';
-    display: block;
-    width: 90%;
-    height: 2px;
-    margin-inline: auto;
-    background-color: var(--hc-red);
-  }
-  .footerItem:hover::after {
-    opacity: 1;
-    visibility: visible;
-  }
+  opacity: 0;
+  visibility: hidden;
+  content: '';
+  display: block;
+  width: 90%;
+  height: 0.2rem;
+  margin-inline: auto;
+  background-color: var(--hc-red);
+}
+.footerItem:hover::after {
+  opacity: 1;
+  visibility: visible;
+}

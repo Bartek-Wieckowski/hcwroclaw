@@ -1,5 +1,5 @@
 .footer {
-  border-top: 1px solid var(--accent-color-grey-layout);
+  border-top: 0.1rem solid var(--accent-color-grey-layout);
   background-color: var(--bg-body-black);
   padding-block: 0.5rem;
 }
@@ -13,6 +13,8 @@
 
 .teamName {
   text-transform: uppercase;
+  font-family: var(--font-outfit-regular);
+  font-size: var(--normal-font-size);
 }
 .footerLinkList {
   display: flex;
@@ -20,17 +22,19 @@
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
-  font-weight: var(--font-semi);
   gap: 0.8rem;
 }
 .leftSide {
   order: 2;
   justify-self: center;
 }
-.footerLinksWrapper{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+.leftSide small {
+  font-size: 0.85rem;
+}
+.footerLinksWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -49,10 +53,15 @@
 
   .leftSide {
     order: 1;
-    border-right: 1px solid var(--accent-color-grey-layout);
+    border-right: 0.1rem solid var(--accent-color-grey-layout);
     justify-self: unset;
   }
   .rightSide {
     order: 2;
+  }
+
+  .footerSocialMedia {
+    justify-content: flex-start !important;
+    padding-left: 1.5rem;
   }
 }

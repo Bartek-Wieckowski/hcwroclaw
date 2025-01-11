@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  max-width: 600px;
+  max-width: 60rem;
   margin-inline: auto;
   padding: 2rem 0;
 }
@@ -11,39 +11,37 @@
 }
 .playerImageWrapper {
   flex-shrink: 0;
-  width: 60px;
-  height: 60px;
+  width: 0.6rem;
+  height: 0.6rem;
   border-radius: 50%;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 2rem rgba(255, 255, 255, 0.15);
   position: relative;
 }
 .playerImage {
   position: absolute;
-  top: -10px;
+  top: -1rem;
   left: 50%;
   transform: translateX(-50%);
 }
 .playerDetails {
-  margin-left: 28px;
+  margin-left: 2.8rem;
   display: flex;
 }
 .playerDetailsNumber {
   font-weight: var(--font-semi);
-  font-size: 20px;
-  line-height: 28px;
-  margin-right: 28px;
+  font-size: var(--normal-font-size);
+  line-height: 2.8rem;
+  margin-right: 2.8rem;
   color: var(--hc-red);
   width: 24px;
 }
 
 .playerDetailsName {
-  font-size: 20px;
-  line-height: 28px;
+  font-size: var(--normal-font-size);
   font-weight: var(--font-semi);
   text-transform: uppercase;
 }
 .playerDetailsPosition {
-  font-size: 14px;
-  line-height: 20px;
+  font-size: var(--small-font-size);
   color: var(--accent-color-grey);
 }

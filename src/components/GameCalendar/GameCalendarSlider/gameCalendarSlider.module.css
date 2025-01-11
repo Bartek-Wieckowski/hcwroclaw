@@ -2,7 +2,8 @@
   width: 100%;
   height: 6rem;
   margin-inline: auto;
-  padding-inline: 15px;
+  padding-inline: 1.5rem;
+  /* padding-inline: var(--container-padding); */
   color: black;
   display: flex;
   align-items: center;
@@ -15,15 +16,15 @@
   gap: 0.5rem;
 }
 .gameDate {
-  background-color: #eee;
+  background: var(--hc-gold);
   font-weight: var(--font-semi);
   font-size: var(--small-font-size);
   border-radius: 1rem;
 }
-.gameDetails{
+.gameDetails {
   display: flex;
   flex-direction: column;
-  gap: .4rem;
+  gap: 0.4rem;
 }
 .gameDate > div {
   text-align: center;
@@ -33,19 +34,22 @@
 .gameType {
   display: block;
   text-align: center;
-  background-color: #eee;
+  background: var(--hc-gold);
   border-radius: 0.5rem;
 }
 .gameScore {
   display: flex;
   flex-direction: column;
+  color: #eee;
 }
-.sliderSwiperSlide{
-    padding: 0 2.5rem;
+.sliderSwiperSlide {
+  padding: 0 2.5rem;
 }
-.teamName{
-  font-size: .6rem;
-  margin-left: .3rem;
+.teamName {
+  font-size: 0.6rem;
+  margin-left: 0.3rem;
+  color: #eee;
+  font-family: var(--font-outfit-regular);
 }
 
 @media screen and (min-width: 992px) {

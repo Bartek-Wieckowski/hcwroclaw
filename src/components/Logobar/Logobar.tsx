@@ -1,32 +1,37 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import logo from '@/assets/images/logo-no-bg.png';
-import logoText from '@/assets/images/text-club-name.png';
 import styles from './logobar.module.css';
-import SocialMediaIcons from '../SocialMediaIcons/SocialMediaIcons';
+import Link from 'next/link';
+import logoText from '@/assets/images/text-club-name.png';
+import Image from 'next/image';
+import SocialMediaIcons from '../socialMediaIcons/SocialMediaIcons';
 
-function Logobar() {
+type LogobarProps = {
+  isScrolled: boolean;
+  isHomePage?: boolean;
+};
+
+export default function Logobar({
+  isScrolled,
+  isHomePage = false,
+}: LogobarProps) {
   return (
     <div className={styles.logoWrapper}>
       <Link href="/" className={styles.logoFlex}>
-        <Image
-          src={logo}
-          alt="Hockey Club Wrocław"
-          width="100"
-          height="80"
-          className={styles.logo}
-        />
-        <Image
-          src={logoText}
-          alt="Hockey Club Wrocław"
-          width="400"
-          height="40"
-          className={styles.logoText}
-        />
+        <div className={styles.logoTextParent}>
+          <Image
+            src={logoText}
+            alt="Hockey Club Wrocław"
+            fill
+            sizes="33vw"
+            className={styles.logoText}
+            priority
+          />
+        </div>
       </Link>
-      <SocialMediaIcons />
+      <SocialMediaIcons
+        isScrolled={isScrolled}
+        isNavigation={true}
+        isHomePage={isHomePage}
+      />
     </div>
   );
 }
-
-export default Logobar;

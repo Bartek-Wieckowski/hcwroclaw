@@ -1,0 +1,6 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-fixed);
+  background-color: var(--bg-body-black);
+}

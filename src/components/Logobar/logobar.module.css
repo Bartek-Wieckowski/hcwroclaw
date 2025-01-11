@@ -2,29 +2,29 @@
   min-height: 6.4rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 1rem;
-  max-width: 1300px;
   margin-inline: auto;
-  padding-inline: 15px;
+  padding-inline: var(--container-padding);
 }
 .logoWrapper > ul {
-  gap: unset;
   align-self: flex-end;
-}
-.logoWrapper > ul > li {
-  font-size: 1.5rem;
 }
 .logoFlex {
   display: flex;
   align-items: center;
+  max-width: 12.5rem;
+  width: 100%;
 }
-.logo {
-  width: 60px;
+.logoTextParent {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 8.56/1;
 }
 .logoText {
-  width: 200px;
+  object-fit: contain;
 }
+
 @media screen and (min-width: 345px) {
   .logoWrapper > ul {
     align-self: center;
@@ -35,13 +35,8 @@
   .logoWrapper {
     justify-content: space-between;
   }
-  .logo {
-    width: 100px;
-  }
-  .logoText {
-    width: 400px;
-  }
 }
+
 @media screen and (min-width: 590px) {
   .logoWrapper > ul > li {
     font-size: 2rem;
@@ -51,5 +46,8 @@
 @media screen and (min-width: 650px) {
   .logoWrapper > ul {
     gap: 2rem;
+  }
+  .logoFlex {
+    max-width: 22.5rem;
   }
 }

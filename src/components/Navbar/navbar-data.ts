@@ -1,22 +1,24 @@
+import { ROUTES } from '@/lib/routes';
+
 export const navbarLinks = [
   {
     title: 'Aktualności',
-    path: '/',
+    path: ROUTES.NEWS,
   },
   {
     title: 'Drużyna',
-    path: '/team',
+    path: ROUTES.TEAM,
   },
   {
     title: 'Klub',
-    path: '/club',
+    path: ROUTES.CLUB,
   },
   {
     title: 'Kontakt',
-    path: '/contact',
+    path: ROUTES.CONTACT,
   },
   {
     title: 'Zostań sponsorem',
-    path: '/sponsors',
+    path: ROUTES.BECOMESPONSOR,
   },
 ];

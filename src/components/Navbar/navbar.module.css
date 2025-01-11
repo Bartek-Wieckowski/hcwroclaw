@@ -1,13 +1,14 @@
 .navbar {
-  border-top: 1px solid var(--accent-color-grey-layout);
-  border-bottom: 1px solid var(--accent-color-grey-layout);
-  padding: 1rem 0;
+  border-top: 0.1rem solid var(--accent-color-grey-layout);
+  border-bottom: 0.1rem solid var(--accent-color-grey-layout);
+  padding: 1rem var(--container-padding);
   text-align: right;
 }
 .navbarWrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
+  gap: 2rem;
 }
 .navbarList {
   display: flex;
@@ -20,38 +21,57 @@
   top: 0;
   height: 100vh;
   width: 60%;
-  background-color: var(--bg-body-black);
   transition: all 0.3s ease;
   z-index: var(--z-hamburgerMenu);
   text-transform: uppercase;
+  background-color: var(--bg-body-black);
+  font-family: var(--font-roboto-bold);
 }
 .active {
   right: 0;
 }
 .hamburger,
 .hamburgerClose {
-  margin-right: 1rem;
   font-size: 2rem;
   cursor: pointer;
+  transition: color 0.3s ease;
 }
 .hamburger {
   order: 2;
+  color: white;
 }
 .hamburgerClose {
   align-self: flex-end;
   margin-top: 1rem;
+  margin-right: 0.5rem;
+  color: white;
 }
-.trainingInfo {
-  margin-left: 1rem;
+.tableGamesIcon {
+  cursor: pointer;
+  transition: color 0.3s ease;
+  color: white;
+  font-size: 2rem;
 }
-
+/* Style dla strony głównej */
+.navbar.homePage .hamburger,
+.navbar.homePage .tableGamesIcon {
+  color: black;
+}
+/* Gdy zescrollowane na stronie głównej */
+.navbar.homePage.scrolled .hamburger,
+.navbar.homePage.scrolled .tableGamesIcon {
+  color: white;
+}
+/* Ikony w rozwiniętym menu mobilnym zawsze białe */
+.active :global(.socialMediaLink) {
+  color: white !important;
+}
+/* Style dla desktop */
 @media screen and (min-width: 992px) {
   .navbarWrapper {
-    display: flex;
-
-    max-width: 1300px;
+    justify-content: flex-start;
     margin-inline: auto;
-    padding-inline: 15px;
+    gap: unset;
   }
   .navbarList {
     flex-direction: row;
@@ -60,6 +80,7 @@
     height: unset;
     width: unset;
     z-index: unset;
+    background-color: unset;
   }
   .navbarList > ul {
     display: none;
@@ -68,7 +89,7 @@
   .hamburgerClose {
     display: none;
   }
-  .trainingInfo {
-    margin-left: unset;
+  .tableGamesIcon {
+    display: none;
   }
 }

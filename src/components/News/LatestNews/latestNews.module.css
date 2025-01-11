@@ -47,12 +47,12 @@
 }
 .arrow {
   position: absolute;
-  top: -40px;
-  left: 20px;
+  top: -4rem;
+  left: 2rem;
   bottom: 0;
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
-  border-bottom: 25px solid var(--bg-body-black);
+  border-left: 2.5rem solid transparent;
+  border-right: 2.5rem solid transparent;
+  border-bottom: 2.5rem solid var(--bg-body-black);
   width: 0;
   height: 0;
   z-index: var(--z-fixed);
@@ -85,13 +85,13 @@
   }
   .mainNewsArticle {
     padding: 1rem;
-    max-width: 550px;
+    max-width: 55rem;
   }
   .arrow {
-    left: -40px;
-    top: 60px;
-    border-top: 20px solid transparent;
-    border-right: 20px solid var(--bg-body-black);
-    border-bottom: 20px solid transparent;
+    left: -4rem;
+    top: 6rem;
+    border-top: 2rem solid transparent;
+    border-right: 2rem solid var(--bg-body-black);
+    border-bottom: 2rem solid transparent;
   }
 }
