@@ -6,7 +6,7 @@ type TeamListProps = {
   players: PlayerType[];
 };
 
-function TeamList({ players }: TeamListProps) {
+export default function TeamList({ players }: TeamListProps) {
   return (
     <>
       {players.map((player: PlayerType) => (
@@ -38,5 +38,3 @@ function TeamList({ players }: TeamListProps) {
     </>
   );
 }
-
-export default TeamList;

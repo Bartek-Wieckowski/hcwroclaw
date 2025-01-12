@@ -14,7 +14,7 @@ import styles from './team.module.css';
 //   }
 // };
 
-async function Team() {
+export default async function TeamPage() {
   // const players = await getAllPlayers();
   // const goalkeepers = players.filter(
   //   (goalkeaper: PlayerType) => goalkeaper.position === 'goalie'
@@ -41,4 +41,4 @@ async function Team() {
   );
 }
 
-export default Team;
+

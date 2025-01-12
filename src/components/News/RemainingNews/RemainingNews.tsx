@@ -5,7 +5,7 @@ import { NewsType } from '@/types/News.type';
 import { BiSolidStar } from 'react-icons/bi';
 import { findDotAndCutText, truncateText } from '@/utils/helpers';
 
-const RemainingNews = ({ news }: NewsType) => {
+export default function RemainingNews({ news }: NewsType) {
   return (
     <div>
       <h2 className={`layoutH2effect ${styles.remainingNewsTitle}`}>
@@ -51,6 +51,4 @@ const RemainingNews = ({ news }: NewsType) => {
       </div>
     </div>
   );
-};
-
-export default RemainingNews;
+}

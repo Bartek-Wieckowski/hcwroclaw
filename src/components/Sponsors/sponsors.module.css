@@ -1,22 +1,24 @@
 .sponsorsSection {
   background-color: var(--bg-body-black);
-  padding-top: 1rem;
+  padding-top: 0.625rem;
 }
+
 .sponsorsTitle {
   font-size: var(--h2-font-size);
   color: var(--text-color);
   text-align: center;
   text-transform: uppercase;
-  padding-bottom: .5rem;
+  padding-bottom: 0.313rem;
 }
+
 .sponsorsWrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 7.5rem;
+  min-height: 4.688rem;
   width: 100%;
-  
 }
+
 .sponsorsImage {
   border-radius: var(--border-radius-img);
 }

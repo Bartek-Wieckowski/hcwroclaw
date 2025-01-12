@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Scrollbar, A11y, Pagination } from 'swiper/modules';
 import { teamImagesSlider } from './teamImagesSlider-data';
 
-function TeamSlider() {
+export default function TeamSlider() {
   return (
     <div className={styles.teamSliderWrapper}>
       <Swiper
@@ -37,5 +37,3 @@ function TeamSlider() {
     </div>
   );
 }
-
-export default TeamSlider;

@@ -2,7 +2,7 @@ import Image from 'next/image';
 import rheda from '../../assets/images/rheda-sponsor.jpg';
 import styles from './sponsors.module.css';
 
-function Sponsors() {
+export default function Sponsors() {
   return (
     <section className={styles.sponsorsSection}>
       <div className="container">
@@ -20,5 +20,3 @@ function Sponsors() {
     </section>
   );
 }
-
-export default Sponsors;

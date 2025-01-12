@@ -15,7 +15,7 @@ type GameCalendarSliderProps = {
   games: GetGamesCalendarQueryResult;
 };
 
-function GameCalendarSlider({ games }: GameCalendarSliderProps) {
+export default function GameCalendarSlider({ games }: GameCalendarSliderProps) {
   return (
     <div className={styles.sliderSwiperWrapper}>
       <Swiper
@@ -87,5 +87,3 @@ function GameCalendarSlider({ games }: GameCalendarSliderProps) {
     </div>
   );
 }
-
-export default GameCalendarSlider;

@@ -5,8 +5,9 @@ import styles from './menuLink.module.css';
 import { usePathname } from 'next/navigation';
 import { NavLinkType } from '@/types/Link.type';
 
-function MenuLink({ navLink }: NavLinkType) {
+export default function MenuLink({ navLink }: NavLinkType) {
   const pathName = usePathname();
+
   return (
     <li className={styles.menuItem}>
       <Link
@@ -18,5 +19,3 @@ function MenuLink({ navLink }: NavLinkType) {
     </li>
   );
 }
-
-export default MenuLink;

@@ -1,11 +1,11 @@
 import styles from './footer.module.css';
 import Image from 'next/image';
 import logo from '@/assets/images/logo-no-bg.png';
-import FooterLink from './footerLink/FooterLink';
+import FooterLink from './FooterLink/FooterLink';
 import SocialMediaIcons from '../socialMediaIcons/SocialMediaIcons';
 import { navbarLinks } from '../navbar/navbar-data';
 
-function Footer() {
+export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className="container">
@@ -36,5 +36,3 @@ function Footer() {
     </footer>
   );
 }
-
-export default Footer;

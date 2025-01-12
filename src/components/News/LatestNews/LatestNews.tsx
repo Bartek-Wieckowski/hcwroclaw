@@ -9,7 +9,7 @@ type LatestNewsProps = {
   news: singleNewsType;
 };
 
-function LatestNews({ news }: LatestNewsProps) {
+export default function LatestNews({ news }: LatestNewsProps) {
   const { date, author, title, desc, img, slug } = news;
   return (
     <div className={styles.latestNewsWrapper}>
@@ -39,5 +39,3 @@ function LatestNews({ news }: LatestNewsProps) {
     </div>
   );
 }
-
-export default LatestNews;

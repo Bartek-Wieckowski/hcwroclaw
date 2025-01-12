@@ -18,7 +18,7 @@ type slugType = {
 //   }
 // };
 
-export default async function SingleNews({ params }: { params: slugType }) {
+export default async function NewsSinglePage({ params }: { params: slugType }) {
   // const { slug } = params;
 
   // const singleNews = await getSingleNews(slug);
