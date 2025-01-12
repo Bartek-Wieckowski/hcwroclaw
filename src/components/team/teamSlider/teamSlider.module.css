@@ -1,0 +1,29 @@
+.teamSliderWrapper {
+  /* padding-block: 1rem; */
+  margin-inline: -0.938rem;
+}
+
+.teamSliderImage {
+  width: 100%;
+  height: 15.625rem;
+  object-fit: fill;
+  position: relative;
+  opacity: 0.5;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.teamSliderImage:hover {
+  opacity: 1;
+}
+
+@media screen and (min-width: 576px) {
+  .teamSliderImage {
+    height: 28.125rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .teamSliderImage {
+    height: 40.625rem;
+  }
+}

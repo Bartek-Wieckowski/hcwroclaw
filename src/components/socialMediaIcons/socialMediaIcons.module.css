@@ -1,0 +1,59 @@
+@keyframes bounce {
+  0% {
+    top: 0;
+  }
+  30% {
+    top: -1rem;
+  }
+  60% {
+    top: -0.5rem;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+.socialMediaWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.socialMediaItem {
+  font-size: 2rem;
+}
+
+.socialMediaLink {
+  position: relative;
+  display: block;
+  transition: color 0.3s ease;
+  color: white;
+}
+
+.socialMediaLink:hover {
+  animation: bounce 0.3s ease;
+}
+
+.navigation.homePage .socialMediaLink {
+  color: black;
+}
+
+.navigation.homePage.scrolled .socialMediaLink {
+  color: white;
+}
+
+.inMobileMenu .socialMediaLink {
+  color: white !important;
+}
+
+@media screen and (min-width: 992px) {
+  .navigation.homePage .socialMediaLink {
+    color: white;
+  }
+
+  .footerIcons {
+    justify-content: flex-start;
+    padding-left: 0.938rem;
+  }
+}

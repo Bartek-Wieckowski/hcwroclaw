@@ -1,0 +1,48 @@
+.logoWrapper {
+  min-height: 6.375rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.625rem;
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+.logoWrapper > ul {
+  align-self: flex-end;
+}
+
+.logoFlex {
+  display: flex;
+  align-items: center;
+  max-width: 7.813rem;
+  width: 100%;
+}
+
+.logoTextParent {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 8.56/1;
+}
+
+.logoText {
+  object-fit: contain;
+}
+
+@media screen and (min-width: 345px) {
+  .logoWrapper > ul {
+    align-self: center;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .logoWrapper {
+    justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .logoFlex {
+    max-width: 14.063rem;
+  }
+}

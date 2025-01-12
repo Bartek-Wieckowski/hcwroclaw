@@ -1,0 +1,106 @@
+.navbar {
+  border-top: 0.063rem solid var(--accent-color-grey-layout);
+  border-bottom: 0.063rem solid var(--accent-color-grey-layout);
+  padding: 0.625rem var(--container-padding);
+  text-align: right;
+}
+
+.navbarWrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.navbarList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.25rem;
+  position: fixed;
+  right: -100%;
+  top: 0;
+  height: 100vh;
+  width: 60%;
+  transition: all 0.3s ease;
+  z-index: var(--z-hamburgerMenu);
+  text-transform: uppercase;
+  background-color: var(--bg-body-black);
+  font-family: var(--font-roboto-bold);
+}
+
+.active {
+  right: 0;
+}
+
+.hamburger,
+.hamburgerClose {
+  font-size: 2rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.hamburger {
+  order: 2;
+  color: white;
+}
+
+.hamburgerClose {
+  align-self: flex-end;
+  margin-top: 0.625rem;
+  margin-right: 0.313rem;
+  color: white;
+}
+
+.tableGamesIcon {
+  cursor: pointer;
+  transition: color 0.3s ease;
+  color: white;
+  font-size: 2rem;
+}
+
+.navbar.homePage .hamburger,
+.navbar.homePage .tableGamesIcon {
+  color: black;
+}
+
+.navbar.homePage.scrolled .hamburger,
+.navbar.homePage.scrolled .tableGamesIcon {
+  color: white;
+}
+
+.active :global(.socialMediaLink) {
+  color: white !important;
+}
+
+@media screen and (min-width: 992px) {
+  .navbarWrapper {
+    justify-content: flex-start;
+    margin-inline: auto;
+    gap: unset;
+  }
+
+  .navbarList {
+    flex-direction: row;
+    justify-content: flex-start;
+    position: static;
+    height: unset;
+    width: unset;
+    z-index: unset;
+    background-color: unset;
+  }
+
+  .navbarList > ul {
+    display: none;
+  }
+
+  .hamburger,
+  .hamburgerClose {
+    display: none;
+  }
+
+  .tableGamesIcon {
+    display: none;
+  }
+}
