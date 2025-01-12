@@ -1,6 +1,6 @@
+import styles from './sponsors.module.css';
 import Image from 'next/image';
 import rheda from '../../assets/images/rheda-sponsor.jpg';
-import styles from './sponsors.module.css';
 
 export default function Sponsors() {
   return (

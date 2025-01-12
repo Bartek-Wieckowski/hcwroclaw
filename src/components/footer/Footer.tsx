@@ -1,7 +1,7 @@
 import styles from './footer.module.css';
 import Image from 'next/image';
 import logo from '@/assets/images/logo-no-bg.png';
-import FooterLink from './FooterLink/FooterLink';
+import FooterLink from './footerLink/FooterLink';
 import SocialMediaIcons from '../socialMediaIcons/SocialMediaIcons';
 import { navbarLinks } from '../navbar/navbar-data';
 

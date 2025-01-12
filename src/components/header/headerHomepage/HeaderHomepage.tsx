@@ -1,8 +1,8 @@
 'use client';
 
+import styles from './headerHomepage.module.css';
 import Logobar from '@/components/logobar/Logobar';
 import Navbar from '@/components/navbar/Navbar';
-import styles from './headerHomepage.module.css';
 import { useEffect, useState } from 'react';
 
 export default function HeaderHomepage() {

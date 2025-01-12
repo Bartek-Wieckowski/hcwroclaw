@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import styles from './teamList.module.css';
+import Image from 'next/image';
 import { PlayerType } from '@/types/Players.type';
 
 type TeamListProps = {
