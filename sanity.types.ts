@@ -110,7 +110,7 @@ export type GameType = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  name: string;
+  name: LocaleString;
 };
 
 export type Team = {
@@ -197,12 +197,18 @@ export type HomePage = {
   _updatedAt: string;
   _rev: string;
   seo?: {
-    title?: string;
-    desc?: string;
+    title: LocaleString;
+    desc: LocaleString;
   };
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Slug | GameCalendar | GameType | Team | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | HomePage;
+export type LocaleString = {
+  _type: "localeString";
+  pl?: string;
+  en?: string;
+};
+
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Slug | GameCalendar | GameType | Team | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | HomePage | LocaleString;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: getGamesCalendarQuery
@@ -213,7 +219,7 @@ export type GetGamesCalendarQueryResult = Array<{
   date: string;
   gameType: {
     _id: string;
-    name: string;
+    name: LocaleString;
   };
   firstTeam: {
     _id: string;

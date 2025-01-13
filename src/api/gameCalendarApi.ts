@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_URL } from '@/utils/constants';
+import { API_URL } from '@/lib/constants';
 
 export async function getCalendarGames() {
   try {

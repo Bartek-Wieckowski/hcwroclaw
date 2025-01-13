@@ -1,41 +1,44 @@
-import '../app/globals.css';
+import '../../../app/globals.css';
 import localFont from 'next/font/local';
-import Providers from '@/lib/queryProvider';
+import QueryProvider from '@/lib/queryProvider';
 import type { Metadata } from 'next';
 import { SanityLive } from '@/sanity/lib/live';
+import { i18n } from '@/i18n/config';
+import { LanguageProvider } from '@/context/LanguageContext';
+import { LangTypeFromParams } from '@/types/Lang.type';
 
 const robotoThin = localFont({
-  src: '../assets/fonts/RobotoCondensed-Thin.ttf',
+  src: '../../../assets/fonts/RobotoCondensed-Thin.ttf',
   variable: '--font-roboto-thin',
   weight: '300',
 });
 const robotoRegular = localFont({
-  src: '../assets/fonts/RobotoCondensed-Regular.ttf',
+  src: '../../../assets/fonts/RobotoCondensed-Regular.ttf',
   variable: '--font-roboto-regular',
   weight: '400',
 });
 const robotoBold = localFont({
-  src: '../assets/fonts/RobotoCondensed-Bold.ttf',
+  src: '../../../assets/fonts/RobotoCondensed-Bold.ttf',
   variable: '--font-roboto-bold',
   weight: '700',
 });
 const outfitThin = localFont({
-  src: '../assets/fonts/Outfit-Thin.ttf',
+  src: '../../../assets/fonts/Outfit-Thin.ttf',
   variable: '--font-outfit-thin',
   weight: '300',
 });
 const outfitRegular = localFont({
-  src: '../assets/fonts/Outfit-Regular.ttf',
+  src: '../../../assets/fonts/Outfit-Regular.ttf',
   variable: '--font-outfit-regular',
   weight: '400',
 });
 const outfitBold = localFont({
-  src: '../assets/fonts/Outfit-Bold.ttf',
+  src: '../../../assets/fonts/Outfit-Bold.ttf',
   variable: '--font-outfit-bold',
   weight: '700',
 });
 const blackIron = localFont({
-  src: '../assets/fonts/BlackIron.ttf',
+  src: '../../../assets/fonts/BlackIron.ttf',
   variable: '--font-black-iron',
 });
 
@@ -46,18 +49,23 @@ export const metadata: Metadata = {
 
 const fontClasses = `${robotoRegular.variable} ${robotoThin.variable} ${robotoBold.variable} ${outfitRegular.variable} ${outfitThin.variable} ${outfitBold.variable} ${blackIron.variable}`;
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+export async function generateStaticParams() {
+  return i18n.locales.map((lng) => ({ lng }));
+}
+type RootLayoutProps = {
   children: React.ReactNode;
-}>) {
+} & LangTypeFromParams;
+
+export default function RootLayout({ children, params }: RootLayoutProps) {
   return (
-    <html lang="pl">
+    <html lang={params.lng}>
       <body className={fontClasses}>
-        <Providers>
-          {children}
-          <SanityLive />
-        </Providers>
+        <QueryProvider>
+          <LanguageProvider lng={params.lng}>
+            {children}
+            <SanityLive />
+          </LanguageProvider>
+        </QueryProvider>
       </body>
     </html>
   );

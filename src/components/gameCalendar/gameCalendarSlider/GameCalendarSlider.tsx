@@ -8,14 +8,20 @@ import styles from './gameCalendarSlider.module.css';
 import { A11y, Navigation, Scrollbar } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { GetGamesCalendarQueryResult } from '../../../../sanity.types';
-import { formatDate } from '@/utils/helpers';
+import { formatDate } from '@/lib/helpers';
 import { urlFor } from '@/sanity/lib/image';
+import { getLocaleValue } from '@/i18n/getTranslations';
+import { Locale } from '@/i18n/config';
 
 type GameCalendarSliderProps = {
   games: GetGamesCalendarQueryResult;
+  lng: Locale;
 };
 
-export default function GameCalendarSlider({ games }: GameCalendarSliderProps) {
+export default function GameCalendarSlider({
+  games,
+  lng,
+}: GameCalendarSliderProps) {
   return (
     <div className={styles.sliderSwiperWrapper}>
       <Swiper
@@ -36,7 +42,9 @@ export default function GameCalendarSlider({ games }: GameCalendarSliderProps) {
                 <div>{formatDate(game.date)}</div>
               </div>
               <div className={styles.gameDetails}>
-                <small className={styles.gameType}>{game.gameType.name}</small>
+                <small className={styles.gameType}>
+                  {getLocaleValue(game.gameType.name, lng)}
+                </small>
                 <div className={styles.teamHome}>
                   <div className="dFlex">
                     <Image

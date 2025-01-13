@@ -4,10 +4,12 @@ import styles from './navbar.module.css';
 import useClickOutside from '@/hooks/useClickOutside';
 import SocialMediaIcons from '../socialMediaIcons/SocialMediaIcons';
 import MenuLink from './menuLink/MenuLink';
+import LanguageSwitcher from '../languageSwitcher/LanguageSwitcher';
 import { useState } from 'react';
 import { BiMenuAltRight, BiX } from 'react-icons/bi';
-import { navbarLinks } from './navbar-data';
+import { getRoutesLinks } from '../../lib/routes-link-data';
 import { GiPodium } from 'react-icons/gi';
+import { useLanguageContext } from '@/context/LanguageContext';
 
 type NavbarProps = {
   isScrolled: boolean;
@@ -19,6 +21,9 @@ export default function Navbar({
   isHomePage = false,
 }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const lng = useLanguageContext();
+  const links = getRoutesLinks(lng);
+
   const closeMenu = () => {
     setIsOpen(false);
   };
@@ -40,7 +45,7 @@ export default function Navbar({
             className={styles.hamburgerClose}
             onClick={() => setIsOpen((prev) => !prev)}
           />
-          {navbarLinks.map((navLink) => (
+          {links.map((navLink) => (
             <MenuLink navLink={navLink} key={navLink.title} />
           ))}
           <SocialMediaIcons
@@ -50,6 +55,7 @@ export default function Navbar({
             isHomePage={isHomePage}
           />
         </ul>
+        <LanguageSwitcher />
         <div className={styles.tableGamesIcon}>
           <GiPodium />
         </div>

@@ -1,0 +1,47 @@
+.languageSwitcher {
+  position: relative;
+  display: inline-block;
+}
+
+.switcherButton {
+  background: transparent;
+  border: 0.063rem solid var(--hc-red);
+  color: var(--text-color);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: var(--normal-font-size);
+  border-radius: 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.switcherButton:hover {
+  background-color: var(--hc-red);
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  background-color: var(--bg-body-black);
+  border: 0.063rem solid var(--hc-red);
+  border-radius: 0.25rem;
+  overflow: hidden;
+  z-index: var(--z-tooltip);
+}
+
+.option {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.option:hover {
+  background-color: var(--hc-red);
+}
+
+.active {
+  background-color: var(--hc-red);
+}

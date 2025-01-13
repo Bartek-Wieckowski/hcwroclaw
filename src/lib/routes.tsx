@@ -1,9 +1,9 @@
 export const ROUTES = {
-  HOME: '/',
-  NEWS: '/news',
-  SINGLENEWS: (slug: string) => `/news/${slug}`,
-  TEAM: '/team',
-  CLUB: '/club',
-  CONTACT: '/contact',
-  BECOMESPONSOR: '/become-a-sponsor',
+  HOME: (lng: string) => `/${lng}`,
+  NEWS: (lng: string) => `/${lng}/news`,
+  SINGLENEWS: (lng: string, slug: string) => `/${lng}/news/${slug}`,
+  TEAM: (lng: string) => `/${lng}/team`,
+  CLUB: (lng: string) => `/${lng}/club`,
+  CONTACT: (lng: string) => `/${lng}/contact`,
+  BECOMEPARTNER: (lng: string) => `/${lng}/become-a-partner`,
 };

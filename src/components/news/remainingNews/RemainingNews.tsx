@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { NewsType } from '@/types/News.type';
 import { BiSolidStar } from 'react-icons/bi';
-import { findDotAndCutText, truncateText } from '@/utils/helpers';
+import { findDotAndCutText, truncateText } from '@/lib/helpers';
 
 export default function RemainingNews({ news }: NewsType) {
   return (

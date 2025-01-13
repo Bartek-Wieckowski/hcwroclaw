@@ -1,0 +1,14 @@
+{
+  "routesLink": {
+    "home": "Strona główna",
+    "news": "Aktualności",
+    "team": "Drużyna",
+    "club": "Klub",
+    "contact": "Kontakt",
+    "becomePartner": "Zostań partnerem"
+  },
+  "common": {
+    "calendar": "Kalendarz",
+    "games": "Gier"
+  }
+}
