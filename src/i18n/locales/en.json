@@ -11,6 +11,9 @@
     "calendar": "Calendar",
     "games": "Games"
   },
+  "gameCalendarSlider": {
+    "completed": "Final"
+  },
   "pageNotfound": {
     "title": "404",
     "description": "Page not found",

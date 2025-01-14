@@ -248,9 +248,9 @@ section {
 }
 
 /* swiper global elements */
-.swiper-button-next,
-.swiper-button-prev {
-  color: var(--hc-red) !important;
+.swiper {
+  width: 100%;
+  height: 100%;
 }
 
 .swiper-pagination {

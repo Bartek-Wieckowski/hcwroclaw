@@ -1,7 +1,33 @@
 export function formatDate(dateString: string, locale: 'pl' | 'en') {
   const months: Record<'pl' | 'en', string[]> = {
-    pl: ['STY', 'LUT', 'MAR', 'KWI', 'MAJ', 'CZE', 'LIP', 'SIE', 'WRZ', 'PAŹ', 'LIS', 'GRU'],
-    en: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+    pl: [
+      'STY',
+      'LUT',
+      'MAR',
+      'KWI',
+      'MAJ',
+      'CZE',
+      'LIP',
+      'SIE',
+      'WRZ',
+      'PAŹ',
+      'LIS',
+      'GRU',
+    ],
+    en: [
+      'JAN',
+      'FEB',
+      'MAR',
+      'APR',
+      'MAY',
+      'JUN',
+      'JUL',
+      'AUG',
+      'SEP',
+      'OCT',
+      'NOV',
+      'DEC',
+    ],
   };
 
   const [year, month, day] = dateString.split('-');
@@ -33,4 +59,13 @@ export function truncateText(text: string) {
   } else {
     return text;
   }
+}
+export function getInitials(name: string) {
+  const words = name.split(' ');
+  if (words.length === 1) {
+    return words[0].charAt(0).toUpperCase();
+  } else if (words.length > 1) {
+    return words[0].charAt(0).toUpperCase() + words[1].charAt(0).toUpperCase();
+  }
+  return '';
 }

@@ -5,6 +5,8 @@ export const getGamesCalendarQuery = defineQuery(`
     _id,
     _type,
     date,
+    location,
+    time,
     gameType->{
       _id,
       name

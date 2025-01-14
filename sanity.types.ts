@@ -87,6 +87,8 @@ export type GameCalendar = {
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "gameType";
   };
+  location: string;
+  time: string;
   firstTeam: {
     _ref: string;
     _type: "reference";
@@ -212,11 +214,13 @@ export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: getGamesCalendarQuery
-// Query: *[_type == "gameCalendar"] | order(date asc) {    _id,    _type,    date,    gameType->{      _id,      name    },    firstTeam->{      _id,      name,      logo {        asset->{          _id,          url        }      }    },    secondTeam->{      _id,      name,      logo {        asset->{          _id,          url        }      }    },    isCompleted,    firstTeamGoals,    secondTeamGoals  }
+// Query: *[_type == "gameCalendar"] | order(date asc) {    _id,    _type,    date,    location,    time,    gameType->{      _id,      name    },    firstTeam->{      _id,      name,      logo {        asset->{          _id,          url        }      }    },    secondTeam->{      _id,      name,      logo {        asset->{          _id,          url        }      }    },    isCompleted,    firstTeamGoals,    secondTeamGoals  }
 export type GetGamesCalendarQueryResult = Array<{
   _id: string;
   _type: "gameCalendar";
   date: string;
+  location: string;
+  time: string;
   gameType: {
     _id: string;
     name: LocaleString;
@@ -250,6 +254,6 @@ export type GetGamesCalendarQueryResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "\n  *[_type == \"gameCalendar\"] | order(date asc) {\n    _id,\n    _type,\n    date,\n    gameType->{\n      _id,\n      name\n    },\n    firstTeam->{\n      _id,\n      name,\n      logo {\n        asset->{\n          _id,\n          url\n        }\n      }\n    },\n    secondTeam->{\n      _id,\n      name,\n      logo {\n        asset->{\n          _id,\n          url\n        }\n      }\n    },\n    isCompleted,\n    firstTeamGoals,\n    secondTeamGoals\n  }": GetGamesCalendarQueryResult;
+    "\n  *[_type == \"gameCalendar\"] | order(date asc) {\n    _id,\n    _type,\n    date,\n    location,\n    time,\n    gameType->{\n      _id,\n      name\n    },\n    firstTeam->{\n      _id,\n      name,\n      logo {\n        asset->{\n          _id,\n          url\n        }\n      }\n    },\n    secondTeam->{\n      _id,\n      name,\n      logo {\n        asset->{\n          _id,\n          url\n        }\n      }\n    },\n    isCompleted,\n    firstTeamGoals,\n    secondTeamGoals\n  }": GetGamesCalendarQueryResult;
   }
 }

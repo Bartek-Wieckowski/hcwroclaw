@@ -16,7 +16,7 @@ export default async function OtherspageLayout({
 
   return (
     <>
-      <GameCalendar withMargin={false} lng={locale} />
+      <GameCalendar key={'otherspage'} withMargin={false} lng={locale} />
       <HeaderOtherspage />
       <main>{children}</main>
       <Sponsors />

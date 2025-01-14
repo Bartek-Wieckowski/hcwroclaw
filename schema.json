@@ -427,6 +427,20 @@
         },
         "optional": false
       },
+      "location": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": false
+      },
+      "time": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": false
+      },
       "firstTeam": {
         "type": "objectAttribute",
         "value": {

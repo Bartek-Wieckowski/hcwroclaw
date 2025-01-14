@@ -19,6 +19,19 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'location',
+      title: 'Game Location',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'time',
+      title: 'Game Time',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+      description: 'Please enter the time in HH:mm format (e.g., 19:00)',
+    }),
+    defineField({
       name: 'firstTeam',
       title: 'First Team',
       type: 'reference',

@@ -18,6 +18,8 @@ export default defineType({
       options: {
         hotspot: true,
       },
+      description:
+        'To better look. Please provide a logo without a background.',
     }),
   ],
   preview: {

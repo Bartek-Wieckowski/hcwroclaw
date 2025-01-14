@@ -11,6 +11,9 @@
     "calendar": "Kalendarz",
     "games": "Gier"
   },
+  "gameCalendarSlider": {
+    "completed": "Zakończony"
+  },
   "pageNotfound": {
     "title": "404",
     "description": "Strona, której szukasz, nie istnieje.",
