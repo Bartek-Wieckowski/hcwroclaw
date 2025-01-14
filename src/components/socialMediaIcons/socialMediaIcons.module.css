@@ -22,6 +22,9 @@
 
 .socialMediaItem {
   font-size: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
 }
 
 .socialMediaLink {
@@ -29,6 +32,8 @@
   display: block;
   transition: color 0.3s ease;
   color: white;
+  height: 100%;
+  width: 100%;
 }
 
 .socialMediaLink:hover {

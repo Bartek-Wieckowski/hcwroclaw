@@ -2,6 +2,7 @@
 
 import styles from './languageSwitcher.module.css';
 import Link from 'next/link';
+import useClickOutside from '@/hooks/useClickOutside';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { useLocale } from 'next-intl';
@@ -16,8 +17,14 @@ export default function LanguageSwitcher() {
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
+  const ref = useClickOutside<HTMLDivElement>(() => {
+    if (isOpen) {
+      setIsOpen(false);
+    }
+  });
+
   return (
-    <div className={styles.languageSwitcher}>
+    <div className={styles.languageSwitcher} ref={ref}>
       <button onClick={toggleDropdown} className={styles.switcherButton}>
         {currentLocale.toUpperCase()}
       </button>
