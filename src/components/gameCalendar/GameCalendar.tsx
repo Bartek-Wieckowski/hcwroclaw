@@ -2,8 +2,7 @@ import styles from './gameCalendar.module.css';
 import GameCalendarSlider from './gameCalendarSlider/GameCalendarSlider';
 import { getGamesCalendarQuery } from '@/sanity/lib/queries';
 import { sanityFetch } from '@/sanity/lib/live';
-import { getLocaleValue } from '@/i18n/getTranslations';
-import { Locale } from '@/i18n/config';
+import { Locale } from '@/i18n/i18n';
 
 type GameCalendarProps = {
   withMargin: boolean;

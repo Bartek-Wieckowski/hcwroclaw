@@ -10,5 +10,10 @@
   "common": {
     "calendar": "Kalendarz",
     "games": "Gier"
+  },
+  "pageNotfound": {
+    "title": "404",
+    "description": "Strona, której szukasz, nie istnieje.",
+    "availableLanguages": "Dostępne języki:"
   }
 }

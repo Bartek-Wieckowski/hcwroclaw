@@ -7,9 +7,8 @@ import MenuLink from './menuLink/MenuLink';
 import LanguageSwitcher from '../languageSwitcher/LanguageSwitcher';
 import { useState } from 'react';
 import { BiMenuAltRight, BiX } from 'react-icons/bi';
-import { getRoutesLinks } from '../../lib/routes-link-data';
 import { GiPodium } from 'react-icons/gi';
-import { useLanguageContext } from '@/context/LanguageContext';
+import { useRoutesLinks } from '@/hooks/useRoutesLinks';
 
 type NavbarProps = {
   isScrolled: boolean;
@@ -21,8 +20,7 @@ export default function Navbar({
   isHomePage = false,
 }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const lng = useLanguageContext();
-  const links = getRoutesLinks(lng);
+  const links = useRoutesLinks();
 
   const closeMenu = () => {
     setIsOpen(false);

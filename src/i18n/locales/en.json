@@ -10,5 +10,10 @@
   "common": {
     "calendar": "Calendar",
     "games": "Games"
+  },
+  "pageNotfound": {
+    "title": "404",
+    "description": "Page not found",
+    "availableLanguages": "Available languages:"
   }
 }

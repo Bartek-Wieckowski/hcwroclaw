@@ -1,15 +1,18 @@
 import styles from './notFound.module.css';
 import Link from 'next/link';
-import { i18n } from '@/i18n/config';
+import { useTranslations } from 'next-intl';
+import { locales } from '@/i18n/i18n';
 
 export default function NotFound() {
+  const t = useTranslations('pageNotfound');
+
   return (
     <div className={styles.notFound}>
-      <h1>404</h1>
-      <h2>Page Not Found</h2>
-      <p>Available languages:</p>
+      <h1>{t('title')}</h1>
+      <p>{t('description')}</p>
+      <p>{t('availableLanguages')}</p>
       <div className={styles.languages}>
-        {i18n.locales.map((locale) => (
+        {locales.map((locale) => (
           <Link
             key={locale}
             href={`/${locale}`}

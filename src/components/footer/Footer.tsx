@@ -5,12 +5,10 @@ import Image from 'next/image';
 import logo from '@/assets/images/logo-no-bg.png';
 import FooterLink from './footerLink/FooterLink';
 import SocialMediaIcons from '../socialMediaIcons/SocialMediaIcons';
-import { getRoutesLinks } from '../../lib/routes-link-data';
-import { useLanguageContext } from '@/context/LanguageContext';
+import { useRoutesLinks } from '@/hooks/useRoutesLinks';
 
 export default function Footer() {
-  const lng = useLanguageContext();
-  const links = getRoutesLinks(lng);
+  const links = useRoutesLinks();
 
   return (
     <footer className={styles.footer}>

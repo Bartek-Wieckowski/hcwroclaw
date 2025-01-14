@@ -3,9 +3,9 @@ import localFont from 'next/font/local';
 import QueryProvider from '@/lib/queryProvider';
 import type { Metadata } from 'next';
 import { SanityLive } from '@/sanity/lib/live';
-import { i18n } from '@/i18n/config';
-import { LanguageProvider } from '@/context/LanguageContext';
-import { LangTypeFromParams } from '@/types/Lang.type';
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
+import { locales } from '@/i18n/i18n';
 
 const robotoThin = localFont({
   src: '../../../assets/fonts/RobotoCondensed-Thin.ttf',
@@ -49,22 +49,26 @@ export const metadata: Metadata = {
 
 const fontClasses = `${robotoRegular.variable} ${robotoThin.variable} ${robotoBold.variable} ${outfitRegular.variable} ${outfitThin.variable} ${outfitBold.variable} ${blackIron.variable}`;
 
-export async function generateStaticParams() {
-  return i18n.locales.map((lng) => ({ lng }));
+export function generateStaticParams() {
+  return locales.map((lng) => ({ lng }));
 }
+
 type RootLayoutProps = {
   children: React.ReactNode;
-} & LangTypeFromParams;
+};
 
-export default function RootLayout({ children, params }: RootLayoutProps) {
+export default async function RootLayout({ children }: RootLayoutProps) {
+  const locale = await getLocale();
+  const messages = await getMessages();
+
   return (
-    <html lang={params.lng}>
+    <html lang={locale}>
       <body className={fontClasses}>
         <QueryProvider>
-          <LanguageProvider lng={params.lng}>
+          <NextIntlClientProvider messages={messages} locale={locale}>
             {children}
             <SanityLive />
-          </LanguageProvider>
+          </NextIntlClientProvider>
         </QueryProvider>
       </body>
     </html>

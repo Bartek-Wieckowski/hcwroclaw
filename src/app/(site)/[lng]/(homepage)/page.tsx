@@ -2,24 +2,21 @@ import GameCalendar from '@/components/gameCalendar/GameCalendar';
 import HeroHomepage from '@/components/pages/homepage/hero/HeroHompage';
 import MeetClub from '@/components/pages/homepage/meetClub/MeetClub';
 import SectionTitle from '@/components/sectionTitle/SectionTitle';
-import { getTranslations } from '@/i18n/getTranslations';
-import { Locale } from '@/i18n/config';
+import {getTranslations, getLocale} from 'next-intl/server';
+import { Locale } from '@/i18n/i18n';
 
-type HomePageProps = {
-  params: { lng: Locale };
-};
-
-export default async function HomePage({ params }: HomePageProps) {
-  const translations = getTranslations(params.lng);
+export default async function HomePage() {
+  const t = await getTranslations('common');
+  const locale = (await getLocale()) as Locale;
 
   return (
     <>
       <HeroHomepage />
       <SectionTitle
-        part1={translations.common.calendar}
-        part2={translations.common.games}
+        part1={t('calendar')}
+        part2={t('games')}
       />
-      <GameCalendar withMargin={true} lng={params.lng} />
+      <GameCalendar withMargin={true} lng={locale} />
       {/* <MeetClub /> */}
     </>
   );

@@ -1,20 +1,13 @@
-export function formatDate(dateString: string) {
-  const months = [
-    'STY',
-    'LUT',
-    'MAR',
-    'KWI',
-    'MAJ',
-    'CZE',
-    'LIP',
-    'SIE',
-    'WRZ',
-    'PAŹ',
-    'LIS',
-    'GRU',
-  ];
+export function formatDate(dateString: string, locale: 'pl' | 'en') {
+  const months: Record<'pl' | 'en', string[]> = {
+    pl: ['STY', 'LUT', 'MAR', 'KWI', 'MAJ', 'CZE', 'LIP', 'SIE', 'WRZ', 'PAŹ', 'LIS', 'GRU'],
+    en: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+  };
+
   const [year, month, day] = dateString.split('-');
-  return `${parseInt(day, 10)} ${months[parseInt(month, 10) - 1]}`;
+  const monthIndex = parseInt(month, 10) - 1;
+
+  return `${parseInt(day, 10)} ${months[locale][monthIndex]}`;
 }
 
 export function convertDate(dateString: string): Date {
