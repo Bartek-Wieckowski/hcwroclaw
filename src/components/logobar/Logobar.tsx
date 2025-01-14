@@ -1,18 +1,10 @@
 import styles from './logobar.module.css';
 import Link from 'next/link';
-import logoText from '@/assets/images/text-club-name.png';
 import Image from 'next/image';
-import SocialMediaIcons from '../socialMediaIcons/SocialMediaIcons';
+import logoText from '@/assets/images/text-club-name.png';
+import NavigationSocialMediaIcons from '../socialMediaIcons/NavigationSocialMediaIcons';
 
-type LogobarProps = {
-  isScrolled: boolean;
-  isHomePage?: boolean;
-};
-
-export default function Logobar({
-  isScrolled,
-  isHomePage = false,
-}: LogobarProps) {
+export default function Logobar() {
   return (
     <div className={styles.logoWrapper}>
       <Link href="/" className={styles.logoFlex}>
@@ -27,11 +19,7 @@ export default function Logobar({
           />
         </div>
       </Link>
-      <SocialMediaIcons
-        isScrolled={isScrolled}
-        isNavigation={true}
-        isHomePage={isHomePage}
-      />
+      <NavigationSocialMediaIcons />
     </div>
   );
 }

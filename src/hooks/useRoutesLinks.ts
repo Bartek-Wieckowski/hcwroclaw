@@ -1,5 +1,3 @@
-'use client';
-
 import { ROUTES } from '@/lib/routes';
 import { useLocale, useTranslations } from 'next-intl';
 
@@ -29,4 +27,4 @@ export function useRoutesLinks() {
       path: ROUTES.BECOMEPARTNER(locale),
     },
   ];
-} 
+}

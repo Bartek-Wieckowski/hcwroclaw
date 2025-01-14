@@ -3,19 +3,19 @@ import Link from 'next/link';
 import { BiLogoFacebook, BiLogoInstagramAlt } from 'react-icons/bi';
 
 type SocialMediaIconsProps = {
-  isScrolled?: boolean;
   isNavigation?: boolean;
   isInMobileMenu?: boolean;
+  isScrolled?: boolean;
   isHomePage?: boolean;
   className?: string;
 };
 
 export default function SocialMediaIcons({
-  isScrolled = false,
   isNavigation = false,
   isInMobileMenu = false,
+  isScrolled = false,
   isHomePage = false,
-  className = '',
+  className,
 }: SocialMediaIconsProps) {
   return (
     <ul

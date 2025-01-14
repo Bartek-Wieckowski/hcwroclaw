@@ -10,7 +10,6 @@
 .switcherButton {
   background: transparent;
   border: none;
-  color: var(--text-color);
   cursor: pointer;
   font-size: var(--normal-font-size);
   font-family: var(--font-roboto-bold);
@@ -18,8 +17,20 @@
   transition: all 0.3s ease;
 }
 
+.switcherButton.homePage {
+  color: black;
+}
+
+.switcherButton {
+  color: white;
+}
+
 .switcherButton:hover {
   background-color: var(--hc-red);
+}
+
+.switcherButton.scrolled.homePage {
+  color: white;
 }
 
 .dropdown {
@@ -48,4 +59,10 @@
 
 .active {
   background-color: var(--hc-red);
+}
+
+@media screen and (min-width: 992px) {
+  .switcherButton.homePage {
+    color: white;
+  }
 }

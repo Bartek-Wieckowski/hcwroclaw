@@ -1,10 +1,10 @@
 import HeaderWrapper from '../HeaderWrapper';
 import HeaderContent from '../HeaderContent';
 
-export default function HeaderHomepage() {
+export default function HeaderOtherspage() {
   return (
-    <HeaderWrapper isHomePage={true}>
-      <HeaderContent variant="homepage" />
+    <HeaderWrapper isHomePage={false}>
+      <HeaderContent variant="others" />
     </HeaderWrapper>
   );
 }
