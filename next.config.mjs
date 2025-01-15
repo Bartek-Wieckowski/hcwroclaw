@@ -19,7 +19,6 @@ const nextConfig = {
     ],
   },
   trailingSlash: true,
-  scrollRestoration: true,
 };
 
 export default withNextIntl(nextConfig);

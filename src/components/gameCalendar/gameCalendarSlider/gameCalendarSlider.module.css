@@ -6,18 +6,13 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: 1rem;
-}
-
-.sliderContent {
-  flex: 1;
-  overflow: hidden;
+  gap: 0.5rem;
 }
 
 .prevButton,
 .nextButton {
-  width: 2rem;
-  height: 2rem;
+  width: 1rem;
+  height: 1rem;
   border: none;
   background: var(--bg-body-white);
   color: var(--bg-body-black);
@@ -32,8 +27,8 @@
 
 .prevButton span,
 .nextButton span {
-  font-size: 1.5rem;
-  line-height: 1.5;
+  font-size: 0.5rem;
+  line-height: 1;
 }
 
 .prevButton:hover,
@@ -41,18 +36,53 @@
   color: var(--hc-red);
 }
 
+.buttonDisabled {
+  opacity: 0.5;
+  background: var(--bg-body-white);
+  color: var(var(--bg-body-black));
+}
+
+.sliderContent {
+  flex: 1;
+  overflow: hidden;
+}
+
 .gameWrapper {
   display: grid;
-  grid-template-columns: 3rem 1fr 1rem;
+  grid-template-columns: max-content 1fr;
   align-items: center;
-  gap: 0.313rem;
+  gap: 0.5rem;
 }
 
 .gameDate {
-  background: var(--hc-gold);
-  font-weight: var(--font-semi);
   font-size: var(--small-font-size);
-  border-radius: 1rem;
+  font-family: var(--font-roboto-bold);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.gameDate > div {
+  text-align: center;
+  margin-inline: auto;
+  color: var(--hc-red);
+}
+
+.gameType {
+  display: block;
+  text-align: center;
+  background: var(--hc-gold);
+  color: black;
+  border-radius: 0.113rem;
+  width: fit-content;
+  padding: 0.055rem 0.35rem;
+  font-size: var(--game-callendar-font-size);
+  font-family: var(--font-roboto-bold);
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .gameDetails {
@@ -68,33 +98,34 @@
   object-fit: contain;
 }
 
-.gameDate > div {
-  text-align: center;
-  width: 50%;
-  margin-inline: auto;
-  color: black;
-}
-
 .gameTypeWrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 }
 
-.gameType {
+.gameTypeLocationAndTime {
   display: block;
   text-align: center;
-  background: var(--hc-gold);
-  color: black;
-  border-radius: 0.313rem;
-  width: fit-content;
-  padding: 0.25rem 0.5rem;
+  color: white;
+  font-size: var(--game-callendar-font-size);
+  font-family: var(--font-outfit-regular);
+  line-height: 1;
+  text-transform: uppercase;
 }
 
-.gameScore {
+.teamHome,
+.teamAway {
   display: flex;
-  flex-direction: column;
-  color: #eee;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.teamLogoAndName {
+  display: grid;
+  grid-template-columns: 1.563rem 1fr;
+  align-items: center;
+  gap: 0.188rem;
 }
 
 .teamName {
@@ -104,31 +135,82 @@
   font-family: var(--font-outfit-regular);
 }
 
-.buttonDisabled {
-  opacity: 0.5;
-  background: var(--bg-body-white);
-  color: var(var(--bg-body-black));
-}
-
 .logoPlaceholder {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1.563rem; 
+  width: 1.563rem;
   height: 1.563rem;
-  background-color: var(--bg-body-white); 
-  color: var(--bg-body-black); 
-  border-radius: 50%; 
-  font-size: 0.75rem; 
+  background-color: var(--bg-body-white);
+  color: var(--bg-body-black);
+  border-radius: 50%;
+  font-size: 0.75rem;
   font-family: var(--font-outfit-bold);
 }
 
+.gameScore {
+  display: flex;
+  flex-direction: column;
+  background: var(--hc-gold);
+  background-clip: text;
+  color: transparent;
+  font-family: var(--font-roboto-bold);
+}
+
+@media screen and (min-width: 365px) {
+  .sliderSwiperWrapper {
+    gap: 1rem;
+  }
+
+  .prevButton,
+  .nextButton {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .prevButton span,
+  .nextButton span {
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  .gameDate {
+    gap: 1.6rem;
+  }
+
+  .gameDetails {
+    gap: 0.5rem;
+  }
+}
+
+@media screen and (min-width: 597px) {
+  .sliderSwiperSlide {
+    padding: 0 0.85rem;
+  }
+}
+
 @media screen and (min-width: 992px) {
-  .gameScore {
-    align-self: self-end;
+  .prevButton,
+  .nextButton {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .prevButton span,
+  .nextButton span {
+    font-size: 1.5rem;
+    line-height: 1.5;
   }
 
   .sliderSwiperSlide {
     padding: 0 1.563rem;
+  }
+
+  .gameDate {
+    gap: 1.95rem;
+  }
+
+  .gameScore {
+    align-self: self-end;
   }
 }

@@ -73,25 +73,25 @@ export default function GameCalendarSlider({
             <SwiperSlide key={game._id} className={styles.sliderSwiperSlide}>
               <div className={styles.gameWrapper}>
                 <div className={styles.gameDate}>
+                  <small className={styles.gameType}>
+                    {game.gameType.name[lng] || game.gameType.name.pl}
+                  </small>
                   <div>{formatDate(game.date, lng)}</div>
                 </div>
                 <div className={styles.gameDetails}>
                   <div className={styles.gameTypeWrapper}>
-                    <small className={styles.gameType}>
-                      {game.gameType.name[lng] || game.gameType.name.pl}
-                    </small>
-                    <small className={styles.gameType}>
+                    <small className={styles.gameTypeLocationAndTime}>
                       {game.isCompleted ? (
                         t('completed')
                       ) : (
-                        <>
+                        <span className={styles.gameTypeTime}>
                           {game.location}&nbsp;{game.time}
-                        </>
+                        </span>
                       )}
                     </small>
                   </div>
                   <div className={styles.teamHome}>
-                    <div className="dFlex">
+                    <div className={styles.teamLogoAndName}>
                       {game.firstTeam.logo ? (
                         <Image
                           src={urlFor(game.firstTeam.logo).url()}
@@ -108,9 +108,14 @@ export default function GameCalendarSlider({
                         {game.firstTeam?.name}
                       </small>
                     </div>
+                    <div className={styles.gameScore}>
+                      <div className={styles.goalHome}>
+                        {game.isCompleted ? game.firstTeamGoals : '-'}
+                      </div>
+                    </div>
                   </div>
                   <div className={styles.teamAway}>
-                    <div className="dFlex">
+                    <div className={styles.teamLogoAndName}>
                       {game.secondTeam.logo ? (
                         <Image
                           src={urlFor(game.secondTeam.logo).url()}
@@ -127,14 +132,11 @@ export default function GameCalendarSlider({
                         {game.secondTeam?.name}
                       </small>
                     </div>
-                  </div>
-                </div>
-                <div className={styles.gameScore}>
-                  <div className={styles.goalHome}>
-                    {game.isCompleted ? game.firstTeamGoals : '-'}
-                  </div>
-                  <div className={styles.goalAway}>
-                    {game.isCompleted ? game.secondTeamGoals : '-'}
+                    <div className={styles.gameScore}>
+                      <div className={styles.goalAway}>
+                        {game.isCompleted ? game.secondTeamGoals : '-'}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
