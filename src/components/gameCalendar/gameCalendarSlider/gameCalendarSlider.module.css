@@ -187,6 +187,22 @@
 @media screen and (min-width: 597px) {
   .sliderSwiperSlide {
     padding: 0 0.85rem;
+    position: relative;
+  }
+
+  .sliderSwiperSlide::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 0.063rem;
+    height: 40%;
+    background-color: #eee;
+    transform: translateY(-50%);
+  }
+
+  .sliderSwiperSlide:last-child::after {
+    display: none;
   }
 }
 

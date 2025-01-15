@@ -31,7 +31,7 @@ export default function SocialMediaIcons({
           target="_blank"
           className={styles.socialMediaLink}
         >
-          <BiLogoFacebook />
+          <BiLogoFacebook className={styles.socialMediaIcon} />
         </Link>
       </li>
       <li className={styles.socialMediaItem}>
@@ -40,7 +40,7 @@ export default function SocialMediaIcons({
           target="_blank"
           className={styles.socialMediaLink}
         >
-          <BiLogoInstagramAlt />
+          <BiLogoInstagramAlt className={styles.socialMediaIcon} />
         </Link>
       </li>
     </ul>

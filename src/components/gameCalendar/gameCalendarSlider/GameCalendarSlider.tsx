@@ -5,7 +5,7 @@ import 'swiper/css/navigation';
 import Image from 'next/image';
 import styles from './gameCalendarSlider.module.css';
 import Spinner from '../../spinner/Spinner';
-import { useState, useRef } from 'react';
+import { useState, useRef, useMemo } from 'react';
 import { A11y, Scrollbar } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
@@ -30,6 +30,16 @@ export default function GameCalendarSlider({
   const [showNavigation, setShowNavigation] = useState(false);
   const swiperRef = useRef<SwiperType>();
   const t = useTranslations('gameCalendarSlider');
+
+  const initialSlide = useMemo(() => {
+    const now = new Date();
+    const nowTime = now.getTime();
+
+    return games.findIndex((game) => {
+      const gameDate = new Date(game.date);
+      return gameDate.getTime() >= nowTime;
+    });
+  }, [games]);
 
   const updateNavigationVisibility = () => {
     let currentSlidesPerView = 1;
@@ -71,6 +81,7 @@ export default function GameCalendarSlider({
         <Swiper
           modules={[A11y, Scrollbar]}
           slidesPerView={1}
+          initialSlide={initialSlide !== -1 ? initialSlide : 0}
           scrollbar={{ draggable: true }}
           breakpoints={{
             597: { slidesPerView: Math.min(2, games.length) },
