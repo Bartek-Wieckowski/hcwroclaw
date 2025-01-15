@@ -11,6 +11,9 @@
     "calendar": "Kalendarz",
     "games": "Gier"
   },
+  "gameCalendar": {
+    "noGames": "Brak zaplanowanych meczów"
+  },
   "gameCalendarSlider": {
     "completed": "Zakończony"
   },

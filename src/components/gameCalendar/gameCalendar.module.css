@@ -1,3 +1,9 @@
 .gameCalendarSection {
   background-color: var(--bg-body-black);
 }
+.noGamesMessage {
+  text-align: center;
+  font-size: var(--h3-font-size);
+  font-family: var(--font-outfit-regular);
+  color: var(--text-white);
+}

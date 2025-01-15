@@ -9,14 +9,14 @@ import { useState, useRef } from 'react';
 import { A11y, Scrollbar } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
-import { GetGamesCalendarQueryResult } from '../../../../sanity.types';
 import { formatDate, getInitials } from '@/lib/helpers';
 import { urlFor } from '@/sanity/lib/image';
 import { Locale } from '@/i18n/i18n';
 import { useTranslations } from 'next-intl';
+import { GamesCalendar } from '@/types/GamesCalendar.type';
 
 type GameCalendarSliderProps = {
-  games: GetGamesCalendarQueryResult;
+  games: GamesCalendar[];
   lng: Locale;
 };
 

@@ -1,37 +1,74 @@
 import { defineQuery } from 'next-sanity';
 
-export const getGamesCalendarQuery = defineQuery(`
-  *[_type == "gameCalendar"] | order(date asc) {
-    _id,
-    _type,
-    date,
-    location,
-    time,
-    gameType->{
+export const getGamesCalendarQuery = defineQuery(`{
+  "pastGames": *[_type == "gameCalendar" && dateTime(date) < dateTime(now())] | 
+    order(date desc) [0...12] {
       _id,
-      name
-    },
-    firstTeam->{
-      _id,
-      name,
-      logo {
-        asset->{
-          _id,
-          url
+      _type,
+      date,
+      location,
+      time,
+      gameType->{
+        _id,
+        name
+      },
+      firstTeam->{
+        _id,
+        name,
+        logo {
+          asset->{
+            _id,
+            url
+          }
         }
-      }
-    },
-    secondTeam->{
-      _id,
-      name,
-      logo {
-        asset->{
-          _id,
-          url
+      },
+      secondTeam->{
+        _id,
+        name,
+        logo {
+          asset->{
+            _id,
+            url
+          }
         }
-      }
+      },
+      isCompleted,
+      firstTeamGoals,
+      secondTeamGoals
     },
-    isCompleted,
-    firstTeamGoals,
-    secondTeamGoals
-  }`);
+  "futureGames": *[_type == "gameCalendar" && dateTime(date) >= dateTime(now())] | 
+    order(date asc) [0...12] {
+      _id,
+      _type,
+      date,
+      location,
+      time,
+      gameType->{
+        _id,
+        name
+      },
+      firstTeam->{
+        _id,
+        name,
+        logo {
+          asset->{
+            _id,
+            url
+          }
+        }
+      },
+      secondTeam->{
+        _id,
+        name,
+        logo {
+          asset->{
+            _id,
+            url
+          }
+        }
+      },
+      isCompleted,
+      firstTeamGoals,
+      secondTeamGoals
+    }
+}`);

@@ -11,6 +11,9 @@
     "calendar": "Calendar",
     "games": "Games"
   },
+  "gameCalendar": {
+    "noGames": "No scheduled games"
+  },
   "gameCalendarSlider": {
     "completed": "Final"
   },

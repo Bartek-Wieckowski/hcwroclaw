@@ -214,46 +214,82 @@ export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: getGamesCalendarQuery
-// Query: *[_type == "gameCalendar"] | order(date asc) {    _id,    _type,    date,    location,    time,    gameType->{      _id,      name    },    firstTeam->{      _id,      name,      logo {        asset->{          _id,          url        }      }    },    secondTeam->{      _id,      name,      logo {        asset->{          _id,          url        }      }    },    isCompleted,    firstTeamGoals,    secondTeamGoals  }
-export type GetGamesCalendarQueryResult = Array<{
-  _id: string;
-  _type: "gameCalendar";
-  date: string;
-  location: string;
-  time: string;
-  gameType: {
+// Query: {  "pastGames": *[_type == "gameCalendar" && dateTime(date) < dateTime(now())] |     order(date desc) [0...3] {      _id,      _type,      date,      location,      time,      gameType->{        _id,        name      },      firstTeam->{        _id,        name,        logo {          asset->{            _id,            url          }        }      },      secondTeam->{        _id,        name,        logo {          asset->{            _id,            url          }        }      },      isCompleted,      firstTeamGoals,      secondTeamGoals    },  "futureGames": *[_type == "gameCalendar" && dateTime(date) >= dateTime(now())] |     order(date asc) [0...12] {      _id,      _type,      date,      location,      time,      gameType->{        _id,        name      },      firstTeam->{        _id,        name,        logo {          asset->{            _id,            url          }        }      },      secondTeam->{        _id,        name,        logo {          asset->{            _id,            url          }        }      },      isCompleted,      firstTeamGoals,      secondTeamGoals    }}
+export type GetGamesCalendarQueryResult = {
+  pastGames: Array<{
     _id: string;
-    name: LocaleString;
-  };
-  firstTeam: {
-    _id: string;
-    name: string;
-    logo: {
-      asset: {
-        _id: string;
-        url: string | null;
+    _type: "gameCalendar";
+    date: string;
+    location: string;
+    time: string;
+    gameType: {
+      _id: string;
+      name: LocaleString;
+    };
+    firstTeam: {
+      _id: string;
+      name: string;
+      logo: {
+        asset: {
+          _id: string;
+          url: string | null;
+        } | null;
       } | null;
-    } | null;
-  };
-  secondTeam: {
-    _id: string;
-    name: string;
-    logo: {
-      asset: {
-        _id: string;
-        url: string | null;
+    };
+    secondTeam: {
+      _id: string;
+      name: string;
+      logo: {
+        asset: {
+          _id: string;
+          url: string | null;
+        } | null;
       } | null;
-    } | null;
-  };
-  isCompleted: boolean | null;
-  firstTeamGoals: number | null;
-  secondTeamGoals: number | null;
-}>;
+    };
+    isCompleted: boolean | null;
+    firstTeamGoals: number | null;
+    secondTeamGoals: number | null;
+  }>;
+  futureGames: Array<{
+    _id: string;
+    _type: "gameCalendar";
+    date: string;
+    location: string;
+    time: string;
+    gameType: {
+      _id: string;
+      name: LocaleString;
+    };
+    firstTeam: {
+      _id: string;
+      name: string;
+      logo: {
+        asset: {
+          _id: string;
+          url: string | null;
+        } | null;
+      } | null;
+    };
+    secondTeam: {
+      _id: string;
+      name: string;
+      logo: {
+        asset: {
+          _id: string;
+          url: string | null;
+        } | null;
+      } | null;
+    };
+    isCompleted: boolean | null;
+    firstTeamGoals: number | null;
+    secondTeamGoals: number | null;
+  }>;
+};
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "\n  *[_type == \"gameCalendar\"] | order(date asc) {\n    _id,\n    _type,\n    date,\n    location,\n    time,\n    gameType->{\n      _id,\n      name\n    },\n    firstTeam->{\n      _id,\n      name,\n      logo {\n        asset->{\n          _id,\n          url\n        }\n      }\n    },\n    secondTeam->{\n      _id,\n      name,\n      logo {\n        asset->{\n          _id,\n          url\n        }\n      }\n    },\n    isCompleted,\n    firstTeamGoals,\n    secondTeamGoals\n  }": GetGamesCalendarQueryResult;
+    "{\n  \"pastGames\": *[_type == \"gameCalendar\" && dateTime(date) < dateTime(now())] | \n    order(date desc) [0...3] {\n      _id,\n      _type,\n      date,\n      location,\n      time,\n      gameType->{\n        _id,\n        name\n      },\n      firstTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      secondTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      isCompleted,\n      firstTeamGoals,\n      secondTeamGoals\n    },\n  \"futureGames\": *[_type == \"gameCalendar\" && dateTime(date) >= dateTime(now())] | \n    order(date asc) [0...12] {\n      _id,\n      _type,\n      date,\n      location,\n      time,\n      gameType->{\n        _id,\n        name\n      },\n      firstTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      secondTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      isCompleted,\n      firstTeamGoals,\n      secondTeamGoals\n    }\n}": GetGamesCalendarQueryResult;
   }
 }
