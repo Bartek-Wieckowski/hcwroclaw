@@ -27,8 +27,25 @@ export default function GameCalendarSlider({
   const [swiperLoaded, setSwiperLoaded] = useState(false);
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
+  const [showNavigation, setShowNavigation] = useState(false);
   const swiperRef = useRef<SwiperType>();
   const t = useTranslations('gameCalendarSlider');
+
+  const updateNavigationVisibility = () => {
+    let currentSlidesPerView = 1;
+
+    const windowWidth = window.innerWidth;
+    if (windowWidth >= 1500) {
+      currentSlidesPerView = Math.min(5, games.length);
+    } else if (windowWidth >= 992) {
+      currentSlidesPerView = Math.min(3, games.length);
+    } else if (windowWidth >= 597) {
+      currentSlidesPerView = Math.min(2, games.length);
+    }
+
+    const shouldShowNavigation = games.length > currentSlidesPerView;
+    setShowNavigation(shouldShowNavigation);
+  };
 
   const handlePrev = () => {
     swiperRef.current?.slidePrev();
@@ -41,7 +58,7 @@ export default function GameCalendarSlider({
   return (
     <div className={styles.sliderSwiperWrapper}>
       {!swiperLoaded && <Spinner />}
-      {swiperLoaded && (
+      {swiperLoaded && games.length > 1 && showNavigation && (
         <button
           onClick={handlePrev}
           className={`${styles.prevButton} ${isBeginning ? styles.buttonDisabled : ''}`}
@@ -60,7 +77,16 @@ export default function GameCalendarSlider({
             992: { slidesPerView: Math.min(3, games.length) },
             1500: { slidesPerView: Math.min(5, games.length) },
           }}
-          onInit={() => setSwiperLoaded(true)}
+          onInit={() => {
+            setSwiperLoaded(true);
+            updateNavigationVisibility();
+          }}
+          onBreakpoint={() => {
+            updateNavigationVisibility();
+          }}
+          onResize={() => {
+            updateNavigationVisibility();
+          }}
           onBeforeInit={(swiper) => {
             swiperRef.current = swiper;
           }}
@@ -144,16 +170,14 @@ export default function GameCalendarSlider({
           ))}
         </Swiper>
       </div>
-      {swiperLoaded && (
-        <>
-          <button
-            onClick={handleNext}
-            className={`${styles.nextButton} ${isEnd ? styles.buttonDisabled : ''}`}
-            disabled={isEnd}
-          >
-            <span>&#10095;</span>
-          </button>
-        </>
+      {swiperLoaded && games.length > 1 && showNavigation && (
+        <button
+          onClick={handleNext}
+          className={`${styles.nextButton} ${isEnd ? styles.buttonDisabled : ''}`}
+          disabled={isEnd}
+        >
+          <span>&#10095;</span>
+        </button>
       )}
     </div>
   );
