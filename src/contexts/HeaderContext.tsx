@@ -25,6 +25,9 @@ export function HeaderProvider({
   useEffect(() => {
     if (!isHomePage) return;
 
+    const initialScrollPosition = window.scrollY;
+    setIsScrolled(initialScrollPosition > 0);
+
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       setIsScrolled(scrollPosition > 0);
