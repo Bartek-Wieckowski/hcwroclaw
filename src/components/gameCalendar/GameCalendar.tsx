@@ -32,7 +32,7 @@ export default async function GameCalendar({
       {games.length > 0 ? (
         <GameCalendarSlider games={games} lng={lng} />
       ) : (
-        <h3 className={styles.noGamesMessage}>{t('noGames')}</h3>
+        <h4 className={styles.noGamesMessage}>{t('noGames')}</h4>
       )}
     </section>
   );
