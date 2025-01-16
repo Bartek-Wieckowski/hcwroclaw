@@ -1,6 +1,15 @@
 import ButtonsDash from './ButtonDash';
 import { set } from 'sanity';
-import { Button, TextInput, Tooltip, Box, Stack, Flex, Card, Text } from '@sanity/ui';
+import {
+  Button,
+  TextInput,
+  Tooltip,
+  Box,
+  Stack,
+  Flex,
+  Card,
+  Text,
+} from '@sanity/ui';
 import { useState } from 'react';
 import { DragDropContext, Draggable } from 'react-beautiful-dnd';
 import { StrictModeDroppable } from './StrictModeDroppable';
@@ -11,7 +20,9 @@ import {
 } from 'react-icons/ai';
 import { BsTrash } from 'react-icons/bs';
 import { RiDeleteBin6Line } from 'react-icons/ri';
+import { MdContentCopy } from 'react-icons/md';
 import { RowType, OnChangeType, LocaleString, TableDocument } from './types';
+import styles from './table.module.css';
 
 type TableProps = {
   onChange: OnChangeType;
@@ -134,6 +145,14 @@ export default function Table(props: TableProps) {
     setRows(stateCopy);
   };
 
+  const duplicateRow = (index: number) => {
+    const newRows = [...rows];
+    const rowToDuplicate = deepClone(rows[index]);
+    newRows.splice(index + 1, 0, rowToDuplicate);
+    setRows(newRows);
+    updateSchema({ rows: newRows });
+  };
+
   return (
     <Stack space={4}>
       <Box>
@@ -149,51 +168,61 @@ export default function Table(props: TableProps) {
       </Box>
 
       <Box>
-        <p style={{fontSize: "12px", color: "yellowgreen"}}>
-        Please start by creating the titles of the columns in the table in English and Polish. The column with the position of the team in the table is created automatically
+        <p style={{ fontSize: '12px', color: 'yellowgreen' }}>
+          Please start by creating the titles of the columns in the table in
+          English and Polish. The column with the position of the team in the
+          table is created automatically
         </p>
       </Box>
 
-      <Flex gap={3}>
-        {headers.map((header, index) => (
-          <Card key={index} padding={2}>
-            <Stack space={2}>
-              <Box>
-                <Button
-                  mode="bleed"
-                  tone="critical"
-                  onClick={() => removeColumn(index)}
-                  disabled={headers.length <= 1}
-                >
-                  <Tooltip content="Delete column" placement="top">
-                    <BsTrash />
-                  </Tooltip>
-                </Button>
-              </Box>
-              <TextInput
-                value={header.pl}
-                onChange={(e) => {
-                  const newHeaders = [...headers];
-                  newHeaders[index] = { ...header, pl: e.currentTarget.value };
-                  setHeaders(newHeaders);
-                  updateSchema({ headers: newHeaders });
-                }}
-                placeholder="Tytuł kolumny (PL)"
-              />
-              <TextInput
-                value={header.en}
-                onChange={(e) => {
-                  const newHeaders = [...headers];
-                  newHeaders[index] = { ...header, en: e.currentTarget.value };
-                  setHeaders(newHeaders);
-                  updateSchema({ headers: newHeaders });
-                }}
-                placeholder="Column title (EN)"
-              />
-            </Stack>
-          </Card>
-        ))}
-      </Flex>
+      <div className={styles.columnsContainer}>
+        <div className={styles.columnsWrapper}>
+          {headers.map((header, index) => (
+            <Card key={index} padding={2} className={styles.columnCard}>
+              <Stack space={2}>
+                <Box>
+                  <Button
+                    mode="bleed"
+                    tone="critical"
+                    onClick={() => removeColumn(index)}
+                    disabled={headers.length <= 1}
+                  >
+                    <Tooltip content="Delete column" placement="top">
+                      <BsTrash />
+                    </Tooltip>
+                  </Button>
+                </Box>
+                <TextInput
+                  value={header.pl}
+                  onChange={(e) => {
+                    const newHeaders = [...headers];
+                    newHeaders[index] = {
+                      ...header,
+                      pl: e.currentTarget.value,
+                    };
+                    setHeaders(newHeaders);
+                    updateSchema({ headers: newHeaders });
+                  }}
+                  placeholder="Tytuł kolumny (PL)"
+                />
+                <TextInput
+                  value={header.en}
+                  onChange={(e) => {
+                    const newHeaders = [...headers];
+                    newHeaders[index] = {
+                      ...header,
+                      en: e.currentTarget.value,
+                    };
+                    setHeaders(newHeaders);
+                    updateSchema({ headers: newHeaders });
+                  }}
+                  placeholder="Column title (EN)"
+                />
+              </Stack>
+            </Card>
+          ))}
+        </div>
+      </div>
 
       <Box>
         <ButtonsDash
@@ -252,6 +281,7 @@ export default function Table(props: TableProps) {
                                 <Box
                                   key={generateKey('cell', cellIndex)}
                                   flex={1}
+                                  className={styles.tableCell}
                                 >
                                   <TextInput
                                     value={cell}
@@ -281,18 +311,32 @@ export default function Table(props: TableProps) {
                               ))}
                               {rows.length > 1 && (
                                 <Box padding={2}>
-                                  <Button
-                                    mode="bleed"
-                                    tone="critical"
-                                    onClick={() => removeRow(rowIndex)}
-                                  >
-                                    <Tooltip
-                                      content="Delete row item"
-                                      placement="top"
+                                  <Flex gap={2}>
+                                    <Button
+                                      mode="bleed"
+                                      tone="positive"
+                                      onClick={() => duplicateRow(rowIndex)}
                                     >
-                                      <BsTrash />
-                                    </Tooltip>
-                                  </Button>
+                                      <Tooltip
+                                        content="Duplicate row"
+                                        placement="top"
+                                      >
+                                        <MdContentCopy />
+                                      </Tooltip>
+                                    </Button>
+                                    <Button
+                                      mode="bleed"
+                                      tone="critical"
+                                      onClick={() => removeRow(rowIndex)}
+                                    >
+                                      <Tooltip
+                                        content="Delete row item"
+                                        placement="top"
+                                      >
+                                        <BsTrash />
+                                      </Tooltip>
+                                    </Button>
+                                  </Flex>
                                 </Box>
                               )}
                             </Flex>

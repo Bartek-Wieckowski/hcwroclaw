@@ -149,3 +149,56 @@
     width: 16px;
     height: 16px;
   } */
+
+.columnsContainer {
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 12px;
+}
+
+.columnsWrapper {
+  display: inline-flex;
+  gap: 12px;
+  min-width: min-content;
+}
+
+.columnCard {
+  min-width: 150px;
+  width: fit-content;
+  flex-shrink: 0;
+}
+
+/* Nowe style dla komórek */
+.tableCell {
+  flex-shrink: 0;
+  min-width: 80px;
+  width: fit-content;
+}
+
+.tableCell:first-child {
+  min-width: 150px;
+  width: max-content;
+}
+
+.tableCell:not(:first-child) {
+  min-width: 80px;
+}
+
+/* Stylowanie scrollbara dla lepszego UX */
+.columnsContainer::-webkit-scrollbar {
+  height: 8px;
+}
+
+.columnsContainer::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.columnsContainer::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.columnsContainer::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

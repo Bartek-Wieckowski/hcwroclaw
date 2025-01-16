@@ -25,7 +25,19 @@ export default defineType({
         },
       ],
       validation: (Rule) =>
-        Rule.required().min(1).error('At least one column header is required.'),
+        Rule.required()
+          .min(1)
+          .error('At least one column header is required.')
+          .custom((headers) => {
+            if (!headers) return true;
+            const hasEmptyValues = headers.some(
+              (header) => !header.pl || !header.en
+            );
+            if (hasEmptyValues) {
+              return 'All headers must have both Polish and English translations';
+            }
+            return true;
+          }),
     }),
     defineField({
       name: 'rows',
@@ -44,11 +56,18 @@ export default defineType({
               validation: (Rule) =>
                 Rule.required()
                   .min(1)
-                  .error('Each row must have at least one cell.'),
+                  .custom((cells) => {
+                    if (!cells) return true;
+                    const hasEmptyValues = cells.some(
+                      (cell) => !cell || cell.trim() === ''
+                    );
+                    if (hasEmptyValues) {
+                      return 'All cells in a row must have a value';
+                    }
+                    return true;
+                  }),
             },
           ],
-          validation: (Rule) =>
-            Rule.required().error('Each row must be filled.'),
         },
       ],
       validation: (Rule) =>
