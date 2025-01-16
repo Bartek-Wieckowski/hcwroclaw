@@ -72,3 +72,19 @@ export const getGamesCalendarQuery = defineQuery(`{
       secondTeamGoals
     }
 }`);
+
+export const getLeagueTablesQuery = defineQuery(`
+  *[_type == "leagueTables"] {
+    _createdAt,
+    _updatedAt,
+    _id,
+    title,
+    headers[] { 
+      pl,
+      en
+    },
+    rows[] {
+      cells
+    }
+  }
+`);

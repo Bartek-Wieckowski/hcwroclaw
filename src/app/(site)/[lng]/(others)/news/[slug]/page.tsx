@@ -23,9 +23,8 @@ export default async function NewsSinglePage({ params }: { params: slugType }) {
 
   // const singleNews = await getSingleNews(slug);
   return (
-    <section>
-      <div className="container">
-        {/* {singleNews.map((news: singleNewsType) => (
+    <div className="container">
+      {/* {singleNews.map((news: singleNewsType) => (
           <article key={news.id} className={styles.singleNewsArticle}>
             <h1 className={styles.singleNewsTitle}>{news.title}</h1>
             <div className={styles.singleNewsDateAuthor}>
@@ -44,7 +43,6 @@ export default async function NewsSinglePage({ params }: { params: slugType }) {
             <p className={styles.singleNewsDesc}>{news.desc}</p>
           </article>
         ))} */}
-      </div>
-    </section>
+    </div>
   );
 }

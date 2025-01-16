@@ -1,0 +1,41 @@
+'use client';
+
+import styles from './leagueTables.module.css';
+import { useLeagueTables } from '@/contexts/LeagueTablesContext';
+import { createPortal } from 'react-dom';
+import { GetLeagueTablesQueryResult } from '../../../sanity.types';
+import { motion, AnimatePresence } from 'framer-motion';
+import TableContent from './TableContent';
+import { Locale } from '@/i18n/i18n';
+
+type LeagueTablesModalProps = {
+  data: GetLeagueTablesQueryResult;
+  lng: Locale;
+};
+
+export default function LeagueTablesModal({
+  data,
+  lng,
+}: LeagueTablesModalProps) {
+  const { isModalOpen, toggleModal } = useLeagueTables();
+
+  return createPortal(
+    <AnimatePresence>
+      {isModalOpen && (
+        <motion.div
+          className={`${styles.leagueTables} ${styles.modal}`}
+          initial={{ right: '-100%' }}
+          animate={{ right: '0%' }}
+          exit={{ right: '-100%' }}
+          transition={{ duration: 0.3 }}
+        >
+          <button onClick={toggleModal} className={styles.closeButton}>
+            ×
+          </button>
+          <TableContent data={data} lng={lng} />
+        </motion.div>
+      )}
+    </AnimatePresence>,
+    document.body
+  );
+}

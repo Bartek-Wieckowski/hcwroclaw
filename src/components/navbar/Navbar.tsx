@@ -8,11 +8,13 @@ import { BiMenuAltRight, BiX } from 'react-icons/bi';
 import { GiPodium } from 'react-icons/gi';
 import { useRoutesLinks } from '@/hooks/useRoutesLinks';
 import { useHeader } from '@/contexts/HeaderContext';
+import { useLeagueTables } from '@/contexts/LeagueTablesContext';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const links = useRoutesLinks();
   const { isScrolled, isHomePage } = useHeader();
+  const { toggleModal } = useLeagueTables();
 
   const closeMenu = () => {
     setIsOpen(false);
@@ -41,7 +43,12 @@ export default function Navbar() {
           <NavigationSocialMediaIcons isInMobileMenu={isOpen} />
         </ul>
         <LanguageSwitcher />
-        <div className={styles.tableGamesIcon}>
+        <div
+          className={styles.tableGamesIcon}
+          onClick={toggleModal}
+          role="button"
+          tabIndex={0}
+        >
           <GiPodium />
         </div>
         <BiMenuAltRight

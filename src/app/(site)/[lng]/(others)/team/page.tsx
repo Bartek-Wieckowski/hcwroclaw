@@ -27,18 +27,14 @@ export default async function TeamPage() {
   // );
 
   return (
-    <section className={styles.teamSection}>
-      <div className="container">
-        <TeamSlider />
-        {/* <h2>Brzmkarze</h2> */}
-        {/* <TeamList players={goalkeepers} /> */}
-        {/* <h2>Obrońcy</h2> */}
-        {/* <TeamList players={defenders} /> */}
-        {/* <h2>Napastnicy</h2> */}
-        {/* <TeamList players={forwards} /> */}
-      </div>
-    </section>
+    <div className="container">
+      <TeamSlider />
+      {/* <h2>Brzmkarze</h2> */}
+      {/* <TeamList players={goalkeepers} /> */}
+      {/* <h2>Obrońcy</h2> */}
+      {/* <TeamList players={defenders} /> */}
+      {/* <h2>Napastnicy</h2> */}
+      {/* <TeamList players={forwards} /> */}
+    </div>
   );
 }
-
-

@@ -10,7 +10,7 @@ export default function HomepageLayout({ children }: HomepageLayoutProps) {
   return (
     <>
       <HeaderHomepage />
-      <main>{children}</main>
+      {children}
       <Sponsors />
       <Footer />
     </>

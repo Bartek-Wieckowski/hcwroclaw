@@ -74,6 +74,23 @@ export type Slug = {
   source?: string;
 };
 
+export type LeagueTables = {
+  _id: string;
+  _type: "leagueTables";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  headers: Array<{
+    _key: string;
+  } & LocaleString>;
+  rows: Array<{
+    cells: Array<string>;
+    _type: "row";
+    _key: string;
+  }>;
+};
+
 export type GameCalendar = {
   _id: string;
   _type: "gameCalendar";
@@ -210,11 +227,11 @@ export type LocaleString = {
   en?: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Slug | GameCalendar | GameType | Team | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | HomePage | LocaleString;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Slug | LeagueTables | GameCalendar | GameType | Team | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | HomePage | LocaleString;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: getGamesCalendarQuery
-// Query: {  "pastGames": *[_type == "gameCalendar" && dateTime(date) < dateTime(now())] |     order(date desc) [0...3] {      _id,      _type,      date,      location,      time,      gameType->{        _id,        name      },      firstTeam->{        _id,        name,        logo {          asset->{            _id,            url          }        }      },      secondTeam->{        _id,        name,        logo {          asset->{            _id,            url          }        }      },      isCompleted,      firstTeamGoals,      secondTeamGoals    },  "futureGames": *[_type == "gameCalendar" && dateTime(date) >= dateTime(now())] |     order(date asc) [0...12] {      _id,      _type,      date,      location,      time,      gameType->{        _id,        name      },      firstTeam->{        _id,        name,        logo {          asset->{            _id,            url          }        }      },      secondTeam->{        _id,        name,        logo {          asset->{            _id,            url          }        }      },      isCompleted,      firstTeamGoals,      secondTeamGoals    }}
+// Query: {  "pastGames": *[_type == "gameCalendar" && dateTime(date) < dateTime(now())] |     order(date desc) [0...12] {      _id,      _type,      date,      location,      time,      gameType->{        _id,        name      },      firstTeam->{        _id,        name,        logo {          asset->{            _id,            url          }        }      },      secondTeam->{        _id,        name,        logo {          asset->{            _id,            url          }        }      },      isCompleted,      firstTeamGoals,      secondTeamGoals    },  "futureGames": *[_type == "gameCalendar" && dateTime(date) >= dateTime(now())] |     order(date asc) [0...12] {      _id,      _type,      date,      location,      time,      gameType->{        _id,        name      },      firstTeam->{        _id,        name,        logo {          asset->{            _id,            url          }        }      },      secondTeam->{        _id,        name,        logo {          asset->{            _id,            url          }        }      },      isCompleted,      firstTeamGoals,      secondTeamGoals    }}
 export type GetGamesCalendarQueryResult = {
   pastGames: Array<{
     _id: string;
@@ -285,11 +302,27 @@ export type GetGamesCalendarQueryResult = {
     secondTeamGoals: number | null;
   }>;
 };
+// Variable: getLeagueTablesQuery
+// Query: *[_type == "leagueTables"] {    _createdAt,    _updatedAt,    _id,    title,    headers[] {       pl,      en    },    rows[] {      cells    }  }
+export type GetLeagueTablesQueryResult = Array<{
+  _createdAt: string;
+  _updatedAt: string;
+  _id: string;
+  title: string;
+  headers: Array<{
+    pl: string | null;
+    en: string | null;
+  }>;
+  rows: Array<{
+    cells: Array<string>;
+  }>;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "{\n  \"pastGames\": *[_type == \"gameCalendar\" && dateTime(date) < dateTime(now())] | \n    order(date desc) [0...3] {\n      _id,\n      _type,\n      date,\n      location,\n      time,\n      gameType->{\n        _id,\n        name\n      },\n      firstTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      secondTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      isCompleted,\n      firstTeamGoals,\n      secondTeamGoals\n    },\n  \"futureGames\": *[_type == \"gameCalendar\" && dateTime(date) >= dateTime(now())] | \n    order(date asc) [0...12] {\n      _id,\n      _type,\n      date,\n      location,\n      time,\n      gameType->{\n        _id,\n        name\n      },\n      firstTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      secondTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      isCompleted,\n      firstTeamGoals,\n      secondTeamGoals\n    }\n}": GetGamesCalendarQueryResult;
+    "{\n  \"pastGames\": *[_type == \"gameCalendar\" && dateTime(date) < dateTime(now())] | \n    order(date desc) [0...12] {\n      _id,\n      _type,\n      date,\n      location,\n      time,\n      gameType->{\n        _id,\n        name\n      },\n      firstTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      secondTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      isCompleted,\n      firstTeamGoals,\n      secondTeamGoals\n    },\n  \"futureGames\": *[_type == \"gameCalendar\" && dateTime(date) >= dateTime(now())] | \n    order(date asc) [0...12] {\n      _id,\n      _type,\n      date,\n      location,\n      time,\n      gameType->{\n        _id,\n        name\n      },\n      firstTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      secondTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      isCompleted,\n      firstTeamGoals,\n      secondTeamGoals\n    }\n}": GetGamesCalendarQueryResult;
+    "\n  *[_type == \"leagueTables\"] {\n    _createdAt,\n    _updatedAt,\n    _id,\n    title,\n    headers[] { \n      pl,\n      en\n    },\n    rows[] {\n      cells\n    }\n  }\n": GetLeagueTablesQueryResult;
   }
 }

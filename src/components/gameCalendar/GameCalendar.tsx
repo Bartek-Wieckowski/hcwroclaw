@@ -1,10 +1,12 @@
 import styles from './gameCalendar.module.css';
 import GameCalendarSlider from './gameCalendarSlider/GameCalendarSlider';
 import { getGamesCalendarQuery } from '@/sanity/lib/queries';
-import { sanityFetch } from '@/sanity/lib/live';
 import { Locale } from '@/i18n/i18n';
 import { GamesCalendar } from '@/types/GamesCalendar.type';
 import { getTranslations } from 'next-intl/server';
+import { client } from '@/sanity/lib/client';
+
+export const revalidate = 300;
 
 type GameCalendarProps = {
   withMargin: boolean;
@@ -15,9 +17,7 @@ export default async function GameCalendar({
   withMargin = false,
   lng,
 }: GameCalendarProps) {
-  const { data } = await sanityFetch({
-    query: getGamesCalendarQuery,
-  });
+  const data = await client.fetch(getGamesCalendarQuery);
   const t = await getTranslations('gameCalendar');
 
   const games: GamesCalendar[] =

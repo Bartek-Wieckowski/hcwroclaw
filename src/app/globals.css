@@ -47,6 +47,8 @@
   --border-radius-img: 0.75rem;
 
   --container-padding: 0.938rem;
+  --container-padding-right: 0.938rem;
+  --container-padding-left: 0.938rem;
   --header-height: 6.375rem;
   --section-margin: 1.25rem;
 }
@@ -130,18 +132,24 @@
 @media screen and (min-width: 992px) {
   :root {
     --container-padding: 3.125rem;
+    --container-padding-right: 3.125rem;
+    --container-padding-left: 3.125rem;
   }
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
   :root {
     --container-padding: 1.25rem;
+    --container-padding-right: 1.25rem;
+    --container-padding-left: 1.25rem;
   }
 }
 
 @media screen and (max-width: 768px) {
   :root {
     --container-padding: 0.938rem;
+    --container-padding-right: 0.938rem;
+    --container-padding-left: 0.938rem;
   }
 }
 
@@ -284,4 +292,26 @@ section {
 
 .hidden {
   display: none;
+}
+
+.main {
+  display: flex;
+  gap: 2rem;
+  margin: 0 auto;
+}
+
+.pageContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.asideLeageTables {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .asideLeageTables {
+    display: block;
+    padding-right: var(--container-padding-right);
+  }
 }

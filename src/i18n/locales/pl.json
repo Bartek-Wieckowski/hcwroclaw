@@ -14,6 +14,9 @@
   "gameCalendar": {
     "noGames": "Brak zaplanowanych meczów"
   },
+  "leageTablePositionColumn": {
+    "position": "Poz."
+  },
   "gameCalendarSlider": {
     "completed": "Zakończony"
   },
