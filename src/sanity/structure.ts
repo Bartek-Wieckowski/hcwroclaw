@@ -39,6 +39,9 @@ export const structure: StructureResolver = (S) =>
               S.listItem()
                 .title('Game Calendar')
                 .child(S.documentTypeList('gameCalendar')),
+              S.listItem()
+                .title('League Tables')
+                .child(S.documentTypeList('leagueTables')),
             ])
         ),
     ]);

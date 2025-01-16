@@ -9,7 +9,8 @@ import homePage from './pages/homePage';
 import team from './utils/team';
 import gameType from './utils/gameType';
 import gameCalendar from './utils/gameCalendar';
+import leagueTables from "./utils/leagueTables"
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [localeString, homePage, team, gameType, gameCalendar],
+  types: [localeString, homePage, team, gameType, gameCalendar, leagueTables],
 };

@@ -31,7 +31,8 @@
     "src/sanity/schemaTypes/pages/homePage.js",
     "src/sanity/schemaTypes/utils/team.js",
     "src/sanity/schemaTypes/utils/gameType.js",
-    "src/sanity/schemaTypes/utils/localeString.js"
+    "src/sanity/schemaTypes/utils/localeString.js",
+    "src/sanity/schemaTypes/utils/leagueTables.js"
   ],
   "exclude": ["node_modules"]
 }
