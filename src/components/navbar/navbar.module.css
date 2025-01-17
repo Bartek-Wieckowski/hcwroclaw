@@ -28,6 +28,7 @@
   text-transform: uppercase;
   background-color: var(--bg-body-black);
   font-family: var(--font-roboto-bold);
+  box-shadow: -4px 0 10px rgba(174, 172, 172, 0.5);
 }
 
 .active {
@@ -90,6 +91,7 @@
     width: unset;
     z-index: unset;
     background-color: unset;
+    box-shadow: unset;
   }
 
   .navbarList > ul {
