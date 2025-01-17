@@ -54,8 +54,8 @@ jobs:
           # Wykonaj komendy na serwerze
           ssh -o StrictHostKeyChecking=no ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST }} '
             cd ~/domains/hcwd3v.hcwroclaw.com/public_nodejs/
+            rm -rf .next public node_modules package.json next.config.mjs
             tar -xzf deploy.tar.gz
             rm deploy.tar.gz
-            devil www cmd hcwd3v.hcwroclaw.com "node app.js"
             devil www restart hcwd3v.hcwroclaw.com
           '
