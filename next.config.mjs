@@ -5,9 +5,8 @@ const withNextIntl = createNextIntlPlugin();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
-  swcMinify: false,
   experimental: {
-    forceSwcTransforms: true,
+    cpus: 1
   },
   images: {
     remotePatterns: [
@@ -23,7 +22,6 @@ const nextConfig = {
       },
     ],
   },
-  trailingSlash: true,
   webpack: (config) => {
     config.module.rules.push({
       test: /\.(woff|woff2|eot|ttf|otf)$/i,

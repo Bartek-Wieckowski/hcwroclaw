@@ -22,7 +22,12 @@ jobs:
       - name: Install dependencies
         run: |
           npm cache clean --force
-          npm ci --legacy-peer-deps
+          npm ci
+          npm install @next/swc-wasm-nodejs
+
+      - name: Modify swc for FreeBSD support
+        run: |
+          sed -i 's/const shouldLoadWasmFallbackFirst = !disableWasmFallback && unsupportedPlatform && useWasmBinary || isWebContainer;/const shouldLoadWasmFallbackFirst = true;/' node_modules/next/dist/build/swc/index.js
 
       - name: Build application
         run: npm run build
@@ -38,34 +43,14 @@ jobs:
           username: ${{ secrets.HOST_USERNAME }}
           key: ${{ secrets.HOST_SSH_KEY_P }}
           script: |
-            # Przejdź do katalogu z kodem źródłowym
-            cd ~/domains/hcwroclaw.com/hcwroclaw
-
-            # Pobierz najnowsze zmiany
-            git pull
-
-            # Zainstaluj zależności
-            npm ci
-
-            # Instalacja paczki wasm
-            npm install @next/swc-wasm-nodejs
-
-            # Modyfikacja pliku swc/index.js
-            sed -i 's/const shouldLoadWasmFallbackFirst = !disableWasmFallback && unsupportedPlatform && useWasmBinary || isWebContainer;/const shouldLoadWasmFallbackFirst = true;/' node_modules/next/dist/build/swc/index.js
-
-            # Dodaj te zmienne środowiskowe
-            export NEXT_TELEMETRY_DISABLED=1
-            export NODE_OPTIONS="--max_old_space_size=4096"
-
-            # Zbuduj aplikację
-            npm run build
-
-            # Skopiuj potrzebne pliki do katalogu public_nodejs
-            cp -r .next ~/domains/hcwd3v.hcwroclaw.com/public_nodejs/
-            cp -r public ~/domains/hcwd3v.hcwroclaw.com/public_nodejs/
-            cp -r node_modules ~/domains/hcwd3v.hcwroclaw.com/public_nodejs/
-            cp package.json ~/domains/hcwd3v.hcwroclaw.com/public_nodejs/
-            cp next.config.mjs ~/domains/hcwd3v.hcwroclaw.com/public_nodejs/
-
-            # Zrestartuj aplikację
+            # Wyczyść katalog docelowy
+            rm -rf ~/domains/hcwd3v.hcwroclaw.com/public_nodejs/*
+            
+            # Skopiuj zbudowaną aplikację
+            cp -r .next public node_modules package.json next.config.mjs ~/domains/hcwd3v.hcwroclaw.com/public_nodejs/
+            
+            # Ustaw komendę startową
+            devil www cmd hcwd3v.hcwroclaw.com "node app.js"
+            
+            # Restart aplikacji
             devil www restart hcwd3v.hcwroclaw.com
