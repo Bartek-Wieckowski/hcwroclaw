@@ -1,89 +1,94 @@
-.leagueTables {
-  width: 100%;
-  background-color: #000;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  border-radius: 12px;
-  padding: 1rem;
-}
-
-.content {
-  width: 100%;
-}
-
 .tableWrapper {
   margin-bottom: 1.5rem;
 }
 
 .tableTitle {
-  color: #fff;
-  font-size: 1.25rem;
-  font-weight: 600;
+  background: var(--hc-gold);
+  background-clip: text;
+  color: transparent;
   margin-bottom: 1rem;
+  font-family: var(--font-roboto-bold);
+  font-size: var(--normal-font-size);
+  text-align: center;
+  text-transform: uppercase;
 }
 
-.tableContainer {
+.table {
   width: 100%;
 }
 
-/* Mobile First Table Styles */
-.desktopTable {
-  display: none;
-}
-
-.mobileTable {
+.tableHeader {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr) 2.5rem 1.5rem;
+  gap: 0.5rem;
   width: 100%;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.7rem;
+  font-family: var(--font-roboto-thin);
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: 0.065rem;
+  line-height: 1;
 }
 
-.mobileRow {
+.tableRow {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.mobileRow:last-child {
+.tableRow:last-child {
   border-bottom: none;
 }
 
-.mobileRowHeader {
+.rowContent {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr) 2.5rem 1.5rem;
+  gap: 0.5rem;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 0.75rem 1rem;
   background: none;
   border: none;
   color: #fff;
   cursor: pointer;
   transition: background-color 0.2s;
-}
-
-.mobileRowHeader:hover {
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.mainInfo {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.position {
-  font-weight: 600;
-  min-width: 2rem;
-}
-
-.teamName {
-  flex: 1;
   text-align: left;
 }
 
-.points {
-  font-weight: 600;
-  min-width: 3rem;
-  text-align: right;
+.rowContent:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.positionColumn {
+  font-family: var(--font-outfit-thin);
+}
+
+.teamColumn {
+  font-family: var(--font-outfit-thin);
+}
+
+.teamColumnInRow {
+  font-family: var(--font-outfit-regular);
+}
+
+.pointsColumnInRow {
+  text-align: center;
+  font-family: var(--font-outfit-bold);
+  background: var(--hc-gold);
+  background-clip: text;
+  color: transparent;
+}
+
+.chevronColumn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .chevron {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1rem;
+  height: 1rem;
   transition: transform 0.3s ease;
 }
 
@@ -91,7 +96,7 @@
   transform: rotate(180deg);
 }
 
-.mobileRowDetails {
+.rowDetails {
   padding: 1rem;
   background: rgba(255, 255, 255, 0.02);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -104,47 +109,71 @@
 }
 
 .label {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.875rem;
+  font-family: var(--font-outfit-thin);
+  color: #fff;
+  font-size: 0.7rem;
+  text-transform: uppercase;
 }
 
 .value {
-  font-weight: 500;
+  font-family: var(--font-outfit-bold);
+  font-size: 0.7rem;
 }
 
-/* Modal specific styles */
-.modal {
+.leagueTablesModal {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   width: 85vw;
-  background: #000;
-  z-index: 1000;
+  background: var(--bg-body-black);
+  z-index: var(--z-modal);
   overflow-y: auto;
-  padding: 1rem;
+  padding: 1rem 0rem;
 }
 
 .closeButton {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 2rem;
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  transition: background-color 0.2s;
+  font-size: 2rem;
+  margin-left: auto;
 }
 
-.closeButton:hover {
-  background: rgba(255, 255, 255, 0.1);
+.updateInfo {
+  display: inline-block;
+  font-family: var(--font-outfit-thin);
+  font-size: 0.7rem;
+  margin-top: 0.25rem;
+  padding-left: 0.5rem;
+}
+
+@media (min-width: 375px) {
+  .leagueTablesModal {
+    padding: 1rem;
+  }
+  .tableHeader,
+  .rowContent {
+    grid-template-columns: 2rem minmax(0, 1fr) 3rem 2rem;
+  }
+
+  .mediumTeamName {
+    font-size: 0.875rem;
+  }
+
+  .longTeamName {
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 480px) {
+  .mediumTeamName {
+    font-size: 0.95rem;
+  }
+
+  .longTeamName {
+    font-size: 0.875rem;
+  }
 }
 
 /* Tablet Styles */
@@ -155,11 +184,6 @@
 
   .tableTitle {
     font-size: 1.5rem;
-  }
-
-  .modal {
-    max-width: 600px;
-    padding: 1.5rem;
   }
 }
 
@@ -172,6 +196,9 @@
     width: 18.75rem;
     margin-top: 2rem;
     overflow-y: auto;
+    background-color: var(--hc-black);
+    box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15);
+    padding: 1rem 0.25rem;
   }
 
   .leagueTables::-webkit-scrollbar {
@@ -192,32 +219,12 @@
     background: rgba(255, 255, 255, 0.3);
   }
 
-  .modal {
-    max-width: 100%;
+  .content {
+    width: 100%;
   }
-}
 
-/* W sekcji Mobile Table Styles */
-.mobileHeader {
-  display: flex;
-  padding: 0.75rem 1rem;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.875rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.mobileHeader span:first-child {
-  min-width: 2rem;
-}
-
-.mobileHeader span:nth-child(2) {
-  flex: 1;
-  padding-left: 1rem;
-}
-
-.mobileHeader span:last-child {
-  min-width: 3rem;
-  text-align: right;
+  .leagueTablesModal,
+  .closeButton {
+    display: none;
+  }
 }

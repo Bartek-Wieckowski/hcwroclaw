@@ -5,6 +5,7 @@ import { Locale } from '@/i18n/i18n';
 import { GetLeagueTablesQueryResult } from '../../../sanity.types';
 import { useState } from 'react';
 import { IoChevronDown } from 'react-icons/io5';
+import { convertDateWithTimezone } from '@/lib/helpers';
 import { useTranslations } from 'next-intl';
 
 type TableContentProps = {
@@ -18,8 +19,8 @@ type HeaderType = {
 };
 
 export default function TableContent({ data, lng }: TableContentProps) {
-  const t = useTranslations('leageTablePositionColumn');
   const [expandedRow, setExpandedRow] = useState<string | null>(null);
+  const t = useTranslations('leageTables');
 
   const toggleRow = (rowId: string) => {
     setExpandedRow(expandedRow === rowId ? null : rowId);
@@ -51,6 +52,15 @@ export default function TableContent({ data, lng }: TableContentProps) {
     );
   };
 
+  const getTeamNameClass = (teamName: string) => {
+    if (teamName.length > 20) {
+      return styles.longTeamName;
+    } else if (teamName.length > 15) {
+      return styles.mediumTeamName;
+    }
+    return '';
+  };
+
   return (
     <div className={styles.content}>
       {data.map((table) => {
@@ -60,53 +70,33 @@ export default function TableContent({ data, lng }: TableContentProps) {
         return (
           <div key={table._id} className={styles.tableWrapper}>
             <h2 className={styles.tableTitle}>{table.title}</h2>
-            <div className={styles.tableContainer}>
-              {/* Desktop Table */}
-              <table className={`${styles.table} ${styles.desktopTable}`}>
-                <thead>
-                  <tr>
-                    {table.headers.map((header: HeaderType, index: number) => (
-                      <th key={index}>
-                        {index === 0 ? t('position') : header[lng] || ''}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {table.rows.map((row, rowIndex: number) => (
-                    <tr key={rowIndex}>
-                      {row.cells.map((cell: string, cellIndex: number) => (
-                        <td key={cellIndex}>
-                          {cellIndex === 0 ? rowIndex + 1 : cell}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-
-              {/* Mobile Table */}
-              <div className={styles.mobileTable}>
-                <div className={styles.mobileHeader}>
-                  <span>{t('position')}</span>
-                  <span>{table.headers[teamNameIndex][lng]}</span>
-                  <span>{table.headers[mainValueIndex][lng]}</span>
+            <div className={styles.table}>
+              <div className={styles.tableHeader}>
+                <div className={styles.positionColumn}>#</div>
+                <div className={styles.teamColumn}>
+                  {table.headers[teamNameIndex][lng]}
                 </div>
-                {table.rows.map((row, rowIndex: number) => (
-                  <div key={rowIndex} className={styles.mobileRow}>
-                    <button
-                      className={styles.mobileRowHeader}
-                      onClick={() => toggleRow(`${table._id}-${rowIndex}`)}
+                <div className={styles.pointsColumn}>
+                  {table.headers[mainValueIndex][lng]}
+                </div>
+                <div className={styles.chevronColumn}></div>
+              </div>
+              {table.rows.map((row, rowIndex: number) => (
+                <div key={rowIndex} className={styles.tableRow}>
+                  <button
+                    className={styles.rowContent}
+                    onClick={() => toggleRow(`${table._id}-${rowIndex}`)}
+                  >
+                    <div className={styles.positionColumn}>{rowIndex + 1}</div>
+                    <div
+                      className={`${styles.teamColumnInRow} ${getTeamNameClass(row.cells[teamNameIndex] || '')}`}
                     >
-                      <div className={styles.mainInfo}>
-                        <span className={styles.position}>{rowIndex + 1}</span>
-                        <span className={styles.teamName}>
-                          {row.cells[teamNameIndex]}
-                        </span>
-                        <span className={styles.points}>
-                          {row.cells[mainValueIndex]}
-                        </span>
-                      </div>
+                      {row.cells[teamNameIndex]}
+                    </div>
+                    <div className={styles.pointsColumnInRow}>
+                      {row.cells[mainValueIndex]}
+                    </div>
+                    <div className={styles.chevronColumn}>
                       <IoChevronDown
                         className={`${styles.chevron} ${
                           expandedRow === `${table._id}-${rowIndex}`
@@ -114,31 +104,35 @@ export default function TableContent({ data, lng }: TableContentProps) {
                             : ''
                         }`}
                       />
-                    </button>
-                    {expandedRow === `${table._id}-${rowIndex}` && (
-                      <div className={styles.mobileRowDetails}>
-                        {row.cells.map((cell: string, cellIndex: number) => {
-                          if (
-                            cellIndex !== 0 &&
-                            cellIndex !== teamNameIndex &&
-                            cellIndex !== mainValueIndex
-                          ) {
-                            return (
-                              <div key={cellIndex} className={styles.detailRow}>
-                                <span className={styles.label}>
-                                  {table.headers[cellIndex][lng] || ''}:
-                                </span>
-                                <span className={styles.value}>{cell}</span>
-                              </div>
-                            );
-                          }
-                          return null;
-                        })}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
+                    </div>
+                  </button>
+                  {expandedRow === `${table._id}-${rowIndex}` && (
+                    <div className={styles.rowDetails}>
+                      {row.cells.map((cell: string, cellIndex: number) => {
+                        if (
+                          cellIndex !== 0 &&
+                          cellIndex !== teamNameIndex &&
+                          cellIndex !== mainValueIndex
+                        ) {
+                          return (
+                            <div key={cellIndex} className={styles.detailRow}>
+                              <span className={styles.label}>
+                                {table.headers[cellIndex][lng] || ''}:
+                              </span>
+                              <span className={styles.value}>{cell}</span>
+                            </div>
+                          );
+                        }
+                        return null;
+                      })}
+                    </div>
+                  )}
+                </div>
+              ))}
+              <small className={styles.updateInfo}>
+                <span>{t('update')}:&nbsp;</span>
+                {convertDateWithTimezone(table._updatedAt || table._createdAt)}
+              </small>
             </div>
           </div>
         );
