@@ -42,8 +42,14 @@ jobs:
             # Pobierz najnowsze zmiany
             git pull
 
-            # Zainstaluj zależności i zbuduj aplikację
+            # Zainstaluj zależności
             npm ci
+
+            # Dodaj te zmienne środowiskowe
+            export NEXT_TELEMETRY_DISABLED=1
+            export NODE_OPTIONS="--max_old_space_size=4096"
+
+            # Zbuduj aplikację
             npm run build
 
             # Skopiuj potrzebne pliki do katalogu public_nodejs
