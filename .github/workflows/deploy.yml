@@ -47,11 +47,11 @@ jobs:
             npm run build
 
             # Skopiuj potrzebne pliki do katalogu public_nodejs
-            cp -r .next ~/public_nodejs/hcwd3v.hcwroclaw.com/
-            cp -r public ~/public_nodejs/hcwd3v.hcwroclaw.com/
-            cp -r node_modules ~/public_nodejs/hcwd3v.hcwroclaw.com/
-            cp package.json ~/public_nodejs/hcwd3v.hcwroclaw.com/
-            cp next.config.mjs ~/public_nodejs/hcwd3v.hcwroclaw.com/
+            cp -r .next ~/domains/hcwd3v.hcwroclaw.com/public_nodejs/
+            cp -r public ~/domains/hcwd3v.hcwroclaw.com/public_nodejs/
+            cp -r node_modules ~/domains/hcwd3v.hcwroclaw.com/public_nodejs/
+            cp package.json ~/domains/hcwd3v.hcwroclaw.com/public_nodejs/
+            cp next.config.mjs ~/domains/hcwd3v.hcwroclaw.com/public_nodejs/
 
             # Zrestartuj aplikację
             devil www restart hcwd3v.hcwroclaw.com
