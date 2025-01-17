@@ -5,6 +5,10 @@ const withNextIntl = createNextIntlPlugin();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
+  swcMinify: false,
+  experimental: {
+    forceSwcTransforms: true,
+  },
   images: {
     remotePatterns: [
       {
