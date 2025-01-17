@@ -47,6 +47,12 @@ jobs:
             # Zainstaluj zależności
             npm ci
 
+            # Instalacja paczki wasm
+            npm install @next/swc-wasm-nodejs
+
+            # Modyfikacja pliku swc/index.js
+            sed -i 's/const shouldLoadWasmFallbackFirst = !disableWasmFallback && unsupportedPlatform && useWasmBinary || isWebContainer;/const shouldLoadWasmFallbackFirst = true;/' node_modules/next/dist/build/swc/index.js
+
             # Dodaj te zmienne środowiskowe
             export NEXT_TELEMETRY_DISABLED=1
             export NODE_OPTIONS="--max_old_space_size=4096"
