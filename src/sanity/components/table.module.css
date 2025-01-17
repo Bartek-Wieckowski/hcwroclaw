@@ -149,11 +149,48 @@
     width: 16px;
     height: 16px;
   } */
+   
+.importantBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.importantBox h6 {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: red;
+}
+
+.importantBox p {
+  color: yellowgreen;
+  font-size: 12px;
+  margin-top:0;
+  margin-bottom:0;
+}
 
 .columnsContainer {
   width: 100%;
   overflow-x: auto;
   padding-bottom: 12px;
+}
+
+.columnsContainer::-webkit-scrollbar {
+  height: 8px;
+}
+
+.columnsContainer::-webkit-scrollbar-track {
+  background: #888;
+  border-radius: 4px;
+}
+
+.columnsContainer::-webkit-scrollbar-thumb {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.columnsContainer::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .columnsWrapper {
@@ -163,42 +200,64 @@
 }
 
 .columnCard {
-  min-width: 150px;
   width: fit-content;
   flex-shrink: 0;
 }
 
-/* Nowe style dla komórek */
-.tableCell {
-  flex-shrink: 0;
-  min-width: 80px;
-  width: fit-content;
+.columnCard input {
+  font-size: 10px;
+  width: 100px;
 }
 
-.tableCell:first-child {
-  min-width: 150px;
-  width: max-content;
+.boxButtons {
+  margin-bottom: 20px !important;
 }
 
-.tableCell:not(:first-child) {
-  min-width: 80px;
+.userCreateTableContainer {
+  overflow-x: auto;
 }
 
-/* Stylowanie scrollbara dla lepszego UX */
-.columnsContainer::-webkit-scrollbar {
+.userCreateTableContainer::-webkit-scrollbar {
   height: 8px;
 }
 
-.columnsContainer::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 4px;
-}
-
-.columnsContainer::-webkit-scrollbar-thumb {
+.userCreateTableContainer::-webkit-scrollbar-track {
   background: #888;
   border-radius: 4px;
 }
 
-.columnsContainer::-webkit-scrollbar-thumb:hover {
+.userCreateTableContainer::-webkit-scrollbar-thumb {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.userCreateTableContainer::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+.tableCell {
+  /* flex-shrink: 0;
+  min-width: 80px;
+  width: fit-content; */
+  flex: none !important;
+}
+
+.tableCell:first-child {
+  width: 150px;
+}
+
+.tableCell input {
+  font-size: 10px;
+}
+
+.tableCell:not(:first-child) {
+  width: 65px;
+}
+
+.userCreateTableHeaderCell span {
+  font-size: 8px;
+}
+
+
+
+

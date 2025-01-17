@@ -168,11 +168,23 @@ export default function Table(props: TableProps) {
       </Box>
 
       <Box>
-        <p style={{ fontSize: '12px', color: 'yellowgreen' }}>
-          Please start by creating the titles of the columns in the table in
-          English and Polish. The column with the position of the team in the
-          table is created automatically
-        </p>
+        <div className={styles.importantBox}>
+          <h6>!!! Important !!!</h6>
+          <p>
+            - Please start by creating the titles of the columns in the table in
+            English and Polish.
+          </p>
+          <p>
+            -- The column with the position of the team in the table is created
+            automatically
+          </p>
+          <p>
+            --- In order to display the tables correctly on the website we need to
+            have a column called Punkty/Points or  Mecze/Matchs, if in some league the column
+            is called Pkt/Pts or M (as a match) then here we need to create it
+            as  Punkty/Points or Mecze/Matchs
+          </p>
+        </div>
       </Box>
 
       <div className={styles.columnsContainer}>
@@ -224,7 +236,7 @@ export default function Table(props: TableProps) {
         </div>
       </div>
 
-      <Box>
+      <Box className={styles.boxButtons}>
         <ButtonsDash
           buttons={[
             {
@@ -247,111 +259,139 @@ export default function Table(props: TableProps) {
         />
       </Box>
 
-      <DragDropContext onDragEnd={onDragEnd}>
-        <StrictModeDroppable droppableId="droppable-table">
-          {(provided) => (
-            <Card ref={provided.innerRef} {...provided.droppableProps}>
-              <Stack space={2}>
-                {rows.map((row, rowIndex) => {
-                  const dragId = `row-${rowIndex}`;
-                  return (
-                    <Draggable
-                      key={dragId}
-                      draggableId={dragId}
-                      index={rowIndex}
-                    >
-                      {(provided, snapshot) => (
-                        <Card
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          shadow={snapshot.isDragging ? 1 : 0}
-                          radius={2}
+      <div className={styles.userCreateTableContainer}>
+        <DragDropContext onDragEnd={onDragEnd}>
+          <StrictModeDroppable droppableId="droppable-table">
+            {(provided) => (
+              <Card ref={provided.innerRef} {...provided.droppableProps}>
+                <Stack space={2}>
+                  <Flex align="center">
+                    <Box padding={2} style={{ width: '24px' }}>
+                      <Flex align="center" gap={2}>
+                        <Text size={1} muted></Text>
+                      </Flex>
+                    </Box>
+                    <Flex flex={1} gap={2} align="center">
+                      {headers.map((header, index) => (
+                        <Box
+                          key={`header-${index}`}
+                          flex={1}
+                          className={styles.tableCell}
                         >
-                          <Flex align="center">
-                            <Box padding={2} {...provided.dragHandleProps}>
-                              <Flex align="center" gap={2}>
-                                <Text size={1} weight="semibold">
-                                  {rowIndex + 1}.
-                                </Text>
-                                <AiOutlineHolder />
+                          <Text
+                            size={1}
+                            muted
+                            align="center"
+                            className={styles.userCreateTableHeaderCell}
+                          >
+                            {header.pl}
+                          </Text>
+                        </Box>
+                      ))}
+                    </Flex>
+                  </Flex>
+
+                  {rows.map((row, rowIndex) => {
+                    const dragId = `row-${rowIndex}`;
+                    return (
+                      <Draggable
+                        key={dragId}
+                        draggableId={dragId}
+                        index={rowIndex}
+                      >
+                        {(provided, snapshot) => (
+                          <Card
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            shadow={snapshot.isDragging ? 1 : 0}
+                            radius={2}
+                          >
+                            <Flex align="center">
+                              <Box padding={2} {...provided.dragHandleProps}>
+                                <Flex align="center" gap={2}>
+                                  <Text size={1} weight="semibold">
+                                    {rowIndex + 1}.
+                                  </Text>
+                                  <AiOutlineHolder />
+                                </Flex>
+                              </Box>
+                              <Flex flex={1} gap={2} align="center">
+                                {row.cells.map((cell, cellIndex) => (
+                                  <Box
+                                    key={generateKey('cell', cellIndex)}
+                                    flex={1}
+                                    className={styles.tableCell}
+                                  >
+                                    <TextInput
+                                      value={cell}
+                                      onChange={(event) =>
+                                        updateValue(
+                                          event.currentTarget.value,
+                                          rowIndex,
+                                          cellIndex
+                                        )
+                                      }
+                                      onBlur={(event) =>
+                                        onFocusLost(
+                                          event.currentTarget.value,
+                                          rowIndex,
+                                          cellIndex
+                                        )
+                                      }
+                                      onFocus={(event) =>
+                                        updateCellValue(
+                                          event.currentTarget.value,
+                                          cellIndex,
+                                          rowIndex
+                                        )
+                                      }
+                                    />
+                                  </Box>
+                                ))}
+                                {rows.length > 1 && (
+                                  <Box padding={2}>
+                                    <Flex gap={2} align="center">
+                                      <Button
+                                        mode="bleed"
+                                        tone="positive"
+                                        onClick={() => duplicateRow(rowIndex)}
+                                      >
+                                        <Tooltip
+                                          content="Duplicate row"
+                                          placement="top"
+                                        >
+                                          <MdContentCopy />
+                                        </Tooltip>
+                                      </Button>
+                                      <Button
+                                        mode="bleed"
+                                        tone="critical"
+                                        onClick={() => removeRow(rowIndex)}
+                                      >
+                                        <Tooltip
+                                          content="Delete row item"
+                                          placement="top"
+                                        >
+                                          <BsTrash />
+                                        </Tooltip>
+                                      </Button>
+                                    </Flex>
+                                  </Box>
+                                )}
                               </Flex>
-                            </Box>
-                            <Flex flex={1} gap={2}>
-                              {row.cells.map((cell, cellIndex) => (
-                                <Box
-                                  key={generateKey('cell', cellIndex)}
-                                  flex={1}
-                                  className={styles.tableCell}
-                                >
-                                  <TextInput
-                                    value={cell}
-                                    onChange={(event) =>
-                                      updateValue(
-                                        event.currentTarget.value,
-                                        rowIndex,
-                                        cellIndex
-                                      )
-                                    }
-                                    onBlur={(event) =>
-                                      onFocusLost(
-                                        event.currentTarget.value,
-                                        rowIndex,
-                                        cellIndex
-                                      )
-                                    }
-                                    onFocus={(event) =>
-                                      updateCellValue(
-                                        event.currentTarget.value,
-                                        cellIndex,
-                                        rowIndex
-                                      )
-                                    }
-                                  />
-                                </Box>
-                              ))}
-                              {rows.length > 1 && (
-                                <Box padding={2}>
-                                  <Flex gap={2}>
-                                    <Button
-                                      mode="bleed"
-                                      tone="positive"
-                                      onClick={() => duplicateRow(rowIndex)}
-                                    >
-                                      <Tooltip
-                                        content="Duplicate row"
-                                        placement="top"
-                                      >
-                                        <MdContentCopy />
-                                      </Tooltip>
-                                    </Button>
-                                    <Button
-                                      mode="bleed"
-                                      tone="critical"
-                                      onClick={() => removeRow(rowIndex)}
-                                    >
-                                      <Tooltip
-                                        content="Delete row item"
-                                        placement="top"
-                                      >
-                                        <BsTrash />
-                                      </Tooltip>
-                                    </Button>
-                                  </Flex>
-                                </Box>
-                              )}
                             </Flex>
-                          </Flex>
-                        </Card>
-                      )}
-                    </Draggable>
-                  );
-                })}
-                {provided.placeholder}
-              </Stack>
-            </Card>
-          )}
-        </StrictModeDroppable>
-      </DragDropContext>
+                          </Card>
+                        )}
+                      </Draggable>
+                    );
+                  })}
+                  {provided.placeholder}
+                </Stack>
+              </Card>
+            )}
+          </StrictModeDroppable>
+        </DragDropContext>
+      </div>
     </Stack>
   );
 }
