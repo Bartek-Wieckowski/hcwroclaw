@@ -1,5 +1,6 @@
 .logoWrapper {
-  min-height: 6.375rem;
+  /* min-height: 6.375rem; */
+  min-height: 4.375rem;
   display: flex;
   align-items: center;
   justify-content: space-between;

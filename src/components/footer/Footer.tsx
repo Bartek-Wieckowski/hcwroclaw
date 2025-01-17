@@ -1,11 +1,15 @@
+'use client';
+
 import styles from './footer.module.css';
 import Image from 'next/image';
 import logo from '@/assets/images/logo-no-bg.png';
 import FooterLink from './footerLink/FooterLink';
 import SocialMediaIcons from '../socialMediaIcons/SocialMediaIcons';
-import { navbarLinks } from '../navbar/navbar-data';
+import { useRoutesLinks } from '@/hooks/useRoutesLinks';
 
 export default function Footer() {
+  const links = useRoutesLinks();
+
   return (
     <footer className={styles.footer}>
       <div className="container">
@@ -22,7 +26,7 @@ export default function Footer() {
           <div className={styles.rightSide}>
             <div className={styles.footerLinksWrapper}>
               <ul className={styles.footerLinkList}>
-                {navbarLinks.map((footerLink) => (
+                {links.map((footerLink) => (
                   <FooterLink key={footerLink.title} footerLink={footerLink} />
                 ))}
               </ul>

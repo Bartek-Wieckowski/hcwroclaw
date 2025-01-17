@@ -2,25 +2,88 @@
   width: 100%;
   height: 6rem;
   margin-inline: auto;
-  padding-inline: 0.938rem;
-  /* padding-inline: var(--container-padding); */
-  color: black;
+  padding-inline: var(--container-padding);
+  position: relative;
   display: flex;
   align-items: center;
+  gap: 0.5rem;
+}
+
+.prevButton,
+.nextButton {
+  width: 1rem;
+  height: 1rem;
+  border: none;
+  background: var(--bg-body-white);
+  color: var(--bg-body-black);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.prevButton span,
+.nextButton span {
+  font-size: 0.5rem;
+  line-height: 1;
+}
+
+.prevButton:hover,
+.nextButton:hover {
+  color: var(--hc-red);
+}
+
+.buttonDisabled {
+  opacity: 0.5;
+  background: var(--bg-body-white);
+  color: var(var(--bg-body-black));
+}
+
+.sliderContent {
+  flex: 1;
+  overflow: hidden;
 }
 
 .gameWrapper {
   display: grid;
-  grid-template-columns: 3rem 1fr 1rem;
+  grid-template-columns: max-content 1fr;
   align-items: center;
-  gap: 0.313rem;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
 }
 
 .gameDate {
-  background: var(--hc-gold);
-  font-weight: var(--font-semi);
   font-size: var(--small-font-size);
-  border-radius: 1rem;
+  font-family: var(--font-roboto-bold);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.gameDate > div {
+  text-align: center;
+  margin-inline: auto;
+  color: var(--hc-red);
+}
+
+.gameType {
+  display: block;
+  text-align: center;
+  background: var(--hc-gold);
+  color: black;
+  border-radius: 0.113rem;
+  width: fit-content;
+  padding: 0.055rem 0.35rem;
+  font-size: var(--game-callendar-font-size);
+  font-family: var(--font-roboto-bold);
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .gameDetails {
@@ -29,37 +92,141 @@
   gap: 0.25rem;
 }
 
-.gameDate > div {
-  text-align: center;
-  width: 50%;
-  margin-inline: auto;
+.gameDetails img {
+  border-radius: var(--border-radius-img);
+  height: 1.563rem;
+  width: 1.563rem;
+  object-fit: contain;
 }
 
-.gameType {
+.gameTypeWrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.gameTypeLocationAndTime {
   display: block;
   text-align: center;
-  background: var(--hc-gold);
-  border-radius: 0.313rem;
+  color: white;
+  font-size: var(--game-callendar-font-size);
+  font-family: var(--font-outfit-regular);
+  line-height: 1;
+  text-transform: uppercase;
 }
 
-.gameScore {
+.teamHome,
+.teamAway {
   display: flex;
-  flex-direction: column;
-  color: #eee;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.sliderSwiperSlide {
-  padding: 0 1.563rem;
+.teamLogoAndName {
+  display: grid;
+  grid-template-columns: 1.563rem 1fr;
+  align-items: center;
+  gap: 0.188rem;
 }
 
 .teamName {
-  font-size: 0.375rem;
+  font-size: 0.75rem;
   margin-left: 0.188rem;
   color: #eee;
   font-family: var(--font-outfit-regular);
 }
 
+.logoPlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.563rem;
+  height: 1.563rem;
+  background-color: var(--bg-body-white);
+  color: var(--bg-body-black);
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-family: var(--font-outfit-bold);
+}
+
+.gameScore {
+  display: flex;
+  flex-direction: column;
+  background: var(--hc-gold);
+  background-clip: text;
+  color: transparent;
+  font-family: var(--font-roboto-bold);
+}
+
+@media screen and (min-width: 365px) {
+  .sliderSwiperWrapper {
+    gap: 1rem;
+  }
+
+  .prevButton,
+  .nextButton {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .prevButton span,
+  .nextButton span {
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  .gameDate {
+    gap: 1.6rem;
+  }
+
+  .gameDetails {
+    gap: 0.5rem;
+  }
+}
+
+@media screen and (min-width: 597px) {
+  .sliderSwiperSlide {
+    padding: 0 0.85rem;
+    position: relative;
+  }
+
+  .sliderSwiperSlide::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 0.063rem;
+    height: 40%;
+    background-color: #eee;
+    transform: translateY(-50%);
+  }
+
+  .sliderSwiperSlide:last-child::after {
+    display: none;
+  }
+}
+
 @media screen and (min-width: 992px) {
+  .prevButton,
+  .nextButton {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .prevButton span,
+  .nextButton span {
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .sliderSwiperSlide {
+    padding: 0 1.563rem;
+  }
+
+  .gameDate {
+    gap: 1.95rem;
+  }
+
   .gameScore {
     align-self: self-end;
   }

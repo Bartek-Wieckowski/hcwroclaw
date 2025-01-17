@@ -1,0 +1,263 @@
+.tableWrapper {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+/* TODO: info comment -> styles are not used at the moment but we keep them   */
+/* .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+  
+  .table {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .table td {
+    display: flex;
+  }
+  .table tr {
+    display: flex;
+    width: 100%;
+  }
+  .table tbody {
+    display: flex;
+  }
+  .row {
+    width: 100%;
+  }
+  .row span {
+    cursor: pointer;
+  }
+  .row:first-of-type > .cell {
+    border-color: lightgray;
+    padding: 0;
+  }
+  
+  .cell {
+    border: 1px solid gray;
+    width: 100px;
+  }
+  
+  .cell span {
+    margin-right: 0;
+    height: 100%;
+    display: flex;
+  }
+  
+  .cell input,
+  .cell textarea {
+    padding: 5px;
+    font-size: 1em !important;
+  }
+  
+  .removeColumn {
+    text-align: center;
+  }
+  .joinedRow {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+  .dragIcon {
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    cursor: grab;
+  }
+  
+  .deleteRow {
+    width: 514px;
+    margin-left: 90px;
+  }
+  
+  .deleteColumn {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+  }
+  .deleteColumn button {
+    text-align: center;
+  }
+  
+  .tableData {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  
+  .isDragging {
+    background: rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .dragIcon:active {
+    cursor: grabbing;
+  }
+
+  .titleInputs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .headerInputs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .headerColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100px;
+    position: relative;
+    padding-top: 24px;
+  }
+
+  .headerActions {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 10;
+  }
+
+  .headerActions button {
+    padding: 4px;
+    border-radius: 4px;
+    background: white;
+  }
+
+  .headerActions button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .headerActions svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+  } */
+   
+.importantBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.importantBox h6 {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: red;
+}
+
+.importantBox p {
+  color: yellowgreen;
+  font-size: 12px;
+  margin-top:0;
+  margin-bottom:0;
+}
+
+.columnsContainer {
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 12px;
+}
+
+.columnsContainer::-webkit-scrollbar {
+  height: 8px;
+}
+
+.columnsContainer::-webkit-scrollbar-track {
+  background: #888;
+  border-radius: 4px;
+}
+
+.columnsContainer::-webkit-scrollbar-thumb {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.columnsContainer::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.columnsWrapper {
+  display: inline-flex;
+  gap: 12px;
+  min-width: min-content;
+}
+
+.columnCard {
+  width: fit-content;
+  flex-shrink: 0;
+}
+
+.columnCard input {
+  font-size: 10px;
+  width: 100px;
+}
+
+.boxButtons {
+  margin-bottom: 20px !important;
+}
+
+.userCreateTableContainer {
+  overflow-x: auto;
+}
+
+.userCreateTableContainer::-webkit-scrollbar {
+  height: 8px;
+}
+
+.userCreateTableContainer::-webkit-scrollbar-track {
+  background: #888;
+  border-radius: 4px;
+}
+
+.userCreateTableContainer::-webkit-scrollbar-thumb {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.userCreateTableContainer::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.tableCell {
+  /* flex-shrink: 0;
+  min-width: 80px;
+  width: fit-content; */
+  flex: none !important;
+}
+
+.tableCell:first-child {
+  width: 150px;
+}
+
+.tableCell input {
+  font-size: 10px;
+}
+
+.tableCell:not(:first-child) {
+  width: 65px;
+}
+
+.userCreateTableHeaderCell span {
+  font-size: 8px;
+}
+
+
+
+

@@ -1,0 +1,28 @@
+{
+  "routesLink": {
+    "home": "Strona główna",
+    "news": "Aktualności",
+    "team": "Drużyna",
+    "club": "Klub",
+    "contact": "Kontakt",
+    "becomePartner": "Zostań partnerem"
+  },
+  "common": {
+    "calendar": "Kalendarz",
+    "games": "Gier"
+  },
+  "gameCalendar": {
+    "noGames": "Brak zaplanowanych meczów"
+  },
+  "leageTables": {
+    "update": "Aktualizowano"
+  },
+  "gameCalendarSlider": {
+    "completed": "Zakończony"
+  },
+  "pageNotfound": {
+    "title": "404",
+    "description": "Strona, której szukasz, nie istnieje.",
+    "availableLanguages": "Dostępne języki:"
+  }
+}

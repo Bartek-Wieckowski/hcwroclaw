@@ -3,19 +3,19 @@ import Link from 'next/link';
 import { BiLogoFacebook, BiLogoInstagramAlt } from 'react-icons/bi';
 
 type SocialMediaIconsProps = {
-  isScrolled?: boolean;
   isNavigation?: boolean;
   isInMobileMenu?: boolean;
+  isScrolled?: boolean;
   isHomePage?: boolean;
   className?: string;
 };
 
 export default function SocialMediaIcons({
-  isScrolled = false,
   isNavigation = false,
   isInMobileMenu = false,
+  isScrolled = false,
   isHomePage = false,
-  className = '',
+  className,
 }: SocialMediaIconsProps) {
   return (
     <ul
@@ -31,7 +31,7 @@ export default function SocialMediaIcons({
           target="_blank"
           className={styles.socialMediaLink}
         >
-          <BiLogoFacebook />
+          <BiLogoFacebook className={styles.socialMediaIcon} />
         </Link>
       </li>
       <li className={styles.socialMediaItem}>
@@ -40,7 +40,7 @@ export default function SocialMediaIcons({
           target="_blank"
           className={styles.socialMediaLink}
         >
-          <BiLogoInstagramAlt />
+          <BiLogoInstagramAlt className={styles.socialMediaIcon} />
         </Link>
       </li>
     </ul>

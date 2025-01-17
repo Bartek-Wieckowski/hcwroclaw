@@ -1,0 +1,28 @@
+{
+  "routesLink": {
+    "home": "Home",
+    "news": "News",
+    "team": "Team",
+    "club": "Club",
+    "contact": "Contact",
+    "becomePartner": "Become a partner"
+  },
+  "common": {
+    "calendar": "Calendar",
+    "games": "Games"
+  },
+  "gameCalendar": {
+    "noGames": "No scheduled games"
+  },
+  "leageTables": {
+    "update": "Updated"
+  },
+  "gameCalendarSlider": {
+    "completed": "Final"
+  },
+  "pageNotfound": {
+    "title": "404",
+    "description": "Page not found",
+    "availableLanguages": "Available languages:"
+  }
+}

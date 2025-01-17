@@ -3,87 +3,193 @@
 import 'swiper/css';
 import 'swiper/css/navigation';
 import Image from 'next/image';
-import logoPlaceholder from '../../../assets/images/logo-team-placeholder.png';
 import styles from './gameCalendarSlider.module.css';
-import { A11y, Navigation, Scrollbar } from 'swiper/modules';
+import Spinner from '../../spinner/Spinner';
+import { useState, useRef, useMemo } from 'react';
+import { A11y, Scrollbar } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { GetGamesCalendarQueryResult } from '../../../../sanity.types';
-import { formatDate } from '@/utils/helpers';
+import type { Swiper as SwiperType } from 'swiper';
+import { formatDate, getInitials } from '@/lib/helpers';
 import { urlFor } from '@/sanity/lib/image';
+import { Locale } from '@/i18n/i18n';
+import { useTranslations } from 'next-intl';
+import { GamesCalendar } from '@/types/GamesCalendar.type';
 
 type GameCalendarSliderProps = {
-  games: GetGamesCalendarQueryResult;
+  games: GamesCalendar[];
+  lng: Locale;
 };
 
-export default function GameCalendarSlider({ games }: GameCalendarSliderProps) {
+export default function GameCalendarSlider({
+  games,
+  lng,
+}: GameCalendarSliderProps) {
+  const [swiperLoaded, setSwiperLoaded] = useState(false);
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
+  const [showNavigation, setShowNavigation] = useState(false);
+  const swiperRef = useRef<SwiperType>();
+  const t = useTranslations('gameCalendarSlider');
+
+  const initialSlide = useMemo(() => {
+    const now = new Date();
+    const nowTime = now.getTime();
+
+    return games.findIndex((game) => {
+      const gameDate = new Date(game.date);
+      return gameDate.getTime() >= nowTime;
+    });
+  }, [games]);
+
+  const updateNavigationVisibility = () => {
+    let currentSlidesPerView = 1;
+
+    const windowWidth = window.innerWidth;
+    if (windowWidth >= 1500) {
+      currentSlidesPerView = Math.min(5, games.length);
+    } else if (windowWidth >= 992) {
+      currentSlidesPerView = Math.min(3, games.length);
+    } else if (windowWidth >= 597) {
+      currentSlidesPerView = Math.min(2, games.length);
+    }
+
+    const shouldShowNavigation = games.length > currentSlidesPerView;
+    setShowNavigation(shouldShowNavigation);
+  };
+
+  const handlePrev = () => {
+    swiperRef.current?.slidePrev();
+  };
+
+  const handleNext = () => {
+    swiperRef.current?.slideNext();
+  };
+
   return (
     <div className={styles.sliderSwiperWrapper}>
-      <Swiper
-        modules={[Navigation, Scrollbar, A11y]}
-        slidesPerView={1}
-        navigation
-        scrollbar={{ draggable: true }}
-        breakpoints={{
-          597: { slidesPerView: 2 },
-          992: { slidesPerView: 3 },
-          1500: { slidesPerView: 2 },
-        }}
-      >
-        {games.map((game) => (
-          <SwiperSlide key={game._id} className={styles.sliderSwiperSlide}>
-            <div className={styles.gameWrapper}>
-              <div className={styles.gameDate}>
-                <div>{formatDate(game.date)}</div>
-              </div>
-              <div className={styles.gameDetails}>
-                <small className={styles.gameType}>{game.gameType.name}</small>
-                <div className={styles.teamHome}>
-                  <div className="dFlex">
-                    <Image
-                      src={
-                        game.firstTeam.logo
-                          ? urlFor(game.firstTeam.logo).url()
-                          : logoPlaceholder
-                      }
-                      alt={game.firstTeam?.name || ''}
-                      height={20}
-                      width={20}
-                    />
-                    <small className={styles.teamName}>
-                      {game.firstTeam?.name}
+      {!swiperLoaded && <Spinner />}
+      {swiperLoaded && games.length > 1 && showNavigation && (
+        <button
+          onClick={handlePrev}
+          className={`${styles.prevButton} ${isBeginning ? styles.buttonDisabled : ''}`}
+          disabled={isBeginning}
+        >
+          <span>&#10094;</span>
+        </button>
+      )}
+      <div className={swiperLoaded ? styles.sliderContent : 'hidden'}>
+        <Swiper
+          modules={[A11y, Scrollbar]}
+          slidesPerView={1}
+          initialSlide={initialSlide !== -1 ? initialSlide : 0}
+          scrollbar={{ draggable: true }}
+          breakpoints={{
+            597: { slidesPerView: Math.min(2, games.length) },
+            992: { slidesPerView: Math.min(3, games.length) },
+            1500: { slidesPerView: Math.min(5, games.length) },
+          }}
+          onInit={() => {
+            setSwiperLoaded(true);
+            updateNavigationVisibility();
+          }}
+          onBreakpoint={() => {
+            updateNavigationVisibility();
+          }}
+          onResize={() => {
+            updateNavigationVisibility();
+          }}
+          onBeforeInit={(swiper) => {
+            swiperRef.current = swiper;
+          }}
+          onSlideChange={(swiper) => {
+            setIsBeginning(swiper.isBeginning);
+            setIsEnd(swiper.isEnd);
+          }}
+        >
+          {games.map((game) => (
+            <SwiperSlide key={game._id} className={styles.sliderSwiperSlide}>
+              <div className={styles.gameWrapper}>
+                <div className={styles.gameDate}>
+                  <small className={styles.gameType}>
+                    {game.gameType.name[lng] || game.gameType.name.pl}
+                  </small>
+                  <div>{formatDate(game.date, lng)}</div>
+                </div>
+                <div className={styles.gameDetails}>
+                  <div className={styles.gameTypeWrapper}>
+                    <small className={styles.gameTypeLocationAndTime}>
+                      {game.isCompleted ? (
+                        t('completed')
+                      ) : (
+                        <span className={styles.gameTypeTime}>
+                          {game.location}&nbsp;{game.time}
+                        </span>
+                      )}
                     </small>
                   </div>
-                </div>
-                <div className={styles.teamAway}>
-                  <div className="dFlex">
-                    <Image
-                      src={
-                        game.secondTeam.logo
-                          ? urlFor(game.secondTeam.logo).url()
-                          : logoPlaceholder
-                      }
-                      alt={game.secondTeam.name}
-                      height={20}
-                      width={20}
-                    />
-                    <small className={styles.teamName}>
-                      {game.secondTeam?.name}
-                    </small>
+                  <div className={styles.teamHome}>
+                    <div className={styles.teamLogoAndName}>
+                      {game.firstTeam.logo ? (
+                        <Image
+                          src={urlFor(game.firstTeam.logo).url()}
+                          alt={game.firstTeam?.name || ''}
+                          height={25}
+                          width={25}
+                        />
+                      ) : (
+                        <div className={styles.logoPlaceholder}>
+                          {getInitials(game.firstTeam?.name || '')}
+                        </div>
+                      )}
+                      <small className={styles.teamName}>
+                        {game.firstTeam?.name}
+                      </small>
+                    </div>
+                    <div className={styles.gameScore}>
+                      <div className={styles.goalHome}>
+                        {game.isCompleted ? game.firstTeamGoals : '-'}
+                      </div>
+                    </div>
+                  </div>
+                  <div className={styles.teamAway}>
+                    <div className={styles.teamLogoAndName}>
+                      {game.secondTeam.logo ? (
+                        <Image
+                          src={urlFor(game.secondTeam.logo).url()}
+                          alt={game.secondTeam.name}
+                          height={25}
+                          width={25}
+                        />
+                      ) : (
+                        <div className={styles.logoPlaceholder}>
+                          {getInitials(game.secondTeam?.name || '')}
+                        </div>
+                      )}
+                      <small className={styles.teamName}>
+                        {game.secondTeam?.name}
+                      </small>
+                    </div>
+                    <div className={styles.gameScore}>
+                      <div className={styles.goalAway}>
+                        {game.isCompleted ? game.secondTeamGoals : '-'}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className={styles.gameScore}>
-                <div className={styles.goalHome}>
-                  {game.isCompleted ? game.firstTeamGoals : '-'}
-                </div>
-                <div className={styles.goalAway}>
-                  {game.isCompleted ? game.secondTeamGoals : '-'}
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+      {swiperLoaded && games.length > 1 && showNavigation && (
+        <button
+          onClick={handleNext}
+          className={`${styles.nextButton} ${isEnd ? styles.buttonDisabled : ''}`}
+          disabled={isEnd}
+        >
+          <span>&#10095;</span>
+        </button>
+      )}
     </div>
   );
 }

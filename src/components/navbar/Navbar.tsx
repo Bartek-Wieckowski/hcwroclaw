@@ -1,24 +1,21 @@
-'use client';
-
 import styles from './navbar.module.css';
 import useClickOutside from '@/hooks/useClickOutside';
-import SocialMediaIcons from '../socialMediaIcons/SocialMediaIcons';
+import NavigationSocialMediaIcons from '../socialMediaIcons/NavigationSocialMediaIcons';
 import MenuLink from './menuLink/MenuLink';
+import LanguageSwitcher from '../languageSwitcher/LanguageSwitcher';
 import { useState } from 'react';
 import { BiMenuAltRight, BiX } from 'react-icons/bi';
-import { navbarLinks } from './navbar-data';
 import { GiPodium } from 'react-icons/gi';
+import { useRoutesLinks } from '@/hooks/useRoutesLinks';
+import { useHeader } from '@/contexts/HeaderContext';
+import { useLeagueTables } from '@/contexts/LeagueTablesContext';
 
-type NavbarProps = {
-  isScrolled: boolean;
-  isHomePage: boolean;
-};
-
-export default function Navbar({
-  isScrolled = false,
-  isHomePage = false,
-}: NavbarProps) {
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const links = useRoutesLinks();
+  const { isScrolled, isHomePage } = useHeader();
+  const { toggleModal } = useLeagueTables();
+
   const closeMenu = () => {
     setIsOpen(false);
   };
@@ -40,17 +37,18 @@ export default function Navbar({
             className={styles.hamburgerClose}
             onClick={() => setIsOpen((prev) => !prev)}
           />
-          {navbarLinks.map((navLink) => (
+          {links.map((navLink) => (
             <MenuLink navLink={navLink} key={navLink.title} />
           ))}
-          <SocialMediaIcons
-            isScrolled={isScrolled}
-            isNavigation={true}
-            isInMobileMenu={isOpen}
-            isHomePage={isHomePage}
-          />
+          <NavigationSocialMediaIcons isInMobileMenu={isOpen} />
         </ul>
-        <div className={styles.tableGamesIcon}>
+        <LanguageSwitcher />
+        <div
+          className={styles.tableGamesIcon}
+          onClick={toggleModal}
+          role="button"
+          tabIndex={0}
+        >
           <GiPodium />
         </div>
         <BiMenuAltRight
