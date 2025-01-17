@@ -81,54 +81,65 @@ export default function TableContent({ data, lng }: TableContentProps) {
                 </div>
                 <div className={styles.chevronColumn}></div>
               </div>
-              {table.rows.map((row, rowIndex: number) => (
-                <div key={rowIndex} className={styles.tableRow}>
-                  <button
-                    className={styles.rowContent}
-                    onClick={() => toggleRow(`${table._id}-${rowIndex}`)}
-                  >
-                    <div className={styles.positionColumn}>{rowIndex + 1}</div>
-                    <div
-                      className={`${styles.teamColumnInRow} ${getTeamNameClass(row.cells[teamNameIndex] || '')}`}
+              {table.rows.map((row, rowIndex: number) => {
+                const teamName = row.cells[teamNameIndex] || '';
+                const isClientTeam = /hc|hc wrocław|wrocław|wroclaw/i.test(
+                  teamName
+                );
+
+                return (
+                  <div key={rowIndex} className={`${styles.tableRow} `}>
+                    <button
+                      className={styles.rowContent}
+                      onClick={() => toggleRow(`${table._id}-${rowIndex}`)}
                     >
-                      {row.cells[teamNameIndex]}
-                    </div>
-                    <div className={styles.pointsColumnInRow}>
-                      {row.cells[mainValueIndex]}
-                    </div>
-                    <div className={styles.chevronColumn}>
-                      <IoChevronDown
-                        className={`${styles.chevron} ${
-                          expandedRow === `${table._id}-${rowIndex}`
-                            ? styles.expanded
-                            : ''
-                        }`}
-                      />
-                    </div>
-                  </button>
-                  {expandedRow === `${table._id}-${rowIndex}` && (
-                    <div className={styles.rowDetails}>
-                      {row.cells.map((cell: string, cellIndex: number) => {
-                        if (
-                          cellIndex !== 0 &&
-                          cellIndex !== teamNameIndex &&
-                          cellIndex !== mainValueIndex
-                        ) {
-                          return (
-                            <div key={cellIndex} className={styles.detailRow}>
-                              <span className={styles.label}>
-                                {table.headers[cellIndex][lng] || ''}:
-                              </span>
-                              <span className={styles.value}>{cell}</span>
-                            </div>
-                          );
-                        }
-                        return null;
-                      })}
-                    </div>
-                  )}
-                </div>
-              ))}
+                      <div
+                        className={`${styles.positionColumn} ${isClientTeam ? styles.activeClientPlaceInTable : ''}`}
+                      >
+                        {rowIndex + 1}
+                      </div>
+                      <div
+                        className={`${styles.teamColumnInRow} ${getTeamNameClass(teamName)}`}
+                      >
+                        {teamName}
+                      </div>
+                      <div className={styles.pointsColumnInRow}>
+                        {row.cells[mainValueIndex]}
+                      </div>
+                      <div className={styles.chevronColumn}>
+                        <IoChevronDown
+                          className={`${styles.chevron} ${
+                            expandedRow === `${table._id}-${rowIndex}`
+                              ? styles.expanded
+                              : ''
+                          }`}
+                        />
+                      </div>
+                    </button>
+                    {expandedRow === `${table._id}-${rowIndex}` && (
+                      <div className={styles.rowDetails}>
+                        {row.cells.map((cell: string, cellIndex: number) => {
+                          if (
+                            cellIndex !== 0 &&
+                            cellIndex !== teamNameIndex &&
+                            cellIndex !== mainValueIndex
+                          ) {
+                            return (
+                              <div key={cellIndex} className={styles.detailRow}>
+                                <span className={styles.label}>
+                                  {table.headers[cellIndex][lng] || ''}:
+                                </span>
+                                <span className={styles.value}>{cell}</span>
+                              </div>
+                            );
+                          }
+                          return null;
+                        })}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
               <small className={styles.updateInfo}>
                 <span>{t('update')}:&nbsp;</span>
                 {convertDateWithTimezone(table._updatedAt || table._createdAt)}
