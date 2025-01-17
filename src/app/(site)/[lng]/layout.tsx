@@ -39,7 +39,7 @@ const outfitBold = localFont({
   weight: '700',
 });
 const blackIron = localFont({
-  src: '../../../assets/fonts/BlackIron.ttf',
+  src: '../../../assets/fonts/Blackiron.ttf',
   variable: '--font-black-iron',
 });
 const fontClasses = `${robotoRegular.variable} ${robotoThin.variable} ${robotoBold.variable} ${outfitRegular.variable} ${outfitThin.variable} ${outfitBold.variable} ${blackIron.variable}`;
