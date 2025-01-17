@@ -179,10 +179,10 @@ export default function Table(props: TableProps) {
             automatically
           </p>
           <p>
-            --- In order to display the tables correctly on the website we need to
-            have a column called Punkty/Points or  Mecze/Matchs, if in some league the column
-            is called Pkt/Pts or M (as a match) then here we need to create it
-            as  Punkty/Points or Mecze/Matchs
+            --- In order to display the tables correctly on the website we need
+            to have a column called Punkty/Points or Mecze/Matchs, if in some
+            league the column is called Pkt/Pts or M (as a match) then here we
+            need to create it as Punkty/Points or Mecze/Matchs
           </p>
         </div>
       </Box>
