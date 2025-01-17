@@ -46,7 +46,7 @@ const fontClasses = `${robotoRegular.variable} ${robotoThin.variable} ${robotoBo
 
 export const metadata: Metadata = {
   title: 'Hockey Club Wrocław',
-  description: 'Test desc',
+  description: 'Test desc2',
 };
 
 export function generateStaticParams() {
