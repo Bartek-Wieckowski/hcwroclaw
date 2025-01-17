@@ -36,21 +36,26 @@ jobs:
           NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
           NEXT_PUBLIC_SANITY_API_VERSION: ${{ secrets.NEXT_PUBLIC_SANITY_API_VERSION }}
 
-      - name: Deploy to MyDevil
-        uses: appleboy/ssh-action@master
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.HOST_USERNAME }}
           key: ${{ secrets.HOST_SSH_KEY_P }}
-          script: |
-            # Wyczyść katalog docelowy
-            rm -rf ~/domains/hcwd3v.hcwroclaw.com/public_nodejs/*
-            
-            # Skopiuj zbudowaną aplikację
-            cp -r .next public node_modules package.json next.config.mjs ~/domains/hcwd3v.hcwroclaw.com/public_nodejs/
-            
-            # Ustaw komendę startową
+          known_hosts: unnecessary
+          if_key_exists: replace
+
+      - name: Deploy to MyDevil
+        run: |
+          # Przygotuj archiwum z plikami
+          tar -czf deploy.tar.gz .next public node_modules package.json next.config.mjs
+          
+          # Wyślij pliki na serwer
+          scp -o StrictHostKeyChecking=no deploy.tar.gz ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST }}:~/domains/hcwd3v.hcwroclaw.com/public_nodejs/
+          
+          # Wykonaj komendy na serwerze
+          ssh -o StrictHostKeyChecking=no ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST }} '
+            cd ~/domains/hcwd3v.hcwroclaw.com/public_nodejs/
+            tar -xzf deploy.tar.gz
+            rm deploy.tar.gz
             devil www cmd hcwd3v.hcwroclaw.com "node app.js"
-            
-            # Restart aplikacji
             devil www restart hcwd3v.hcwroclaw.com
+          '
