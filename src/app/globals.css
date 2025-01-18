@@ -294,6 +294,10 @@ section {
   display: none;
 }
 
+.overflow-hidden{
+  overflow: hidden;
+}
+
 .main {
   display: flex;
   gap: 2rem;

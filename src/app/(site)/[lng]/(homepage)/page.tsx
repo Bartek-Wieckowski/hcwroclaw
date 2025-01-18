@@ -18,7 +18,9 @@ export default async function HomePage() {
       <SectionTitle part1={t('calendar')} part2={t('games')} />
       <GameCalendar key={'homepage'} withMargin={true} lng={locale} />
       <main className="main">
-        <section className="pageContent">{/* <MeetClub /> */}</section>
+        <section className="pageContent">
+          <MeetClub />
+        </section>
         <aside className="asideLeageTables">
           <LeagueTables />
         </aside>

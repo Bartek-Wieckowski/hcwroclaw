@@ -221,7 +221,7 @@
   .leagueTables {
     position: sticky;
     top: 8rem;
-    height: 50vh;
+    height: 75vh;
     width: 18.75rem;
     margin-top: 2rem;
     overflow-y: auto;

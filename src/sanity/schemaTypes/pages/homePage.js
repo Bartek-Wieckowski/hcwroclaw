@@ -42,6 +42,100 @@ export default defineType({
         },
       ],
     }),
+    defineField({
+      name: 'meetClubModule',
+      title: 'Meet Club Module',
+      type: 'object',
+      fields: [
+        // defineField({
+        //   name: 'title',
+        //   title: 'Title',
+        //   type: 'localeString',
+        //   validation: (Rule) => Rule.required(),
+        // }),
+        defineField({
+          name: 'description',
+          title: 'Description',
+          type: 'localeText',
+        }),
+        defineField({
+          name: 'activePlayers',
+          title: 'Active Players Module',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'number',
+              title: 'number',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'text',
+              title: 'text',
+              type: 'localeString',
+              validation: (Rule) => Rule.required(),
+            }),
+          ],
+        }),
+        defineField({
+          name: 'gamePerSeasson',
+          title: 'Game Per Season Module',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'number',
+              title: 'number',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'text',
+              title: 'text',
+              type: 'localeString',
+              validation: (Rule) => Rule.required(),
+            }),
+          ],
+        }),
+        defineField({
+          name: 'trainingAtWeek',
+          title: 'Training At Week Module',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'number',
+              title: 'number',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'text',
+              title: 'text',
+              type: 'localeString',
+              validation: (Rule) => Rule.required(),
+            }),
+          ],
+        }),
+        defineField({
+          name: 'leagueNumbers',
+          title: 'League Numbers Module',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'number',
+              title: 'number',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'text',
+              title: 'text',
+              type: 'localeString',
+              validation: (Rule) => Rule.required(),
+            }),
+          ],
+        }),
+      ],
+    }),
   ],
   preview: {
     prepare() {
