@@ -9,11 +9,13 @@ export default defineType({
       title: 'Polski',
       name: 'pl',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       title: 'English',
       name: 'en',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
   ],
   preview: {

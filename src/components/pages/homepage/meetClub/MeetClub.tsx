@@ -1,5 +1,9 @@
 import styles from './meetClub.module.css';
 import SectionTitle from '@/components/sectionTitle/SectionTitle';
+import { Locale } from '@/i18n/i18n';
+import { getLocale, getTranslations } from 'next-intl/server';
+import { client } from '@/sanity/lib/client';
+import { getHomePageAboutUsSectionQuery } from '@/sanity/lib/queries';
 
 type StatItemProps = {
   number: string;
@@ -15,28 +19,46 @@ function StatItem({ number, text }: StatItemProps) {
   );
 }
 
-export default function MeetClub() {
+export default async function MeetClub() {
+  const lng = (await getLocale()) as Locale;
+  const t = await getTranslations('homePage');
+
+  const [aboutUsData] = await client.fetch(getHomePageAboutUsSectionQuery);
+  const aboutUsSection = aboutUsData.aboutUsSection;
+
   return (
     <div className={styles.meetClub}>
       <div className={styles.meetClubBg}>
         <div className={styles.content}>
           <div className={styles.info}>
             <SectionTitle
-              part1="klub"
-              part2="w liczbach"
+              part1={t('aboutUsSection.sectionTitle1')}
+              part2={t('aboutUsSection.sectionTitle2')}
               variant="secondary-primary"
             />
             <p className={styles.description}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Voluptatum quibusdam perspiciatis eum explicabo.
-              Dignissimos atque
-              culpa a perferendis et voluptates.
+              {aboutUsSection.description[lng]}
             </p>
             <div className={styles.stats}>
-              <StatItem number="30" text="Aktywnych graczy" />
-              <StatItem number="35+" text="Gier na sezon" />
-              <StatItem number="3" text="treningi tygodniowo" />
-              <StatItem number="2" text="w tylu ligach gramy" />
+              <StatItem
+                number={aboutUsSection.activePlayers.number}
+                text={aboutUsSection.activePlayers.text[lng]}
+              />
+
+              <StatItem
+                number={aboutUsSection.gamePerSeasson.number}
+                text={aboutUsSection.gamePerSeasson.text[lng]}
+              />
+
+              <StatItem
+                number={aboutUsSection.trainingAtWeek.number}
+                text={aboutUsSection.trainingAtWeek.text[lng]}
+              />
+
+              <StatItem
+                number={aboutUsSection.leagueNumbers.number}
+                text={aboutUsSection.leagueNumbers.text[lng]}
+              />
             </div>
           </div>
         </div>

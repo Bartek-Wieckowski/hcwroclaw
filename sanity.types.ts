@@ -219,15 +219,40 @@ export type HomePage = {
     title: LocaleString;
     desc: LocaleString;
   };
+  aboutUsSection: {
+    description: LocaleText;
+    activePlayers: {
+      number: string;
+      text: LocaleString;
+    };
+    gamePerSeasson: {
+      number: string;
+      text: LocaleString;
+    };
+    trainingAtWeek: {
+      number: string;
+      text: LocaleString;
+    };
+    leagueNumbers: {
+      number: string;
+      text: LocaleString;
+    };
+  };
+};
+
+export type LocaleText = {
+  _type: "localeText";
+  pl: string;
+  en: string;
 };
 
 export type LocaleString = {
   _type: "localeString";
-  pl?: string;
-  en?: string;
+  pl: string;
+  en: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Slug | LeagueTables | GameCalendar | GameType | Team | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | HomePage | LocaleString;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Slug | LeagueTables | GameCalendar | GameType | Team | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | HomePage | LocaleText | LocaleString;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: getGamesCalendarQuery
@@ -310,12 +335,50 @@ export type GetLeagueTablesQueryResult = Array<{
   _id: string;
   title: string;
   headers: Array<{
-    pl: string | null;
-    en: string | null;
+    pl: string;
+    en: string;
   }>;
   rows: Array<{
     cells: Array<string>;
   }>;
+}>;
+// Variable: getHomePageAboutUsSectionQuery
+// Query: *[_type == "homePage"]{    aboutUsSection {      description{en, pl},      activePlayers{number, text{en, pl}},      gamePerSeasson{number, text{en, pl}},      trainingAtWeek{number, text{en, pl}},      leagueNumbers{number, text{en, pl}}    }}
+export type GetHomePageAboutUsSectionQueryResult = Array<{
+  aboutUsSection: {
+    description: {
+      en: string;
+      pl: string;
+    };
+    activePlayers: {
+      number: string;
+      text: {
+        en: string;
+        pl: string;
+      };
+    };
+    gamePerSeasson: {
+      number: string;
+      text: {
+        en: string;
+        pl: string;
+      };
+    };
+    trainingAtWeek: {
+      number: string;
+      text: {
+        en: string;
+        pl: string;
+      };
+    };
+    leagueNumbers: {
+      number: string;
+      text: {
+        en: string;
+        pl: string;
+      };
+    };
+  };
 }>;
 
 // Query TypeMap
@@ -324,5 +387,6 @@ declare module "@sanity/client" {
   interface SanityQueries {
     "{\n  \"pastGames\": *[_type == \"gameCalendar\" && dateTime(date) < dateTime(now())] | \n    order(date desc) [0...12] {\n      _id,\n      _type,\n      date,\n      location,\n      time,\n      gameType->{\n        _id,\n        name\n      },\n      firstTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      secondTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      isCompleted,\n      firstTeamGoals,\n      secondTeamGoals\n    },\n  \"futureGames\": *[_type == \"gameCalendar\" && dateTime(date) >= dateTime(now())] | \n    order(date asc) [0...12] {\n      _id,\n      _type,\n      date,\n      location,\n      time,\n      gameType->{\n        _id,\n        name\n      },\n      firstTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      secondTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      isCompleted,\n      firstTeamGoals,\n      secondTeamGoals\n    }\n}": GetGamesCalendarQueryResult;
     "\n  *[_type == \"leagueTables\"] {\n    _createdAt,\n    _updatedAt,\n    _id,\n    title,\n    headers[] { \n      pl,\n      en\n    },\n    rows[] {\n      cells\n    }\n  }\n": GetLeagueTablesQueryResult;
+    "\n *[_type == \"homePage\"]{\n    aboutUsSection {\n      description{en, pl},\n      activePlayers{number, text{en, pl}},\n      gamePerSeasson{number, text{en, pl}},\n      trainingAtWeek{number, text{en, pl}},\n      leagueNumbers{number, text{en, pl}}\n    }\n}": GetHomePageAboutUsSectionQueryResult;
   }
 }

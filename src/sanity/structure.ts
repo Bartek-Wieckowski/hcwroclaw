@@ -9,20 +9,11 @@ export const structure: StructureResolver = (S) =>
         .title('Main content')
         .child(
           S.list()
-            .title('Main content')
+            .title('Pages list')
             .items([
               S.listItem()
-                .title('Pages')
-                .child(
-                  S.list()
-                    .title('Pages list')
-                    .items([
-                      S.listItem()
-                        .title('Home Page')
-                        .child(S.documentTypeList('homePage')),
-                    ])
-                ),
-              S.divider(),
+                .title('Home Page')
+                .child(S.documentTypeList('homePage')),
             ])
         ),
       S.divider(),

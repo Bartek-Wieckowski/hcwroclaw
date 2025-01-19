@@ -88,3 +88,14 @@ export const getLeagueTablesQuery = defineQuery(`
     }
   }
 `);
+
+export const getHomePageAboutUsSectionQuery = defineQuery(`
+ *[_type == "homePage"]{
+    aboutUsSection {
+      description{en, pl},
+      activePlayers{number, text{en, pl}},
+      gamePerSeasson{number, text{en, pl}},
+      trainingAtWeek{number, text{en, pl}},
+      leagueNumbers{number, text{en, pl}}
+    }
+}`);

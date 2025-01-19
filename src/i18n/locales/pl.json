@@ -15,10 +15,17 @@
     "noGames": "Brak zaplanowanych meczów"
   },
   "leageTables": {
-    "update": "Aktualizowano"
+    "update": "Aktualizowano",
+    "noLeagueMessage": "Aktualnie nie gramy w żadnej lidze."
   },
   "gameCalendarSlider": {
     "completed": "Zakończony"
+  },
+  "homePage": {
+    "aboutUsSection": {
+      "sectionTitle1": "Info",
+      "sectionTitle2": "o nas"
+    }
   },
   "pageNotfound": {
     "title": "404",
