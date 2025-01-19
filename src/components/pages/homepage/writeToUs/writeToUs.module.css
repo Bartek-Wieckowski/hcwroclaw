@@ -1,0 +1,144 @@
+.writeToUs {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 2rem 1rem;
+  position: relative;
+  color: white;
+}
+
+.playerImage {
+  position: relative;
+  margin: -4rem auto 2rem;
+  max-width: 300px;
+}
+
+.image {
+  object-fit: contain;
+  width: 100%;
+  height: auto;
+}
+
+.formWrapper {
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+}
+
+.select {
+  padding: 1rem;
+  border: 2px solid white;
+  background: transparent;
+  color: white;
+  font-size: 1rem;
+  width: 100%;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.5em;
+}
+
+.select option {
+  background-color: #ff3333;
+}
+
+.textarea {
+  padding: 1rem;
+  border: 2px solid white;
+  background: transparent;
+  color: white;
+  font-size: 1rem;
+  width: 100%;
+  resize: vertical;
+  min-height: 120px;
+}
+
+.textarea::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.submitButton {
+  background-color: white;
+  color: #ff3333;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 12px),
+    calc(100% - 12px) 100%,
+    0 100%
+  );
+  white-space: nowrap;
+  align-self: center;
+}
+
+.submitButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Tablet (768px) */
+@media (min-width: 48em) {
+  .writeToUs {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 3rem 2rem;
+  }
+
+  .playerImage {
+    margin: -6rem 0 0;
+    max-width: none;
+  }
+
+  .title {
+    font-size: 2rem;
+    text-align: left;
+  }
+}
+
+/* Desktop (1024px) */
+@media (min-width: 64em) {
+  .writeToUs {
+    grid-template-columns: 1fr 2fr 1fr;
+    padding: 4rem 2rem;
+  }
+
+  .formWrapper {
+    grid-column: 2;
+  }
+
+  .form {
+    max-width: none;
+  }
+
+  .submitButton {
+    margin-left: auto;
+  }
+}

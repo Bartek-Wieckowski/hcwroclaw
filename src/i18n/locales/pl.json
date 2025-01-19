@@ -31,5 +31,18 @@
     "title": "404",
     "description": "Strona, której szukasz, nie istnieje.",
     "availableLanguages": "Dostępne języki:"
+  },
+  "writeToUs": {
+    "title": "Napisz do nas jeśli...",
+    "options": {
+      "sparing": "Chcesz zagrać sparing/mecz",
+      "join": "Chcesz dołączyć do klubu",
+      "partner": "Chcesz zostać partnerem"
+    },
+    "placeholder": "Twoja wiadomość...",
+    "button": "NAPISZ TERAZ →",
+    "sending": "Wysyłanie...",
+    "success": "Wiadomość została wysłana!",
+    "error": "Wystąpił błąd podczas wysyłania wiadomości"
   }
 }

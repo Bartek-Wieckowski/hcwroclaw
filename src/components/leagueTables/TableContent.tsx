@@ -52,8 +52,6 @@ export default function TableContent({ data, lng }: TableContentProps) {
     );
   };
 
-  console.log(data);
-
   return (
     <div className={styles.content}>
       {data.length === 0 ? (

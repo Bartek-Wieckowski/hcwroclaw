@@ -31,5 +31,18 @@
     "title": "404",
     "description": "Page not found",
     "availableLanguages": "Available languages:"
+  },
+  "writeToUs": {
+    "title": "Write to us if...",
+    "options": {
+      "sparing": "You want to play a friendly match",
+      "join": "You want to join the club",
+      "partner": "You want to become a partner"
+    },
+    "placeholder": "Your message...",
+    "button": "WRITE NOW →",
+    "sending": "Sending...",
+    "success": "Message has been sent!",
+    "error": "An error occurred while sending the message"
   }
 }
