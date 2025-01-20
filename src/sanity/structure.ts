@@ -14,6 +14,9 @@ export const structure: StructureResolver = (S) =>
               S.listItem()
                 .title('Home Page')
                 .child(S.documentTypeList('homePage')),
+              S.listItem()
+                .title('News Page')
+                .child(S.documentTypeList('newsSinglePage')),
             ])
         ),
       S.divider(),

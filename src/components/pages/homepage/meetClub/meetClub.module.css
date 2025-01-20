@@ -1,7 +1,7 @@
 .meetClub {
   position: relative;
   height: auto;
-  margin: 2rem 0;
+  margin: 2rem 0 0;
 }
 
 .meetClubBg {
@@ -30,7 +30,7 @@
   z-index: 1;
   background: rgba(0, 0, 0, 0.8);
   padding: 1.5rem;
-  border-radius: 8px;
+  border-radius: 0.5rem;
 }
 
 .description {
@@ -74,7 +74,8 @@
 @media screen and (min-width: 768px) {
   .meetClub {
     height: 100dvh;
-    padding: 3.125rem 0;
+    padding: 2rem 0 0;
+    margin: unset;
   }
 
   .content {

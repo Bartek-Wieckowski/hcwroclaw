@@ -99,3 +99,15 @@ export const getHomePageAboutUsSectionQuery = defineQuery(`
       leagueNumbers{number, text{en, pl}}
     }
 }`);
+
+export const getHomePageLatestNewsQuery = defineQuery(`
+  *[_type == "newsSinglePage"] | order(_createdAt desc) [0..3] {
+      _id,
+      title{pl,en},
+      slugPL,
+      slugEN,
+      excerpt{pl,en},
+      mainPostImage{asset, alt{pl, en}},
+      _createdAt
+    }
+  `);

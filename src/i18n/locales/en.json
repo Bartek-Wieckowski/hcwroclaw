@@ -25,6 +25,10 @@
     "aboutUsSection": {
       "sectionTitle1": "Info",
       "sectionTitle2": "about us"
+    },
+    "latestNews": {
+      "sectionTitle1": "Latest",
+      "sectionTitle2": "News"
     }
   },
   "pageNotfound": {

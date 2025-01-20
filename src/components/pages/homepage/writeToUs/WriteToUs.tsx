@@ -89,7 +89,7 @@ export default function WriteToUs({ lng }: WriteToUsProps) {
   const isMessageValid = message.trim().length > 0;
 
   return (
-    <section className={styles.writeToUs}>
+    <div className={styles.writeToUs}>
       <motion.div
         ref={playerRef}
         className={styles.playerImage}
@@ -108,13 +108,12 @@ export default function WriteToUs({ lng }: WriteToUsProps) {
       </motion.div>
 
       <div className={styles.formWrapper}>
+        <SectionTitle
+          part1={t('title1')}
+          part2={t('title2')}
+          variant="secondary-primary"
+        />
         <form onSubmit={handleSubmit} className={styles.form}>
-          <SectionTitle
-            part1={t('title1')}
-            part2={t('title2')}
-            variant="secondary-primary"
-          />
-
           <div className={styles.customSelect} ref={dropdownRef}>
             <button
               type="button"
@@ -186,6 +185,6 @@ export default function WriteToUs({ lng }: WriteToUsProps) {
           </button>
         </form>
       </div>
-    </section>
+    </div>
   );
 }

@@ -9,6 +9,8 @@
 .playerImage {
   position: relative;
   /* margin: -4rem auto 2rem; */
+  margin-bottom: 2rem;
+  margin-inline: auto;
   max-width: 18.75rem;
   will-change: transform, opacity;
 }
@@ -158,6 +160,7 @@
 
   .playerImage {
     /* margin: -6rem 0 0; */
+    margin-bottom: unset;
     max-width: none;
   }
 

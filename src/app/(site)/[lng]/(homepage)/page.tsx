@@ -4,6 +4,7 @@ import SectionTitle from '@/components/sectionTitle/SectionTitle';
 import MeetClub from '@/components/pages/homepage/meetClub/MeetClub';
 import WriteToUs from '@/components/pages/homepage/writeToUs/WriteToUs';
 import LeagueTables from '@/components/leagueTables/LeagueTables';
+import LatestNews from '@/components/pages/homepage/latestNews/LatestNews';
 import { getTranslations, getLocale } from 'next-intl/server';
 import { Locale } from '@/i18n/i18n';
 
@@ -22,6 +23,7 @@ export default async function HomePage() {
         <section className="pageContent">
           <MeetClub />
           <WriteToUs lng={locale} />
+          <LatestNews />
         </section>
         <aside className="asideLeageTables">
           <LeagueTables />

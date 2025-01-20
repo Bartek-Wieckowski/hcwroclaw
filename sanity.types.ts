@@ -68,11 +68,60 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type Slug = {
-  _type: "slug";
-  current: string;
-  source?: string;
+export type Youtube = {
+  _type: "youtube";
+  url: string;
+  title: string;
 };
+
+export type NewsBlock = Array<{
+  children?: Array<{
+    marks?: Array<string>;
+    text?: string;
+    _type: "span";
+    _key: string;
+  }>;
+  style?: "normal" | "h3" | "blockquote";
+  listItem?: "bullet";
+  markDefs?: Array<{
+    href?: string;
+    _type: "link";
+    _key: string;
+  }>;
+  level?: number;
+  _type: "block";
+  _key: string;
+} | {
+  asset?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+  };
+  hotspot?: SanityImageHotspot;
+  crop?: SanityImageCrop;
+  alt: string;
+  _type: "image";
+  _key: string;
+} | {
+  _key: string;
+} & Youtube | {
+  text: string;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: string;
+    _type: "image";
+  };
+  _type: "textWithImage";
+  _key: string;
+}>;
 
 export type LeagueTables = {
   _id: string;
@@ -152,6 +201,78 @@ export type Team = {
   };
 };
 
+export type NewsSinglePage = {
+  _id: string;
+  _type: "newsSinglePage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  seo?: {
+    title?: LocaleString;
+    desc?: LocaleString;
+  };
+  title: LocaleString;
+  slugPL: Slug;
+  slugEN: Slug;
+  excerpt: LocaleText;
+  mainPostImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt: LocaleString;
+    _type: "image";
+  };
+  content?: LocaleNewsBlock;
+};
+
+export type Slug = {
+  _type: "slug";
+  current: string;
+  source?: string;
+};
+
+export type HomePage = {
+  _id: string;
+  _type: "homePage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  seo?: {
+    title: LocaleString;
+    desc: LocaleString;
+  };
+  aboutUsSection: {
+    description: LocaleText;
+    activePlayers: {
+      number: string;
+      text: LocaleString;
+    };
+    gamePerSeasson: {
+      number: string;
+      text: LocaleString;
+    };
+    trainingAtWeek: {
+      number: string;
+      text: LocaleString;
+    };
+    leagueNumbers: {
+      number: string;
+      text: LocaleString;
+    };
+  };
+};
+
+export type LocaleNewsBlock = {
+  _type: "localeNewsBlock";
+  pl?: NewsBlock;
+  en?: NewsBlock;
+};
+
 export type SanityImageCrop = {
   _type: "sanity.imageCrop";
   top?: number;
@@ -209,37 +330,6 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
-export type HomePage = {
-  _id: string;
-  _type: "homePage";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  seo?: {
-    title: LocaleString;
-    desc: LocaleString;
-  };
-  aboutUsSection: {
-    description: LocaleText;
-    activePlayers: {
-      number: string;
-      text: LocaleString;
-    };
-    gamePerSeasson: {
-      number: string;
-      text: LocaleString;
-    };
-    trainingAtWeek: {
-      number: string;
-      text: LocaleString;
-    };
-    leagueNumbers: {
-      number: string;
-      text: LocaleString;
-    };
-  };
-};
-
 export type LocaleText = {
   _type: "localeText";
   pl: string;
@@ -252,7 +342,7 @@ export type LocaleString = {
   en: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Slug | LeagueTables | GameCalendar | GameType | Team | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | HomePage | LocaleText | LocaleString;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Youtube | NewsBlock | LeagueTables | GameCalendar | GameType | Team | NewsSinglePage | Slug | HomePage | LocaleNewsBlock | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | LocaleText | LocaleString;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: getGamesCalendarQuery
@@ -380,6 +470,34 @@ export type GetHomePageAboutUsSectionQueryResult = Array<{
     };
   };
 }>;
+// Variable: getHomePageLatestNewsQuery
+// Query: *[_type == "newsSinglePage"] | order(_createdAt desc) [0..3] {      _id,      title{pl,en},      slugPL,      slugEN,      excerpt{pl,en},      mainPostImage{asset, alt{pl, en}},      _createdAt    }
+export type GetHomePageLatestNewsQueryResult = Array<{
+  _id: string;
+  title: {
+    pl: string;
+    en: string;
+  };
+  slugPL: Slug;
+  slugEN: Slug;
+  excerpt: {
+    pl: string;
+    en: string;
+  };
+  mainPostImage: {
+    asset: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    } | null;
+    alt: {
+      pl: string;
+      en: string;
+    };
+  };
+  _createdAt: string;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
@@ -388,5 +506,6 @@ declare module "@sanity/client" {
     "{\n  \"pastGames\": *[_type == \"gameCalendar\" && dateTime(date) < dateTime(now())] | \n    order(date desc) [0...12] {\n      _id,\n      _type,\n      date,\n      location,\n      time,\n      gameType->{\n        _id,\n        name\n      },\n      firstTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      secondTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      isCompleted,\n      firstTeamGoals,\n      secondTeamGoals\n    },\n  \"futureGames\": *[_type == \"gameCalendar\" && dateTime(date) >= dateTime(now())] | \n    order(date asc) [0...12] {\n      _id,\n      _type,\n      date,\n      location,\n      time,\n      gameType->{\n        _id,\n        name\n      },\n      firstTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      secondTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      isCompleted,\n      firstTeamGoals,\n      secondTeamGoals\n    }\n}": GetGamesCalendarQueryResult;
     "\n  *[_type == \"leagueTables\"] {\n    _createdAt,\n    _updatedAt,\n    _id,\n    title,\n    headers[] { \n      pl,\n      en\n    },\n    rows[] {\n      cells\n    }\n  }\n": GetLeagueTablesQueryResult;
     "\n *[_type == \"homePage\"]{\n    aboutUsSection {\n      description{en, pl},\n      activePlayers{number, text{en, pl}},\n      gamePerSeasson{number, text{en, pl}},\n      trainingAtWeek{number, text{en, pl}},\n      leagueNumbers{number, text{en, pl}}\n    }\n}": GetHomePageAboutUsSectionQueryResult;
+    "\n  *[_type == \"newsSinglePage\"] | order(_createdAt desc) [0..3] {\n      _id,\n      title{pl,en},\n      slugPL,\n      slugEN,\n      excerpt{pl,en},\n      mainPostImage{asset, alt{pl, en}},\n      _createdAt\n    }\n  ": GetHomePageLatestNewsQueryResult;
   }
 }
