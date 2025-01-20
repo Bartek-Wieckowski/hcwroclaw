@@ -33,7 +33,8 @@
     "availableLanguages": "Dostępne języki:"
   },
   "writeToUs": {
-    "title": "Napisz do nas jeśli...",
+    "title1": "Napisz do nas",
+    "title2": "jeśli...",
     "options": {
       "sparing": "Chcesz zagrać sparing/mecz",
       "join": "Chcesz dołączyć do klubu",

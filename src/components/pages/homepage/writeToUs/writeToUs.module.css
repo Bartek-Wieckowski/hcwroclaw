@@ -8,8 +8,9 @@
 
 .playerImage {
   position: relative;
-  margin: -4rem auto 2rem;
-  max-width: 300px;
+  /* margin: -4rem auto 2rem; */
+  max-width: 18.75rem;
+  will-change: transform, opacity;
 }
 
 .image {
@@ -26,45 +27,89 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  max-width: 500px;
+  max-width: 31.25rem;
   margin: 0 auto;
 }
 
-.title {
-  font-size: 1.75rem;
-  font-weight: bold;
-  margin: 0;
-  text-align: center;
+.customSelect {
+  position: relative;
+  width: 100%;
 }
 
-.select {
+.selectButton {
+  width: 100%;
   padding: 1rem;
-  border: 2px solid white;
+  border: 0.063rem solid white;
   background: transparent;
   color: white;
   font-size: 1rem;
-  width: 100%;
+  font-family: var(--font-outffit-thin);
   cursor: pointer;
-  appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right 1rem center;
-  background-size: 1.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
 }
 
-.select option {
-  background-color: #ff3333;
+.selectButton:hover {
+  border-color: var(--hc-gold);
+}
+
+.dropdownList {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  right: 0;
+  background: var(--bg-body-black);
+  border: 0.063rem solid var(--hc-gold);
+  z-index: 10;
+  overflow: hidden;
+}
+
+.dropdownOption {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 1rem;
+  font-family: var(--font-outffit-thin);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.dropdownOption:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dropdownOption.selected {
+  background: var(--hc-gold);
+  color: var(--hc-black);
+}
+
+.selectButton:focus,
+.dropdownOption:focus {
+  outline: none;
+  border-color: var(--hc-gold);
+}
+
+.selectButton:focus-visible,
+.dropdownOption:focus-visible {
+  outline: 2px solid var(--hc-gold);
+  outline-offset: 2px;
 }
 
 .textarea {
   padding: 1rem;
-  border: 2px solid white;
+  border: 0.063rem solid white;
   background: transparent;
   color: white;
   font-size: 1rem;
   width: 100%;
-  resize: vertical;
-  min-height: 120px;
+  resize: none;
+  min-height: 7.5rem;
+  font-family: var(--font-outffit-thin);
 }
 
 .textarea::placeholder {
@@ -72,40 +117,39 @@
 }
 
 .submitButton {
-  background-color: white;
-  color: #ff3333;
+  position: relative;
+  background: var(--hc-gold);
+  color: var(--hc-black);
   border: none;
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  font-weight: bold;
+  padding: 1rem 2.5rem;
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-outfit-bold);
   cursor: pointer;
   transition: all 0.3s ease;
-  position: relative;
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    100% calc(100% - 12px),
-    calc(100% - 12px) 100%,
-    0 100%
-  );
+  transform: skewX(-10deg);
   white-space: nowrap;
+  text-transform: uppercase;
   align-self: center;
+  box-shadow:
+    -2px 2px 8px rgba(255, 255, 255, 0.3),
+    2px -2px 8px rgba(255, 255, 255, 0.3);
 }
 
 .submitButton:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: skewX(-10deg) translateY(-2px);
+  box-shadow:
+    -3px 3px 12px rgba(255, 255, 255, 0.4),
+    3px -3px 12px rgba(255, 255, 255, 0.4);
 }
 
 .submitButton:disabled {
   opacity: 0.7;
   cursor: not-allowed;
-  transform: none;
+  transform: skewX(-10deg);
   box-shadow: none;
 }
 
-/* Tablet (768px) */
-@media (min-width: 48em) {
+@media (min-width: 768px) {
   .writeToUs {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
@@ -113,7 +157,7 @@
   }
 
   .playerImage {
-    margin: -6rem 0 0;
+    /* margin: -6rem 0 0; */
     max-width: none;
   }
 
@@ -123,8 +167,7 @@
   }
 }
 
-/* Desktop (1024px) */
-@media (min-width: 64em) {
+@media (min-width: 992px) {
   .writeToUs {
     grid-template-columns: 1fr 2fr 1fr;
     padding: 4rem 2rem;

@@ -33,7 +33,8 @@
     "availableLanguages": "Available languages:"
   },
   "writeToUs": {
-    "title": "Write to us if...",
+    "title1": "Write to us",
+    "title2": "if...",
     "options": {
       "sparing": "You want to play a friendly match",
       "join": "You want to join the club",
