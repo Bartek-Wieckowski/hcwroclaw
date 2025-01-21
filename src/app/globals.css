@@ -253,7 +253,7 @@ section {
   background-color: var(--accent-color-grey);
   transform: translateX(-50%);
   left: 50%;
-  top: -0.625rem;
+  top: -0.5rem;
 }
 
 /* swiper global elements */
@@ -294,7 +294,7 @@ section {
   display: none;
 }
 
-.overflow-hidden{
+.overflow-hidden {
   overflow: hidden;
 }
 

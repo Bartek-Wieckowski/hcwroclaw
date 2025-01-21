@@ -111,3 +111,28 @@ export const getHomePageLatestNewsQuery = defineQuery(`
       _createdAt
     }
   `);
+
+export const getPartnersQuery = defineQuery(`
+  *[_type == "partnersLogo"][0] {
+    sectionTitle {
+      en,
+      pl
+    },
+    partners[] {
+      name,
+      logo {
+        asset-> {
+          url,
+          metadata {
+            dimensions {
+              width,
+              height
+            }
+          }
+        }
+      },
+      hasWebsite,
+      url
+    }
+  }
+`);

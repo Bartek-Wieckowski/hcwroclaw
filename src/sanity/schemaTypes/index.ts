@@ -15,6 +15,7 @@ import gameCalendar from './utils/gameCalendar';
 import leagueTables from './utils/leagueTables';
 import newsBlock from './utils/newsBlock';
 import ytEmbedd from './utils/ytEmbedd';
+import partnersLogo from './utils/partnersLogo';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -29,5 +30,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     leagueTables,
     newsBlock,
     ytEmbedd,
+    partnersLogo,
   ],
 };

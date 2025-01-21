@@ -36,6 +36,9 @@ export const structure: StructureResolver = (S) =>
               S.listItem()
                 .title('League Tables')
                 .child(S.documentTypeList('leagueTables')),
+              S.listItem()
+                .title('Partners')
+                .child(S.documentTypeList('partnersLogo')),
             ])
         ),
     ]);

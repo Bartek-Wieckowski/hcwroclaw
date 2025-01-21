@@ -68,6 +68,33 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type PartnersLogo = {
+  _id: string;
+  _type: "partnersLogo";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  sectionTitle: LocaleString;
+  partners: Array<{
+    name: string;
+    logo: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    };
+    hasWebsite?: boolean;
+    url?: string;
+    _type: "partner";
+    _key: string;
+  }>;
+};
+
 export type Youtube = {
   _type: "youtube";
   url: string;
@@ -342,7 +369,7 @@ export type LocaleString = {
   en: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Youtube | NewsBlock | LeagueTables | GameCalendar | GameType | Team | NewsSinglePage | Slug | HomePage | LocaleNewsBlock | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | LocaleText | LocaleString;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | PartnersLogo | Youtube | NewsBlock | LeagueTables | GameCalendar | GameType | Team | NewsSinglePage | Slug | HomePage | LocaleNewsBlock | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | LocaleText | LocaleString;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: getGamesCalendarQuery
@@ -498,6 +525,30 @@ export type GetHomePageLatestNewsQueryResult = Array<{
   };
   _createdAt: string;
 }>;
+// Variable: getPartnersQuery
+// Query: *[_type == "partnersLogo"][0] {    sectionTitle {      en,      pl    },    partners[] {      name,      logo {        asset-> {          url,          metadata {            dimensions {              width,              height            }          }        }      },      hasWebsite,      url    }  }
+export type GetPartnersQueryResult = {
+  sectionTitle: {
+    en: string;
+    pl: string;
+  };
+  partners: Array<{
+    name: string;
+    logo: {
+      asset: {
+        url: string | null;
+        metadata: {
+          dimensions: {
+            width: number | null;
+            height: number | null;
+          } | null;
+        } | null;
+      } | null;
+    };
+    hasWebsite: boolean | null;
+    url: string | null;
+  }>;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -507,5 +558,6 @@ declare module "@sanity/client" {
     "\n  *[_type == \"leagueTables\"] {\n    _createdAt,\n    _updatedAt,\n    _id,\n    title,\n    headers[] { \n      pl,\n      en\n    },\n    rows[] {\n      cells\n    }\n  }\n": GetLeagueTablesQueryResult;
     "\n *[_type == \"homePage\"]{\n    aboutUsSection {\n      description{en, pl},\n      activePlayers{number, text{en, pl}},\n      gamePerSeasson{number, text{en, pl}},\n      trainingAtWeek{number, text{en, pl}},\n      leagueNumbers{number, text{en, pl}}\n    }\n}": GetHomePageAboutUsSectionQueryResult;
     "\n  *[_type == \"newsSinglePage\"] | order(_createdAt desc) [0..3] {\n      _id,\n      title{pl,en},\n      slugPL,\n      slugEN,\n      excerpt{pl,en},\n      mainPostImage{asset, alt{pl, en}},\n      _createdAt\n    }\n  ": GetHomePageLatestNewsQueryResult;
+    "\n  *[_type == \"partnersLogo\"][0] {\n    sectionTitle {\n      en,\n      pl\n    },\n    partners[] {\n      name,\n      logo {\n        asset-> {\n          url,\n          metadata {\n            dimensions {\n              width,\n              height\n            }\n          }\n        }\n      },\n      hasWebsite,\n      url\n    }\n  }\n": GetPartnersQueryResult;
   }
 }
