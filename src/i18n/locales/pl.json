@@ -28,7 +28,8 @@
     },
     "latestNews": {
       "sectionTitle1": "Najnowsze",
-      "sectionTitle2": "Aktualności"
+      "sectionTitle2": "Aktualności",
+      "noNews": "Aktualnie nie ma żadnych wydarzeń. Sprawdź ponownie wkrótce!"
     }
   },
   "pageNotfound": {
@@ -49,5 +50,8 @@
     "sending": "Wysyłanie...",
     "success": "Wiadomość została wysłana!",
     "error": "Wystąpił błąd podczas wysyłania wiadomości"
+  },
+  "newsListingPage": {
+    "noNews": "Aktualnie nie ma żadnych wydarzeń. Sprawdź ponownie wkrótce!"
   }
 }

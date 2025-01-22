@@ -16,6 +16,7 @@ import { loadMoreNews } from '@/actions/actions';
 import { QUERY_KEYS } from '@/lib/queryKeys';
 import { ROUTES } from '@/lib/routes';
 import { NEWS_PER_PAGE } from '@/lib/constants';
+import { useTranslations } from 'use-intl';
 
 type NewsListingProps = {
   initialNews: NewsSinglePage[];
@@ -23,6 +24,7 @@ type NewsListingProps = {
 };
 
 export default function NewsListing({ initialNews, lng }: NewsListingProps) {
+  const t = useTranslations('newsListingPage');
   const { ref, inView } = useInView({
     threshold: 0,
     rootMargin: '100px',
@@ -57,6 +59,16 @@ export default function NewsListing({ initialNews, lng }: NewsListingProps) {
 
   const allNews = data.pages.flat();
 
+  if (!allNews || allNews.length === 0) {
+    return (
+      <div className={styles.newsListingContainer}>
+        <div className={styles.noNews}>
+          <p>{t('noNews')}</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.newsListingContainer}>
       {allNews.length > 0 && (
@@ -83,7 +95,9 @@ export default function NewsListing({ initialNews, lng }: NewsListingProps) {
                 {formatDate(allNews[0]._createdAt)}
               </span>
               <h2 className={styles.featuredTitle}>{allNews[0].title[lng]}</h2>
-              <p className={styles.featuredExcerpt}>{allNews[0].excerpt[lng]}</p>
+              <p className={styles.featuredExcerpt}>
+                {allNews[0].excerpt[lng]}
+              </p>
             </div>
           </Link>
         </article>

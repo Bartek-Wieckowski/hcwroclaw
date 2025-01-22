@@ -4,7 +4,7 @@ import styles from './writeToUs.module.css';
 import Image from 'next/image';
 import SectionTitle from '@/components/sectionTitle/SectionTitle';
 import useClickOutside from '@/hooks/useClickOutside';
-import { useState, FormEvent, useRef } from 'react';
+import { useState, FormEvent, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { Locale } from '@/i18n/i18n';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -28,11 +28,6 @@ const playerImages = [
   { src: player4, alt: 'Hockey Player 4' },
 ];
 
-const getRandomPlayer = () => {
-  const randomIndex = Math.floor(Math.random() * playerImages.length);
-  return playerImages[randomIndex];
-};
-
 export default function WriteToUs({ lng }: WriteToUsProps) {
   const playerRef = useRef(null);
   const [selectedOption, setSelectedOption] =
@@ -40,12 +35,17 @@ export default function WriteToUs({ lng }: WriteToUsProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [randomPlayer] = useState(getRandomPlayer);
+  const [playerImage, setPlayerImage] = useState(playerImages[0]);
   const t = useTranslations('writeToUs');
   const isInView = useInView(playerRef, { once: true, amount: 0.3 });
   const dropdownRef = useClickOutside<HTMLDivElement>(() => {
     setIsDropdownOpen(false);
   });
+
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * playerImages.length);
+    setPlayerImage(playerImages[randomIndex]);
+  }, []);
 
   const options = [
     { value: 'sparing', label: t('options.sparing') },
@@ -98,8 +98,8 @@ export default function WriteToUs({ lng }: WriteToUsProps) {
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
         <Image
-          src={randomPlayer.src}
-          alt={randomPlayer.alt}
+          src={playerImage.src}
+          alt={playerImage.alt}
           width={400}
           height={600}
           className={styles.image}

@@ -13,8 +13,24 @@ import { ROUTES } from '@/lib/routes';
 export default async function LatestNews() {
   const lng = (await getLocale()) as Locale;
   const news = await client.fetch(getHomePageLatestNewsQuery);
-  const [latestNews, ...recentNews] = news;
   const t = await getTranslations('homePage.latestNews');
+
+  if (!news || news.length === 0) {
+    return (
+      <div className={styles.latestNews}>
+        <SectionTitle
+          part1={t('sectionTitle1')}
+          part2={t('sectionTitle2')}
+          variant="primary-secondary"
+        />
+        <div className={styles.noNews}>
+          <p>{t('noNews')}</p>
+        </div>
+      </div>
+    );
+  }
+
+  const [latestNews, ...recentNews] = news;
 
   const getSlugByLocale = (item: typeof latestNews) => {
     return lng === 'pl' ? item.slugPL.current : item.slugEN.current;

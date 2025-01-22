@@ -28,7 +28,8 @@
     },
     "latestNews": {
       "sectionTitle1": "Latest",
-      "sectionTitle2": "News"
+      "sectionTitle2": "News",
+      "noNews": "Currently there are no news. Check back soon!"
     }
   },
   "pageNotfound": {
@@ -49,5 +50,8 @@
     "sending": "Sending...",
     "success": "Message has been sent!",
     "error": "An error occurred while sending the message"
+  },
+  "newsListingPage": {
+    "noNews": "Currently there are no news. Check back soon!"
   }
 }
