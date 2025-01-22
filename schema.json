@@ -1457,7 +1457,7 @@
           "type": "inline",
           "name": "localeNewsBlock"
         },
-        "optional": true
+        "optional": false
       }
     }
   },

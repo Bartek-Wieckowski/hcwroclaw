@@ -145,8 +145,40 @@ export const getNewsQuery = defineQuery(`
     slugEN,
     excerpt{pl,en},
     mainPostImage{
-      asset->,
-      alt{pl, en}
+      asset->{
+        _id,
+        url
+      },
+      alt{
+        pl,
+        en
+      }
+    },
+    _createdAt
+  }
+`);
+
+export const getSingleNewsQuery = defineQuery(`
+  *[_type == "newsSinglePage" && (slugEN.current == $slug || slugPL.current == $slug)][0] {
+    _id,
+    title{
+      pl,
+      en
+    },
+    excerpt{pl,en},
+    content{
+      pl,
+      en
+    },
+    mainPostImage {
+      asset->{
+        _id,
+        url
+      },
+      alt{
+        pl,
+        en
+      }
     },
     _createdAt
   }

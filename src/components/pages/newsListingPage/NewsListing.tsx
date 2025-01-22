@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '@/app/(site)/[lng]/(others)/news/news.module.css';
+import styles from './newsListing.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 import Spinner from '@/components/spinner/Spinner';

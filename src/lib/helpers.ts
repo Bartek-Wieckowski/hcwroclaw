@@ -83,3 +83,14 @@ export function convertDateWithTimezone(dateString: string): string {
 
   return `${day}.${month}.${year}`;
 }
+
+export function formatDateInNews(date: string, locale: string) {
+  return new Date(date).toLocaleDateString(
+    locale === 'en' ? 'en-US' : 'pl-PL',
+    {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    }
+  );
+}

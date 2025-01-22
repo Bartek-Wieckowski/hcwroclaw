@@ -59,15 +59,15 @@ export default defineType({
       name: 'mainPostImage',
       title: 'Main Post Image',
       type: 'image',
-      validation: (Rule) => 
+      validation: (Rule) =>
         Rule.required()
-            .error('Main post image is required')
-            .custom((value) => {
-              if (!value?.asset?._ref) {
-                return 'Image is required';
-              }
-              return true;
-            }),
+          .error('Main post image is required')
+          .custom((value) => {
+            if (!value?.asset?._ref) {
+              return 'Image is required';
+            }
+            return true;
+          }),
       fields: [
         defineField({
           name: 'alt',
@@ -84,8 +84,10 @@ export default defineType({
       name: 'content',
       title: 'Content',
       type: 'localeNewsBlock',
+      validation: (Rule) => Rule.required(),
     }),
   ],
+  validation: (Rule) => Rule.required(),
   preview: {
     select: {
       title: 'title.pl',

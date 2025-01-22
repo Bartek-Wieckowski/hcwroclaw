@@ -254,7 +254,7 @@ export type NewsSinglePage = {
     alt: LocaleString;
     _type: "image";
   };
-  content?: LocaleNewsBlock;
+  content: LocaleNewsBlock;
 };
 
 export type Slug = {
@@ -549,6 +549,60 @@ export type GetPartnersQueryResult = {
     url: string | null;
   }>;
 } | null;
+// Variable: getNewsQuery
+// Query: *[_type == "newsSinglePage"] | order(_createdAt desc) [$start...$end] {    _id,    title{pl,en},    slugPL,    slugEN,    excerpt{pl,en},    mainPostImage{      asset->{        _id,        url      },      alt{        pl,        en      }    },    _createdAt  }
+export type GetNewsQueryResult = Array<{
+  _id: string;
+  title: {
+    pl: string;
+    en: string;
+  };
+  slugPL: Slug;
+  slugEN: Slug;
+  excerpt: {
+    pl: string;
+    en: string;
+  };
+  mainPostImage: {
+    asset: {
+      _id: string;
+      url: string | null;
+    } | null;
+    alt: {
+      pl: string;
+      en: string;
+    };
+  };
+  _createdAt: string;
+}>;
+// Variable: getSingleNewsQuery
+// Query: *[_type == "newsSinglePage" && (slugEN.current == $slug || slugPL.current == $slug)][0] {    _id,    title{      pl,      en    },    excerpt{pl,en},    content{      pl,      en    },    mainPostImage {      asset->{        _id,        url      },      alt{        pl,        en      }    },    _createdAt  }
+export type GetSingleNewsQueryResult = {
+  _id: string;
+  title: {
+    pl: string;
+    en: string;
+  };
+  excerpt: {
+    pl: string;
+    en: string;
+  };
+  content: {
+    pl: NewsBlock | null;
+    en: NewsBlock | null;
+  };
+  mainPostImage: {
+    asset: {
+      _id: string;
+      url: string | null;
+    } | null;
+    alt: {
+      pl: string;
+      en: string;
+    };
+  };
+  _createdAt: string;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -559,5 +613,7 @@ declare module "@sanity/client" {
     "\n *[_type == \"homePage\"]{\n    aboutUsSection {\n      description{en, pl},\n      activePlayers{number, text{en, pl}},\n      gamePerSeasson{number, text{en, pl}},\n      trainingAtWeek{number, text{en, pl}},\n      leagueNumbers{number, text{en, pl}}\n    }\n}": GetHomePageAboutUsSectionQueryResult;
     "\n  *[_type == \"newsSinglePage\"] | order(_createdAt desc) [0..3] {\n      _id,\n      title{pl,en},\n      slugPL,\n      slugEN,\n      excerpt{pl,en},\n      mainPostImage{asset, alt{pl, en}},\n      _createdAt\n    }\n  ": GetHomePageLatestNewsQueryResult;
     "\n  *[_type == \"partnersLogo\"][0] {\n    sectionTitle {\n      en,\n      pl\n    },\n    partners[] {\n      name,\n      logo {\n        asset-> {\n          url,\n          metadata {\n            dimensions {\n              width,\n              height\n            }\n          }\n        }\n      },\n      hasWebsite,\n      url\n    }\n  }\n": GetPartnersQueryResult;
+    "\n  *[_type == \"newsSinglePage\"] | order(_createdAt desc) [$start...$end] {\n    _id,\n    title{pl,en},\n    slugPL,\n    slugEN,\n    excerpt{pl,en},\n    mainPostImage{\n      asset->{\n        _id,\n        url\n      },\n      alt{\n        pl,\n        en\n      }\n    },\n    _createdAt\n  }\n": GetNewsQueryResult;
+    "\n  *[_type == \"newsSinglePage\" && (slugEN.current == $slug || slugPL.current == $slug)][0] {\n    _id,\n    title{\n      pl,\n      en\n    },\n    excerpt{pl,en},\n    content{\n      pl,\n      en\n    },\n    mainPostImage {\n      asset->{\n        _id,\n        url\n      },\n      alt{\n        pl,\n        en\n      }\n    },\n    _createdAt\n  }\n": GetSingleNewsQueryResult;
   }
 }
