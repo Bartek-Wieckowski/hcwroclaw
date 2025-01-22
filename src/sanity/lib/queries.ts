@@ -136,3 +136,18 @@ export const getPartnersQuery = defineQuery(`
     }
   }
 `);
+
+export const getNewsQuery = defineQuery(`
+  *[_type == "newsSinglePage"] | order(_createdAt desc) [$start...$end] {
+    _id,
+    title{pl,en},
+    slugPL,
+    slugEN,
+    excerpt{pl,en},
+    mainPostImage{
+      asset->,
+      alt{pl, en}
+    },
+    _createdAt
+  }
+`);
