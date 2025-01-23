@@ -135,6 +135,9 @@ export const getPartnersQuery = defineQuery(`
 export const getNewsQuery = defineQuery(`
   *[_type == "newsSinglePage"] | order(_createdAt desc) [$start...$end] {
     _id,
+    _type,
+    _updatedAt,
+    _rev,
     title{pl,en},
     slugPL,
     slugEN,
