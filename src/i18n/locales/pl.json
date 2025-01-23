@@ -21,22 +21,6 @@
   "gameCalendarSlider": {
     "completed": "Zakończony"
   },
-  "homePage": {
-    "aboutUsSection": {
-      "sectionTitle1": "Info",
-      "sectionTitle2": "o nas"
-    },
-    "latestNews": {
-      "sectionTitle1": "Najnowsze",
-      "sectionTitle2": "Aktualności",
-      "noNews": "Aktualnie nie ma żadnych wydarzeń. Sprawdź ponownie wkrótce!"
-    }
-  },
-  "pageNotfound": {
-    "title": "404",
-    "description": "Strona, której szukasz, nie istnieje.",
-    "availableLanguages": "Dostępne języki:"
-  },
   "writeToUs": {
     "title1": "Napisz do nas",
     "title2": "jeśli...",
@@ -51,7 +35,26 @@
     "success": "Wiadomość została wysłana!",
     "error": "Wystąpił błąd podczas wysyłania wiadomości"
   },
+  "homePage": {
+    "aboutUsSection": {
+      "sectionTitle1": "Info",
+      "sectionTitle2": "o nas"
+    },
+    "latestNews": {
+      "sectionTitle1": "Najnowsze",
+      "sectionTitle2": "Aktualności",
+      "noNews": "Aktualnie nie ma żadnych wydarzeń. Sprawdź ponownie wkrótce!"
+    }
+  },
   "newsListingPage": {
     "noNews": "Aktualnie nie ma żadnych wydarzeń. Sprawdź ponownie wkrótce!"
+  },
+  "newsSinglePage": {
+    "noSingleContentNews": "Taki post nie istnieje"
+  },
+  "pageNotfound": {
+    "title": "404",
+    "description": "Strona, której szukasz, nie istnieje.",
+    "availableLanguages": "Dostępne języki:"
   }
 }

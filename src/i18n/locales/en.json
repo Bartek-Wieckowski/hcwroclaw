@@ -21,22 +21,6 @@
   "gameCalendarSlider": {
     "completed": "Final"
   },
-  "homePage": {
-    "aboutUsSection": {
-      "sectionTitle1": "Info",
-      "sectionTitle2": "about us"
-    },
-    "latestNews": {
-      "sectionTitle1": "Latest",
-      "sectionTitle2": "News",
-      "noNews": "Currently there are no news. Check back soon!"
-    }
-  },
-  "pageNotfound": {
-    "title": "404",
-    "description": "Page not found",
-    "availableLanguages": "Available languages:"
-  },
   "writeToUs": {
     "title1": "Write to us",
     "title2": "if...",
@@ -51,7 +35,26 @@
     "success": "Message has been sent!",
     "error": "An error occurred while sending the message"
   },
+  "homePage": {
+    "aboutUsSection": {
+      "sectionTitle1": "Info",
+      "sectionTitle2": "about us"
+    },
+    "latestNews": {
+      "sectionTitle1": "Latest",
+      "sectionTitle2": "News",
+      "noNews": "Currently there are no news. Check back soon!"
+    }
+  },
   "newsListingPage": {
     "noNews": "Currently there are no news. Check back soon!"
+  },
+  "newsSinglePage": {
+    "noSingleContentNews": "This post does not exist"
+  },
+  "pageNotfound": {
+    "title": "404",
+    "description": "Page not found",
+    "availableLanguages": "Available languages:"
   }
 }

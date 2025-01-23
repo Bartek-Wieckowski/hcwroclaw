@@ -1,12 +1,20 @@
-import styles from './newsSinglePage.module.css';
+import styles from './componentNewsSinglePage.module.css';
 import Image from 'next/image';
-import { PortableText, PortableTextComponentProps, PortableTextMarkComponentProps } from '@portabletext/react';
+import {
+  PortableText,
+  PortableTextComponentProps,
+  PortableTextMarkComponentProps,
+} from '@portabletext/react';
 import { formatDateInNews } from '@/lib/helpers';
 import { VideoPlayer } from '@/components/reactPlayer/ReactPlayer';
 import { GetSingleNewsQueryResult } from '../../../../sanity.types';
 import { urlFor } from '@/sanity/lib/image';
 import { Locale } from '@/i18n/i18n';
-import { CustomPortableTextComponents, BlockContent, LinkMarkDef } from './types';
+import {
+  CustomPortableTextComponents,
+  BlockContent,
+  LinkMarkDef,
+} from './types';
 
 type NewsSinglePageProps = {
   news: NonNullable<GetSingleNewsQueryResult>;
@@ -15,32 +23,39 @@ type NewsSinglePageProps = {
 
 const components = {
   types: {
-    image: ({ value }: PortableTextComponentProps<CustomPortableTextComponents['image']>) => (
+    image: ({
+      value,
+    }: PortableTextComponentProps<CustomPortableTextComponents['image']>) => (
       <div className={styles.imageContainer}>
-        <Image
-          src={urlFor(value.asset).url()}
-          alt={value.alt || ''}
-          width={800}
-          height={450}
-          className={styles.image}
-        />
-        {value.alt && <p className={styles.imageCaption}>{value.alt}</p>}
+        <div className={styles.imageWrapper}>
+          <Image
+            src={urlFor(value.asset).url()}
+            alt={value.alt || ''}
+            fill
+            className={styles.image}
+          />
+        </div>
       </div>
     ),
-    youtube: ({ value }: PortableTextComponentProps<CustomPortableTextComponents['youtube']>) => (
+    youtube: ({
+      value,
+    }: PortableTextComponentProps<CustomPortableTextComponents['youtube']>) => (
       <VideoPlayer url={value.url} />
     ),
-    textWithImage: ({ value }: PortableTextComponentProps<CustomPortableTextComponents['textWithImage']>) => (
+    textWithImage: ({
+      value,
+    }: PortableTextComponentProps<
+      CustomPortableTextComponents['textWithImage']
+    >) => (
       <div className={styles.textWithImage}>
         <div className={styles.textContent}>
           <p>{value.text}</p>
         </div>
-        <div className={styles.imageContent}>
+        <div className={styles.imageWrapper}>
           <Image
             src={urlFor(value.image).url()}
             alt={value.image.alt || ''}
-            width={400}
-            height={300}
+            fill
             className={styles.image}
           />
         </div>
@@ -49,36 +64,43 @@ const components = {
   },
   block: {
     h3: ({ children }: PortableTextComponentProps<BlockContent>) => (
-      <h3 className={styles.heading3}>
-        {children}
-      </h3>
+      <h3 className={styles.heading3}>{children}</h3>
     ),
     blockquote: ({ children }: PortableTextComponentProps<BlockContent>) => (
-      <blockquote className={styles.blockquote}>
-        {children}
-      </blockquote>
+      <blockquote className={styles.blockquote}>{children}</blockquote>
     ),
     normal: ({ children }: PortableTextComponentProps<BlockContent>) => (
-      <p className={styles.paragraph}>
-        {children}
-      </p>
+      <p className={styles.paragraph}>{children}</p>
     ),
   },
   marks: {
-    link: ({ value, children }: PortableTextMarkComponentProps<LinkMarkDef>) => {
+    link: ({
+      value,
+      children,
+    }: PortableTextMarkComponentProps<LinkMarkDef>) => {
       const isExternal = value?.linkType === 'external';
-      
+
       return (
-        <a 
+        <a
           href={value?.href}
-          target={isExternal ? "_blank" : undefined}
-          rel={isExternal ? "noopener noreferrer" : undefined}
+          target={isExternal ? '_blank' : undefined}
+          rel={isExternal ? 'noopener noreferrer' : undefined}
           className={styles.link}
         >
           {children}
         </a>
       );
     },
+  },
+  list: {
+    bullet: ({ children }: PortableTextComponentProps<BlockContent>) => (
+      <ul className={styles.bulletList}>{children}</ul>
+    ),
+  },
+  listItem: {
+    bullet: ({ children }: PortableTextComponentProps<BlockContent>) => (
+      <li className={styles.bulletListItem}>{children}</li>
+    ),
   },
 };
 
@@ -93,12 +115,11 @@ export function NewsSinglePage({ news, lng }: NewsSinglePageProps) {
       </header>
 
       {news.mainPostImage && (
-        <div className={styles.mainImageContainer}>
+        <div className={styles.mainImageWrapper}>
           <Image
             src={urlFor(news.mainPostImage).url()}
             alt={news.mainPostImage.alt[lng] || ''}
-            width={1200}
-            height={675}
+            fill
             className={styles.mainImage}
           />
         </div>

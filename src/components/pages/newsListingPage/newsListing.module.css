@@ -74,7 +74,7 @@
 }
 
 .otherNews {
-  padding-left: var(--container-padding-left);
+  padding-inline: var(--container-padding);
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -83,7 +83,6 @@
 .newsCard {
   position: relative;
   background: var(--bg-body-black);
-  border-radius: 0.5rem;
   overflow: hidden;
 }
 
@@ -97,7 +96,7 @@
   position: relative;
   flex: 0 0 40%;
   aspect-ratio: 4/3;
-  border-radius: 0.25rem;
+  border-radius: var(--border-radius-img);
   overflow: hidden;
 }
 
@@ -145,12 +144,16 @@
 }
 
 .dateFeatured {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
   font-size: var(--small-font-size);
   font-family: var(--font-roboto-regular);
   background: var(--hc-black);
   color: var(--hc-red);
   border-radius: 0.45rem;
   padding: 0.25rem 0.85rem;
+  margin-bottom: 0.5rem;
 }
 
 .date {
