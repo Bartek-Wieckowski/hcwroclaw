@@ -229,6 +229,132 @@ export type Team = {
   };
 };
 
+export type TeamPage = {
+  _id: string;
+  _type: "teamPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  seo?: {
+    title: LocaleString;
+    desc: LocaleString;
+  };
+  teamSliderImages: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+    _key: string;
+  }>;
+  goalkeepers?: Array<{
+    firstName: string;
+    lastName: string;
+    number: number;
+    photo?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    };
+    actionPhoto?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    };
+    isCaptain?: boolean;
+    isAssistantCaptain?: boolean;
+    height?: string;
+    weight?: string;
+    stickHand?: "left" | "right";
+    _type: "player";
+    _key: string;
+  }>;
+  defenders?: Array<{
+    firstName: string;
+    lastName: string;
+    number: number;
+    photo?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    };
+    actionPhoto?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    };
+    isCaptain?: boolean;
+    isAssistantCaptain?: boolean;
+    height?: string;
+    weight?: string;
+    stickHand?: "left" | "right";
+    _type: "player";
+    _key: string;
+  }>;
+  forwards?: Array<{
+    firstName: string;
+    lastName: string;
+    number: number;
+    photo?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    };
+    actionPhoto?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    };
+    isCaptain?: boolean;
+    isAssistantCaptain?: boolean;
+    height?: string;
+    weight?: string;
+    stickHand?: "left" | "right";
+    _type: "player";
+    _key: string;
+  }>;
+};
+
 export type NewsSinglePage = {
   _id: string;
   _type: "newsSinglePage";
@@ -370,7 +496,7 @@ export type LocaleString = {
   en: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | PartnersLogo | Youtube | NewsBlock | LeagueTables | GameCalendar | GameType | Team | NewsSinglePage | Slug | HomePage | LocaleNewsBlock | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | LocaleText | LocaleString;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | PartnersLogo | Youtube | NewsBlock | LeagueTables | GameCalendar | GameType | Team | TeamPage | NewsSinglePage | Slug | HomePage | LocaleNewsBlock | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | LocaleText | LocaleString;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: getGamesCalendarQuery
@@ -446,12 +572,12 @@ export type GetGamesCalendarQueryResult = {
   }>;
 };
 // Variable: getLeagueTablesQuery
-// Query: *[_type == "leagueTables"] {    _createdAt,    _updatedAt,    _id,    title,    headers[] {       pl,      en    },    rows[] {      cells    }  }
+// Query: *[_type == "leagueTables"] {    _createdAt,    _updatedAt,    _id,    title{pl,en},    headers[] {       pl,      en    },    rows[] {      cells    }  }
 export type GetLeagueTablesQueryResult = Array<{
   _createdAt: string;
   _updatedAt: string;
   _id: string;
-  title: string;
+  title: null;
   headers: Array<{
     pl: string;
     en: string;
@@ -546,9 +672,12 @@ export type GetPartnersQueryResult = {
   }>;
 } | null;
 // Variable: getNewsQuery
-// Query: *[_type == "newsSinglePage"] | order(_createdAt desc) [$start...$end] {    _id,    title{pl,en},    slugPL,    slugEN,    excerpt{pl,en},    mainPostImage{      asset->{        _id,        url      },      alt{        pl,        en      }    },    _createdAt  }
+// Query: *[_type == "newsSinglePage"] | order(_createdAt desc) [$start...$end] {    _id,    _type,    _updatedAt,    _rev,    title{pl,en},    slugPL,    slugEN,    excerpt{pl,en},    mainPostImage{      asset->{        _id,        url      },      alt{        pl,        en      }    },    _createdAt  }
 export type GetNewsQueryResult = Array<{
   _id: string;
+  _type: "newsSinglePage";
+  _updatedAt: string;
+  _rev: string;
   title: {
     pl: string;
     en: string;
@@ -599,17 +728,107 @@ export type GetSingleNewsQueryResult = {
   };
   _createdAt: string;
 } | null;
+// Variable: getTeamPageDataQuery
+// Query: *[_type == "teamPage"][0] {    seo {      title,      desc    },    teamSliderImages[] {      asset->{        url,        _id,        metadata {          dimensions {            width,            height          }        }      }    },    goalkeepers[] {      _key,      firstName,      lastName,      number,      height,      weight,      stickHand,      isCaptain,      isAssistantCaptain,      photo {        asset->{          url,          _id        }      },      actionPhoto {        asset->{          url,          _id        }      }    },    defenders[] {      _key,      firstName,      lastName,      number,      height,      weight,      stickHand,      isCaptain,      isAssistantCaptain,      photo {        asset->{          url,          _id        }      },      actionPhoto {        asset->{          url,          _id        }      }    },    forwards[] {      _key,      firstName,      lastName,      number,      height,      weight,      stickHand,      isCaptain,      isAssistantCaptain,      photo {        asset->{          url,          _id        }      },      actionPhoto {        asset->{          url,          _id        }      }    }  }
+export type GetTeamPageDataQueryResult = {
+  seo: {
+    title: LocaleString;
+    desc: LocaleString;
+  } | null;
+  teamSliderImages: Array<{
+    asset: {
+      url: string | null;
+      _id: string;
+      metadata: {
+        dimensions: {
+          width: number | null;
+          height: number | null;
+        } | null;
+      } | null;
+    } | null;
+  }>;
+  goalkeepers: Array<{
+    _key: string;
+    firstName: string;
+    lastName: string;
+    number: number;
+    height: string | null;
+    weight: string | null;
+    stickHand: "left" | "right" | null;
+    isCaptain: boolean | null;
+    isAssistantCaptain: boolean | null;
+    photo: {
+      asset: {
+        url: string | null;
+        _id: string;
+      } | null;
+    } | null;
+    actionPhoto: {
+      asset: {
+        url: string | null;
+        _id: string;
+      } | null;
+    } | null;
+  }> | null;
+  defenders: Array<{
+    _key: string;
+    firstName: string;
+    lastName: string;
+    number: number;
+    height: string | null;
+    weight: string | null;
+    stickHand: "left" | "right" | null;
+    isCaptain: boolean | null;
+    isAssistantCaptain: boolean | null;
+    photo: {
+      asset: {
+        url: string | null;
+        _id: string;
+      } | null;
+    } | null;
+    actionPhoto: {
+      asset: {
+        url: string | null;
+        _id: string;
+      } | null;
+    } | null;
+  }> | null;
+  forwards: Array<{
+    _key: string;
+    firstName: string;
+    lastName: string;
+    number: number;
+    height: string | null;
+    weight: string | null;
+    stickHand: "left" | "right" | null;
+    isCaptain: boolean | null;
+    isAssistantCaptain: boolean | null;
+    photo: {
+      asset: {
+        url: string | null;
+        _id: string;
+      } | null;
+    } | null;
+    actionPhoto: {
+      asset: {
+        url: string | null;
+        _id: string;
+      } | null;
+    } | null;
+  }> | null;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "{\n  \"pastGames\": *[_type == \"gameCalendar\" && dateTime(date) < dateTime(now())] | \n    order(date desc) [0...12] {\n      _id,\n      _type,\n      date,\n      location,\n      time,\n      gameType->{\n        _id,\n        name\n      },\n      firstTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      secondTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      isCompleted,\n      firstTeamGoals,\n      secondTeamGoals\n    },\n  \"futureGames\": *[_type == \"gameCalendar\" && dateTime(date) >= dateTime(now())] | \n    order(date asc) [0...12] {\n      _id,\n      _type,\n      date,\n      location,\n      time,\n      gameType->{\n        _id,\n        name\n      },\n      firstTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      secondTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      isCompleted,\n      firstTeamGoals,\n      secondTeamGoals\n    }\n}": GetGamesCalendarQueryResult;
-    "\n  *[_type == \"leagueTables\"] {\n    _createdAt,\n    _updatedAt,\n    _id,\n    title,\n    headers[] { \n      pl,\n      en\n    },\n    rows[] {\n      cells\n    }\n  }\n": GetLeagueTablesQueryResult;
+    "\n  *[_type == \"leagueTables\"] {\n    _createdAt,\n    _updatedAt,\n    _id,\n    title{pl,en},\n    headers[] { \n      pl,\n      en\n    },\n    rows[] {\n      cells\n    }\n  }\n": GetLeagueTablesQueryResult;
     "\n *[_type == \"homePage\"][0] {\n    aboutUsSection {\n      description{en, pl},\n      activePlayers{number, text{en, pl}},\n      gamePerSeasson{number, text{en, pl}},\n      trainingAtWeek{number, text{en, pl}},\n      leagueNumbers{number, text{en, pl}}\n    }\n}": GetHomePageAboutUsSectionQueryResult;
     "\n  *[_type == \"newsSinglePage\"] | order(_createdAt desc) [0..3] {\n      _id,\n      title{pl,en},\n      slugPL,\n      slugEN,\n      excerpt{pl,en},\n      mainPostImage{asset, alt{pl, en}},\n      _createdAt\n    }\n  ": GetHomePageLatestNewsQueryResult;
     "\n  *[_type == \"partnersLogo\"][0] {\n    sectionTitle {\n      en,\n      pl\n    },\n    partners[] {\n      name,\n      logo {\n        asset->{\n          _id,\n          url\n        }\n      },\n      hasWebsite,\n      url\n    }\n  }\n": GetPartnersQueryResult;
-    "\n  *[_type == \"newsSinglePage\"] | order(_createdAt desc) [$start...$end] {\n    _id,\n    title{pl,en},\n    slugPL,\n    slugEN,\n    excerpt{pl,en},\n    mainPostImage{\n      asset->{\n        _id,\n        url\n      },\n      alt{\n        pl,\n        en\n      }\n    },\n    _createdAt\n  }\n": GetNewsQueryResult;
+    "\n  *[_type == \"newsSinglePage\"] | order(_createdAt desc) [$start...$end] {\n    _id,\n    _type,\n    _updatedAt,\n    _rev,\n    title{pl,en},\n    slugPL,\n    slugEN,\n    excerpt{pl,en},\n    mainPostImage{\n      asset->{\n        _id,\n        url\n      },\n      alt{\n        pl,\n        en\n      }\n    },\n    _createdAt\n  }\n": GetNewsQueryResult;
     "\n  *[_type == \"newsSinglePage\" && (slugEN.current == $slug || slugPL.current == $slug)][0] {\n    _id,\n    title{\n      pl,\n      en\n    },\n    excerpt{pl,en},\n    content{\n      pl,\n      en\n    },\n    mainPostImage {\n      asset->{\n        _id,\n        url\n      },\n      alt{\n        pl,\n        en\n      }\n    },\n    _createdAt\n  }\n": GetSingleNewsQueryResult;
+    "\n  *[_type == \"teamPage\"][0] {\n    seo {\n      title,\n      desc\n    },\n    teamSliderImages[] {\n      asset->{\n        url,\n        _id,\n        metadata {\n          dimensions {\n            width,\n            height\n          }\n        }\n      }\n    },\n    goalkeepers[] {\n      _key,\n      firstName,\n      lastName,\n      number,\n      height,\n      weight,\n      stickHand,\n      isCaptain,\n      isAssistantCaptain,\n      photo {\n        asset->{\n          url,\n          _id\n        }\n      },\n      actionPhoto {\n        asset->{\n          url,\n          _id\n        }\n      }\n    },\n    defenders[] {\n      _key,\n      firstName,\n      lastName,\n      number,\n      height,\n      weight,\n      stickHand,\n      isCaptain,\n      isAssistantCaptain,\n      photo {\n        asset->{\n          url,\n          _id\n        }\n      },\n      actionPhoto {\n        asset->{\n          url,\n          _id\n        }\n      }\n    },\n    forwards[] {\n      _key,\n      firstName,\n      lastName,\n      number,\n      height,\n      weight,\n      stickHand,\n      isCaptain,\n      isAssistantCaptain,\n      photo {\n        asset->{\n          url,\n          _id\n        }\n      },\n      actionPhoto {\n        asset->{\n          url,\n          _id\n        }\n      }\n    }\n  }\n": GetTeamPageDataQueryResult;
   }
 }

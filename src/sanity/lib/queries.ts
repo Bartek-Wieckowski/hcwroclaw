@@ -181,3 +181,93 @@ export const getSingleNewsQuery = defineQuery(`
     _createdAt
   }
 `);
+
+export const getTeamPageDataQuery = defineQuery(`
+  *[_type == "teamPage"][0] {
+    seo {
+      title,
+      desc
+    },
+    teamSliderImages[] {
+      asset->{
+        url,
+        _id,
+        metadata {
+          dimensions {
+            width,
+            height
+          }
+        }
+      }
+    },
+    goalkeepers[] {
+      _key,
+      firstName,
+      lastName,
+      number,
+      height,
+      weight,
+      stickHand,
+      isCaptain,
+      isAssistantCaptain,
+      photo {
+        asset->{
+          url,
+          _id
+        }
+      },
+      actionPhoto {
+        asset->{
+          url,
+          _id
+        }
+      }
+    },
+    defenders[] {
+      _key,
+      firstName,
+      lastName,
+      number,
+      height,
+      weight,
+      stickHand,
+      isCaptain,
+      isAssistantCaptain,
+      photo {
+        asset->{
+          url,
+          _id
+        }
+      },
+      actionPhoto {
+        asset->{
+          url,
+          _id
+        }
+      }
+    },
+    forwards[] {
+      _key,
+      firstName,
+      lastName,
+      number,
+      height,
+      weight,
+      stickHand,
+      isCaptain,
+      isAssistantCaptain,
+      photo {
+        asset->{
+          url,
+          _id
+        }
+      },
+      actionPhoto {
+        asset->{
+          url,
+          _id
+        }
+      }
+    }
+  }
+`);

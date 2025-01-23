@@ -56,5 +56,19 @@
     "title": "404",
     "description": "Strona, której szukasz, nie istnieje.",
     "availableLanguages": "Dostępne języki:"
+  },
+  "teamPage": {
+    "positions": {
+      "goalkeepers": "Bramkarze",
+      "defenders": "Obrońcy",
+      "forwards": "Napastnicy"
+    },
+    "playerInfo": {
+      "height": "Wzrost",
+      "weight": "Waga",
+      "stickHand": "Chwyt kija",
+      "captain": "Kapitan",
+      "assistantCaptain": "Asystent kapitana"
+    }
   }
 }

@@ -56,5 +56,19 @@
     "title": "404",
     "description": "Page not found",
     "availableLanguages": "Available languages:"
+  },
+  "teamPage": {
+    "positions": {
+      "goalkeepers": "Goalkeepers",
+      "defenders": "Defenders",
+      "forwards": "Forwards"
+    },
+    "playerInfo": {
+      "height": "Height",
+      "weight": "Weight",
+      "stickHand": "Stick Hand",
+      "captain": "Captain",
+      "assistantCaptain": "Assistant Captain"
+    }
   }
 }

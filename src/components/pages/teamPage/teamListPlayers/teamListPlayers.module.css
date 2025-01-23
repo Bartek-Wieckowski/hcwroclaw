@@ -1,0 +1,142 @@
+.playersGrid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.playersGrid:not(:last-child) {
+  padding-bottom: 2rem;
+}
+
+.cardContainer {
+  width: 100%;
+  aspect-ratio: 3/4;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.cardFace {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.playerImageWrapper {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+}
+
+.playerImage {
+  object-fit: cover;
+  object-position: top;
+}
+
+.playerInfo,
+.playerDetails {
+  padding: 1rem;
+  background: white;
+}
+
+.basicInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.playerNumber {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.playerName {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0;
+  color: black;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.captainLabel,
+.assistantLabel {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.captainLabel {
+  color: #ffd700;
+}
+
+.assistantLabel {
+  color: #c0c0c0;
+}
+
+.playerStats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.playerRoles {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.captain,
+.assistantCaptain {
+  font-size: 0.875rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.captain {
+  background: #ffd700;
+  color: #333;
+}
+
+.assistantCaptain {
+  background: #c0c0c0;
+  color: #333;
+}
+
+.defaultActionImage {
+  object-fit: contain;
+  background-color: var(--accent-color-grey-layout);
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .cardContainer {
+    width: 33%;
+  }
+}
+
+@media (min-width: 768px) {
+  .playersGrid {
+    gap: 2rem;
+  }
+  .cardContainer {
+    width: 23%;
+  }
+}

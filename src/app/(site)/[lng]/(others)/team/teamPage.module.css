@@ -1,0 +1,24 @@
+.teamPage {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.playersSection {
+  width: 100%;
+  padding-inline: var(--container-padding);
+}
+
+.playersSection h2 {
+  margin: 2rem 0;
+  font-size: var(--h2-font-size);
+  font-family: var(--font-roboto-bold);
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--accent-color-grey);
+}
+
+@media (min-width: 992px) {
+  .teamPage {
+    padding-bottom: 4rem;
+  }
+}

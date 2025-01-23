@@ -1,40 +1,50 @@
-// import TeamList from '@/components/Team/TeamList/TeamList';
-import TeamSlider from '@/components/team/teamSlider/TeamSlider';
-import styles from './team.module.css';
-// import axios from 'axios';
-// import { API_URL } from '@/utils/constants';
-// import { PlayerType } from '@/types/Players.type';
+import styles from './teamPage.module.css';
+import TeamSlider from '@/components/pages/teamPage/teamSlider/TeamSlider';
+import TeamListPlayers from '@/components/pages/teamPage/teamListPlayers/TeamListPlayers';
+import { getTeamPageDataQuery } from '@/sanity/lib/queries';
+import { client } from '@/sanity/lib/client';
+import { getTranslations } from 'next-intl/server';
 
-// const getAllPlayers = async () => {
-//   try {
-//     const response = await axios.get(`${API_URL}/players`);
-//     return response.data;
-//   } catch (error) {
-//     throw new Error('Błąd ładowania danych...');
-//   }
-// };
+export const revalidate = 300;
 
-export default async function TeamPage() {
-  // const players = await getAllPlayers();
-  // const goalkeepers = players.filter(
-  //   (goalkeaper: PlayerType) => goalkeaper.position === 'goalie'
-  // );
-  // const defenders = players.filter(
-  //   (defender: PlayerType) => defender.position === 'defense'
-  // );
-  // const forwards = players.filter(
-  //   (forward: PlayerType) => forward.position === 'forward'
-  // );
+export default async function TeamPage({
+  params: { lng },
+}: {
+  params: { lng: string };
+}) {
+  const teamData = await client.fetch(getTeamPageDataQuery);
+  const t = await getTranslations('teamPage');
+
+  if (!teamData) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <div className="container">
-      <TeamSlider />
-      {/* <h2>Brzmkarze</h2> */}
-      {/* <TeamList players={goalkeepers} /> */}
-      {/* <h2>Obrońcy</h2> */}
-      {/* <TeamList players={defenders} /> */}
-      {/* <h2>Napastnicy</h2> */}
-      {/* <TeamList players={forwards} /> */}
+    <div className={styles.teamPage}>
+      <TeamSlider images={teamData.teamSliderImages} />
+
+      <div className={styles.playersSection}>
+        {teamData.goalkeepers && (
+          <>
+            <h2 className={`layoutH2effect`}>{t('positions.goalkeepers')}</h2>
+            <TeamListPlayers players={teamData.goalkeepers} />
+          </>
+        )}
+
+        {teamData.defenders && (
+          <>
+            <h2 className={`layoutH2effect`}>{t('positions.defenders')}</h2>
+            <TeamListPlayers players={teamData.defenders} />
+          </>
+        )}
+
+        {teamData.forwards && (
+          <>
+            <h2 className={`layoutH2effect`}>{t('positions.forwards')}</h2>
+            <TeamListPlayers players={teamData.forwards} />
+          </>
+        )}
+      </div>
     </div>
   );
 }

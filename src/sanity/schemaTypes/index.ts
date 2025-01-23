@@ -7,6 +7,7 @@ import localeNewsBlock from './utils/localeNewsBlock';
 // PAGES
 import homePage from './pages/homePage';
 import newsSinglePage from './pages/newsSinglePage';
+import teamPage from './pages/teamPage';
 
 // MODULES
 import team from './utils/team';
@@ -24,6 +25,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     localeNewsBlock,
     homePage,
     newsSinglePage,
+    teamPage,
     team,
     gameType,
     gameCalendar,

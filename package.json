@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "server": "json-server --watch database/db.json --port 8000",
-    "schema:generate": "npx sanity schema extract --enforce-required-fields && npx sanity typegen generate"
+    "schema:generate": "npx sanity schema extract --enforce-required-fields && npx sanity typegen generate",
+    "seed-team": "node scripts/seedTeamData.js",
+    "clear-team": "node scripts/clearTeamData.js"
   },
   "dependencies": {
     "@next/swc-wasm-nodejs": "^15.1.5",
@@ -41,9 +43,12 @@
     "@types/react": "^18",
     "@types/react-beautiful-dnd": "^13.1.8",
     "@types/react-dom": "^18",
+    "@types/uuid": "^10.0.0",
+    "dotenv": "^16.4.7",
     "eslint": "^8.57.1",
     "eslint-config-next": "14.1.0",
     "json-server": "^1.0.0-alpha.23",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "uuid": "^11.0.5"
   }
 }
