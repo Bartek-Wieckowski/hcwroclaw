@@ -84,7 +84,6 @@ export default defineType({
       name: 'content',
       title: 'Content',
       type: 'localeNewsBlock',
-      validation: (Rule) => Rule.required(),
     }),
   ],
   validation: (Rule) => Rule.required(),

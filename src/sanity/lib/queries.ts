@@ -78,7 +78,7 @@ export const getLeagueTablesQuery = defineQuery(`
     _createdAt,
     _updatedAt,
     _id,
-    title,
+    title{pl,en},
     headers[] { 
       pl,
       en
@@ -90,7 +90,7 @@ export const getLeagueTablesQuery = defineQuery(`
 `);
 
 export const getHomePageAboutUsSectionQuery = defineQuery(`
- *[_type == "homePage"]{
+ *[_type == "homePage"][0] {
     aboutUsSection {
       description{en, pl},
       activePlayers{number, text{en, pl}},
@@ -121,14 +121,9 @@ export const getPartnersQuery = defineQuery(`
     partners[] {
       name,
       logo {
-        asset-> {
-          url,
-          metadata {
-            dimensions {
-              width,
-              height
-            }
-          }
+        asset->{
+          _id,
+          url
         }
       },
       hasWebsite,

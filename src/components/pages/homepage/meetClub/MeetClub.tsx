@@ -22,9 +22,11 @@ function StatItem({ number, text }: StatItemProps) {
 export default async function MeetClub() {
   const lng = (await getLocale()) as Locale;
   const t = await getTranslations('homePage');
+  const aboutUsData = await client.fetch(getHomePageAboutUsSectionQuery);
 
-  const [aboutUsData] = await client.fetch(getHomePageAboutUsSectionQuery);
-  const aboutUsSection = aboutUsData.aboutUsSection;
+  if (!aboutUsData?.aboutUsSection) return null;
+
+  const { aboutUsSection } = aboutUsData;
 
   return (
     <div className={styles.meetClub}>

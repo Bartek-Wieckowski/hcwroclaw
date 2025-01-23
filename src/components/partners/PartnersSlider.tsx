@@ -5,20 +5,23 @@ import Link from 'next/link';
 import styles from './partners.module.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
-import { Partner } from '@/types/Partner.type';
+import { GetPartnersQueryResult } from '../../../sanity.types';
+import { urlFor } from '@/sanity/lib/image';
 
 type PartnersSliderProps = {
-  partners: Partner[];
+  partners: NonNullable<GetPartnersQueryResult>['partners'];
 };
 
 export default function PartnersSlider({ partners }: PartnersSliderProps) {
   const shouldUseSlider = partners.length > 2;
 
-  const renderPartnerLogo = (partner: Partner) => (
+  const renderPartnerLogo = (
+    partner: NonNullable<GetPartnersQueryResult>['partners'][0]
+  ) => (
     <div className={styles.logoWrapper}>
-      {partner.logo.asset?.url && (
+      {partner.logo.asset && (
         <Image
-          src={partner.logo.asset.url}
+          src={urlFor(partner.logo).url()}
           alt={partner.name}
           fill
           sizes="33vw"
@@ -28,7 +31,10 @@ export default function PartnersSlider({ partners }: PartnersSliderProps) {
     </div>
   );
 
-  const renderPartnerItem = (partner: Partner, index: number) => {
+  const renderPartnerItem = (
+    partner: NonNullable<GetPartnersQueryResult>['partners'][0],
+    index: number
+  ) => {
     const content =
       partner.hasWebsite && partner.url ? (
         <Link

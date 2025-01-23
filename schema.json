@@ -612,6 +612,23 @@
                   "of": {
                     "type": "object",
                     "attributes": {
+                      "linkType": {
+                        "type": "objectAttribute",
+                        "value": {
+                          "type": "union",
+                          "of": [
+                            {
+                              "type": "string",
+                              "value": "external"
+                            },
+                            {
+                              "type": "string",
+                              "value": "internal"
+                            }
+                          ]
+                        },
+                        "optional": true
+                      },
                       "href": {
                         "type": "objectAttribute",
                         "value": {
@@ -1457,7 +1474,7 @@
           "type": "inline",
           "name": "localeNewsBlock"
         },
-        "optional": false
+        "optional": true
       }
     }
   },

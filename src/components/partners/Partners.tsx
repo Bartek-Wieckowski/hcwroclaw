@@ -1,9 +1,9 @@
 import styles from './partners.module.css';
+import PartnersSlider from './PartnersSlider';
 import { getLocale } from 'next-intl/server';
 import { Locale } from '@/i18n/i18n';
 import { getPartnersQuery } from '@/sanity/lib/queries';
 import { client } from '@/sanity/lib/client';
-import PartnersSlider from './PartnersSlider';
 
 export const revalidate = 300;
 
