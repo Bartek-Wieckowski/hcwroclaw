@@ -13,29 +13,57 @@ export default defineType({
         { title: 'H3', value: 'h3' },
         { title: 'Quote', value: 'blockquote' },
       ],
-      lists: [{ title: 'Bullet', value: 'bullet' }],
+      lists: [{ title: 'Bullet Lists', value: 'bullet' }],
       marks: {
-        decorators: [],
+        decorators: [
+          { title: 'Strong', value: 'strong' },
+          { title: 'Emphasis', value: 'em' },
+        ],
         annotations: [
           {
-            title: 'URL',
+            title: 'Link',
             name: 'link',
             type: 'object',
             fields: [
               {
+                title: 'Link Type',
+                name: 'linkType',
+                type: 'string',
+                options: {
+                  list: [
+                    { title: 'External URL', value: 'external' },
+                    { title: 'Internal Route', value: 'internal' }
+                  ]
+                },
+                initialValue: 'external'
+              },
+              {
                 title: 'URL',
                 name: 'href',
-                type: 'url',
-                validation: (Rule) =>
-                  Rule.uri({
-                    scheme: ['http', 'https', 'mailto', 'tel'],
-                    allowRelative: true,
-                  }),
-              },
-            ],
-          },
-        ],
-      },
+                type: 'string',
+                validation: Rule => Rule.custom((href, context) => {
+                  if (!href) return 'URL is required';
+                  
+                  const linkType = context.parent?.linkType;
+                  
+                  if (linkType === 'external') {
+                    try {
+                      new URL(href);
+                      if (!href.startsWith('http')) {
+                        return 'External URL must start with http:// or https://';
+                      }
+                    } catch {
+                      return 'Please enter a valid URL';
+                    }
+                  }
+                  
+                  return true;
+                })
+              }
+            ]
+          }
+        ]
+      }
     }),
     defineArrayMember({
       type: 'image',

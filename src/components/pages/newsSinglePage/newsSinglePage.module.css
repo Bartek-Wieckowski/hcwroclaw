@@ -109,3 +109,66 @@
   color: #333;
   white-space: pre-wrap;
 }
+
+.heading3 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  color: #333;
+}
+
+.heading3 em {
+  font-style: italic;
+}
+
+.heading3 strong {
+  font-weight: 700;
+}
+
+.paragraph {
+  margin: 1rem 0;
+  line-height: 1.8;
+}
+
+.paragraph strong {
+  font-weight: 600;
+}
+
+.paragraph em {
+  font-style: italic;
+}
+
+/* Kombinacje dekoratorów */
+.paragraph strong em,
+.paragraph em strong,
+.heading3 strong em,
+.heading3 em strong {
+  font-weight: 600;
+  font-style: italic;
+}
+
+.blockquote {
+  border-left: 4px solid #666;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #555;
+}
+
+.blockquote strong {
+  font-weight: 600;
+}
+
+.blockquote em {
+  font-style: italic;
+}
+
+.link {
+  color: #0066cc;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: #004499;
+}

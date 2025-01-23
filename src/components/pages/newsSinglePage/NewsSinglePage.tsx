@@ -1,20 +1,21 @@
 import styles from './newsSinglePage.module.css';
 import Image from 'next/image';
-import { PortableText } from 'next-sanity';
+import { PortableText, PortableTextComponentProps, PortableTextMarkComponentProps } from '@portabletext/react';
 import { formatDateInNews } from '@/lib/helpers';
 import { VideoPlayer } from '@/components/reactPlayer/ReactPlayer';
 import { GetSingleNewsQueryResult } from '../../../../sanity.types';
 import { urlFor } from '@/sanity/lib/image';
 import { Locale } from '@/i18n/i18n';
+import { CustomPortableTextComponents, BlockContent, LinkMarkDef } from './types';
 
-type Props = {
+type NewsSinglePageProps = {
   news: NonNullable<GetSingleNewsQueryResult>;
   lng: Locale;
 };
 
 const components = {
   types: {
-    image: ({ value }: any) => (
+    image: ({ value }: PortableTextComponentProps<CustomPortableTextComponents['image']>) => (
       <div className={styles.imageContainer}>
         <Image
           src={urlFor(value.asset).url()}
@@ -26,8 +27,10 @@ const components = {
         {value.alt && <p className={styles.imageCaption}>{value.alt}</p>}
       </div>
     ),
-    youtube: ({ value }: any) => <VideoPlayer url={value.url} />,
-    textWithImage: ({ value }: any) => (
+    youtube: ({ value }: PortableTextComponentProps<CustomPortableTextComponents['youtube']>) => (
+      <VideoPlayer url={value.url} />
+    ),
+    textWithImage: ({ value }: PortableTextComponentProps<CustomPortableTextComponents['textWithImage']>) => (
       <div className={styles.textWithImage}>
         <div className={styles.textContent}>
           <p>{value.text}</p>
@@ -44,9 +47,42 @@ const components = {
       </div>
     ),
   },
+  block: {
+    h3: ({ children }: PortableTextComponentProps<BlockContent>) => (
+      <h3 className={styles.heading3}>
+        {children}
+      </h3>
+    ),
+    blockquote: ({ children }: PortableTextComponentProps<BlockContent>) => (
+      <blockquote className={styles.blockquote}>
+        {children}
+      </blockquote>
+    ),
+    normal: ({ children }: PortableTextComponentProps<BlockContent>) => (
+      <p className={styles.paragraph}>
+        {children}
+      </p>
+    ),
+  },
+  marks: {
+    link: ({ value, children }: PortableTextMarkComponentProps<LinkMarkDef>) => {
+      const isExternal = value?.linkType === 'external';
+      
+      return (
+        <a 
+          href={value?.href}
+          target={isExternal ? "_blank" : undefined}
+          rel={isExternal ? "noopener noreferrer" : undefined}
+          className={styles.link}
+        >
+          {children}
+        </a>
+      );
+    },
+  },
 };
 
-export function NewsSinglePage({ news, lng }: Props) {
+export function NewsSinglePage({ news, lng }: NewsSinglePageProps) {
   return (
     <article className={styles.article}>
       <header className={styles.header}>
