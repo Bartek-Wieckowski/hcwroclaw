@@ -16,11 +16,15 @@ export default defineType({
           title: 'Meta title',
           type: 'localeString',
           validation: (Rule) =>
-            Rule.required().custom((value) => {
-              if (!value?.pl || !value?.en) {
-                return 'Both Polish and English translations are required';
+            Rule.custom((value) => {
+              if (!value) return true;
+              if (value.pl && !value.en) {
+                return 'If Polish translation is provided, English is also required';
               }
-              if (value.pl.length > 80 || value.en.length > 80) {
+              if (value.en && !value.pl) {
+                return 'If English translation is provided, Polish is also required';
+              }
+              if (value.pl?.length > 80 || value.en?.length > 80) {
                 return 'Title must be less than 80 characters';
               }
               return true;
@@ -31,11 +35,15 @@ export default defineType({
           title: 'Meta description',
           type: 'localeString',
           validation: (Rule) =>
-            Rule.required().custom((value) => {
-              if (!value?.pl || !value?.en) {
-                return 'Both Polish and English translations are required';
+            Rule.custom((value) => {
+              if (!value) return true;
+              if (value.pl && !value.en) {
+                return 'If Polish translation is provided, English is also required';
               }
-              if (value.pl.length > 160 || value.en.length > 160) {
+              if (value.en && !value.pl) {
+                return 'If English translation is provided, Polish is also required';
+              }
+              if (value.pl?.length > 160 || value.en?.length > 160) {
                 return 'Description must be less than 160 characters';
               }
               return true;
@@ -48,7 +56,6 @@ export default defineType({
       name: 'teamSliderImages',
       title: 'Team Slider Images',
       type: 'array',
-      validation: (Rule) => Rule.required().min(1).max(6),
       of: [
         defineArrayMember({
           type: 'image',
@@ -57,6 +64,7 @@ export default defineType({
           },
         }),
       ],
+      validation: (Rule) => Rule.required().min(1).max(6),
     }),
 
     defineField({
@@ -64,6 +72,8 @@ export default defineType({
       title: 'Goalkeepers',
       type: 'array',
       of: [playerSchema],
+      validation: (Rule) =>
+        Rule.required().min(1).error('You must add at least one goalkeeper.'),
     }),
 
     defineField({
@@ -71,6 +81,8 @@ export default defineType({
       title: 'Defenders',
       type: 'array',
       of: [playerSchema],
+      validation: (Rule) =>
+        Rule.required().min(1).error('You must add at least one defender.'),
     }),
 
     defineField({
@@ -78,6 +90,8 @@ export default defineType({
       title: 'Forwards',
       type: 'array',
       of: [playerSchema],
+      validation: (Rule) =>
+        Rule.required().min(1).error('You must add at least one forward.'),
     }),
   ],
   preview: {

@@ -1352,7 +1352,7 @@
                 "type": "inline",
                 "name": "localeString"
               },
-              "optional": false
+              "optional": true
             },
             "desc": {
               "type": "objectAttribute",
@@ -1360,7 +1360,7 @@
                 "type": "inline",
                 "name": "localeString"
               },
-              "optional": false
+              "optional": true
             }
           }
         },
@@ -1660,7 +1660,7 @@
             }
           }
         },
-        "optional": true
+        "optional": false
       },
       "defenders": {
         "type": "objectAttribute",
@@ -1880,7 +1880,7 @@
             }
           }
         },
-        "optional": true
+        "optional": false
       },
       "forwards": {
         "type": "objectAttribute",
@@ -2100,7 +2100,7 @@
             }
           }
         },
-        "optional": true
+        "optional": false
       }
     }
   },
@@ -2352,7 +2352,7 @@
                 "type": "inline",
                 "name": "localeString"
               },
-              "optional": false
+              "optional": true
             },
             "desc": {
               "type": "objectAttribute",
@@ -2360,7 +2360,7 @@
                 "type": "inline",
                 "name": "localeString"
               },
-              "optional": false
+              "optional": true
             }
           }
         },

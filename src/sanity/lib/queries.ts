@@ -184,20 +184,10 @@ export const getSingleNewsQuery = defineQuery(`
 
 export const getTeamPageDataQuery = defineQuery(`
   *[_type == "teamPage"][0] {
-    seo {
-      title,
-      desc
-    },
     teamSliderImages[] {
       asset->{
         url,
         _id,
-        metadata {
-          dimensions {
-            width,
-            height
-          }
-        }
       }
     },
     goalkeepers[] {

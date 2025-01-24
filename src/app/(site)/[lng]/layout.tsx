@@ -3,7 +3,6 @@ import localFont from 'next/font/local';
 import QueryProvider from '@/lib/queryProvider';
 import LeagueTablesWrapper from '@/components/leagueTables/LeagueTablesWrapper';
 import LeagueTables from '@/components/leagueTables/LeagueTables';
-import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import { locales } from '@/i18n/i18n';
@@ -43,11 +42,6 @@ const blackIron = localFont({
   variable: '--font-black-iron',
 });
 const fontClasses = `${robotoRegular.variable} ${robotoThin.variable} ${robotoBold.variable} ${outfitRegular.variable} ${outfitThin.variable} ${outfitBold.variable} ${blackIron.variable}`;
-
-export const metadata: Metadata = {
-  title: 'Hockey Club Wrocław',
-  description: 'Test desc after GH actions work',
-};
 
 export function generateStaticParams() {
   return locales.map((lng) => ({ lng }));

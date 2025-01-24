@@ -20,10 +20,8 @@ type TeamListProps = {
 };
 
 export default function TeamListPlayers({ players }: TeamListProps) {
-  const t = useTranslations('teamPage');
   const [isFlipped, setIsFlipped] = useState<Record<string, boolean>>({});
-
-  if (!players) return null;
+  const t = useTranslations('teamPage');
 
   const handleFlip = (playerId: string, e: React.MouseEvent) => {
     e.stopPropagation();

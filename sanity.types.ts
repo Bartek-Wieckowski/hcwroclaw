@@ -236,8 +236,8 @@ export type TeamPage = {
   _updatedAt: string;
   _rev: string;
   seo?: {
-    title: LocaleString;
-    desc: LocaleString;
+    title?: LocaleString;
+    desc?: LocaleString;
   };
   teamSliderImages: Array<{
     asset?: {
@@ -251,7 +251,7 @@ export type TeamPage = {
     _type: "image";
     _key: string;
   }>;
-  goalkeepers?: Array<{
+  goalkeepers: Array<{
     firstName: string;
     lastName: string;
     number: number;
@@ -285,7 +285,7 @@ export type TeamPage = {
     _type: "player";
     _key: string;
   }>;
-  defenders?: Array<{
+  defenders: Array<{
     firstName: string;
     lastName: string;
     number: number;
@@ -319,7 +319,7 @@ export type TeamPage = {
     _type: "player";
     _key: string;
   }>;
-  forwards?: Array<{
+  forwards: Array<{
     firstName: string;
     lastName: string;
     number: number;
@@ -397,8 +397,8 @@ export type HomePage = {
   _updatedAt: string;
   _rev: string;
   seo?: {
-    title: LocaleString;
-    desc: LocaleString;
+    title?: LocaleString;
+    desc?: LocaleString;
   };
   aboutUsSection: {
     description: LocaleText;
@@ -729,22 +729,12 @@ export type GetSingleNewsQueryResult = {
   _createdAt: string;
 } | null;
 // Variable: getTeamPageDataQuery
-// Query: *[_type == "teamPage"][0] {    seo {      title,      desc    },    teamSliderImages[] {      asset->{        url,        _id,        metadata {          dimensions {            width,            height          }        }      }    },    goalkeepers[] {      _key,      firstName,      lastName,      number,      height,      weight,      stickHand,      isCaptain,      isAssistantCaptain,      photo {        asset->{          url,          _id        }      },      actionPhoto {        asset->{          url,          _id        }      }    },    defenders[] {      _key,      firstName,      lastName,      number,      height,      weight,      stickHand,      isCaptain,      isAssistantCaptain,      photo {        asset->{          url,          _id        }      },      actionPhoto {        asset->{          url,          _id        }      }    },    forwards[] {      _key,      firstName,      lastName,      number,      height,      weight,      stickHand,      isCaptain,      isAssistantCaptain,      photo {        asset->{          url,          _id        }      },      actionPhoto {        asset->{          url,          _id        }      }    }  }
+// Query: *[_type == "teamPage"][0] {    teamSliderImages[] {      asset->{        url,        _id,      }    },    goalkeepers[] {      _key,      firstName,      lastName,      number,      height,      weight,      stickHand,      isCaptain,      isAssistantCaptain,      photo {        asset->{          url,          _id        }      },      actionPhoto {        asset->{          url,          _id        }      }    },    defenders[] {      _key,      firstName,      lastName,      number,      height,      weight,      stickHand,      isCaptain,      isAssistantCaptain,      photo {        asset->{          url,          _id        }      },      actionPhoto {        asset->{          url,          _id        }      }    },    forwards[] {      _key,      firstName,      lastName,      number,      height,      weight,      stickHand,      isCaptain,      isAssistantCaptain,      photo {        asset->{          url,          _id        }      },      actionPhoto {        asset->{          url,          _id        }      }    }  }
 export type GetTeamPageDataQueryResult = {
-  seo: {
-    title: LocaleString;
-    desc: LocaleString;
-  } | null;
   teamSliderImages: Array<{
     asset: {
       url: string | null;
       _id: string;
-      metadata: {
-        dimensions: {
-          width: number | null;
-          height: number | null;
-        } | null;
-      } | null;
     } | null;
   }>;
   goalkeepers: Array<{
@@ -769,7 +759,7 @@ export type GetTeamPageDataQueryResult = {
         _id: string;
       } | null;
     } | null;
-  }> | null;
+  }>;
   defenders: Array<{
     _key: string;
     firstName: string;
@@ -792,7 +782,7 @@ export type GetTeamPageDataQueryResult = {
         _id: string;
       } | null;
     } | null;
-  }> | null;
+  }>;
   forwards: Array<{
     _key: string;
     firstName: string;
@@ -815,7 +805,7 @@ export type GetTeamPageDataQueryResult = {
         _id: string;
       } | null;
     } | null;
-  }> | null;
+  }>;
 } | null;
 
 // Query TypeMap
@@ -829,6 +819,6 @@ declare module "@sanity/client" {
     "\n  *[_type == \"partnersLogo\"][0] {\n    sectionTitle {\n      en,\n      pl\n    },\n    partners[] {\n      name,\n      logo {\n        asset->{\n          _id,\n          url\n        }\n      },\n      hasWebsite,\n      url\n    }\n  }\n": GetPartnersQueryResult;
     "\n  *[_type == \"newsSinglePage\"] | order(_createdAt desc) [$start...$end] {\n    _id,\n    _type,\n    _updatedAt,\n    _rev,\n    title{pl,en},\n    slugPL,\n    slugEN,\n    excerpt{pl,en},\n    mainPostImage{\n      asset->{\n        _id,\n        url\n      },\n      alt{\n        pl,\n        en\n      }\n    },\n    _createdAt\n  }\n": GetNewsQueryResult;
     "\n  *[_type == \"newsSinglePage\" && (slugEN.current == $slug || slugPL.current == $slug)][0] {\n    _id,\n    title{\n      pl,\n      en\n    },\n    excerpt{pl,en},\n    content{\n      pl,\n      en\n    },\n    mainPostImage {\n      asset->{\n        _id,\n        url\n      },\n      alt{\n        pl,\n        en\n      }\n    },\n    _createdAt\n  }\n": GetSingleNewsQueryResult;
-    "\n  *[_type == \"teamPage\"][0] {\n    seo {\n      title,\n      desc\n    },\n    teamSliderImages[] {\n      asset->{\n        url,\n        _id,\n        metadata {\n          dimensions {\n            width,\n            height\n          }\n        }\n      }\n    },\n    goalkeepers[] {\n      _key,\n      firstName,\n      lastName,\n      number,\n      height,\n      weight,\n      stickHand,\n      isCaptain,\n      isAssistantCaptain,\n      photo {\n        asset->{\n          url,\n          _id\n        }\n      },\n      actionPhoto {\n        asset->{\n          url,\n          _id\n        }\n      }\n    },\n    defenders[] {\n      _key,\n      firstName,\n      lastName,\n      number,\n      height,\n      weight,\n      stickHand,\n      isCaptain,\n      isAssistantCaptain,\n      photo {\n        asset->{\n          url,\n          _id\n        }\n      },\n      actionPhoto {\n        asset->{\n          url,\n          _id\n        }\n      }\n    },\n    forwards[] {\n      _key,\n      firstName,\n      lastName,\n      number,\n      height,\n      weight,\n      stickHand,\n      isCaptain,\n      isAssistantCaptain,\n      photo {\n        asset->{\n          url,\n          _id\n        }\n      },\n      actionPhoto {\n        asset->{\n          url,\n          _id\n        }\n      }\n    }\n  }\n": GetTeamPageDataQueryResult;
+    "\n  *[_type == \"teamPage\"][0] {\n    teamSliderImages[] {\n      asset->{\n        url,\n        _id,\n      }\n    },\n    goalkeepers[] {\n      _key,\n      firstName,\n      lastName,\n      number,\n      height,\n      weight,\n      stickHand,\n      isCaptain,\n      isAssistantCaptain,\n      photo {\n        asset->{\n          url,\n          _id\n        }\n      },\n      actionPhoto {\n        asset->{\n          url,\n          _id\n        }\n      }\n    },\n    defenders[] {\n      _key,\n      firstName,\n      lastName,\n      number,\n      height,\n      weight,\n      stickHand,\n      isCaptain,\n      isAssistantCaptain,\n      photo {\n        asset->{\n          url,\n          _id\n        }\n      },\n      actionPhoto {\n        asset->{\n          url,\n          _id\n        }\n      }\n    },\n    forwards[] {\n      _key,\n      firstName,\n      lastName,\n      number,\n      height,\n      weight,\n      stickHand,\n      isCaptain,\n      isAssistantCaptain,\n      photo {\n        asset->{\n          url,\n          _id\n        }\n      },\n      actionPhoto {\n        asset->{\n          url,\n          _id\n        }\n      }\n    }\n  }\n": GetTeamPageDataQueryResult;
   }
 }
