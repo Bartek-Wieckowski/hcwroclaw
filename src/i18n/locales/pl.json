@@ -68,7 +68,9 @@
       "weight": "Waga",
       "stickHand": "Chwyt kija",
       "captain": "Kapitan",
-      "assistantCaptain": "Asystent kapitana"
+      "assistantCaptain": "Asystent kapitana",
+      "stickHandRight": "Prawy",
+      "stickHandLeft": "Lewy"
     }
   }
 }

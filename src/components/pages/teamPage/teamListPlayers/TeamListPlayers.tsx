@@ -46,6 +46,17 @@ export default function TeamListPlayers({ players }: TeamListProps) {
     setIsFlipped({});
   };
 
+  const translateStickHand = (hand: string) => {
+    if (typeof hand !== 'string') return '';
+
+    const translations: Record<string, string> = {
+      right: t('playerInfo.stickHandRight'),
+      left: t('playerInfo.stickHandLeft'),
+    };
+
+    return translations[hand.toLowerCase()] || hand;
+  };
+
   return (
     <div className={styles.playersGrid} onClick={handleBackgroundClick}>
       {players.map((player) => (
@@ -80,10 +91,10 @@ export default function TeamListPlayers({ players }: TeamListProps) {
                   <h3 className={styles.playerName}>
                     {player.firstName} {player.lastName}
                     {player.isCaptain && (
-                      <span className={styles.captainLabel}>(C)</span>
+                      <span className={styles.captainLabel}>C</span>
                     )}
                     {player.isAssistantCaptain && (
-                      <span className={styles.assistantLabel}>(A)</span>
+                      <span className={styles.assistantLabel}>A</span>
                     )}
                   </h3>
                 </div>
@@ -121,21 +132,42 @@ export default function TeamListPlayers({ players }: TeamListProps) {
               </div>
               <div className={styles.playerDetails}>
                 <div className={styles.playerStats}>
-                  {player.height && (
-                    <span>
-                      {t('playerInfo.height')}: {player.height} cm
+                  <div className={styles.playerStat}>
+                    <span className={styles.playerStatLabel}>
+                      {t('playerInfo.height')}:
                     </span>
-                  )}
-                  {player.weight && (
-                    <span>
-                      {t('playerInfo.weight')}: {player.weight} kg
+                    {player.height ? (
+                      <span className={styles.playerStatValue}>
+                        {player.height} cm
+                      </span>
+                    ) : (
+                      <span className={styles.playerStatValue}>-</span>
+                    )}
+                  </div>
+                  <div className={styles.playerStat}>
+                    <span className={styles.playerStatLabel}>
+                      {t('playerInfo.weight')}:
                     </span>
-                  )}
-                  {player.stickHand && (
-                    <span>
-                      {t('playerInfo.stickHand')}: {player.stickHand}
+                    {player.weight ? (
+                      <span className={styles.playerStatValue}>
+                        {player.weight} kg
+                      </span>
+                    ) : (
+                      <span className={styles.playerStatValue}>-</span>
+                    )}
+                  </div>
+                  <div className={styles.playerStat}>
+                    <span className={styles.playerStatLabel}>
+                      {t('playerInfo.stickHand')}:
                     </span>
-                  )}
+                    {player.stickHand ? (
+                      <span className={styles.playerStatValue}>
+                        {translateStickHand(player.stickHand)}
+                      </span>
+                    ) : (
+                      <span className={styles.playerStatValue}>-</span>
+                    )}
+                  </div>
                 </div>
                 <div className={styles.playerRoles}>
                   {player.isCaptain && (

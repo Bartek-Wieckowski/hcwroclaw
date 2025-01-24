@@ -68,7 +68,9 @@
       "weight": "Weight",
       "stickHand": "Stick Hand",
       "captain": "Captain",
-      "assistantCaptain": "Assistant Captain"
+      "assistantCaptain": "Assistant Captain",
+      "stickHandRight": "Right",
+      "stickHandLeft": "Left"
     }
   }
 }

@@ -28,7 +28,7 @@
   width: 100%;
   height: 100%;
   background: white;
-  border-radius: 8px;
+  border-radius: var(--border-radius-img);
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -53,6 +53,10 @@
   background: white;
 }
 
+.playerInfo {
+  position: relative;
+}
+
 .basicInfo {
   display: flex;
   align-items: center;
@@ -60,16 +64,16 @@
 }
 
 .playerNumber {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #333;
+  font-size: 1.5rem;
+  font-family: var(--font-black-iron);
+  color: var(--hc-black);
 }
 
 .playerName {
-  font-size: 1.25rem;
-  font-weight: bold;
+  font-size: var(--normal-font-size);
+  font-family: var(--font-outfit-bold);
   margin: 0;
-  color: black;
+  color: var(--hc-black);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -77,16 +81,12 @@
 
 .captainLabel,
 .assistantLabel {
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-.captainLabel {
-  color: #ffd700;
-}
-
-.assistantLabel {
-  color: #c0c0c0;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 1.5rem;
+  font-family: var(--font-roboto-bold);
+  color: var(--accent-color-more);
 }
 
 .playerStats {
@@ -94,12 +94,33 @@
   flex-direction: column;
   gap: 0.5rem;
   font-size: 1rem;
+  font-family: var(--font-outfit-regular);
   color: #666;
   margin-bottom: 1rem;
 }
 
+.playerStat {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
+.playerStatLabel {
+  font-family: var(--font-outfit-regular);
+  color: var(--accent-color-grey);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.playerStatValue {
+  font-family: var(--font-outfit-bold);
+  font-size: 0.7rem;
+  color: var(--accent-color-grey);
+}
+
 .playerRoles {
   display: flex;
+  justify-content: center;
   gap: 0.5rem;
   flex-wrap: wrap;
 }
@@ -109,16 +130,18 @@
   font-size: 0.875rem;
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
+  font-family: var(--font-outfit-bold);
+  text-transform: uppercase;
 }
 
 .captain {
   background: #ffd700;
-  color: #333;
+  color: var(--hc-black);
 }
 
 .assistantCaptain {
   background: #c0c0c0;
-  color: #333;
+  color: var(--hc-black);
 }
 
 .defaultActionImage {
@@ -126,17 +149,32 @@
   background-color: var(--accent-color-grey-layout);
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 481px) and (max-width: 1249px) {
   .cardContainer {
     width: 33%;
   }
+
+  .basicInfo {
+    gap: 0.5rem;
+  }
+
+  .playerName {
+    font-size: clamp(0.7rem, 2vw, var(--normal-font-size));
+  }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .playersGrid {
     gap: 2rem;
   }
+}
+
+@media (min-width: 1250px) {
   .cardContainer {
     width: 23%;
+  }
+
+  .basicInfo {
+    gap: 1rem;
   }
 }
