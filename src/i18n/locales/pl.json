@@ -72,5 +72,15 @@
       "stickHandRight": "Prawy",
       "stickHandLeft": "Lewy"
     }
+  },
+  "clubPage": {
+    "clubHistory": {
+      "title1": "Historia",
+      "title2": "klubu"
+    },
+    "clubCrest": {
+      "title1": "Poznaj znaczenie",
+      "title2": "Herbu"
+    }
   }
 }

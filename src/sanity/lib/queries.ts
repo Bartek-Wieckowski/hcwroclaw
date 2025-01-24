@@ -78,7 +78,7 @@ export const getLeagueTablesQuery = defineQuery(`
     _createdAt,
     _updatedAt,
     _id,
-    title{pl,en},
+    title,
     headers[] { 
       pl,
       en
@@ -258,6 +258,27 @@ export const getTeamPageDataQuery = defineQuery(`
           _id
         }
       }
+    }
+  }
+`);
+
+export const getClubPageQuery = defineQuery(`
+  *[_type == "clubPage"][0] {
+    clubHistory {
+      pl,
+      en
+    },
+    titleIntroduction {
+      pl,
+      en
+    },
+    clubCrest {
+      pl,
+      en
+    },
+    sectionSummary {
+      pl,
+      en
     }
   }
 `);

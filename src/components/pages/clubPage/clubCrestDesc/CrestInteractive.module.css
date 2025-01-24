@@ -1,0 +1,33 @@
+.intro {
+  margin-bottom: 2rem;
+  font-size: var(--normal-font-size);
+  font-family: var(--font-outfit-regular);
+  white-space: pre-wrap;
+}
+
+.summary {
+  margin-top: 2rem;
+  font-size: var(--normal-font-size);
+  font-family: var(--font-outfit-regular);
+  white-space: pre-wrap;
+}
+
+.crestContent {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .intro,
+  .summary {
+    max-width: 75rem;
+    width: 100%;
+    margin-inline: auto;
+    text-align: center;
+  }
+  .crestContent {
+    grid-template-columns: 1fr 1fr;
+  }
+}

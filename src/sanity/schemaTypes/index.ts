@@ -3,11 +3,13 @@ import { type SchemaTypeDefinition } from 'sanity';
 import localeString from './utils/localeString';
 import localeText from './utils/localeText';
 import localeNewsBlock from './utils/localeNewsBlock';
+import localeClubBlock from './utils/localeClubBlock';
 
 // PAGES
 import homePage from './pages/homePage';
 import newsSinglePage from './pages/newsSinglePage';
 import teamPage from './pages/teamPage';
+import clubPage from './pages/clubPage';
 
 // MODULES
 import team from './utils/team';
@@ -23,8 +25,10 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     localeString,
     localeText,
     localeNewsBlock,
+    localeClubBlock,
     homePage,
     newsSinglePage,
+    clubPage,
     teamPage,
     team,
     gameType,

@@ -2105,6 +2105,100 @@
     }
   },
   {
+    "name": "clubPage",
+    "type": "document",
+    "attributes": {
+      "_id": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_type": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string",
+          "value": "clubPage"
+        }
+      },
+      "_createdAt": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_updatedAt": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_rev": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "seo": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "object",
+          "attributes": {
+            "title": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "inline",
+                "name": "localeString"
+              },
+              "optional": true
+            },
+            "desc": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "inline",
+                "name": "localeString"
+              },
+              "optional": true
+            }
+          }
+        },
+        "optional": true
+      },
+      "clubHistory": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "inline",
+          "name": "localeClubBlock"
+        },
+        "optional": false
+      },
+      "titleIntroduction": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "inline",
+          "name": "localeText"
+        },
+        "optional": false
+      },
+      "clubCrest": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "inline",
+          "name": "localeClubBlock"
+        },
+        "optional": false
+      },
+      "sectionSummary": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "inline",
+          "name": "localeText"
+        },
+        "optional": false
+      }
+    }
+  },
+  {
     "name": "newsSinglePage",
     "type": "document",
     "attributes": {
@@ -2478,6 +2572,38 @@
           }
         },
         "optional": false
+      }
+    }
+  },
+  {
+    "name": "localeClubBlock",
+    "type": "type",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "localeClubBlock"
+          }
+        },
+        "pl": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "inline",
+            "name": "newsBlock"
+          },
+          "optional": false
+        },
+        "en": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "inline",
+            "name": "newsBlock"
+          },
+          "optional": false
+        }
       }
     }
   },

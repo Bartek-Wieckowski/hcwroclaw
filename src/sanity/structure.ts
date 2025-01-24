@@ -20,6 +20,9 @@ export const structure: StructureResolver = (S) =>
               S.listItem()
                 .title('Team Page')
                 .child(S.documentTypeList('teamPage')),
+              S.listItem()
+                .title('Club Page')
+                .child(S.documentTypeList('clubPage')),
             ])
         ),
       S.divider(),
