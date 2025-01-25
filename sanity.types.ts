@@ -229,6 +229,19 @@ export type Team = {
   };
 };
 
+export type BecomePartnerPage = {
+  _id: string;
+  _type: "becomePartnerPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  seo?: {
+    title?: LocaleString;
+    desc?: LocaleString;
+  };
+  becomePartnerDesc: LocaleClubBlock;
+};
+
 export type ContactPage = {
   _id: string;
   _type: "contactPage";
@@ -531,7 +544,7 @@ export type LocaleString = {
   en: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | PartnersLogo | Youtube | NewsBlock | LeagueTables | GameCalendar | GameType | Team | ContactPage | TeamPage | ClubPage | NewsSinglePage | Slug | HomePage | LocaleClubBlock | LocaleNewsBlock | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | LocaleText | LocaleString;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | PartnersLogo | Youtube | NewsBlock | LeagueTables | GameCalendar | GameType | Team | BecomePartnerPage | ContactPage | TeamPage | ClubPage | NewsSinglePage | Slug | HomePage | LocaleClubBlock | LocaleNewsBlock | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | LocaleText | LocaleString;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: getGamesCalendarQuery
@@ -867,6 +880,14 @@ export type GetContactPageQueryResult = {
     en: NewsBlock;
   };
 } | null;
+// Variable: getBecomePartnerPageQuery
+// Query: *[_type == "becomePartnerPage"][0] {    becomePartnerDesc {      pl,      en    }  }
+export type GetBecomePartnerPageQueryResult = {
+  becomePartnerDesc: {
+    pl: NewsBlock;
+    en: NewsBlock;
+  };
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -882,5 +903,6 @@ declare module "@sanity/client" {
     "\n  *[_type == \"teamPage\"][0] {\n    teamSliderImages[] {\n      asset->{\n        url,\n        _id,\n      }\n    },\n    goalkeepers[] {\n      _key,\n      firstName,\n      lastName,\n      number,\n      height,\n      weight,\n      stickHand,\n      isCaptain,\n      isAssistantCaptain,\n      photo {\n        asset->{\n          url,\n          _id\n        }\n      },\n      actionPhoto {\n        asset->{\n          url,\n          _id\n        }\n      }\n    },\n    defenders[] {\n      _key,\n      firstName,\n      lastName,\n      number,\n      height,\n      weight,\n      stickHand,\n      isCaptain,\n      isAssistantCaptain,\n      photo {\n        asset->{\n          url,\n          _id\n        }\n      },\n      actionPhoto {\n        asset->{\n          url,\n          _id\n        }\n      }\n    },\n    forwards[] {\n      _key,\n      firstName,\n      lastName,\n      number,\n      height,\n      weight,\n      stickHand,\n      isCaptain,\n      isAssistantCaptain,\n      photo {\n        asset->{\n          url,\n          _id\n        }\n      },\n      actionPhoto {\n        asset->{\n          url,\n          _id\n        }\n      }\n    }\n  }\n": GetTeamPageDataQueryResult;
     "\n  *[_type == \"clubPage\"][0] {\n    clubHistory {\n      pl,\n      en\n    },\n    titleIntroduction {\n      pl,\n      en\n    },\n    clubCrest {\n      pl,\n      en\n    },\n    sectionSummary {\n      pl,\n      en\n    }\n  }\n": GetClubPageQueryResult;
     "\n  *[_type == \"contactPage\"][0] {\n    contactOptions {\n      pl,\n      en\n    }\n  }\n": GetContactPageQueryResult;
+    "\n  *[_type == \"becomePartnerPage\"][0] {\n    becomePartnerDesc {\n      pl,\n      en\n    }\n  }\n": GetBecomePartnerPageQueryResult;
   }
 }

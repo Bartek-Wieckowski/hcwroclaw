@@ -11,6 +11,7 @@ import newsSinglePage from './pages/newsSinglePage';
 import teamPage from './pages/teamPage';
 import clubPage from './pages/clubPage';
 import contactPage from './pages/contactPage';
+import becomePartnerPage from './pages/becomePartnerPage';
 
 // MODULES
 import team from './utils/team';
@@ -32,6 +33,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     clubPage,
     teamPage,
     contactPage,
+    becomePartnerPage,
     team,
     gameType,
     gameCalendar,

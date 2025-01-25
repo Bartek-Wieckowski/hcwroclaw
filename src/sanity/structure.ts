@@ -26,6 +26,9 @@ export const structure: StructureResolver = (S) =>
               S.listItem()
                 .title('Contact Page')
                 .child(S.documentTypeList('contactPage')),
+              S.listItem()
+                .title('Become Partner Page')
+                .child(S.documentTypeList('becomePartnerPage')),
             ])
         ),
       S.divider(),

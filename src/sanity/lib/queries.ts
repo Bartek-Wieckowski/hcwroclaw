@@ -288,3 +288,12 @@ export const getContactPageQuery = defineQuery(`
     }
   }
 `);
+
+export const getBecomePartnerPageQuery = defineQuery(`
+  *[_type == "becomePartnerPage"][0] {
+    becomePartnerDesc {
+      pl,
+      en
+    }
+  }
+`);

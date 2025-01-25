@@ -1,7 +1,5 @@
-import styles from './contactOptionsDesc.module.css';
-import SectionTitle from '@/components/sectionTitle/SectionTitle';
+import styles from './becomePartnerDesc.module.css';
 import Image from 'next/image';
-import { getTranslations } from 'next-intl/server';
 import {
   PortableText,
   PortableTextComponentProps,
@@ -15,10 +13,10 @@ import {
   BlockContent,
   LinkMarkDef,
 } from './types';
-import { GetContactPageQueryResult } from '../../../../sanity.types';
+import { GetBecomePartnerPageQueryResult } from '../../../../sanity.types';
 
-type ContactOptionsDescProps = {
-  description: NonNullable<GetContactPageQueryResult>;
+type BecomePartnerDescProps = {
+  description: NonNullable<GetBecomePartnerPageQueryResult>;
   lng: Locale;
 };
 
@@ -130,19 +128,16 @@ const components = {
   },
 };
 
-export default async function ContactOptionsDesc({
+export default function BecomePartnerDesc({
   description,
   lng,
-}: ContactOptionsDescProps) {
-  const t = await getTranslations('contactPage');
-
+}: BecomePartnerDescProps) {
   return (
-    <>
-      <SectionTitle part1={t('title1')} part2={t('title2')} as={'h1'} />
+    <div className={styles.becomePartnerDesc}>
       <PortableText
-        value={description.contactOptions[lng]}
+        value={description.becomePartnerDesc[lng]}
         components={components}
       />
-    </>
+    </div>
   );
 }
