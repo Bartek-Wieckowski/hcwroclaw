@@ -1,7 +1,7 @@
 import { PortableTextBlock } from '@portabletext/types';
 import { Image as SanityImage } from 'sanity';
 
-export type CustomPortableTextComponents = {
+export type BaseCustomPortableTextComponents = {
   image: {
     asset: SanityImage;
     alt?: string;
@@ -18,13 +18,13 @@ export type CustomPortableTextComponents = {
   };
 };
 
-export type BlockContent = PortableTextBlock & {
+export type BaseBlockContent = PortableTextBlock & {
   _type: string;
   style?: string;
   children?: any[];
 };
 
-export type LinkMarkDef = {
+export type BaseLinkMarkDef = {
   _type: string;
   href: string;
   linkType:
@@ -34,4 +34,18 @@ export type LinkMarkDef = {
     | 'messenger'
     | 'phone'
     | 'email';
+};
+
+export type StylesConfig = {
+  imageWrapper?: string;
+  image?: string;
+  imageContainer?: string;
+  textWithImage?: string;
+  textContent?: string;
+  heading3?: string;
+  paragraph?: string;
+  blockquote?: string;
+  link?: string;
+  bulletList?: string;
+  bulletListItem?: string;
 };

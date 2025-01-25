@@ -1,6 +1,6 @@
 'use client';
 
-import styles from './CrestInteractive.module.css';
+import styles from './crestInteractive.module.css';
 import ClubCrestLogo from './ClubCrestLogo';
 import ClubCrestDesc from './ClubCrestDesc';
 import SectionTitle from '@/components/sectionTitle/SectionTitle';

@@ -1,4 +1,4 @@
-import styles from './ClubCrestLogo.module.css';
+import styles from './clubCrestLogo.module.css';
 import Image from 'next/image';
 import crest from '@/assets/images/logo-home-hero.png';
 
