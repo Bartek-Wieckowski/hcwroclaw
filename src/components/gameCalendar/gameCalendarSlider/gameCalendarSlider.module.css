@@ -84,6 +84,7 @@
   font-family: var(--font-roboto-bold);
   line-height: 1;
   text-transform: uppercase;
+  margin-left: 0.313rem;
 }
 
 .gameDetails {
