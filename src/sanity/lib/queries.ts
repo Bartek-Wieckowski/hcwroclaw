@@ -282,3 +282,12 @@ export const getClubPageQuery = defineQuery(`
     }
   }
 `);
+
+export const getContactPageQuery = defineQuery(`
+  *[_type == "contactPage"][0] {
+    contactOptions {
+      pl,
+      en
+    }
+  }
+`);

@@ -1,5 +1,4 @@
 import NewsListing from '@/components/pages/newsListingPage/NewsListing';
-import WriteToUs from '@/components/pages/homepage/writeToUs/WriteToUs';
 import { getLocale } from 'next-intl/server';
 import { Locale } from '@/i18n/i18n';
 import { loadMoreNews } from '@/actions/actions';
@@ -14,15 +13,17 @@ type NewsPageProps = {
   };
 };
 
-export async function generateMetadata({ params: { lng } }: NewsPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params: { lng },
+}: NewsPageProps): Promise<Metadata> {
   const defaultTitle = {
     pl: 'Aktualności | HC Wrocław',
-    en: 'News | HC Wroclaw'
+    en: 'News | HC Wroclaw',
   };
-  
+
   const defaultDesc = {
     pl: 'Najnowsze informacje i aktualności z życia klubu Hockey Club Wrocław. Bądź na bieżąco z wydarzeniami w naszym klubie.',
-    en: 'Latest news and updates from Hockey Club Wroclaw. Stay up to date with events in our club.'
+    en: 'Latest news and updates from Hockey Club Wroclaw. Stay up to date with events in our club.',
   };
 
   return {
@@ -31,7 +32,6 @@ export async function generateMetadata({ params: { lng } }: NewsPageProps): Prom
   };
 }
 
-
 export default async function NewsListPage() {
   const locale = (await getLocale()) as Locale;
   const news = await loadMoreNews(0, NEWS_PER_PAGE);
@@ -39,8 +39,6 @@ export default async function NewsListPage() {
   return (
     <>
       <NewsListing initialNews={news} lng={locale} />
-      <WriteToUs lng={locale} />
     </>
   );
 }
-

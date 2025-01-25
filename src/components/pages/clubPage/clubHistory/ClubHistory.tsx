@@ -103,7 +103,7 @@ export default function ClubHistory({ content }: ClubHistoryProps) {
 
   return (
     <>
-      <SectionTitle part1={t('title1')} part2={t('title2')} />
+      <SectionTitle part1={t('title1')} part2={t('title2')} as={'h1'} />
       <PortableText value={content} components={components} />
     </>
   );

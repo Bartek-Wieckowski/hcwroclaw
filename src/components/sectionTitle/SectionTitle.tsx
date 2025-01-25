@@ -5,6 +5,7 @@ type SectionTitleProps = {
   part2: string;
   variant?: 'primary-secondary' | 'secondary-primary';
   className?: string;
+  as?: 'h1' | 'h2';
 };
 
 export default function SectionTitle({
@@ -12,9 +13,10 @@ export default function SectionTitle({
   part2,
   variant = 'primary-secondary',
   className = '',
+  as: Tag = 'h2',
 }: SectionTitleProps) {
   return (
-    <h2 className={`${className} ${styles.title}`}>
+    <Tag className={`${className} ${styles.title}`}>
       <span
         className={
           variant === 'primary-secondary'
@@ -33,6 +35,6 @@ export default function SectionTitle({
       >
         {part2}
       </span>
-    </h2>
+    </Tag>
   );
 }

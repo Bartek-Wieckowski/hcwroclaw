@@ -189,6 +189,8 @@ body {
   line-height: 1.1;
   transition: all 0.3s ease;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1,

@@ -624,6 +624,22 @@
                             {
                               "type": "string",
                               "value": "internal"
+                            },
+                            {
+                              "type": "string",
+                              "value": "email"
+                            },
+                            {
+                              "type": "string",
+                              "value": "phone"
+                            },
+                            {
+                              "type": "string",
+                              "value": "whatsapp"
+                            },
+                            {
+                              "type": "string",
+                              "value": "messenger"
                             }
                           ]
                         },
@@ -1303,6 +1319,76 @@
           }
         },
         "optional": true
+      }
+    }
+  },
+  {
+    "name": "contactPage",
+    "type": "document",
+    "attributes": {
+      "_id": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_type": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string",
+          "value": "contactPage"
+        }
+      },
+      "_createdAt": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_updatedAt": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "_rev": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        }
+      },
+      "seo": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "object",
+          "attributes": {
+            "title": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "inline",
+                "name": "localeString"
+              },
+              "optional": true
+            },
+            "desc": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "inline",
+                "name": "localeString"
+              },
+              "optional": true
+            }
+          }
+        },
+        "optional": true
+      },
+      "contactOptions": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "inline",
+          "name": "localeClubBlock"
+        },
+        "optional": false
       }
     }
   },

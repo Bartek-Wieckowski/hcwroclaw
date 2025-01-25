@@ -111,7 +111,7 @@ export type NewsBlock = Array<{
   style?: "normal" | "h3" | "blockquote";
   listItem?: "bullet";
   markDefs?: Array<{
-    linkType?: "external" | "internal";
+    linkType?: "external" | "internal" | "email" | "phone" | "whatsapp" | "messenger";
     href?: string;
     _type: "link";
     _key: string;
@@ -227,6 +227,19 @@ export type Team = {
     crop?: SanityImageCrop;
     _type: "image";
   };
+};
+
+export type ContactPage = {
+  _id: string;
+  _type: "contactPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  seo?: {
+    title?: LocaleString;
+    desc?: LocaleString;
+  };
+  contactOptions: LocaleClubBlock;
 };
 
 export type TeamPage = {
@@ -518,7 +531,7 @@ export type LocaleString = {
   en: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | PartnersLogo | Youtube | NewsBlock | LeagueTables | GameCalendar | GameType | Team | TeamPage | ClubPage | NewsSinglePage | Slug | HomePage | LocaleClubBlock | LocaleNewsBlock | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | LocaleText | LocaleString;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | PartnersLogo | Youtube | NewsBlock | LeagueTables | GameCalendar | GameType | Team | ContactPage | TeamPage | ClubPage | NewsSinglePage | Slug | HomePage | LocaleClubBlock | LocaleNewsBlock | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | LocaleText | LocaleString;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: getGamesCalendarQuery
@@ -849,6 +862,14 @@ export type GetClubPageQueryResult = {
     en: string;
   };
 } | null;
+// Variable: getContactPageQuery
+// Query: *[_type == "contactPage"][0] {    contactOptions {      pl,      en    }  }
+export type GetContactPageQueryResult = {
+  contactOptions: {
+    pl: NewsBlock;
+    en: NewsBlock;
+  };
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -863,5 +884,6 @@ declare module "@sanity/client" {
     "\n  *[_type == \"newsSinglePage\" && (slugEN.current == $slug || slugPL.current == $slug)][0] {\n    _id,\n    title{\n      pl,\n      en\n    },\n    excerpt{pl,en},\n    content{\n      pl,\n      en\n    },\n    mainPostImage {\n      asset->{\n        _id,\n        url\n      },\n      alt{\n        pl,\n        en\n      }\n    },\n    _createdAt\n  }\n": GetSingleNewsQueryResult;
     "\n  *[_type == \"teamPage\"][0] {\n    teamSliderImages[] {\n      asset->{\n        url,\n        _id,\n      }\n    },\n    goalkeepers[] {\n      _key,\n      firstName,\n      lastName,\n      number,\n      height,\n      weight,\n      stickHand,\n      isCaptain,\n      isAssistantCaptain,\n      photo {\n        asset->{\n          url,\n          _id\n        }\n      },\n      actionPhoto {\n        asset->{\n          url,\n          _id\n        }\n      }\n    },\n    defenders[] {\n      _key,\n      firstName,\n      lastName,\n      number,\n      height,\n      weight,\n      stickHand,\n      isCaptain,\n      isAssistantCaptain,\n      photo {\n        asset->{\n          url,\n          _id\n        }\n      },\n      actionPhoto {\n        asset->{\n          url,\n          _id\n        }\n      }\n    },\n    forwards[] {\n      _key,\n      firstName,\n      lastName,\n      number,\n      height,\n      weight,\n      stickHand,\n      isCaptain,\n      isAssistantCaptain,\n      photo {\n        asset->{\n          url,\n          _id\n        }\n      },\n      actionPhoto {\n        asset->{\n          url,\n          _id\n        }\n      }\n    }\n  }\n": GetTeamPageDataQueryResult;
     "\n  *[_type == \"clubPage\"][0] {\n    clubHistory {\n      pl,\n      en\n    },\n    titleIntroduction {\n      pl,\n      en\n    },\n    clubCrest {\n      pl,\n      en\n    },\n    sectionSummary {\n      pl,\n      en\n    }\n  }\n": GetClubPageQueryResult;
+    "\n  *[_type == \"contactPage\"][0] {\n    contactOptions {\n      pl,\n      en\n    }\n  }\n": GetContactPageQueryResult;
   }
 }

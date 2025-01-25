@@ -32,38 +32,61 @@ export default defineType({
                 options: {
                   list: [
                     { title: 'External URL', value: 'external' },
-                    { title: 'Internal Route', value: 'internal' }
-                  ]
+                    { title: 'Internal Route', value: 'internal' },
+                    { title: 'Email', value: 'email' },
+                    { title: 'Phone', value: 'phone' },
+                    { title: 'WhatsApp', value: 'whatsapp' },
+                    { title: 'Messenger', value: 'messenger' },
+                  ],
                 },
-                initialValue: 'external'
+                initialValue: 'external',
               },
               {
                 title: 'URL',
                 name: 'href',
                 type: 'string',
-                validation: Rule => Rule.custom((href, context) => {
-                  if (!href) return 'URL is required';
-                  
-                  const linkType = context.parent?.linkType;
-                  
-                  if (linkType === 'external') {
-                    try {
-                      new URL(href);
-                      if (!href.startsWith('http')) {
-                        return 'External URL must start with http:// or https://';
+                validation: (Rule) =>
+                  Rule.custom((href, context) => {
+                    if (!href) return 'URL is required';
+
+                    const linkType = context.parent?.linkType;
+
+                    if (linkType === 'external') {
+                      try {
+                        new URL(href);
+                        if (!href.startsWith('http')) {
+                          return 'External URL must start with http:// or https://';
+                        }
+                      } catch {
+                        return 'Please enter a valid URL';
                       }
-                    } catch {
-                      return 'Please enter a valid URL';
                     }
-                  }
-                  
-                  return true;
-                })
-              }
-            ]
-          }
-        ]
-      }
+
+                    if (linkType === 'whatsapp') {
+                      if (!/^\+?[\d\s-]+$/.test(href)) {
+                        return 'Please enter a valid WhatsApp number (e.g. +48123456789)';
+                      }
+                    } else if (linkType === 'phone') {
+                      if (!/^\+?[\d\s-]+$/.test(href)) {
+                        return 'Please enter a valid phone number (e.g. +48123456789)';
+                      }
+                    } else if (linkType === 'messenger') {
+                      if (!/^[a-zA-Z0-9._-]+$/.test(href)) {
+                        return 'Please enter a valid Messenger username (e.g. username123)';
+                      }
+                    } else if (linkType === 'email') {
+                      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(href)) {
+                        return 'Please enter a valid email address (e.g. example@example.com)';
+                      }
+                    }
+
+                    return true;
+                  }),
+              },
+            ],
+          },
+        ],
+      },
     }),
     defineArrayMember({
       type: 'image',
