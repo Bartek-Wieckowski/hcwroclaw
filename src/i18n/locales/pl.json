@@ -33,7 +33,22 @@
     "button": "NAPISZ TERAZ →",
     "sending": "Wysyłanie...",
     "success": "Wiadomość została wysłana!",
-    "error": "Wystąpił błąd podczas wysyłania wiadomości"
+    "error": "Wystąpił błąd podczas wysyłania wiadomości",
+    "email": "Email",
+    "phone": "Numer telefonu",
+    "consent": "Wyrażam zgodę na przetwarzanie danych osobowych podanych w formularzu. Pana/Pani dane będą przetwarzane w celach związanych z udzieleniem odpowiedzi.",
+    "emailPlaceholder": "Twój email...",
+    "phonePlaceholder": "Twój numer telefonu...",
+    "validation": {
+      "email": "Wprowadź poprawny adres email",
+      "phone": "Wprowadź poprawny numer telefonu",
+      "message": "Wprowadź swoją wiadomość",
+      "consent": "Proszę zaakceptować zgodę"
+    }
+  },
+  "cookieBar": {
+    "message": "Ta strona używa plików cookie, aby zapewnić najlepszą jakość korzystania z naszej witryny. Kontynuując przeglądanie strony, wyrażasz zgodę na ich wykorzystanie.",
+    "accept": "Akceptuję"
   },
   "homePage": {
     "aboutUsSection": {

@@ -3,9 +3,11 @@ import localFont from 'next/font/local';
 import QueryProvider from '@/lib/queryProvider';
 import LeagueTablesWrapper from '@/components/leagueTables/LeagueTablesWrapper';
 import LeagueTables from '@/components/leagueTables/LeagueTables';
+import CookieBarInfo from '@/components/cookieBarInfo/CookieBarInfo';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import { locales } from '@/i18n/i18n';
+import { Toaster } from 'react-hot-toast';
 
 const robotoThin = localFont({
   src: '../../../assets/fonts/RobotoCondensed-Thin.ttf',
@@ -64,6 +66,8 @@ export default async function RootLayout({ children }: RootLayoutProps) {
               {children}
               <LeagueTables isModal />
             </LeagueTablesWrapper>
+            <CookieBarInfo />
+            <Toaster position="top-center" />
           </NextIntlClientProvider>
         </QueryProvider>
       </body>

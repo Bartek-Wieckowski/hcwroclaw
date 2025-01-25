@@ -9,6 +9,7 @@ import { useTranslations } from 'next-intl';
 import { Locale } from '@/i18n/i18n';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'framer-motion';
+import toast from 'react-hot-toast';
 
 import player1 from '@/assets/images/additional/hcwroclawplayer1.png';
 import player2 from '@/assets/images/additional/hcwroclawplayer2.png';
@@ -16,6 +17,13 @@ import player3 from '@/assets/images/additional/hcwroclawplayer3.png';
 import player4 from '@/assets/images/additional/hcwroclawplayer4.png';
 
 type ContactOption = 'sparing' | 'join' | 'partner';
+
+type FormData = {
+  email: string;
+  phone: string;
+  message: string;
+  consent: boolean;
+};
 
 type WriteToUsProps = {
   lng: Locale;
@@ -33,7 +41,12 @@ export default function WriteToUs({ lng }: WriteToUsProps) {
   const [selectedOption, setSelectedOption] =
     useState<ContactOption>('sparing');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [message, setMessage] = useState('');
+  const [formData, setFormData] = useState<FormData>({
+    email: '',
+    phone: '',
+    message: '',
+    consent: false,
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [playerImage, setPlayerImage] = useState(playerImages[0]);
   const t = useTranslations('writeToUs');
@@ -41,6 +54,7 @@ export default function WriteToUs({ lng }: WriteToUsProps) {
   const dropdownRef = useClickOutside<HTMLDivElement>(() => {
     setIsDropdownOpen(false);
   });
+  const [errors, setErrors] = useState<Partial<FormData>>({});
 
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * playerImages.length);
@@ -57,8 +71,38 @@ export default function WriteToUs({ lng }: WriteToUsProps) {
     (opt) => opt.value === selectedOption
   )?.label;
 
+  const validateForm = () => {
+    const newErrors: Partial<FormData> = {};
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      newErrors.email = t('validation.email');
+    }
+
+    const phoneRegex = /^[0-9+\- ]{9,}$/;
+    if (!phoneRegex.test(formData.phone)) {
+      newErrors.phone = t('validation.phone');
+    }
+
+    if (formData.message.trim().length === 0) {
+      newErrors.message = t('validation.message');
+    }
+
+    if (!formData.consent) {
+      newErrors.consent = true;
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -69,24 +113,52 @@ export default function WriteToUs({ lng }: WriteToUsProps) {
         },
         body: JSON.stringify({
           type: selectedOption,
-          message,
+          ...formData,
         }),
       });
 
       if (response.ok) {
-        setMessage('');
-        alert(t('success'));
+        setFormData({
+          email: '',
+          phone: '',
+          message: '',
+          consent: false,
+        });
+        toast.success(t('success'), {
+          duration: 4000,
+          style: {
+            background: 'var(--bg-body-black)',
+            color: '#fff',
+            border: '1px solid var(--hc-gold)',
+          },
+          iconTheme: {
+            primary: 'var(--hc-gold)',
+            secondary: 'var(--bg-body-black)',
+          },
+        });
       } else {
         throw new Error(t('error'));
       }
     } catch (error) {
-      alert(t('error'));
+      toast.error(t('error'), {
+        duration: 4000,
+        style: {
+          background: 'var(--bg-body-black)',
+          color: '#fff',
+          border: '1px solid #ff4444',
+        },
+        iconTheme: {
+          primary: '#ff4444',
+          secondary: 'var(--bg-body-black)',
+        },
+      });
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const isMessageValid = message.trim().length > 0;
+  const isFormValid =
+    formData.email && formData.phone && formData.message && formData.consent;
 
   return (
     <div className={styles.writeToUs}>
@@ -168,18 +240,70 @@ export default function WriteToUs({ lng }: WriteToUsProps) {
             </AnimatePresence>
           </div>
 
+          <div className={styles.inputRow}>
+            <div>
+              <input
+                type="email"
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData((prev) => ({ ...prev, email: e.target.value }))
+                }
+                placeholder={t('emailPlaceholder')}
+                className={`${styles.input} ${errors.email ? styles.error : ''}`}
+              />
+              {errors.email && (
+                <span className={styles.errorText}>{errors.email}</span>
+              )}
+            </div>
+
+            <div>
+              <input
+                type="tel"
+                value={formData.phone}
+                onChange={(e) =>
+                  setFormData((prev) => ({ ...prev, phone: e.target.value }))
+                }
+                placeholder={t('phonePlaceholder')}
+                className={`${styles.input} ${errors.phone ? styles.error : ''}`}
+              />
+              {errors.phone && (
+                <span className={styles.errorText}>{errors.phone}</span>
+              )}
+            </div>
+          </div>
+
           <textarea
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
+            value={formData.message}
+            onChange={(e) =>
+              setFormData((prev) => ({ ...prev, message: e.target.value }))
+            }
             placeholder={t('placeholder')}
-            className={styles.textarea}
+            className={`${styles.textarea} ${errors.message ? styles.error : ''}`}
             rows={4}
           />
+          {errors.message && (
+            <span className={styles.errorText}>{errors.message}</span>
+          )}
+
+          <label className={styles.consentLabel}>
+            <input
+              type="checkbox"
+              checked={formData.consent}
+              onChange={(e) =>
+                setFormData((prev) => ({ ...prev, consent: e.target.checked }))
+              }
+              className={styles.checkbox}
+            />
+            <span className={styles.consentText}>{t('consent')}</span>
+          </label>
+          {errors.consent && (
+            <span className={styles.errorText}>{errors.consent}</span>
+          )}
 
           <button
             type="submit"
             className={styles.submitButton}
-            disabled={isSubmitting || !isMessageValid}
+            disabled={isSubmitting || !isFormValid}
           >
             {isSubmitting ? t('sending') : t('button')}
           </button>
