@@ -269,6 +269,7 @@ section {
   justify-content: flex-end;
   bottom: 1.25rem !important;
   right: 1.563rem;
+  padding-right: 0.5rem;
 }
 
 .swiper-pagination-bullet {

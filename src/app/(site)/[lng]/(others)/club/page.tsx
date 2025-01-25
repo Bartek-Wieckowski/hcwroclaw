@@ -2,6 +2,7 @@ import styles from './clubPage.module.css';
 import CrestInteractive from '@/components/pages/clubPage/clubCrestDesc/CrestInteractive';
 import ClubHistory from '@/components/pages/clubPage/clubHistory/ClubHistory';
 import Spinner from '@/components/spinner/Spinner';
+import WriteToUs from '@/components/pages/homepage/writeToUs/WriteToUs';
 import { client } from '@/sanity/lib/client';
 import { getClubPageQuery } from '@/sanity/lib/queries';
 import { Locale } from '@/i18n/i18n';
@@ -46,13 +47,16 @@ export default async function ClubPage({ params: { lng } }: ClubPageProps) {
   }
 
   return (
-    <div className={styles.clubPage}>
-      <ClubHistory content={data.clubHistory[lng]} />
-      <CrestInteractive
-        content={data.clubCrest[lng]}
-        intro={data.titleIntroduction[lng]}
-        summary={data.sectionSummary[lng]}
-      />
-    </div>
+    <>
+      <div className={styles.clubPage}>
+        <ClubHistory content={data.clubHistory[lng]} />
+        <CrestInteractive
+          content={data.clubCrest[lng]}
+          intro={data.titleIntroduction[lng]}
+          summary={data.sectionSummary[lng]}
+        />
+      </div>
+      <WriteToUs lng={lng} />
+    </>
   );
 }
