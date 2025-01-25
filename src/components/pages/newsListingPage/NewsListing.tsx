@@ -10,7 +10,7 @@ import { pl, enUS } from 'date-fns/locale';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { useInView } from 'react-intersection-observer';
 import { Locale } from '@/i18n/i18n';
-import { NewsSinglePage } from '../../../../sanity.types';
+import { GetNewsQueryResult } from '../../../../sanity.types';
 import { urlFor } from '@/sanity/lib/image';
 import { loadMoreNews } from '@/actions/actions';
 import { QUERY_KEYS } from '@/lib/queryKeys';
@@ -19,7 +19,7 @@ import { NEWS_PER_PAGE } from '@/lib/constants';
 import { useTranslations } from 'use-intl';
 
 type NewsListingProps = {
-  initialNews: NewsSinglePage[];
+  initialNews: GetNewsQueryResult;
   lng: Locale;
 };
 

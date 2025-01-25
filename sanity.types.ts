@@ -707,12 +707,9 @@ export type GetPartnersQueryResult = {
   }>;
 } | null;
 // Variable: getNewsQuery
-// Query: *[_type == "newsSinglePage"] | order(_createdAt desc) [$start...$end] {    _id,    _type,    _updatedAt,    _rev,    title{pl,en},    slugPL,    slugEN,    excerpt{pl,en},    mainPostImage{      asset->{        _id,        url      },      alt{        pl,        en      }    },    _createdAt  }
+// Query: *[_type == "newsSinglePage"] | order(_createdAt desc) [$start...$end] {    _id,    title{pl,en},    slugPL,    slugEN,    excerpt{pl,en},    mainPostImage{      asset->{        _id,        url      },      alt{        pl,        en      }    },    _createdAt  }
 export type GetNewsQueryResult = Array<{
   _id: string;
-  _type: "newsSinglePage";
-  _updatedAt: string;
-  _rev: string;
   title: {
     pl: string;
     en: string;
@@ -880,7 +877,7 @@ declare module "@sanity/client" {
     "\n *[_type == \"homePage\"][0] {\n    aboutUsSection {\n      description{en, pl},\n      activePlayers{number, text{en, pl}},\n      gamePerSeasson{number, text{en, pl}},\n      trainingAtWeek{number, text{en, pl}},\n      leagueNumbers{number, text{en, pl}}\n    }\n}": GetHomePageAboutUsSectionQueryResult;
     "\n  *[_type == \"newsSinglePage\"] | order(_createdAt desc) [0..3] {\n      _id,\n      title{pl,en},\n      slugPL,\n      slugEN,\n      excerpt{pl,en},\n      mainPostImage{asset, alt{pl, en}},\n      _createdAt\n    }\n  ": GetHomePageLatestNewsQueryResult;
     "\n  *[_type == \"partnersLogo\"][0] {\n    sectionTitle {\n      en,\n      pl\n    },\n    partners[] {\n      name,\n      logo {\n        asset->{\n          _id,\n          url\n        }\n      },\n      hasWebsite,\n      url\n    }\n  }\n": GetPartnersQueryResult;
-    "\n  *[_type == \"newsSinglePage\"] | order(_createdAt desc) [$start...$end] {\n    _id,\n    _type,\n    _updatedAt,\n    _rev,\n    title{pl,en},\n    slugPL,\n    slugEN,\n    excerpt{pl,en},\n    mainPostImage{\n      asset->{\n        _id,\n        url\n      },\n      alt{\n        pl,\n        en\n      }\n    },\n    _createdAt\n  }\n": GetNewsQueryResult;
+    "\n  *[_type == \"newsSinglePage\"] | order(_createdAt desc) [$start...$end] {\n    _id,\n    title{pl,en},\n    slugPL,\n    slugEN,\n    excerpt{pl,en},\n    mainPostImage{\n      asset->{\n        _id,\n        url\n      },\n      alt{\n        pl,\n        en\n      }\n    },\n    _createdAt\n  }\n": GetNewsQueryResult;
     "\n  *[_type == \"newsSinglePage\" && (slugEN.current == $slug || slugPL.current == $slug)][0] {\n    _id,\n    title{\n      pl,\n      en\n    },\n    excerpt{pl,en},\n    content{\n      pl,\n      en\n    },\n    mainPostImage {\n      asset->{\n        _id,\n        url\n      },\n      alt{\n        pl,\n        en\n      }\n    },\n    _createdAt\n  }\n": GetSingleNewsQueryResult;
     "\n  *[_type == \"teamPage\"][0] {\n    teamSliderImages[] {\n      asset->{\n        url,\n        _id,\n      }\n    },\n    goalkeepers[] {\n      _key,\n      firstName,\n      lastName,\n      number,\n      height,\n      weight,\n      stickHand,\n      isCaptain,\n      isAssistantCaptain,\n      photo {\n        asset->{\n          url,\n          _id\n        }\n      },\n      actionPhoto {\n        asset->{\n          url,\n          _id\n        }\n      }\n    },\n    defenders[] {\n      _key,\n      firstName,\n      lastName,\n      number,\n      height,\n      weight,\n      stickHand,\n      isCaptain,\n      isAssistantCaptain,\n      photo {\n        asset->{\n          url,\n          _id\n        }\n      },\n      actionPhoto {\n        asset->{\n          url,\n          _id\n        }\n      }\n    },\n    forwards[] {\n      _key,\n      firstName,\n      lastName,\n      number,\n      height,\n      weight,\n      stickHand,\n      isCaptain,\n      isAssistantCaptain,\n      photo {\n        asset->{\n          url,\n          _id\n        }\n      },\n      actionPhoto {\n        asset->{\n          url,\n          _id\n        }\n      }\n    }\n  }\n": GetTeamPageDataQueryResult;
     "\n  *[_type == \"clubPage\"][0] {\n    clubHistory {\n      pl,\n      en\n    },\n    titleIntroduction {\n      pl,\n      en\n    },\n    clubCrest {\n      pl,\n      en\n    },\n    sectionSummary {\n      pl,\n      en\n    }\n  }\n": GetClubPageQueryResult;

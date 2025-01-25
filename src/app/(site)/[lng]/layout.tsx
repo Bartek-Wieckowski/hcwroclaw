@@ -8,6 +8,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import { locales } from '@/i18n/i18n';
 import { Toaster } from 'react-hot-toast';
+import { Metadata } from 'next';
 
 const robotoThin = localFont({
   src: '../../../assets/fonts/RobotoCondensed-Thin.ttf',
@@ -44,6 +45,12 @@ const blackIron = localFont({
   variable: '--font-black-iron',
 });
 const fontClasses = `${robotoRegular.variable} ${robotoThin.variable} ${robotoBold.variable} ${outfitRegular.variable} ${outfitThin.variable} ${outfitBold.variable} ${blackIron.variable}`;
+
+export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+  ),
+};
 
 export function generateStaticParams() {
   return locales.map((lng) => ({ lng }));
