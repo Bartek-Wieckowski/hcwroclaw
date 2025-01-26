@@ -4,7 +4,11 @@ type LinkType = {
 };
 
 export type NavLinkType = {
-  navLink: LinkType;
+  navLink: {
+    title: string;
+    path: string;
+  };
+  onNavigate?: () => void;
 };
 
 export type FooterLinkType = {

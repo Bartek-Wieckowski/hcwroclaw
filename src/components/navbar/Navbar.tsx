@@ -38,7 +38,11 @@ export default function Navbar() {
             onClick={() => setIsOpen((prev) => !prev)}
           />
           {links.map((navLink) => (
-            <MenuLink navLink={navLink} key={navLink.title} />
+            <MenuLink
+              navLink={navLink}
+              key={navLink.title}
+              onNavigate={closeMenu}
+            />
           ))}
           <NavigationSocialMediaIcons isInMobileMenu={isOpen} />
         </ul>
