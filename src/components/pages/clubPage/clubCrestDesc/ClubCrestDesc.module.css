@@ -1,0 +1,17 @@
+.heading3 {
+  font-size: var(--h3-font-size);
+  font-family: var(--font-roboto-bold);
+  margin-bottom: 1.25rem;
+  /* color: #2d3748; */
+  color: var(--text-white);
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.heading3:hover {
+  color: #4a5568;
+}
+
+.heading3.active {
+  color: #2b6cb0;
+}

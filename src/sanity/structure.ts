@@ -9,20 +9,26 @@ export const structure: StructureResolver = (S) =>
         .title('Main content')
         .child(
           S.list()
-            .title('Main content')
+            .title('Pages list')
             .items([
               S.listItem()
-                .title('Pages')
-                .child(
-                  S.list()
-                    .title('Pages list')
-                    .items([
-                      S.listItem()
-                        .title('Home Page')
-                        .child(S.documentTypeList('homePage')),
-                    ])
-                ),
-              S.divider(),
+                .title('Home Page')
+                .child(S.documentTypeList('homePage')),
+              S.listItem()
+                .title('News Page')
+                .child(S.documentTypeList('newsSinglePage')),
+              S.listItem()
+                .title('Team Page')
+                .child(S.documentTypeList('teamPage')),
+              S.listItem()
+                .title('Club Page')
+                .child(S.documentTypeList('clubPage')),
+              S.listItem()
+                .title('Contact Page')
+                .child(S.documentTypeList('contactPage')),
+              S.listItem()
+                .title('Become Partner Page')
+                .child(S.documentTypeList('becomePartnerPage')),
             ])
         ),
       S.divider(),
@@ -42,6 +48,9 @@ export const structure: StructureResolver = (S) =>
               S.listItem()
                 .title('League Tables')
                 .child(S.documentTypeList('leagueTables')),
+              S.listItem()
+                .title('Partners')
+                .child(S.documentTypeList('partnersLogo')),
             ])
         ),
     ]);

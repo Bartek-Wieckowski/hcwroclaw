@@ -16,7 +16,6 @@ export default function Footer() {
         <div className={styles.gridWrapper}>
           <div className={styles.leftSide}>
             <div className="dFlex">
-              <h1 className={styles.teamName}>HC Wrocław</h1>
               <Image src={logo} width={60} height={40} alt="HC Wrocław" />
             </div>
             <small>

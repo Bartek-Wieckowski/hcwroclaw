@@ -189,6 +189,8 @@ body {
   line-height: 1.1;
   transition: all 0.3s ease;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1,
@@ -253,7 +255,7 @@ section {
   background-color: var(--accent-color-grey);
   transform: translateX(-50%);
   left: 50%;
-  top: -0.625rem;
+  top: -0.5rem;
 }
 
 /* swiper global elements */
@@ -269,6 +271,7 @@ section {
   justify-content: flex-end;
   bottom: 1.25rem !important;
   right: 1.563rem;
+  padding-right: 0.5rem;
 }
 
 .swiper-pagination-bullet {
@@ -292,6 +295,10 @@ section {
 
 .hidden {
   display: none;
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }
 
 .main {

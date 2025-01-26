@@ -35,6 +35,13 @@ jobs:
           NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
           NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
           NEXT_PUBLIC_SANITY_API_VERSION: ${{ secrets.NEXT_PUBLIC_SANITY_API_VERSION }}
+          NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_BOT_EMAIL: ${{ secrets.SMTP_BOT_EMAIL }}
+          SMTP_BOT_PASSWORD: ${{ secrets.SMTP_BOT_PASSWORD }}
+          HCW_CONTACT_EMAIL: ${{ secrets.HCW_CONTACT_EMAIL }}
+          HCW_CONTACT_EMAIL2: ${{ secrets.HCW_CONTACT_EMAIL2 }}
 
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
@@ -47,10 +54,10 @@ jobs:
         run: |
           # Przygotuj archiwum z plikami
           tar -czf deploy.tar.gz .next public node_modules package.json next.config.mjs
-          
+
           # Wyślij pliki na serwer
           scp -o StrictHostKeyChecking=no deploy.tar.gz ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST }}:~/domains/hcwd3v.hcwroclaw.com/public_nodejs/
-          
+
           # Wykonaj komendy na serwerze
           ssh -o StrictHostKeyChecking=no ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST }} '
             cd ~/domains/hcwd3v.hcwroclaw.com/public_nodejs/

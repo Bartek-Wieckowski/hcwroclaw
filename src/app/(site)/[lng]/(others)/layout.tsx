@@ -1,6 +1,6 @@
 import Footer from '@/components/footer/Footer';
 import HeaderOtherspage from '@/components/header/headerOtherspage/HeaderOtherspage';
-import Sponsors from '@/components/sponsors/Sponsors';
+import Partners from '@/components/partners/Partners';
 import GameCalendar from '@/components/gameCalendar/GameCalendar';
 import LeagueTables from '@/components/leagueTables/LeagueTables';
 import { getLocale } from 'next-intl/server';
@@ -25,7 +25,7 @@ export default async function OtherspageLayout({
           <LeagueTables />
         </aside>
       </main>
-      <Sponsors />
+      <Partners />
       <Footer />
     </>
   );

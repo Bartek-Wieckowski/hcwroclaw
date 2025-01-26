@@ -15,14 +15,95 @@
     "noGames": "No scheduled games"
   },
   "leageTables": {
-    "update": "Updated"
+    "update": "Updated",
+    "noLeagueMessage": "Currently, we are not playing in any league."
   },
   "gameCalendarSlider": {
     "completed": "Final"
+  },
+  "writeToUs": {
+    "title1": "Write to us",
+    "title2": "if...",
+    "options": {
+      "sparing": "You want to play a friendly match",
+      "join": "You want to join the club",
+      "partner": "You want to become a partner"
+    },
+    "placeholder": "Your message...",
+    "button": "WRITE NOW →",
+    "sending": "Sending...",
+    "success": "Message has been sent!",
+    "error": "An error occurred while sending the message",
+    "email": "Email",
+    "phone": "Phone number",
+    "consent": "I consent to the processing of personal data provided in the form. Your data will be processed for purposes related to providing a response.",
+    "emailPlaceholder": "Your email...",
+    "phonePlaceholder": "Your phone number...",
+    "validation": {
+      "email": "Please enter a valid email",
+      "phone": "Please enter a valid phone number",
+      "message": "Please enter your message",
+      "consent": "Please accept the consent"
+    }
+  },
+  "cookieBar": {
+    "message": "This website uses cookies to ensure you get the best experience on our website. By continuing to browse the site, you agree to our use of cookies.",
+    "accept": "Accept"
+  },
+  "homePage": {
+    "aboutUsSection": {
+      "sectionTitle1": "Info",
+      "sectionTitle2": "about us"
+    },
+    "latestNews": {
+      "sectionTitle1": "Latest",
+      "sectionTitle2": "News",
+      "noNews": "Currently there are no news. Check back soon!"
+    }
+  },
+  "newsListingPage": {
+    "noNews": "Currently there are no news. Check back soon!"
+  },
+  "newsSinglePage": {
+    "noSingleContentNews": "This post does not exist"
   },
   "pageNotfound": {
     "title": "404",
     "description": "Page not found",
     "availableLanguages": "Available languages:"
+  },
+  "teamPage": {
+    "positions": {
+      "goalkeepers": "Goalkeepers",
+      "defenders": "Defenders",
+      "forwards": "Forwards"
+    },
+    "playerInfo": {
+      "height": "Height",
+      "weight": "Weight",
+      "stickHand": "Stick Hand",
+      "captain": "Captain",
+      "assistantCaptain": "Assistant Captain",
+      "stickHandRight": "Right",
+      "stickHandLeft": "Left"
+    }
+  },
+  "clubPage": {
+    "clubHistory": {
+      "title1": "History",
+      "title2": "of the club"
+    },
+    "clubCrest": {
+      "title1": "Discover the meaning",
+      "title2": "of the crest"
+    }
+  },
+  "contactPage": {
+    "title1": "Contact",
+    "title2": "and additional information"
+  },
+  "becomePartnerPage": {
+    "title1": "Become a partner",
+    "title2": "of our hockey team!"
   }
 }

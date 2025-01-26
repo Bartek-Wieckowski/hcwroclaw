@@ -177,6 +177,13 @@
   animation: pulse 3s infinite ease-in-out;
 }
 
+.noLeagueMessage {
+  text-align: center;
+  font-family: var(--font-roboto-bold);
+  font-size: var(--h4-font-size);
+  padding-inline: 1rem;
+}
+
 @media (min-width: 375px) {
   .leagueTablesModal {
     padding: 1rem;
@@ -185,27 +192,8 @@
   .rowContent {
     grid-template-columns: 2rem minmax(0, 1fr) 3rem 2rem;
   }
-
-  .mediumTeamName {
-    font-size: 0.875rem;
-  }
-
-  .longTeamName {
-    font-size: 0.8rem;
-  }
 }
 
-@media (min-width: 480px) {
-  .mediumTeamName {
-    font-size: 0.95rem;
-  }
-
-  .longTeamName {
-    font-size: 0.875rem;
-  }
-}
-
-/* Tablet Styles */
 @media (min-width: 768px) {
   .leagueTables {
     padding: 1.5rem;
@@ -216,12 +204,11 @@
   }
 }
 
-/* Desktop Styles */
 @media (min-width: 992px) {
   .leagueTables {
     position: sticky;
     top: 8rem;
-    height: 50vh;
+    height: 75vh;
     width: 18.75rem;
     margin-top: 2rem;
     overflow-y: auto;
@@ -236,12 +223,12 @@
 
   .leagueTables::-webkit-scrollbar-track {
     background: rgba(255, 255, 255, 0.05);
-    border-radius: 0.188rem
+    border-radius: 0.188rem;
   }
 
   .leagueTables::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.2);
-    border-radius: 0.188rem
+    border-radius: 0.188rem;
   }
 
   .leagueTables::-webkit-scrollbar-thumb:hover {

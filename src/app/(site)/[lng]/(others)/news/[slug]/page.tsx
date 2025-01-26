@@ -1,48 +1,67 @@
-// import axios from 'axios';
-// import styles from './singleNewsPage.module.css';
-// import Image from 'next/image';
-// import { BiSolidStar } from 'react-icons/bi';
-// import { singleNewsType } from '@/types/News.type';
-// import { API_URL } from '@/utils/constants';
+import styles from './slugSingleNewsPage.module.css';
+import { getSingleNewsQuery } from '@/sanity/lib/queries';
+import { client } from '@/sanity/lib/client';
+import { NewsSinglePage } from '@/components/pages/newsSinglePage/NewsSinglePage';
+import { Locale } from '@/i18n/i18n';
+import { getTranslations } from 'next-intl/server';
+import { Metadata } from 'next';
 
-type slugType = {
-  slug: string;
+type NewsSinglePageProps = {
+  params: {
+    lng: Locale;
+    slug: string;
+  };
 };
 
-// const getSingleNews = async (slug: string) => {
-//   try {
-//     const response = await axios.get(`${API_URL}/news/?slug=${slug}`);
-//     return response.data;
-//   } catch (error) {
-//     throw new Error('Błąd ładowania danych...');
-//   }
-// };
+export async function generateMetadata({ params: { lng, slug } }: NewsSinglePageProps): Promise<Metadata> {
+  const meta = await client.fetch(`
+    *[_type == "newsSinglePage" && (slugEN.current == $slug || slugPL.current == $slug)][0] {
+      title,
+      excerpt,
+      seo {
+        title,
+        desc
+      }
+    }
+  `, { slug });
+  
+  if (!meta) {
+    return {
+      title: 'Not Found | HC Wrocław',
+      description: 'The page you are looking for does not exist.'
+    };
+  }
 
-export default async function NewsSinglePage({ params }: { params: slugType }) {
-  // const { slug } = params;
+  const defaultTitle = {
+    pl: `${meta.title?.pl || ''} | HC Wrocław`,
+    en: `${meta.title?.en || ''} | HC Wroclaw`
+  };
+  
+  const defaultDesc = {
+    pl: meta.excerpt?.pl || '',
+    en: meta.excerpt?.en || ''
+  };
 
-  // const singleNews = await getSingleNews(slug);
-  return (
-    <div className="container">
-      {/* {singleNews.map((news: singleNewsType) => (
-          <article key={news.id} className={styles.singleNewsArticle}>
-            <h1 className={styles.singleNewsTitle}>{news.title}</h1>
-            <div className={styles.singleNewsDateAuthor}>
-              <small className={styles.singleNewsDate}>{news.date}</small>
-              <small className={styles.singleNewsAuthor}>
-                {news.author} <BiSolidStar />
-              </small>
-            </div>
-            <Image
-              src={news.img}
-              alt={news.title}
-              width="600"
-              height="300"
-              className={styles.singleNewsImg}
-            />
-            <p className={styles.singleNewsDesc}>{news.desc}</p>
-          </article>
-        ))} */}
-    </div>
-  );
+  return {
+    title: meta?.seo?.title?.[lng] || defaultTitle[lng],
+    description: meta?.seo?.desc?.[lng] || defaultDesc[lng],
+  };
+}
+
+export default async function NewsSinglePageRoute({
+  params,
+}: NewsSinglePageProps) {
+  const t = await getTranslations('newsSinglePage');
+  const { slug, lng } = params;
+  const news = await client.fetch(getSingleNewsQuery, { slug });
+
+  if (!news) {
+    return (
+      <div className={styles.newsSinglePageContainer}>
+        <p className={styles.noNews}>{t('noSingleContentNews')}</p>
+      </div>
+    );
+  }
+
+  return <NewsSinglePage news={news} lng={lng} />;
 }

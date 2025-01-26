@@ -1,6 +1,6 @@
 import HeaderHomepage from '@/components/header/headerHomepage/HeaderHomepage';
 import Footer from '@/components/footer/Footer';
-import Sponsors from '@/components/sponsors/Sponsors';
+import Partners from '@/components/partners/Partners';
 
 type HomepageLayoutProps = {
   children: React.ReactNode;
@@ -11,7 +11,7 @@ export default function HomepageLayout({ children }: HomepageLayoutProps) {
     <>
       <HeaderHomepage />
       {children}
-      <Sponsors />
+      <Partners />
       <Footer />
     </>
   );

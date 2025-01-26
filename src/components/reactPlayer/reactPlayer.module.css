@@ -1,0 +1,11 @@
+.videoContainer {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+  margin: 2rem 0;
+}
+
+.videoContainer > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

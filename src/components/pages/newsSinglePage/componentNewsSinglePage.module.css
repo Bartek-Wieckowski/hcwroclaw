@@ -1,0 +1,40 @@
+.article {
+  padding-top: 2rem;
+}
+
+.header {
+  padding-inline: var(--container-padding);
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+
+.title {
+  font-size: var(--h1-font-size);
+  font-family: var(--font-roboto-bold);
+  margin-bottom: 1.25rem;
+}
+
+.date {
+  font-family: var(--font-roboto-regular);
+  font-size: var(--small-font-size);
+  background: var(--hc-gold);
+  background-clip: text;
+  color: transparent;
+}
+
+.mainImageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  margin-bottom: 2rem;
+}
+
+.mainImage {
+  object-fit: cover;
+}
+
+.content {
+  padding-inline: var(--container-padding);
+  font-size: var(--normal-font-size);
+  font-family: var(--font-outfit-regular);
+}

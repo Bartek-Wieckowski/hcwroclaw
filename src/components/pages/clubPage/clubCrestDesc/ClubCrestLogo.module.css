@@ -1,0 +1,162 @@
+.crestContainer {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.crest {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.highlightOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.highlightArea {
+  position: absolute;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+/* Definiujemy pozycje i kształty dla każdego obszaru */
+.left-lion {
+  top: 35%;
+  left: 10%;
+  width: 29%;
+  height: 30%;
+}
+
+.right-lion {
+  top: 35%;
+  right: 12%;
+  width: 29%;
+  height: 30%;
+}
+
+.main-shield {
+  top: 37%;
+  left: 39%;
+  width: 20%;
+  height: 18%;
+}
+
+.shield-crown {
+  top: 32%;
+  left: 44%;
+  width: 10%;
+  height: 5%;
+}
+
+.left-lion-crown {
+  top: 35%;
+  left: 23%;
+  width: 5%;
+  height: 3%;
+}
+
+.right-lion-crown {
+  top: 35%;
+  right: 24%;
+  width: 6%;
+  height: 5%;
+}
+
+.hockey-sticks-top-left {
+  top: 20%;
+  left: 23%;
+  width: 20%;
+  height: 16%;
+}
+.hockey-sticks-top-right {
+  top: 20%;
+  right: 25%;
+  width: 20%;
+  height: 16%;
+}
+.hockey-sticks-bottom-left {
+  top: 52.5%;
+  left: 36.5%;
+  width: 8%;
+  height: 8%;
+}
+
+.hockey-sticks-bottom-right {
+  top: 52.5%;
+  right: 38.5%;
+  width: 8%;
+  height: 8%;
+}
+
+.club-name-top {
+  top: 0%;
+  left: 7%;
+  width: 85%;
+  height: 30%;
+}
+
+.club-name-bottom {
+  bottom: 0%;
+  left: 10%;
+  width: 85%;
+  height: 25%;
+}
+
+.region-name {
+  bottom: 25%;
+  left: 35%;
+  width: 30%;
+  height: 8%;
+}
+
+.motto {
+  top: 60%;
+  left: 35%;
+  width: 30%;
+  height: 5%;
+}
+
+.foundation-dates-left {
+  bottom: 26%;
+  left: 25%;
+  width: 12%;
+  height: 8%;
+}
+
+.foundation-dates-right {
+  bottom: 26%;
+  right: 25%;
+  width: 12%;
+  height: 8%;
+}
+
+.active {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0% {
+    background: transparent;
+  }
+  50% {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+@media (min-width: 768px) {
+  .crestContainer {
+    position: sticky;
+    top: 12.5rem;
+  }
+}

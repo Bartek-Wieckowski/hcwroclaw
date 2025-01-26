@@ -1,0 +1,98 @@
+.partnersSection {
+  background-color: var(--bg-body-black);
+  padding-inline: var(--container-padding);
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  overflow: hidden;
+}
+
+.partnersTitle {
+  font-family: var(--font-roboto-bold);
+  font-size: var(--h2-font-size);
+  background: var(--hc-gold);
+  background-clip: text;
+  color: transparent;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.partnersLogoSlider {
+  position: relative;
+  height: 9.375rem;
+  margin: 0 auto;
+  background: var(--bg-body-black);
+  overflow: hidden;
+}
+
+.partnersLogoSlider .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+.logoWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.partnersImage {
+  width: auto !important;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  border-radius: var(--border-radius-img);
+}
+
+.partnerLink {
+  display: block;
+  height: 100%;
+}
+
+.partnerLink:hover .partnersImage {
+  transform: scale(1.025);
+}
+
+.partnersLogoSlider::before,
+.partnersLogoSlider::after {
+  position: absolute;
+  top: 0;
+  width: 3.125rem;
+  height: 100%;
+  content: '';
+  z-index: 2;
+  opacity: 0.8;
+}
+
+.partnersLogoSlider::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-body-black), transparent);
+}
+
+.partnersLogoSlider::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-body-black), transparent);
+}
+
+.staticWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  height: 9.375rem;
+}
+
+.staticSlide {
+  position: relative;
+  height: 100%;
+  width: 12.5rem;
+}
+
+@media (min-width: 768px) {
+  .partnersSection {
+    padding-bottom: 4rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .partnersLogoSlider {
+    max-width: 75rem;
+  }
+}

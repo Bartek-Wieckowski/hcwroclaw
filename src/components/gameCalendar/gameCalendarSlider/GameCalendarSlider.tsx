@@ -33,11 +33,12 @@ export default function GameCalendarSlider({
 
   const initialSlide = useMemo(() => {
     const now = new Date();
-    const nowTime = now.getTime();
+    now.setHours(0, 0, 0, 0);
 
     return games.findIndex((game) => {
       const gameDate = new Date(game.date);
-      return gameDate.getTime() >= nowTime;
+      gameDate.setHours(0, 0, 0, 0);
+      return gameDate >= now;
     });
   }, [games]);
 

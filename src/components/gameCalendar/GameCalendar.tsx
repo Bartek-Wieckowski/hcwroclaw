@@ -17,13 +17,13 @@ export default async function GameCalendar({
   withMargin = false,
   lng,
 }: GameCalendarProps) {
-  const data = await client.fetch(getGamesCalendarQuery);
+  const { futureGames, pastGames } = await client.fetch(getGamesCalendarQuery);
   const t = await getTranslations('gameCalendar');
 
   const games: GamesCalendar[] =
-    data.futureGames.length === 0
-      ? [...data.pastGames].reverse().slice(-12)
-      : [...data.pastGames.reverse().slice(-3), ...data.futureGames];
+    futureGames.length === 0
+      ? [...pastGames].reverse().slice(-12)
+      : [...pastGames.reverse().slice(-3), ...futureGames];
 
   return (
     <section

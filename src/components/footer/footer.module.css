@@ -61,15 +61,12 @@
 
   .leftSide {
     order: 1;
-    border-right: 0.063rem solid var(--accent-color-grey-layout);
-    justify-self: unset;
-  }
-  .leftSide div {
-    justify-content: flex-start;
+    text-align: center;
   }
 
   .rightSide {
     order: 2;
+    border-left: 0.063rem solid var(--accent-color-grey-layout);
   }
 
   .footerSocialMedia {

@@ -15,14 +15,95 @@
     "noGames": "Brak zaplanowanych meczów"
   },
   "leageTables": {
-    "update": "Aktualizowano"
+    "update": "Aktualizowano",
+    "noLeagueMessage": "Aktualnie nie gramy w żadnej lidze."
   },
   "gameCalendarSlider": {
     "completed": "Zakończony"
+  },
+  "writeToUs": {
+    "title1": "Napisz do nas",
+    "title2": "jeśli...",
+    "options": {
+      "sparing": "Chcesz zagrać sparing/mecz",
+      "join": "Chcesz dołączyć do klubu",
+      "partner": "Chcesz zostać partnerem"
+    },
+    "placeholder": "Twoja wiadomość...",
+    "button": "NAPISZ TERAZ →",
+    "sending": "Wysyłanie...",
+    "success": "Wiadomość została wysłana!",
+    "error": "Wystąpił błąd podczas wysyłania wiadomości",
+    "email": "Email",
+    "phone": "Numer telefonu",
+    "consent": "Wyrażam zgodę na przetwarzanie danych osobowych podanych w formularzu. Pana/Pani dane będą przetwarzane w celach związanych z udzieleniem odpowiedzi.",
+    "emailPlaceholder": "Twój email...",
+    "phonePlaceholder": "Twój numer telefonu...",
+    "validation": {
+      "email": "Wprowadź poprawny adres email",
+      "phone": "Wprowadź poprawny numer telefonu",
+      "message": "Wprowadź swoją wiadomość",
+      "consent": "Proszę zaakceptować zgodę"
+    }
+  },
+  "cookieBar": {
+    "message": "Ta strona używa plików cookie, aby zapewnić najlepszą jakość korzystania z naszej witryny. Kontynuując przeglądanie strony, wyrażasz zgodę na ich wykorzystanie.",
+    "accept": "Akceptuję"
+  },
+  "homePage": {
+    "aboutUsSection": {
+      "sectionTitle1": "Info",
+      "sectionTitle2": "o nas"
+    },
+    "latestNews": {
+      "sectionTitle1": "Najnowsze",
+      "sectionTitle2": "Aktualności",
+      "noNews": "Aktualnie nie ma żadnych wydarzeń. Sprawdź ponownie wkrótce!"
+    }
+  },
+  "newsListingPage": {
+    "noNews": "Aktualnie nie ma żadnych wydarzeń. Sprawdź ponownie wkrótce!"
+  },
+  "newsSinglePage": {
+    "noSingleContentNews": "Taki post nie istnieje"
   },
   "pageNotfound": {
     "title": "404",
     "description": "Strona, której szukasz, nie istnieje.",
     "availableLanguages": "Dostępne języki:"
+  },
+  "teamPage": {
+    "positions": {
+      "goalkeepers": "Bramkarze",
+      "defenders": "Obrońcy",
+      "forwards": "Napastnicy"
+    },
+    "playerInfo": {
+      "height": "Wzrost",
+      "weight": "Waga",
+      "stickHand": "Uchwyt kija",
+      "captain": "Kapitan",
+      "assistantCaptain": "Asystent kapitana",
+      "stickHandRight": "Prawy",
+      "stickHandLeft": "Lewy"
+    }
+  },
+  "clubPage": {
+    "clubHistory": {
+      "title1": "Historia",
+      "title2": "klubu"
+    },
+    "clubCrest": {
+      "title1": "Poznaj znaczenie",
+      "title2": "Herbu"
+    }
+  },
+  "contactPage": {
+    "title1": "Kontakt",
+    "title2": "i informacje dodatkowe"
+  },
+  "becomePartnerPage": {
+    "title1": "Zostań partnerem",
+    "title2": "naszej drużyny hokejowej!"
   }
 }
