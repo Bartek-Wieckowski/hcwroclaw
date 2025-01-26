@@ -40,6 +40,7 @@
   object-fit: contain;
   transition: transform 0.3s ease;
   border-radius: var(--border-radius-img);
+  margin-inline: auto;
 }
 
 .partnerLink {
