@@ -42,7 +42,7 @@
 
 .logo1basicParent {
   position: relative;
-  width: min(25vh, 20rem);
+  width: min(45vh, 15rem);
   aspect-ratio: 4/5;
 }
 
@@ -63,8 +63,8 @@
 .logo2basic {
   /* font-size: clamp(2rem, 3vh, 4rem); */
   /* font-size: clamp(2rem, calc(7vh + 1rem), 4rem); */
-  font-size: var(--h1-font-size);
-  font-family: var(--font-black-iron);
+  font-size: var(--biggest-font-size);
+  font-family: var(--font-mister-pablo);
   text-transform: uppercase;
   color: var(--hc-black);
   opacity: 0;
@@ -105,5 +105,11 @@
   100% {
     opacity: 0;
     transform: scale(0.9);
+  }
+}
+
+@media (min-width: 768px) {
+  .logo1basicParent {
+    width: min(45vh, 20rem);
   }
 }

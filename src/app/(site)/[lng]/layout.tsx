@@ -40,11 +40,11 @@ const outfitBold = localFont({
   variable: '--font-outfit-bold',
   weight: '700',
 });
-const blackIron = localFont({
-  src: '../../../assets/fonts/Blackiron.ttf',
-  variable: '--font-black-iron',
+const misterPablo = localFont({
+  src: '../../../assets/fonts/mister-pablo.ttf',
+  variable: '--font-mister-pablo',
 });
-const fontClasses = `${robotoRegular.variable} ${robotoThin.variable} ${robotoBold.variable} ${outfitRegular.variable} ${outfitThin.variable} ${outfitBold.variable} ${blackIron.variable}`;
+const fontClasses = `${robotoRegular.variable} ${robotoThin.variable} ${robotoBold.variable} ${outfitRegular.variable} ${outfitThin.variable} ${outfitBold.variable} ${misterPablo.variable}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(

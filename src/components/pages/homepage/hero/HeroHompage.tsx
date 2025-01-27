@@ -2,7 +2,7 @@
 
 import styles from './heroHomepage.module.css';
 import Image from 'next/image';
-import logo from '@assets/images/logo-home-hero.png';
+import logo from '@assets/images/logo-home-hero.svg';
 import { useEffect, useRef } from 'react';
 
 export default function HeroHomepage() {
