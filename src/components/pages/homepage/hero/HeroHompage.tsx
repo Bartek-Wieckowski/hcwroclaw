@@ -69,6 +69,7 @@ export default function HeroHomepage() {
               fill
               sizes="33vw"
               priority
+              style={{ opacity: 0 }}
             />
           </div>
           <div className={styles.logo2basicParent}>

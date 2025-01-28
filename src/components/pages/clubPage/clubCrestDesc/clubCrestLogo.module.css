@@ -1,6 +1,7 @@
 .crestContainer {
   position: relative;
   width: 100%;
+  max-width: 25rem;
   margin: 0 auto;
 }
 
@@ -158,5 +159,11 @@
   .crestContainer {
     position: sticky;
     top: 12.5rem;
+  }
+}
+
+@media (min-width: 1900px) {
+  .crestContainer {
+    max-width: 31.25rem;
   }
 }

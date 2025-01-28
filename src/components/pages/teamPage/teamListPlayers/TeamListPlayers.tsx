@@ -85,7 +85,7 @@ export default function TeamListPlayers({ players }: TeamListProps) {
               </div>
               <div className={styles.playerInfo}>
                 <div className={styles.basicInfo}>
-                  <div className={styles.playerNumber}>{player.number}</div>
+                  <div className={styles.playerNumber}># {player.number}</div>
                   <h3 className={styles.playerName}>
                     {player.firstName} {player.lastName}
                     {player.isCaptain && (

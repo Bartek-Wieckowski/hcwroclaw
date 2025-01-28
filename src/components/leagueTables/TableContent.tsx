@@ -77,9 +77,7 @@ export default function TableContent({ data, lng }: TableContentProps) {
                 </div>
                 {table.rows.map((row, rowIndex: number) => {
                   const teamName = row.cells[teamNameIndex];
-                  const isClientTeam = /hc|hc wrocław|wrocław|wroclaw/i.test(
-                    teamName
-                  );
+                  const isClientTeam = /hc wrocław|hc wroclaw/i.test(teamName);
 
                   return (
                     <div key={rowIndex} className={`${styles.tableRow} `}>

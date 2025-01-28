@@ -48,6 +48,7 @@
 
 .logo1basic {
   opacity: 0;
+  visibility: hidden;
   transform: scale(0.6);
   animation: fadeInOutLogo1 8s linear forwards;
   height: inherit;
@@ -76,16 +77,19 @@
   0%,
   6% {
     opacity: 0;
+    visibility: hidden;
     transform: scale(0.6);
   }
   7%,
   87.5% {
     opacity: 1;
+    visibility: visible;
     transform: scale(1);
   }
   88%,
   100% {
     opacity: 0;
+    visibility: hidden;
     transform: scale(0.6);
   }
 }
