@@ -73,6 +73,30 @@ export const getGamesCalendarQuery = defineQuery(`{
     }
 }`);
 
+export const getLeagueTablesOrderQuery = defineQuery(`
+  *[_type == "leagueTablesOrder"][0] {
+    tables[]-> {
+      _createdAt,
+      _updatedAt,
+      _id,
+      title,
+      logo {
+        asset->{
+          _id,
+          url
+        }
+      },
+      headers[] { 
+        pl,
+        en
+      },
+      rows[] {
+        cells
+      }
+    }
+  }
+`);
+
 export const getLeagueTablesQuery = defineQuery(`
   *[_type == "leagueTables"] {
     _createdAt,

@@ -18,6 +18,7 @@ import team from './utils/team';
 import gameType from './utils/gameType';
 import gameCalendar from './utils/gameCalendar';
 import leagueTables from './utils/leagueTables';
+import leagueTablesOrder from './utils/leagueTablesOrder';
 import newsBlock from './utils/newsBlock';
 import ytEmbedd from './utils/ytEmbedd';
 import partnersLogo from './utils/partnersLogo';
@@ -38,6 +39,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     gameType,
     gameCalendar,
     leagueTables,
+    leagueTablesOrder,
     newsBlock,
     ytEmbedd,
     partnersLogo,

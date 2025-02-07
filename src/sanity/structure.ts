@@ -49,6 +49,9 @@ export const structure: StructureResolver = (S) =>
                 .title('League Tables')
                 .child(S.documentTypeList('leagueTables')),
               S.listItem()
+                .title('League Tables Order')
+                .child(S.documentTypeList('leagueTablesOrder')),
+              S.listItem()
                 .title('Partners')
                 .child(S.documentTypeList('partnersLogo')),
             ])
