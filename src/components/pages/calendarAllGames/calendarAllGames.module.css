@@ -5,7 +5,7 @@
 .customSelect {
   position: relative;
   width: 100%;
-  max-width: 150px;
+  max-width: 9.375rem;
   margin-bottom: 1.5rem;
 }
 
@@ -69,8 +69,8 @@
 
 .selectButton:focus-visible,
 .dropdownOption:focus-visible {
-  outline: 2px solid var(--hc-gold);
-  outline-offset: 2px;
+  outline: 0.125rem solid var(--hc-gold);
+  outline-offset: 0.125rem;
 }
 
 .gamesList {
@@ -90,7 +90,7 @@
   bottom: -0.5rem;
   left: 0;
   width: 100%;
-  height: 1px;
+  height: 0.063rem;
   background: var(--hc-gold);
 }
 
@@ -146,8 +146,8 @@
 }
 
 .logoWrapper {
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   flex-shrink: 0;
 }
 
@@ -214,7 +214,7 @@
   }
 
   .customSelect {
-    max-width: 180px;
+    max-width: 11.25rem;
   }
 
   .selectButton,
@@ -236,8 +236,8 @@
   }
 
   .logoWrapper {
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
   }
 
   .teamName {
@@ -255,7 +255,7 @@
 
 @media (min-width: 768px) {
   .customSelect {
-    max-width: 200px;
+    max-width: 12.5rem;
   }
 
   .gameItem {
@@ -263,8 +263,8 @@
   }
 
   .logoWrapper {
-    width: 48px;
-    height: 48px;
+    width: 3rem;
+    height: 3rem;
   }
 
   .teamName {

@@ -30,7 +30,7 @@
   background: var(--bg-body-black);
   border-radius: var(--border-radius-img);
   overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
 }
@@ -59,8 +59,12 @@
 
 .basicInfo {
   display: grid;
-  grid-template-columns: clamp(35px, 20%, 45px) 1fr clamp(35px, 20%, 45px);
-  grid-template-rows: clamp(35px, 20%, 45px);
+  grid-template-columns: clamp(2.188rem, 20%, 2.813rem) 1fr clamp(
+      2.188rem,
+      20%,
+      2.813rem
+    );
+  grid-template-rows: clamp(2.188rem, 20%, 2.813rem);
   align-items: center;
   gap: clamp(0.3rem, 3%, 0.75rem);
   width: 100%;
@@ -68,14 +72,15 @@
 
 .playerNumber {
   /* font-family: var(--font-mister-pablo); */
+  /* background-color: #c41f0a; */
   font-family: var(--font-roboto-bold);
   font-size: clamp(0.9rem, 2.5vw, var(--normal-font-size));
   color: var(--hc-black);
-  background-color: #c41f0a;
+  background-color: var(--hc-red);
   width: 100%;
   height: 100%;
-  min-width: 35px;
-  min-height: 35px;
+  min-width: 2.188rem;
+  min-height: 2.188rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -101,11 +106,11 @@
   font-size: clamp(0.9rem, 2.5vw, var(--normal-font-size));
   font-family: var(--font-roboto-bold);
   color: var(--hc-black);
-  background-color: #c41f0a;
+  background-color: var(--hc-red);
   width: 100%;
   height: 100%;
-  min-width: 35px;
-  min-height: 35px;
+  min-width: 2.188rem;
+  min-height: 2.188rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -152,7 +157,7 @@
 .assistantCaptain {
   font-size: 0.875rem;
   padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   font-family: var(--font-outfit-bold);
   text-transform: uppercase;
 }
@@ -176,8 +181,12 @@
   }
 
   .basicInfo {
-    grid-template-columns: clamp(40px, 25%, 50px) 1fr clamp(40px, 25%, 50px);
-    grid-template-rows: clamp(40px, 25%, 50px);
+    grid-template-columns: clamp(2.5rem, 25%, 3.125rem) 1fr clamp(
+        2.5rem,
+        25%,
+        3.125rem
+      );
+    grid-template-rows: clamp(2.5rem, 25%, 3.125rem);
     gap: 0.5rem;
   }
 

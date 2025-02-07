@@ -9,6 +9,7 @@ import { GiPodium } from 'react-icons/gi';
 import { useRoutesLinks } from '@/hooks/useRoutesLinks';
 import { useHeader } from '@/contexts/HeaderContext';
 import { useLeagueTables } from '@/contexts/LeagueTablesContext';
+import TransferTaxBtn from '../transferTaxBtn/TransferTaxBtn';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,7 +47,10 @@ export default function Navbar() {
           ))}
           <NavigationSocialMediaIcons isInMobileMenu={isOpen} />
         </ul>
-        <LanguageSwitcher />
+        <div className={styles.navbarUserActions}>
+          <TransferTaxBtn />
+          <LanguageSwitcher />
+        </div>
         <div
           className={styles.tableGamesIcon}
           onClick={toggleModal}

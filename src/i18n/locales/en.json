@@ -107,5 +107,9 @@
   "becomePartnerPage": {
     "title1": "Become a partner",
     "title2": "of our hockey team!"
+  },
+  "transferTax": {
+    "button": "Transfer",
+    "percentage": "1.5%"
   }
 }
