@@ -17,9 +17,7 @@ export function NewsSinglePage({ news, lng }: NewsSinglePageProps) {
     <article className={styles.article}>
       <header className={styles.header}>
         <h1 className={styles.title}>{news.title[lng]}</h1>
-        <time className={styles.date}>
-          {formatDateInNews(news._createdAt, lng)}
-        </time>
+        <time className={styles.date}>{formatDateInNews(news.date, lng)}</time>
       </header>
 
       {news.mainPostImage && (

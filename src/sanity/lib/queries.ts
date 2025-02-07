@@ -101,14 +101,14 @@ export const getHomePageAboutUsSectionQuery = defineQuery(`
 }`);
 
 export const getHomePageLatestNewsQuery = defineQuery(`
-  *[_type == "newsSinglePage"] | order(_createdAt desc) [0..3] {
+  *[_type == "newsSinglePage"] | order(date desc) [0..3] {
       _id,
       title{pl,en},
       slugPL,
       slugEN,
       excerpt{pl,en},
       mainPostImage{asset, alt{pl, en}},
-      _createdAt
+      date
     }
   `);
 
@@ -133,7 +133,7 @@ export const getPartnersQuery = defineQuery(`
 `);
 
 export const getNewsQuery = defineQuery(`
-  *[_type == "newsSinglePage"] | order(_createdAt desc) [$start...$end] {
+  *[_type == "newsSinglePage"] | order(date desc) [$start...$end] {
     _id,
     title{pl,en},
     slugPL,
@@ -149,7 +149,7 @@ export const getNewsQuery = defineQuery(`
         en
       }
     },
-    _createdAt
+    date
   }
 `);
 
@@ -175,7 +175,7 @@ export const getSingleNewsQuery = defineQuery(`
         en
       }
     },
-    _createdAt
+    date
   }
 `);
 

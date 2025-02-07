@@ -92,7 +92,7 @@ export default function NewsListing({ initialNews, lng }: NewsListingProps) {
             </div>
             <div className={styles.featuredContent}>
               <span className={styles.dateFeatured}>
-                {formatDate(allNews[0]._createdAt)}
+                {formatDate(allNews[0].date)}
               </span>
               <h2 className={styles.featuredTitle}>{allNews[0].title[lng]}</h2>
               <p className={styles.featuredExcerpt}>
@@ -122,9 +122,7 @@ export default function NewsListing({ initialNews, lng }: NewsListingProps) {
                 />
               </div>
               <div className={styles.content}>
-                <span className={styles.date}>
-                  {formatDate(item._createdAt)}
-                </span>
+                <span className={styles.date}>{formatDate(item.date)}</span>
                 <h3 className={styles.title}>{item.title[lng]}</h3>
                 <p className={styles.excerpt}>{item.excerpt[lng]}</p>
               </div>

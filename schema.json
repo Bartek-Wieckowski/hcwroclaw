@@ -2422,6 +2422,13 @@
         },
         "optional": false
       },
+      "date": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": false
+      },
       "slugPL": {
         "type": "objectAttribute",
         "value": {
