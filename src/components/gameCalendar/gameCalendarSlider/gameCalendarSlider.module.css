@@ -66,10 +66,21 @@
   gap: 1.25rem;
 }
 
-.gameDate > div {
+.gameDate > div,
+.gameDateWithLogo > div {
   text-align: center;
   margin-inline: auto;
   color: var(--hc-red);
+}
+
+.gameDateWithLogo {
+  font-size: var(--small-font-size);
+  font-family: var(--font-roboto-bold);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .gameType {
@@ -157,6 +168,10 @@
   background-clip: text;
   color: transparent;
   font-family: var(--font-roboto-bold);
+}
+
+.leagueLogo {
+  object-fit: contain;
 }
 
 @media screen and (min-width: 365px) {

@@ -70,7 +70,17 @@ export const getGamesCalendarQuery = defineQuery(`{
       isCompleted,
       firstTeamGoals,
       secondTeamGoals
+    },
+  "leagueTables": *[_type == "leagueTables"] {
+    _id,
+    title,
+    logo {
+      asset->{
+        _id,
+        url
+      }
     }
+  }
 }`);
 
 export const getLeagueTablesOrderQuery = defineQuery(`

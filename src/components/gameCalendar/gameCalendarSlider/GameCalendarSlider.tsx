@@ -13,15 +13,20 @@ import { formatDate, getInitials } from '@/lib/helpers';
 import { urlFor } from '@/sanity/lib/image';
 import { Locale } from '@/i18n/i18n';
 import { useTranslations } from 'next-intl';
-import { GamesCalendar } from '@/types/GamesCalendar.type';
+import { GetGamesCalendarQueryResult } from '../../../../sanity.types';
 
 type GameCalendarSliderProps = {
-  games: GamesCalendar[];
+  games: Array<
+    | GetGamesCalendarQueryResult['pastGames'][number]
+    | GetGamesCalendarQueryResult['futureGames'][number]
+  >;
+  leagueTables: GetGamesCalendarQueryResult['leagueTables'];
   lng: Locale;
 };
 
 export default function GameCalendarSlider({
   games,
+  leagueTables,
   lng,
 }: GameCalendarSliderProps) {
   const [swiperLoaded, setSwiperLoaded] = useState(false);
@@ -64,6 +69,14 @@ export default function GameCalendarSlider({
 
   const handleNext = () => {
     swiperRef.current?.slideNext();
+  };
+
+  const findLeagueLogo = (gameTypeName: { [key: string]: string }) => {
+    const name = gameTypeName[lng] || gameTypeName.pl;
+    const league = leagueTables.find((table) =>
+      table.title.toLowerCase().includes(name.toLowerCase())
+    );
+    return league?.logo?.asset?.url;
   };
 
   return (
@@ -110,12 +123,30 @@ export default function GameCalendarSlider({
           {games.map((game) => (
             <SwiperSlide key={game._id} className={styles.sliderSwiperSlide}>
               <div className={styles.gameWrapper}>
-                <div className={styles.gameDate}>
-                  <small className={styles.gameType}>
-                    {game.gameType.name[lng] || game.gameType.name.pl}
-                  </small>
-                  <div>{formatDate(game.date, lng)}</div>
-                </div>
+                {findLeagueLogo(game.gameType.name) ? (
+                  <div className={styles.gameDateWithLogo}>
+                    <small className={styles.gameType}>
+                      {game.gameType.name[lng] || game.gameType.name.pl}
+                    </small>
+                    {findLeagueLogo(game.gameType.name) && (
+                      <Image
+                        src={findLeagueLogo(game.gameType.name)!}
+                        alt={game.gameType.name[lng] || game.gameType.name.pl}
+                        width={20}
+                        height={20}
+                        className={styles.leagueLogo}
+                      />
+                    )}
+                    <div>{formatDate(game.date, lng)}</div>
+                  </div>
+                ) : (
+                  <div className={styles.gameDate}>
+                    <small className={styles.gameType}>
+                      {game.gameType.name[lng] || game.gameType.name.pl}
+                    </small>
+                    <div>{formatDate(game.date, lng)}</div>
+                  </div>
+                )}
                 <div className={styles.gameDetails}>
                   <div className={styles.gameTypeWrapper}>
                     <small className={styles.gameTypeLocationAndTime}>
