@@ -33,6 +33,19 @@
   line-height: 1;
 }
 
+.tableHeaderWithLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding-inline: 0.5rem;
+}
+
+.tableHeaderWithLogo .tableTitle {
+  margin-bottom: 0;
+}
+
 .tableRow {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }

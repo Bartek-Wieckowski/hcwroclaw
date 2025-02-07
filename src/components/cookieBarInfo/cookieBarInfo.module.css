@@ -4,8 +4,8 @@
   left: 0;
   right: 0;
   background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(0.5rem);
+  border-top: 0.063rem solid rgba(0, 0, 0, 0.1);
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -26,7 +26,7 @@
   background: #000;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   font-family: var(--font-outfit-bold);
   font-size: 0.9rem;
   cursor: pointer;

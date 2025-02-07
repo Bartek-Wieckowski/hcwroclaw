@@ -29,56 +29,56 @@
 /* Definiujemy pozycje i kształty dla każdego obszaru */
 .left-lion {
   top: 35%;
-  left: 10%;
+  left: 13%;
   width: 29%;
   height: 30%;
 }
 
 .right-lion {
   top: 35%;
-  right: 12%;
+  right: 15%;
   width: 29%;
   height: 30%;
 }
 
 .main-shield {
-  top: 37%;
-  left: 39%;
-  width: 20%;
-  height: 18%;
+  top: 38%;
+  left: 41%;
+  width: 17%;
+  height: 17%;
 }
 
 .shield-crown {
-  top: 32%;
-  left: 44%;
-  width: 10%;
+  top: 34%;
+  left: 45%;
+  width: 9%;
   height: 5%;
 }
 
 .left-lion-crown {
-  top: 35%;
-  left: 23%;
-  width: 5%;
+  top: 36%;
+  left: 28%;
+  width: 6%;
   height: 3%;
 }
 
 .right-lion-crown {
-  top: 35%;
-  right: 24%;
+  top: 36%;
+  right: 29%;
   width: 6%;
-  height: 5%;
+  height: 3%;
 }
 
 .hockey-sticks-top-left {
-  top: 20%;
-  left: 23%;
-  width: 20%;
+  top: 21%;
+  left: 28%;
+  width: 18%;
   height: 16%;
 }
 .hockey-sticks-top-right {
-  top: 20%;
-  right: 25%;
-  width: 20%;
+  top: 21%;
+  right: 28%;
+  width: 18%;
   height: 16%;
 }
 .hockey-sticks-bottom-left {
@@ -110,29 +110,29 @@
 }
 
 .region-name {
-  bottom: 25%;
+  bottom: 27%;
   left: 35%;
   width: 30%;
   height: 8%;
 }
 
 .motto {
-  top: 60%;
+  top: 59%;
   left: 35%;
   width: 30%;
   height: 5%;
 }
 
 .foundation-dates-left {
-  bottom: 26%;
-  left: 25%;
+  bottom: 28%;
+  left: 28%;
   width: 12%;
   height: 8%;
 }
 
 .foundation-dates-right {
-  bottom: 26%;
-  right: 25%;
+  bottom: 28%;
+  right: 28%;
   width: 12%;
   height: 8%;
 }

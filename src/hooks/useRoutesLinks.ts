@@ -15,6 +15,10 @@ export function useRoutesLinks() {
       path: ROUTES.TEAM(locale),
     },
     {
+      title: t('calendar'),
+      path: ROUTES.CALENDARALL(locale),
+    },
+    {
       title: t('club'),
       path: ROUTES.CLUB(locale),
     },
@@ -25,6 +29,10 @@ export function useRoutesLinks() {
     {
       title: t('becomePartner'),
       path: ROUTES.BECOMEPARTNER(locale),
+    },
+    {
+      title: t('gallery'),
+      path: ROUTES.GALLERY(locale),
     },
   ];
 }

@@ -12,6 +12,13 @@ export type TableDocument = {
   title: string;
   headers: LocaleString[];
   rows: RowType[];
+  logo?: {
+    _type: 'image';
+    asset: {
+      _type: 'reference';
+      _ref: string;
+    };
+  };
 };
 
 export type UpdateValueType = (value: string, r: number, c: number) => void;

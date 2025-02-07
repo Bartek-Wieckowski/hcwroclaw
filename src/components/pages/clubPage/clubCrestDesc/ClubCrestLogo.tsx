@@ -1,6 +1,6 @@
 import styles from './clubCrestLogo.module.css';
 import Image from 'next/image';
-import crest from '@/assets/images/logo-home-hero.png';
+import crest from '@assets/images/logo-home-hero.svg';
 
 type ClubCrestLogoProps = {
   activeElementId: string | null;

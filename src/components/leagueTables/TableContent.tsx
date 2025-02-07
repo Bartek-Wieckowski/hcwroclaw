@@ -1,12 +1,14 @@
 'use client';
 
 import styles from './leagueTables.module.css';
+import Image from 'next/image';
 import { Locale } from '@/i18n/i18n';
 import { GetLeagueTablesQueryResult } from '../../../sanity.types';
 import { useState } from 'react';
 import { IoChevronDown } from 'react-icons/io5';
 import { convertDateWithTimezone } from '@/lib/helpers';
 import { useTranslations } from 'next-intl';
+import { urlFor } from '@/sanity/lib/image';
 
 type TableContentProps = {
   data: GetLeagueTablesQueryResult;
@@ -63,7 +65,22 @@ export default function TableContent({ data, lng }: TableContentProps) {
 
           return (
             <div key={table._id} className={styles.tableWrapper}>
-              <h2 className={styles.tableTitle}>{table.title}</h2>
+              {table.logo && (
+                <div className={styles.tableHeaderWithLogo}>
+                  <>
+                    <Image
+                      src={urlFor(table.logo).url()}
+                      alt={table.title}
+                      width={25}
+                      height={25}
+                    />
+                    <h2 className={styles.tableTitle}>{table.title}</h2>
+                  </>
+                </div>
+              )}
+              {!table.logo && (
+                <h2 className={styles.tableTitle}>{table.title}</h2>
+              )}
               <div className={styles.table}>
                 <div className={styles.tableHeader}>
                   <div className={styles.positionColumn}>#</div>

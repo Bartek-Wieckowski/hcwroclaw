@@ -16,6 +16,16 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'logo',
+      title: 'League Logo',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      description:
+        'To better look. Please provide a logo without a background.',
+    }),
+    defineField({
       name: 'headers',
       title: 'Column Headers',
       type: 'array',
@@ -77,10 +87,12 @@ export default defineType({
   preview: {
     select: {
       title: 'title',
+      media: 'logo',
     },
-    prepare({ title }) {
+    prepare({ title, media }) {
       return {
         title: title || 'League',
+        media: media,
       };
     },
   },

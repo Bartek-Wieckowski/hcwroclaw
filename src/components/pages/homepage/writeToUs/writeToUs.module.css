@@ -104,8 +104,8 @@
 
 .selectButton:focus-visible,
 .dropdownOption:focus-visible {
-  outline: 2px solid var(--hc-gold);
-  outline-offset: 2px;
+  outline: 0.125rem solid var(--hc-gold);
+  outline-offset: 0.125rem;
 }
 
 .input,
@@ -174,15 +174,15 @@
   text-transform: uppercase;
   align-self: center;
   box-shadow:
-    -2px 2px 8px rgba(255, 255, 255, 0.3),
-    2px -2px 8px rgba(255, 255, 255, 0.3);
+    -0.125rem 0.125rem 0.5rem rgba(255, 255, 255, 0.3),
+    0.125rem -0.125rem 0.5rem rgba(255, 255, 255, 0.3);
 }
 
 .submitButton:hover {
-  transform: skewX(-10deg) translateY(-2px);
+  transform: skewX(-10deg) translateY(-0.125rem);
   box-shadow:
-    -3px 3px 12px rgba(255, 255, 255, 0.4),
-    3px -3px 12px rgba(255, 255, 255, 0.4);
+    -0.188rem 0.188rem 0.75rem rgba(255, 255, 255, 0.4),
+    0.188rem -0.188rem 0.75rem rgba(255, 255, 255, 0.4);
 }
 
 .submitButton:disabled {

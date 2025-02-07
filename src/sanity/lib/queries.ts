@@ -70,8 +70,42 @@ export const getGamesCalendarQuery = defineQuery(`{
       isCompleted,
       firstTeamGoals,
       secondTeamGoals
+    },
+  "leagueTables": *[_type == "leagueTables"] {
+    _id,
+    title,
+    logo {
+      asset->{
+        _id,
+        url
+      }
     }
+  }
 }`);
+
+export const getLeagueTablesOrderQuery = defineQuery(`
+  *[_type == "leagueTablesOrder"][0] {
+    tables[]-> {
+      _createdAt,
+      _updatedAt,
+      _id,
+      title,
+      logo {
+        asset->{
+          _id,
+          url
+        }
+      },
+      headers[] { 
+        pl,
+        en
+      },
+      rows[] {
+        cells
+      }
+    }
+  }
+`);
 
 export const getLeagueTablesQuery = defineQuery(`
   *[_type == "leagueTables"] {
@@ -79,6 +113,12 @@ export const getLeagueTablesQuery = defineQuery(`
     _updatedAt,
     _id,
     title,
+    logo {
+      asset->{
+        _id,
+        url
+      }
+    },
     headers[] { 
       pl,
       en
@@ -101,14 +141,14 @@ export const getHomePageAboutUsSectionQuery = defineQuery(`
 }`);
 
 export const getHomePageLatestNewsQuery = defineQuery(`
-  *[_type == "newsSinglePage"] | order(_createdAt desc) [0..3] {
+  *[_type == "newsSinglePage"] | order(date desc) [0..3] {
       _id,
       title{pl,en},
       slugPL,
       slugEN,
       excerpt{pl,en},
       mainPostImage{asset, alt{pl, en}},
-      _createdAt
+      date
     }
   `);
 
@@ -133,7 +173,7 @@ export const getPartnersQuery = defineQuery(`
 `);
 
 export const getNewsQuery = defineQuery(`
-  *[_type == "newsSinglePage"] | order(_createdAt desc) [$start...$end] {
+  *[_type == "newsSinglePage"] | order(date desc) [$start...$end] {
     _id,
     title{pl,en},
     slugPL,
@@ -149,7 +189,7 @@ export const getNewsQuery = defineQuery(`
         en
       }
     },
-    _createdAt
+    date
   }
 `);
 
@@ -175,7 +215,7 @@ export const getSingleNewsQuery = defineQuery(`
         en
       }
     },
-    _createdAt
+    date
   }
 `);
 
@@ -297,3 +337,45 @@ export const getBecomePartnerPageQuery = defineQuery(`
     }
   }
 `);
+
+export const getAllYearsQuery = defineQuery(`
+  *[_type == "gameCalendar"] {
+    date
+  }
+`);
+
+export const getAllGamesByYearQuery =
+  defineQuery(`*[_type == "gameCalendar" && dateTime(date) >= dateTime($startDate) && dateTime(date) < dateTime($endDate)] | order(date asc) {
+  _id,
+  _type,
+  date,
+  location,
+  time,
+  gameType->{
+    _id,
+    name
+  },
+  firstTeam->{
+    _id,
+    name,
+    logo {
+      asset->{
+        _id,
+        url
+      }
+    }
+  },
+  secondTeam->{
+    _id,
+    name,
+    logo {
+      asset->{
+        _id,
+        url
+      }
+    }
+  },
+  isCompleted,
+  firstTeamGoals,
+  secondTeamGoals
+}`);

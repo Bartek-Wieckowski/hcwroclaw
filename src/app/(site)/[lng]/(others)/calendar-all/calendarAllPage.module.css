@@ -1,0 +1,11 @@
+.calendarAllPage {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-inline: var(--container-padding);
+}
+
+@media (min-width: 992px) {
+  .calendarAllPage {
+    padding-bottom: 4rem;
+  }
+}

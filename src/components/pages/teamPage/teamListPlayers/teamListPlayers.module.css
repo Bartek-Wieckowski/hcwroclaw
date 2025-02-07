@@ -30,7 +30,7 @@
   background: var(--bg-body-black);
   border-radius: var(--border-radius-img);
   overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
 }
@@ -50,7 +50,7 @@
 .playerInfo,
 .playerDetails {
   padding: 1rem;
-  background: white;
+  background: var(--hc-gold);
 }
 
 .playerInfo {
@@ -59,36 +59,62 @@
 
 .basicInfo {
   display: grid;
-  grid-template-columns: max-content 1fr;
+  grid-template-columns: clamp(2.188rem, 20%, 2.813rem) 1fr clamp(
+      2.188rem,
+      20%,
+      2.813rem
+    );
+  grid-template-rows: clamp(2.188rem, 20%, 2.813rem);
   align-items: center;
-  gap: 1rem;
+  gap: clamp(0.3rem, 3%, 0.75rem);
+  width: 100%;
 }
 
 .playerNumber {
-  font-size: var(--h1-font-size);
-  font-family: var(--font-mister-pablo);
+  /* font-family: var(--font-mister-pablo); */
+  /* background-color: #c41f0a; */
+  font-family: var(--font-roboto-bold);
+  font-size: clamp(0.9rem, 2.5vw, var(--normal-font-size));
   color: var(--hc-black);
+  background-color: var(--hc-red);
+  width: 100%;
+  height: 100%;
+  min-width: 2.188rem;
+  min-height: 2.188rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   line-height: 1;
 }
 
 .playerName {
-  font-size: var(--normal-font-size);
+  font-size: clamp(0.8rem, 2.2vw, var(--normal-font-size));
   font-family: var(--font-outfit-bold);
   margin: 0;
   color: var(--hc-black);
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 0.5rem;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.2;
 }
 
 .captainLabel,
 .assistantLabel {
-  position: absolute;
-  top: 5px;
-  right: 10px;
-  font-size: 1.5rem;
+  font-size: clamp(0.9rem, 2.5vw, var(--normal-font-size));
   font-family: var(--font-roboto-bold);
-  color: var(--accent-color-more);
+  color: var(--hc-black);
+  background-color: var(--hc-red);
+  width: 100%;
+  height: 100%;
+  min-width: 2.188rem;
+  min-height: 2.188rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
 }
 
 .playerStats {
@@ -109,15 +135,15 @@
 
 .playerStatLabel {
   font-family: var(--font-outfit-regular);
-  color: var(--accent-color-grey);
   font-size: 0.7rem;
   text-transform: uppercase;
+  color: var(--hc-black);
 }
 
 .playerStatValue {
   font-family: var(--font-outfit-bold);
   font-size: 0.7rem;
-  color: var(--accent-color-grey);
+  color: var(--hc-black);
 }
 
 .playerRoles {
@@ -131,18 +157,16 @@
 .assistantCaptain {
   font-size: 0.875rem;
   padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   font-family: var(--font-outfit-bold);
   text-transform: uppercase;
 }
 
 .captain {
-  background: #ffd700;
   color: var(--hc-black);
 }
 
 .assistantCaptain {
-  background: #c0c0c0;
   color: var(--hc-black);
 }
 
@@ -153,19 +177,27 @@
 
 @media screen and (min-width: 481px) and (max-width: 1249px) {
   .cardContainer {
-    width: 33%;
+    width: calc(50% - 1rem);
   }
 
   .basicInfo {
+    grid-template-columns: clamp(2.5rem, 25%, 3.125rem) 1fr clamp(
+        2.5rem,
+        25%,
+        3.125rem
+      );
+    grid-template-rows: clamp(2.5rem, 25%, 3.125rem);
     gap: 0.5rem;
-  }
-
-  .playerNumber {
-    font-size: var(--h2-font-size);
   }
 
   .playerName {
     font-size: clamp(0.7rem, 2vw, var(--normal-font-size));
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1249px) {
+  .cardContainer {
+    width: calc(33.33% - 1rem);
   }
 }
 
@@ -178,9 +210,5 @@
 @media (min-width: 1250px) {
   .cardContainer {
     width: 23%;
-  }
-
-  .basicInfo {
-    gap: 1rem;
   }
 }

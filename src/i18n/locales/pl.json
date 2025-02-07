@@ -5,7 +5,9 @@
     "team": "Drużyna",
     "club": "Klub",
     "contact": "Kontakt",
-    "becomePartner": "Zostań partnerem"
+    "becomePartner": "Zostań partnerem",
+    "calendar": "Kalendarz",
+    "gallery": "Galeria"
   },
   "common": {
     "calendar": "Kalendarz",
@@ -105,5 +107,9 @@
   "becomePartnerPage": {
     "title1": "Zostań partnerem",
     "title2": "naszej drużyny hokejowej!"
+  },
+  "transferTax": {
+    "button": "Przekaż",
+    "percentage": "1.5%"
   }
 }

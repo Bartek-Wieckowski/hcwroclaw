@@ -57,6 +57,12 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'date',
+      title: 'News Date',
+      type: 'datetime',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'slugPL',
       title: 'Slug PL',
       type: 'slug',

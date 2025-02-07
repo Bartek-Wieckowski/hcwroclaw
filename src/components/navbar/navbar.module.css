@@ -40,6 +40,7 @@
   font-size: 2rem;
   cursor: pointer;
   transition: color 0.3s ease;
+  flex-shrink: 0;
 }
 
 .hamburger {
@@ -73,6 +74,13 @@
 
 .active :global(.socialMediaLink) {
   color: white !important;
+}
+
+.navbarUserActions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
 }
 
 @media screen and (min-width: 992px) {

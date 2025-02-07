@@ -85,16 +85,16 @@ export default function TeamListPlayers({ players }: TeamListProps) {
               </div>
               <div className={styles.playerInfo}>
                 <div className={styles.basicInfo}>
-                  <div className={styles.playerNumber}># {player.number}</div>
+                  <div className={styles.playerNumber}>#{player.number}</div>
                   <h3 className={styles.playerName}>
                     {player.firstName} {player.lastName}
-                    {player.isCaptain && (
-                      <span className={styles.captainLabel}>C</span>
-                    )}
-                    {player.isAssistantCaptain && (
-                      <span className={styles.assistantLabel}>A</span>
-                    )}
                   </h3>
+                  {player.isCaptain && (
+                    <span className={styles.captainLabel}>&quot;C&quot;</span>
+                  )}
+                  {player.isAssistantCaptain && (
+                    <span className={styles.assistantLabel}>&quot;A&quot;</span>
+                  )}
                 </div>
               </div>
             </motion.div>
