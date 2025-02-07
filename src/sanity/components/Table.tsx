@@ -1,5 +1,5 @@
 import ButtonsDash from './ButtonDash';
-import { set } from 'sanity';
+import { set, unset, useClient } from 'sanity';
 import {
   Button,
   TextInput,
@@ -28,6 +28,11 @@ type TableProps = {
   onChange: OnChangeType;
   value?: {
     title?: string;
+    logo?: {
+      asset?: {
+        _ref: string;
+      };
+    };
     headers?: LocaleString[];
     rows?: RowType[];
   };
@@ -56,6 +61,8 @@ export default function Table(props: TableProps) {
     savedValue?.headers || initialHeaders
   );
   const [rows, setRows] = useState<RowType[]>(savedValue?.rows || initialRows);
+
+  const client = useClient();
 
   const updateSchema = (newValue: Partial<TableDocument>) => {
     const patches = Object.entries(newValue).map(([key, value]) =>
@@ -153,18 +160,68 @@ export default function Table(props: TableProps) {
     updateSchema({ rows: newRows });
   };
 
+  const handleSelectImage = async () => {
+    // Create file input
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+
+    input.onchange = async (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0];
+      if (!file) return;
+
+      const asset = await client.assets.upload('image', file);
+
+      updateSchema({
+        logo: {
+          _type: 'image',
+          asset: {
+            _type: 'reference',
+            _ref: asset._id,
+          },
+        },
+      });
+    };
+
+    input.click();
+  };
+
+  const removeLogo = () => {
+    onChange([unset(['logo'])]);
+  };
+
   return (
     <Stack space={4}>
       <Box>
-        <TextInput
-          value={title}
-          onChange={(e) => {
-            const newTitle = e.currentTarget.value;
-            setTitle(newTitle);
-            updateSchema({ title: newTitle });
-          }}
-          placeholder="Table League Name"
-        />
+        <Stack space={3}>
+          <TextInput
+            value={title}
+            onChange={(e) => {
+              const newTitle = e.currentTarget.value;
+              setTitle(newTitle);
+              updateSchema({ title: newTitle });
+            }}
+            placeholder="Table League Name"
+          />
+
+          <Flex gap={2}>
+            <Button mode="ghost" onClick={handleSelectImage}>
+              {savedValue?.logo?.asset?._ref ? 'Change Logo' : 'Add Logo'}
+            </Button>
+
+            {savedValue?.logo?.asset?._ref && (
+              <Button mode="ghost" tone="critical" onClick={removeLogo}>
+                Remove Logo
+              </Button>
+            )}
+          </Flex>
+
+          {savedValue?.logo?.asset?._ref && (
+            <Box>
+              <Text size={1}>Logo selected</Text>
+            </Box>
+          )}
+        </Stack>
       </Box>
 
       <Box>

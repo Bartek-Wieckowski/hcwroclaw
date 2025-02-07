@@ -79,6 +79,12 @@ export const getLeagueTablesQuery = defineQuery(`
     _updatedAt,
     _id,
     title,
+    logo {
+      asset->{
+        _id,
+        url
+      }
+    },
     headers[] { 
       pl,
       en

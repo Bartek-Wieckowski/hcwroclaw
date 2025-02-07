@@ -158,6 +158,17 @@ export type LeagueTables = {
   _updatedAt: string;
   _rev: string;
   title: string;
+  logo?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
   headers: Array<{
     _key: string;
   } & LocaleString>;
@@ -621,12 +632,18 @@ export type GetGamesCalendarQueryResult = {
   }>;
 };
 // Variable: getLeagueTablesQuery
-// Query: *[_type == "leagueTables"] {    _createdAt,    _updatedAt,    _id,    title,    headers[] {       pl,      en    },    rows[] {      cells    }  }
+// Query: *[_type == "leagueTables"] {    _createdAt,    _updatedAt,    _id,    title,    logo {      asset->{        _id,        url      }    },    headers[] {       pl,      en    },    rows[] {      cells    }  }
 export type GetLeagueTablesQueryResult = Array<{
   _createdAt: string;
   _updatedAt: string;
   _id: string;
   title: string;
+  logo: {
+    asset: {
+      _id: string;
+      url: string | null;
+    } | null;
+  } | null;
   headers: Array<{
     pl: string;
     en: string;
@@ -895,7 +912,7 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "{\n  \"pastGames\": *[_type == \"gameCalendar\" && dateTime(date) < dateTime(now())] | \n    order(date desc) [0...12] {\n      _id,\n      _type,\n      date,\n      location,\n      time,\n      gameType->{\n        _id,\n        name\n      },\n      firstTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      secondTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      isCompleted,\n      firstTeamGoals,\n      secondTeamGoals\n    },\n  \"futureGames\": *[_type == \"gameCalendar\" && dateTime(date) >= dateTime(now())] | \n    order(date asc) [0...12] {\n      _id,\n      _type,\n      date,\n      location,\n      time,\n      gameType->{\n        _id,\n        name\n      },\n      firstTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      secondTeam->{\n        _id,\n        name,\n        logo {\n          asset->{\n            _id,\n            url\n          }\n        }\n      },\n      isCompleted,\n      firstTeamGoals,\n      secondTeamGoals\n    }\n}": GetGamesCalendarQueryResult;
-    "\n  *[_type == \"leagueTables\"] {\n    _createdAt,\n    _updatedAt,\n    _id,\n    title,\n    headers[] { \n      pl,\n      en\n    },\n    rows[] {\n      cells\n    }\n  }\n": GetLeagueTablesQueryResult;
+    "\n  *[_type == \"leagueTables\"] {\n    _createdAt,\n    _updatedAt,\n    _id,\n    title,\n    logo {\n      asset->{\n        _id,\n        url\n      }\n    },\n    headers[] { \n      pl,\n      en\n    },\n    rows[] {\n      cells\n    }\n  }\n": GetLeagueTablesQueryResult;
     "\n *[_type == \"homePage\"][0] {\n    aboutUsSection {\n      description{en, pl},\n      activePlayers{number, text{en, pl}},\n      gamePerSeasson{number, text{en, pl}},\n      trainingAtWeek{number, text{en, pl}},\n      leagueNumbers{number, text{en, pl}}\n    }\n}": GetHomePageAboutUsSectionQueryResult;
     "\n  *[_type == \"newsSinglePage\"] | order(date desc) [0..3] {\n      _id,\n      title{pl,en},\n      slugPL,\n      slugEN,\n      excerpt{pl,en},\n      mainPostImage{asset, alt{pl, en}},\n      date\n    }\n  ": GetHomePageLatestNewsQueryResult;
     "\n  *[_type == \"partnersLogo\"][0] {\n    sectionTitle {\n      en,\n      pl\n    },\n    partners[] {\n      name,\n      logo {\n        asset->{\n          _id,\n          url\n        }\n      },\n      hasWebsite,\n      url\n    }\n  }\n": GetPartnersQueryResult;
