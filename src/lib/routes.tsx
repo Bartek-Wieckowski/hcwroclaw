@@ -6,4 +6,6 @@ export const ROUTES = {
   CLUB: (lng: string) => `/${lng}/club`,
   CONTACT: (lng: string) => `/${lng}/contact`,
   BECOMEPARTNER: (lng: string) => `/${lng}/become-a-partner`,
+  CALENDARALL: (lng: string) => `/${lng}/calendar-all`,
+  GALLERY: (lng: string) => `/${lng}/gallery`,
 };

@@ -337,3 +337,45 @@ export const getBecomePartnerPageQuery = defineQuery(`
     }
   }
 `);
+
+export const getAllYearsQuery = defineQuery(`
+  *[_type == "gameCalendar"] {
+    date
+  }
+`);
+
+export const getAllGamesByYearQuery =
+  defineQuery(`*[_type == "gameCalendar" && dateTime(date) >= dateTime($startDate) && dateTime(date) < dateTime($endDate)] | order(date asc) {
+  _id,
+  _type,
+  date,
+  location,
+  time,
+  gameType->{
+    _id,
+    name
+  },
+  firstTeam->{
+    _id,
+    name,
+    logo {
+      asset->{
+        _id,
+        url
+      }
+    }
+  },
+  secondTeam->{
+    _id,
+    name,
+    logo {
+      asset->{
+        _id,
+        url
+      }
+    }
+  },
+  isCompleted,
+  firstTeamGoals,
+  secondTeamGoals
+}`);

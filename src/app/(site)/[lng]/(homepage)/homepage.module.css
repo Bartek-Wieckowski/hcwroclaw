@@ -1,0 +1,16 @@
+.calendarTitleWithBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.calendarTitleWithBtn h2 {
+  margin-bottom: 0;
+}
+
+.calendarTitleWithBtn svg {
+  font-size: 2rem;
+  cursor: pointer;
+}

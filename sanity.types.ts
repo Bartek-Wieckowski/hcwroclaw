@@ -954,6 +954,47 @@ export type GetBecomePartnerPageQueryResult = {
     en: NewsBlock;
   };
 } | null;
+// Variable: getAllYearsQuery
+// Query: *[_type == "gameCalendar"] {    date  }
+export type GetAllYearsQueryResult = Array<{
+  date: string;
+}>;
+// Variable: getAllGamesByYearQuery
+// Query: *[_type == "gameCalendar" && dateTime(date) >= dateTime($startDate) && dateTime(date) < dateTime($endDate)] | order(date asc) {  _id,  _type,  date,  location,  time,  gameType->{    _id,    name  },  firstTeam->{    _id,    name,    logo {      asset->{        _id,        url      }    }  },  secondTeam->{    _id,    name,    logo {      asset->{        _id,        url      }    }  },  isCompleted,  firstTeamGoals,  secondTeamGoals}
+export type GetAllGamesByYearQueryResult = Array<{
+  _id: string;
+  _type: "gameCalendar";
+  date: string;
+  location: string;
+  time: string;
+  gameType: {
+    _id: string;
+    name: LocaleString;
+  };
+  firstTeam: {
+    _id: string;
+    name: string;
+    logo: {
+      asset: {
+        _id: string;
+        url: string | null;
+      } | null;
+    } | null;
+  };
+  secondTeam: {
+    _id: string;
+    name: string;
+    logo: {
+      asset: {
+        _id: string;
+        url: string | null;
+      } | null;
+    } | null;
+  };
+  isCompleted: boolean | null;
+  firstTeamGoals: number | null;
+  secondTeamGoals: number | null;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
@@ -971,5 +1012,7 @@ declare module "@sanity/client" {
     "\n  *[_type == \"clubPage\"][0] {\n    clubHistory {\n      pl,\n      en\n    },\n    titleIntroduction {\n      pl,\n      en\n    },\n    clubCrest {\n      pl,\n      en\n    },\n    sectionSummary {\n      pl,\n      en\n    }\n  }\n": GetClubPageQueryResult;
     "\n  *[_type == \"contactPage\"][0] {\n    contactOptions {\n      pl,\n      en\n    }\n  }\n": GetContactPageQueryResult;
     "\n  *[_type == \"becomePartnerPage\"][0] {\n    becomePartnerDesc {\n      pl,\n      en\n    }\n  }\n": GetBecomePartnerPageQueryResult;
+    "\n  *[_type == \"gameCalendar\"] {\n    date\n  }\n": GetAllYearsQueryResult;
+    "*[_type == \"gameCalendar\" && dateTime(date) >= dateTime($startDate) && dateTime(date) < dateTime($endDate)] | order(date asc) {\n  _id,\n  _type,\n  date,\n  location,\n  time,\n  gameType->{\n    _id,\n    name\n  },\n  firstTeam->{\n    _id,\n    name,\n    logo {\n      asset->{\n        _id,\n        url\n      }\n    }\n  },\n  secondTeam->{\n    _id,\n    name,\n    logo {\n      asset->{\n        _id,\n        url\n      }\n    }\n  },\n  isCompleted,\n  firstTeamGoals,\n  secondTeamGoals\n}": GetAllGamesByYearQueryResult;
   }
 }
