@@ -2,7 +2,7 @@
 
 import styles from './footer.module.css';
 import Image from 'next/image';
-import logo from '@/assets/images/logo-no-bg.png';
+import logo from '@assets/images/logo-home-hero.svg';
 import FooterLink from './footerLink/FooterLink';
 import SocialMediaIcons from '../socialMediaIcons/SocialMediaIcons';
 import { useRoutesLinks } from '@/hooks/useRoutesLinks';
