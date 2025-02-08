@@ -54,21 +54,21 @@ export default async function TeamPage() {
       <div className={styles.playersSection}>
         {teamData.goalkeepers && (
           <>
-            <h2 className={`layoutH2effect`}>{t('positions.goalkeepers')}</h2>
+            <h2 className="">{t('positions.goalkeepers')}</h2>
             <TeamListPlayers players={teamData.goalkeepers} />
           </>
         )}
 
         {teamData.defenders && (
           <>
-            <h2 className={`layoutH2effect`}>{t('positions.defenders')}</h2>
+            <h2 className="">{t('positions.defenders')}</h2>
             <TeamListPlayers players={teamData.defenders} />
           </>
         )}
 
         {teamData.forwards && (
           <>
-            <h2 className={`layoutH2effect`}>{t('positions.forwards')}</h2>
+            <h2 className="">{t('positions.forwards')}</h2>
             <TeamListPlayers players={teamData.forwards} />
           </>
         )}

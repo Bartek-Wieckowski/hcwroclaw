@@ -9,12 +9,32 @@
 }
 
 .playersSection h2 {
+  position: relative;
   margin: 2rem 0;
   font-size: var(--h2-font-size);
   font-family: var(--font-roboto-bold);
   text-align: center;
   text-transform: uppercase;
-  color: var(--accent-color-grey);
+  color: var(--bg-body-white);
+}
+
+.playersSection h2::first-letter {
+  color: var(--hc-red);
+}
+
+.playersSection h2::before {
+  content: '';
+  position: absolute;
+  width: 3.125rem;
+  height: 0.125rem;
+  background-color: var(--bg-body-white);
+  transform: translateX(-50%);
+  left: 50%;
+  top: -0.5rem;
+}
+
+.firstLetter {
+  color: var(--hc-red);
 }
 
 @media (min-width: 992px) {

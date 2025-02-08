@@ -1769,6 +1769,13 @@
                 },
                 "optional": false
               },
+              "playerNickname": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string"
+                },
+                "optional": true
+              },
               "photo": {
                 "type": "objectAttribute",
                 "value": {
@@ -1935,6 +1942,58 @@
                       "value": "right"
                     }
                   ]
+                },
+                "optional": true
+              },
+              "position": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "union",
+                  "of": [
+                    {
+                      "type": "string",
+                      "value": "player"
+                    },
+                    {
+                      "type": "string",
+                      "value": "goalkeeper"
+                    }
+                  ]
+                },
+                "optional": false
+              },
+              "gamesPlayed": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "number"
+                },
+                "optional": true
+              },
+              "goals": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "number"
+                },
+                "optional": true
+              },
+              "assists": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "number"
+                },
+                "optional": true
+              },
+              "goalsAgainstAverage": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "number"
+                },
+                "optional": true
+              },
+              "savePercentage": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "number"
                 },
                 "optional": true
               },
@@ -1989,6 +2048,13 @@
                 },
                 "optional": false
               },
+              "playerNickname": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string"
+                },
+                "optional": true
+              },
               "photo": {
                 "type": "objectAttribute",
                 "value": {
@@ -2155,6 +2221,58 @@
                       "value": "right"
                     }
                   ]
+                },
+                "optional": true
+              },
+              "position": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "union",
+                  "of": [
+                    {
+                      "type": "string",
+                      "value": "player"
+                    },
+                    {
+                      "type": "string",
+                      "value": "goalkeeper"
+                    }
+                  ]
+                },
+                "optional": false
+              },
+              "gamesPlayed": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "number"
+                },
+                "optional": true
+              },
+              "goals": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "number"
+                },
+                "optional": true
+              },
+              "assists": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "number"
+                },
+                "optional": true
+              },
+              "goalsAgainstAverage": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "number"
+                },
+                "optional": true
+              },
+              "savePercentage": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "number"
                 },
                 "optional": true
               },
@@ -2209,6 +2327,13 @@
                 },
                 "optional": false
               },
+              "playerNickname": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "string"
+                },
+                "optional": true
+              },
               "photo": {
                 "type": "objectAttribute",
                 "value": {
@@ -2375,6 +2500,58 @@
                       "value": "right"
                     }
                   ]
+                },
+                "optional": true
+              },
+              "position": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "union",
+                  "of": [
+                    {
+                      "type": "string",
+                      "value": "player"
+                    },
+                    {
+                      "type": "string",
+                      "value": "goalkeeper"
+                    }
+                  ]
+                },
+                "optional": false
+              },
+              "gamesPlayed": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "number"
+                },
+                "optional": true
+              },
+              "goals": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "number"
+                },
+                "optional": true
+              },
+              "assists": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "number"
+                },
+                "optional": true
+              },
+              "goalsAgainstAverage": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "number"
+                },
+                "optional": true
+              },
+              "savePercentage": {
+                "type": "objectAttribute",
+                "value": {
+                  "type": "number"
                 },
                 "optional": true
               },
