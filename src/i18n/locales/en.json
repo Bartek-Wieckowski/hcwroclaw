@@ -101,6 +101,10 @@
       "title2": "of the crest"
     }
   },
+  "infoPage": {
+    "title1": "Info",
+    "title2": "about the club"
+  },
   "contactPage": {
     "title1": "Contact",
     "title2": "and additional information"

@@ -268,6 +268,19 @@ export type SupportPage = {
   supportDesc: LocaleClubBlock;
 };
 
+export type InfoPage = {
+  _id: string;
+  _type: "infoPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  seo?: {
+    title?: LocaleString;
+    desc?: LocaleString;
+  };
+  infoOptions: LocaleClubBlock;
+};
+
 export type ContactPage = {
   _id: string;
   _type: "contactPage";
@@ -592,7 +605,7 @@ export type LocaleString = {
   en: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | PartnersLogo | Youtube | NewsBlock | LeagueTablesOrder | LeagueTables | GameCalendar | GameType | Team | SupportPage | ContactPage | TeamPage | ClubPage | NewsSinglePage | Slug | HomePage | LocaleClubBlock | LocaleNewsBlock | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | LocaleText | LocaleString;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | PartnersLogo | Youtube | NewsBlock | LeagueTablesOrder | LeagueTables | GameCalendar | GameType | Team | SupportPage | InfoPage | ContactPage | TeamPage | ClubPage | NewsSinglePage | Slug | HomePage | LocaleClubBlock | LocaleNewsBlock | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | LocaleText | LocaleString;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: getGamesCalendarQuery
@@ -1031,6 +1044,14 @@ export type GetAllGamesByYearQueryResult = Array<{
   firstTeamGoals: number | null;
   secondTeamGoals: number | null;
 }>;
+// Variable: getInfoPageQuery
+// Query: *[_type == "infoPage"][0] {    infoOptions {      pl,      en    }  }
+export type GetInfoPageQueryResult = {
+  infoOptions: {
+    pl: NewsBlock;
+    en: NewsBlock;
+  };
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -1050,5 +1071,6 @@ declare module "@sanity/client" {
     "\n  *[_type == \"supportPage\"][0] {\n    supportDesc {\n      pl,\n      en\n    }\n  }\n": GetSupportPageQueryResult;
     "\n  *[_type == \"gameCalendar\"] {\n    date\n  }\n": GetAllYearsQueryResult;
     "*[_type == \"gameCalendar\" && dateTime(date) >= dateTime($startDate) && dateTime(date) < dateTime($endDate)] | order(date asc) {\n  _id,\n  _type,\n  date,\n  location,\n  time,\n  gameType->{\n    _id,\n    name\n  },\n  firstTeam->{\n    _id,\n    name,\n    logo {\n      asset->{\n        _id,\n        url\n      }\n    }\n  },\n  secondTeam->{\n    _id,\n    name,\n    logo {\n      asset->{\n        _id,\n        url\n      }\n    }\n  },\n  isCompleted,\n  firstTeamGoals,\n  secondTeamGoals\n}": GetAllGamesByYearQueryResult;
+    "\n  *[_type == \"infoPage\"][0] {\n    infoOptions {\n      pl,\n      en\n    }\n  }\n": GetInfoPageQueryResult;
   }
 }

@@ -394,3 +394,12 @@ export const getAllGamesByYearQuery =
   firstTeamGoals,
   secondTeamGoals
 }`);
+
+export const getInfoPageQuery = defineQuery(`
+  *[_type == "infoPage"][0] {
+    infoOptions {
+      pl,
+      en
+    }
+  }
+`);
