@@ -1,8 +1,8 @@
 import { defineType, defineField } from 'sanity';
 
 export default defineType({
-  name: 'becomePartnerPage',
-  title: 'Become Partner Page',
+  name: 'supportPage',
+  title: 'Support Page',
   type: 'document',
   fields: [
     defineField({
@@ -51,8 +51,8 @@ export default defineType({
       ],
     }),
     defineField({
-      name: 'becomePartnerDesc',
-      title: 'Become Partner Description',
+      name: 'supportDesc',
+      title: 'Become Support Description',
       type: 'localeClubBlock',
       validation: (Rule) => Rule.required(),
     }),
@@ -60,7 +60,7 @@ export default defineType({
   preview: {
     prepare() {
       return {
-        title: 'Become Partner Page',
+        title: 'Become Support Page',
       };
     },
   },

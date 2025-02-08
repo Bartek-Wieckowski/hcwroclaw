@@ -5,9 +5,10 @@
     "team": "Team",
     "club": "Club",
     "contact": "Contact",
-    "becomePartner": "Become a partner",
+    "support": "Support",
     "calendar": "Calendar",
-    "gallery": "Gallery"
+    "gallery": "Gallery",
+    "info": "Info"
   },
   "common": {
     "calendar": "Calendar",
@@ -104,9 +105,9 @@
     "title1": "Contact",
     "title2": "and additional information"
   },
-  "becomePartnerPage": {
-    "title1": "Become a partner",
-    "title2": "of our hockey team!"
+  "supportPage": {
+    "title1": "Start supporting",
+    "title2": "our hockey team!"
   },
   "transferTax": {
     "button": "Transfer",

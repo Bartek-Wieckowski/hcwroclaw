@@ -5,9 +5,10 @@
     "team": "Drużyna",
     "club": "Klub",
     "contact": "Kontakt",
-    "becomePartner": "Zostań partnerem",
+    "support": "Wsparcie",
     "calendar": "Kalendarz",
-    "gallery": "Galeria"
+    "gallery": "Galeria",
+    "info": "Info"
   },
   "common": {
     "calendar": "Kalendarz",
@@ -104,8 +105,8 @@
     "title1": "Kontakt",
     "title2": "i informacje dodatkowe"
   },
-  "becomePartnerPage": {
-    "title1": "Zostań partnerem",
+  "supportPage": {
+    "title1": "Rozpocznij wspieranie",
     "title2": "naszej drużyny hokejowej!"
   },
   "transferTax": {

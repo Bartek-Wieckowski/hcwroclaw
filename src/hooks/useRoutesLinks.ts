@@ -23,16 +23,20 @@ export function useRoutesLinks() {
       path: ROUTES.CLUB(locale),
     },
     {
+      title: t('gallery'),
+      path: ROUTES.GALLERY(locale),
+    },
+    {
       title: t('contact'),
       path: ROUTES.CONTACT(locale),
     },
     {
-      title: t('becomePartner'),
-      path: ROUTES.BECOMEPARTNER(locale),
+      title: t('info'),
+      path: ROUTES.INFO(locale),
     },
     {
-      title: t('gallery'),
-      path: ROUTES.GALLERY(locale),
+      title: t('support'),
+      path: ROUTES.SUPPORT(locale),
     },
   ];
 }

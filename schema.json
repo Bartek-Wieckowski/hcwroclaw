@@ -1466,7 +1466,7 @@
     }
   },
   {
-    "name": "becomePartnerPage",
+    "name": "supportPage",
     "type": "document",
     "attributes": {
       "_id": {
@@ -1479,7 +1479,7 @@
         "type": "objectAttribute",
         "value": {
           "type": "string",
-          "value": "becomePartnerPage"
+          "value": "supportPage"
         }
       },
       "_createdAt": {
@@ -1525,7 +1525,7 @@
         },
         "optional": true
       },
-      "becomePartnerDesc": {
+      "supportDesc": {
         "type": "objectAttribute",
         "value": {
           "type": "inline",

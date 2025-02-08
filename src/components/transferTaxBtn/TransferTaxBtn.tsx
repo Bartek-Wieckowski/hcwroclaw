@@ -10,7 +10,7 @@ export default function TransferTaxBtn() {
   const locale = useLocale();
 
   return (
-    <Link href={ROUTES.BECOMEPARTNER(locale)} className={styles.transferTaxBtn}>
+    <Link href={ROUTES.INFO(locale)} className={styles.transferTaxBtn}>
       <span className={styles.buttonText}>{t('button')}</span>
       <span className={styles.percentage}>
         <span className={styles.percentageText}>{t('percentage')}</span>

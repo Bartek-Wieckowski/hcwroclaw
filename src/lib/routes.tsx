@@ -5,7 +5,8 @@ export const ROUTES = {
   TEAM: (lng: string) => `/${lng}/team`,
   CLUB: (lng: string) => `/${lng}/club`,
   CONTACT: (lng: string) => `/${lng}/contact`,
-  BECOMEPARTNER: (lng: string) => `/${lng}/become-a-partner`,
+  SUPPORT: (lng: string) => `/${lng}/support`,
   CALENDARALL: (lng: string) => `/${lng}/calendar-all`,
   GALLERY: (lng: string) => `/${lng}/gallery`,
+  INFO: (lng: string) => `/${lng}/info`,
 };

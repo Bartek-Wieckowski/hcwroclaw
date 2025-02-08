@@ -344,9 +344,9 @@ export const getContactPageQuery = defineQuery(`
   }
 `);
 
-export const getBecomePartnerPageQuery = defineQuery(`
-  *[_type == "becomePartnerPage"][0] {
-    becomePartnerDesc {
+export const getSupportPageQuery = defineQuery(`
+  *[_type == "supportPage"][0] {
+    supportDesc {
       pl,
       en
     }
