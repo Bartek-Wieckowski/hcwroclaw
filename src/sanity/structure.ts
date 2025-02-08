@@ -66,6 +66,9 @@ export const structure: StructureResolver = (S) =>
               S.listItem()
                 .title('Tax Transfer Modal Image')
                 .child(S.documentTypeList('taxTransferModalImg')),
+              S.listItem()
+                .title('Players Next To The Form')
+                .child(S.documentTypeList('playersNextToTheForm')),
             ])
         ),
     ]);

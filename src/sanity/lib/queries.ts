@@ -432,3 +432,14 @@ export const getTaxTransferModalImgQuery = defineQuery(`
     }
   }
 `);
+
+export const getPlayersNextToTheFormQuery = defineQuery(`
+  *[_type == "playersNextToTheForm"][0] {
+    images[] {
+      asset->{
+        _id,
+        url
+      }
+    }
+  }
+`);

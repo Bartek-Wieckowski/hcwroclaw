@@ -151,6 +151,26 @@ export type NewsBlock = Array<{
   _key: string;
 }>;
 
+export type PlayersNextToTheForm = {
+  _id: string;
+  _type: "playersNextToTheForm";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  images?: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+    _key: string;
+  }>;
+};
+
 export type TaxTransferModalImg = {
   _id: string;
   _type: "taxTransferModalImg";
@@ -661,7 +681,7 @@ export type LocaleString = {
   en: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | PartnersLogo | Youtube | NewsBlock | TaxTransferModalImg | LeagueTablesOrder | LeagueTables | GameCalendar | GameType | Team | SupportPage | InfoPage | ContactPage | GalleryPage | TrainingsPage | TeamPage | ClubPage | NewsSinglePage | Slug | HomePage | LocaleClubBlock | LocaleNewsBlock | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | LocaleText | LocaleString;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | PartnersLogo | Youtube | NewsBlock | PlayersNextToTheForm | TaxTransferModalImg | LeagueTablesOrder | LeagueTables | GameCalendar | GameType | Team | SupportPage | InfoPage | ContactPage | GalleryPage | TrainingsPage | TeamPage | ClubPage | NewsSinglePage | Slug | HomePage | LocaleClubBlock | LocaleNewsBlock | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | LocaleText | LocaleString;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: getGamesCalendarQuery
@@ -1139,6 +1159,16 @@ export type GetTaxTransferModalImgQueryResult = {
     } | null;
   };
 } | null;
+// Variable: getPlayersNextToTheFormQuery
+// Query: *[_type == "playersNextToTheForm"][0] {    images[] {      asset->{        _id,        url      }    }  }
+export type GetPlayersNextToTheFormQueryResult = {
+  images: Array<{
+    asset: {
+      _id: string;
+      url: string | null;
+    } | null;
+  }> | null;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -1162,5 +1192,6 @@ declare module "@sanity/client" {
     "\n  *[_type == \"trainingsPage\"][0] {\n    trainingsOptions {\n      pl,\n      en\n    }\n  }\n": GetTrainingsPageQueryResult;
     "*[_type == \"galleryPage\"][0] {\n  images[] {\n    asset->{\n      url\n    }\n  },\n  seo\n}": GetGalleryPageQueryResult;
     "\n  *[_type == \"taxTransferModalImg\"][0] {\n    image {\n      asset->{\n        _id,\n        url\n      }\n    }\n  }\n": GetTaxTransferModalImgQueryResult;
+    "\n  *[_type == \"playersNextToTheForm\"][0] {\n    images[] {\n      asset->{\n        _id,\n        url\n      }\n    }\n  }\n": GetPlayersNextToTheFormQueryResult;
   }
 }

@@ -23,6 +23,7 @@ import gameCalendar from './utils/gameCalendar';
 import leagueTables from './utils/leagueTables';
 import leagueTablesOrder from './utils/leagueTablesOrder';
 import taxTransferModalImg from './utils/taxTransferModalImg';
+import playersNextToTheForm from './utils/playersNextToTheForm';
 
 import newsBlock from './utils/newsBlock';
 import ytEmbedd from './utils/ytEmbedd';
@@ -49,6 +50,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     leagueTables,
     leagueTablesOrder,
     taxTransferModalImg,
+    playersNextToTheForm,
 
     newsBlock,
     ytEmbedd,

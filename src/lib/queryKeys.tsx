@@ -3,4 +3,5 @@ export const QUERY_KEYS = {
   news: 'news',
   gamesYears: 'gamesYears',
   taxTransferModalImg: 'taxTransferModalImg',
+  playersNextToTheForm: 'playersNextToTheForm',
 };
