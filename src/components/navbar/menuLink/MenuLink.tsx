@@ -9,6 +9,10 @@ export default function MenuLink({ navLink, onNavigate }: NavLinkType) {
   const isActive =
     pathName === navLink.path || pathName.startsWith(navLink.path);
 
+  const isSupport =
+    navLink.title.toLowerCase() === 'support' ||
+    navLink.title.toLowerCase() === 'wsparcie';
+
   const handleClick = () => {
     if (onNavigate) {
       onNavigate();
@@ -19,7 +23,7 @@ export default function MenuLink({ navLink, onNavigate }: NavLinkType) {
     <li className={styles.menuItem}>
       <Link
         href={navLink.path}
-        className={`${isActive ? styles.active : ''}`}
+        className={`${isActive ? styles.active : ''} ${isSupport ? styles.supportLink : ''}`}
         onClick={handleClick}
       >
         {navLink.title}
