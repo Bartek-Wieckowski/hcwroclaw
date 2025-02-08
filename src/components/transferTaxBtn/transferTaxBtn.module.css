@@ -67,6 +67,8 @@
   align-items: center;
   z-index: 1000;
   padding: 1rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .modalContent {
@@ -76,6 +78,7 @@
   width: 100%;
   max-width: 90vw;
   max-height: 90vh;
+  margin: auto;
   overflow: hidden;
 }
 
