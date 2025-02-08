@@ -10,13 +10,15 @@ import { Locale } from '@/i18n/i18n';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import toast from 'react-hot-toast';
+import { usePlayersNextToTheForm } from '@/hooks/tanstack/queries/usePlayersNextToTheForm';
+import { StaticImageData } from 'next/image';
 
 import player1 from '@/assets/images/additional/hcwroclawplayer1.png';
 import player2 from '@/assets/images/additional/hcwroclawplayer2.png';
 import player3 from '@/assets/images/additional/hcwroclawplayer3.png';
 import player4 from '@/assets/images/additional/hcwroclawplayer4.png';
 
-type ContactOption = 'sparing' | 'join' | 'partner';
+type ContactOption = 'sparing' | 'join' | 'support';
 
 type FormData = {
   email: string;
@@ -29,7 +31,12 @@ type WriteToUsProps = {
   lng: Locale;
 };
 
-const playerImages = [
+type PlayerImage = {
+  src: string | StaticImageData;
+  alt: string;
+};
+
+const fallbackPlayerImages: PlayerImage[] = [
   { src: player1, alt: 'Hockey Player 1' },
   { src: player2, alt: 'Hockey Player 2' },
   { src: player3, alt: 'Hockey Player 3' },
@@ -37,7 +44,8 @@ const playerImages = [
 ];
 
 export default function WriteToUs({ lng }: WriteToUsProps) {
-  const playerRef = useRef(null);
+  const { data: sanityPlayers } = usePlayersNextToTheForm();
+  const playerRef = useRef<HTMLDivElement>(null);
   const [selectedOption, setSelectedOption] =
     useState<ContactOption>('sparing');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -48,7 +56,9 @@ export default function WriteToUs({ lng }: WriteToUsProps) {
     consent: false,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [playerImage, setPlayerImage] = useState(playerImages[0]);
+  const [playerImage, setPlayerImage] = useState<PlayerImage>(
+    fallbackPlayerImages[0]
+  );
   const t = useTranslations('writeToUs');
   const isInView = useInView(playerRef, { once: true, amount: 0.3 });
   const dropdownRef = useClickOutside<HTMLDivElement>(() => {
@@ -57,14 +67,23 @@ export default function WriteToUs({ lng }: WriteToUsProps) {
   const [errors, setErrors] = useState<Partial<FormData>>({});
 
   useEffect(() => {
-    const randomIndex = Math.floor(Math.random() * playerImages.length);
-    setPlayerImage(playerImages[randomIndex]);
-  }, []);
+    const availableImages = sanityPlayers?.images?.length
+      ? sanityPlayers.images
+          .map((img, index) => ({
+            src: img.asset?.url || '',
+            alt: `Hockey Player ${index + 1}`,
+          }))
+          .filter((img) => Boolean(img.src))
+      : fallbackPlayerImages;
+
+    const randomIndex = Math.floor(Math.random() * availableImages.length);
+    setPlayerImage(availableImages[randomIndex]);
+  }, [sanityPlayers]);
 
   const options = [
     { value: 'sparing', label: t('options.sparing') },
     { value: 'join', label: t('options.join') },
-    { value: 'partner', label: t('options.partner') },
+    { value: 'support', label: t('options.support') },
   ];
 
   const selectedLabel = options.find(

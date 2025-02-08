@@ -1,16 +1,16 @@
-import styles from './becomePartnerPage.module.css';
+import styles from './supportPage.module.css';
 import Spinner from '@/components/spinner/Spinner';
 import SectionTitle from '@/components/sectionTitle/SectionTitle';
-import BecomePartnerDesc from '@/components/pages/becomePartnerPage/BecomePartnerDesc';
+import SupportDesc from '@/components/pages/supportPage/SupportDesc';
 import { Metadata } from 'next';
 import { client } from '@/sanity/lib/client';
 import { Locale } from '@/i18n/i18n';
 import { getLocale, getTranslations } from 'next-intl/server';
-import { getBecomePartnerPageQuery } from '@/sanity/lib/queries';
+import { getSupportPageQuery } from '@/sanity/lib/queries';
 
 export const revalidate = 300;
 
-type BecomePartnerPageProps = {
+type SupportPageProps = {
   params: {
     lng: Locale;
   };
@@ -18,9 +18,9 @@ type BecomePartnerPageProps = {
 
 export async function generateMetadata({
   params: { lng },
-}: BecomePartnerPageProps): Promise<Metadata> {
+}: SupportPageProps): Promise<Metadata> {
   const meta = await client.fetch(
-    `*[_type == "becomePartnerPage"][0] {seo{title, desc}}`
+    `*[_type == "supportPage"][0] {seo{title, desc}}`
   );
 
   const defaultTitle = {
@@ -39,10 +39,10 @@ export async function generateMetadata({
   };
 }
 
-export default async function BecomePartnerPage() {
+export default async function SupportPage() {
   const locale = (await getLocale()) as Locale;
-  const t = await getTranslations('becomePartnerPage');
-  const data = await client.fetch(getBecomePartnerPageQuery);
+  const t = await getTranslations('supportPage');
+  const data = await client.fetch(getSupportPageQuery);
 
   if (!data) {
     return <Spinner />;
@@ -56,7 +56,7 @@ export default async function BecomePartnerPage() {
         as={'h1'}
         variant="secondary-primary"
       />
-      <BecomePartnerDesc description={data} lng={locale} />
+      <SupportDesc description={data} lng={locale} />
     </div>
   );
 }

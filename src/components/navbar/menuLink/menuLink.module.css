@@ -41,7 +41,7 @@
     border-bottom: unset;
     text-align: unset;
   }
-  
+
   .menuItem::after {
     opacity: 0;
     visibility: hidden;
@@ -52,9 +52,16 @@
     margin-inline: auto;
     background-color: var(--hc-red);
   }
-  
+
   .menuItem:hover::after {
     opacity: 1;
     visibility: visible;
   }
+}
+
+.supportLink {
+  background: var(--hc-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

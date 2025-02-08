@@ -2,7 +2,7 @@ name: Deploy to Hosting
 
 on:
   push:
-    branches: [main]
+    branches: [test]
   workflow_dispatch:
 
 jobs:
@@ -50,19 +50,19 @@ jobs:
           known_hosts: unnecessary
           if_key_exists: replace
 
-      - name: Deploy to Server
+      - name: Deploy to MyDevil
         run: |
           # Przygotuj archiwum z plikami
           tar -czf deploy.tar.gz .next public node_modules package.json next.config.mjs
 
           # Wyślij pliki na serwer
-          scp -o StrictHostKeyChecking=no deploy.tar.gz ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST }}:~/domains/hcwroclaw.com/public_nodejs/
+          scp -o StrictHostKeyChecking=no deploy.tar.gz ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST }}:~/domains/hcwd3v.hcwroclaw.com/public_nodejs/
 
           # Wykonaj komendy na serwerze
           ssh -o StrictHostKeyChecking=no ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST }} '
-            cd ~/domains/hcwroclaw.com/public_nodejs/
+            cd ~/domains/hcwd3v.hcwroclaw.com/public_nodejs/
             rm -rf .next public node_modules package.json next.config.mjs
             tar -xzf deploy.tar.gz
             rm deploy.tar.gz
-            devil www restart hcwroclaw.com
+            devil www restart hcwd3v.hcwroclaw.com
           '

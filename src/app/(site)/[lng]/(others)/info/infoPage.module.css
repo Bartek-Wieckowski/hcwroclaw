@@ -1,0 +1,11 @@
+.infoPage {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-inline: var(--container-padding);
+}
+
+@media (min-width: 992px) {
+  .infoPage {
+    padding-bottom: 4rem;
+  }
+}

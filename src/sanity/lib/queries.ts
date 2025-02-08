@@ -344,9 +344,9 @@ export const getContactPageQuery = defineQuery(`
   }
 `);
 
-export const getBecomePartnerPageQuery = defineQuery(`
-  *[_type == "becomePartnerPage"][0] {
-    becomePartnerDesc {
+export const getSupportPageQuery = defineQuery(`
+  *[_type == "supportPage"][0] {
+    supportDesc {
       pl,
       en
     }
@@ -394,3 +394,52 @@ export const getAllGamesByYearQuery =
   firstTeamGoals,
   secondTeamGoals
 }`);
+
+export const getInfoPageQuery = defineQuery(`
+  *[_type == "infoPage"][0] {
+    infoOptions {
+      pl,
+      en
+    }
+  }
+`);
+
+export const getTrainingsPageQuery = defineQuery(`
+  *[_type == "trainingsPage"][0] {
+    trainingsOptions {
+      pl,
+      en
+    }
+  }
+`);
+
+export const getGalleryPageQuery = defineQuery(`*[_type == "galleryPage"][0] {
+  images[] {
+    asset->{
+      url
+    }
+  },
+  seo
+}`);
+
+export const getTaxTransferModalImgQuery = defineQuery(`
+  *[_type == "taxTransferModalImg"][0] {
+    image {
+      asset->{
+        _id,
+        url
+      }
+    }
+  }
+`);
+
+export const getPlayersNextToTheFormQuery = defineQuery(`
+  *[_type == "playersNextToTheForm"][0] {
+    images[] {
+      asset->{
+        _id,
+        url
+      }
+    }
+  }
+`);

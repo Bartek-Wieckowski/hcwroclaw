@@ -9,11 +9,21 @@ import { useHeader } from '@/contexts/HeaderContext';
 
 export default function LanguageSwitcher() {
   const [isOpen, setIsOpen] = useState(false);
-  const currentPath = usePathname();
+  const pathname = usePathname();
   const currentLocale = useLocale();
   const { isScrolled, isHomePage } = useHeader();
 
-  const pathWithoutLocale = currentPath.split('/').slice(2).join('/');
+  const getPathInNewLocale = (newLocale: string) => {
+    if (pathname === '/' || pathname === '/en') {
+      return newLocale === 'pl' ? '/' : '/en';
+    }
+
+    if (newLocale === 'pl') {
+      return pathname.replace('/en/', '/');
+    } else {
+      return pathname.replace('/', '/en/');
+    }
+  };
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
@@ -36,7 +46,7 @@ export default function LanguageSwitcher() {
           {locales.map((locale) => (
             <Link
               key={locale}
-              href={`/${locale}/${pathWithoutLocale}`}
+              href={getPathInNewLocale(locale)}
               className={`${styles.option} ${
                 locale === currentLocale ? styles.active : ''
               }`}

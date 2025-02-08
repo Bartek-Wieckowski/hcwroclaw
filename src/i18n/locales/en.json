@@ -5,9 +5,11 @@
     "team": "Team",
     "club": "Club",
     "contact": "Contact",
-    "becomePartner": "Become a partner",
+    "support": "Support",
     "calendar": "Calendar",
-    "gallery": "Gallery"
+    "gallery": "Gallery",
+    "info": "Info",
+    "trainings": "Trainings"
   },
   "common": {
     "calendar": "Calendar",
@@ -29,13 +31,14 @@
     "options": {
       "sparing": "You want to play a friendly match",
       "join": "You want to join the club",
-      "partner": "You want to become a partner"
+      "support": "You want to support the club"
     },
     "placeholder": "Your message...",
     "button": "WRITE NOW →",
     "sending": "Sending...",
     "success": "Message has been sent!",
     "error": "An error occurred while sending the message",
+
     "email": "Email",
     "phone": "Phone number",
     "consent": "I consent to the processing of personal data provided in the form. Your data will be processed for purposes related to providing a response.",
@@ -100,13 +103,25 @@
       "title2": "of the crest"
     }
   },
+  "infoPage": {
+    "title1": "Info",
+    "title2": "about the club"
+  },
   "contactPage": {
     "title1": "Contact",
     "title2": "and additional information"
   },
-  "becomePartnerPage": {
-    "title1": "Become a partner",
-    "title2": "of our hockey team!"
+  "supportPage": {
+    "title1": "Start supporting",
+    "title2": "our hockey team!"
+  },
+  "trainingsPage": {
+    "title1": "Schedule",
+    "title2": "of trainings"
+  },
+  "galleryPage": {
+    "title1": "Gallery",
+    "title2": "of photos"
   },
   "transferTax": {
     "button": "Transfer",

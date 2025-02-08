@@ -5,9 +5,11 @@
     "team": "Drużyna",
     "club": "Klub",
     "contact": "Kontakt",
-    "becomePartner": "Zostań partnerem",
+    "support": "Wsparcie",
     "calendar": "Kalendarz",
-    "gallery": "Galeria"
+    "gallery": "Galeria",
+    "info": "Info",
+    "trainings": "Treningi"
   },
   "common": {
     "calendar": "Kalendarz",
@@ -29,7 +31,7 @@
     "options": {
       "sparing": "Chcesz zagrać sparing/mecz",
       "join": "Chcesz dołączyć do klubu",
-      "partner": "Chcesz zostać partnerem"
+      "support": "Chcesz wesprzeć klub"
     },
     "placeholder": "Twoja wiadomość...",
     "button": "NAPISZ TERAZ →",
@@ -100,13 +102,25 @@
       "title2": "Herbu"
     }
   },
+  "infoPage": {
+    "title1": "Informacje",
+    "title2": "o klubie"
+  },
   "contactPage": {
     "title1": "Kontakt",
     "title2": "i informacje dodatkowe"
   },
-  "becomePartnerPage": {
-    "title1": "Zostań partnerem",
+  "supportPage": {
+    "title1": "Rozpocznij wspieranie",
     "title2": "naszej drużyny hokejowej!"
+  },
+  "trainingsPage": {
+    "title1": "Harmonogram",
+    "title2": "treningów"
+  },
+  "galleryPage": {
+    "title1": "Galeria",
+    "title2": "zdjęć"
   },
   "transferTax": {
     "button": "Przekaż",

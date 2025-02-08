@@ -24,11 +24,20 @@ export const structure: StructureResolver = (S) =>
                 .title('Club Page')
                 .child(S.documentTypeList('clubPage')),
               S.listItem()
+                .title('Trainings Page')
+                .child(S.documentTypeList('trainingsPage')),
+              S.listItem()
+                .title('Gallery Page')
+                .child(S.documentTypeList('galleryPage')),
+              S.listItem()
                 .title('Contact Page')
                 .child(S.documentTypeList('contactPage')),
               S.listItem()
-                .title('Become Partner Page')
-                .child(S.documentTypeList('becomePartnerPage')),
+                .title('Info Page')
+                .child(S.documentTypeList('infoPage')),
+              S.listItem()
+                .title('Support Page')
+                .child(S.documentTypeList('supportPage')),
             ])
         ),
       S.divider(),
@@ -54,6 +63,12 @@ export const structure: StructureResolver = (S) =>
               S.listItem()
                 .title('Partners')
                 .child(S.documentTypeList('partnersLogo')),
+              S.listItem()
+                .title('Tax Transfer Modal Image')
+                .child(S.documentTypeList('taxTransferModalImg')),
+              S.listItem()
+                .title('Players Next To The Form')
+                .child(S.documentTypeList('playersNextToTheForm')),
             ])
         ),
     ]);
