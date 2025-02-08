@@ -118,6 +118,10 @@
     "title1": "Schedule",
     "title2": "of trainings"
   },
+  "galleryPage": {
+    "title1": "Gallery",
+    "title2": "of photos"
+  },
   "transferTax": {
     "button": "Transfer",
     "percentage": "1.5%"

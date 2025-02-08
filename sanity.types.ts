@@ -294,6 +294,30 @@ export type ContactPage = {
   contactOptions: LocaleClubBlock;
 };
 
+export type GalleryPage = {
+  _id: string;
+  _type: "galleryPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  seo?: {
+    title?: LocaleString;
+    desc?: LocaleString;
+  };
+  images?: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+    _key: string;
+  }>;
+};
+
 export type TrainingsPage = {
   _id: string;
   _type: "trainingsPage";
@@ -618,7 +642,7 @@ export type LocaleString = {
   en: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | PartnersLogo | Youtube | NewsBlock | LeagueTablesOrder | LeagueTables | GameCalendar | GameType | Team | SupportPage | InfoPage | ContactPage | TrainingsPage | TeamPage | ClubPage | NewsSinglePage | Slug | HomePage | LocaleClubBlock | LocaleNewsBlock | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | LocaleText | LocaleString;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | PartnersLogo | Youtube | NewsBlock | LeagueTablesOrder | LeagueTables | GameCalendar | GameType | Team | SupportPage | InfoPage | ContactPage | GalleryPage | TrainingsPage | TeamPage | ClubPage | NewsSinglePage | Slug | HomePage | LocaleClubBlock | LocaleNewsBlock | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | LocaleText | LocaleString;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: getGamesCalendarQuery
@@ -1073,6 +1097,19 @@ export type GetTrainingsPageQueryResult = {
     en: NewsBlock;
   };
 } | null;
+// Variable: getGalleryPageQuery
+// Query: *[_type == "galleryPage"][0] {  images[] {    asset->{      url    }  },  seo}
+export type GetGalleryPageQueryResult = {
+  images: Array<{
+    asset: {
+      url: string | null;
+    } | null;
+  }> | null;
+  seo: {
+    title?: LocaleString;
+    desc?: LocaleString;
+  } | null;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -1094,5 +1131,6 @@ declare module "@sanity/client" {
     "*[_type == \"gameCalendar\" && dateTime(date) >= dateTime($startDate) && dateTime(date) < dateTime($endDate)] | order(date asc) {\n  _id,\n  _type,\n  date,\n  location,\n  time,\n  gameType->{\n    _id,\n    name\n  },\n  firstTeam->{\n    _id,\n    name,\n    logo {\n      asset->{\n        _id,\n        url\n      }\n    }\n  },\n  secondTeam->{\n    _id,\n    name,\n    logo {\n      asset->{\n        _id,\n        url\n      }\n    }\n  },\n  isCompleted,\n  firstTeamGoals,\n  secondTeamGoals\n}": GetAllGamesByYearQueryResult;
     "\n  *[_type == \"infoPage\"][0] {\n    infoOptions {\n      pl,\n      en\n    }\n  }\n": GetInfoPageQueryResult;
     "\n  *[_type == \"trainingsPage\"][0] {\n    trainingsOptions {\n      pl,\n      en\n    }\n  }\n": GetTrainingsPageQueryResult;
+    "*[_type == \"galleryPage\"][0] {\n  images[] {\n    asset->{\n      url\n    }\n  },\n  seo\n}": GetGalleryPageQueryResult;
   }
 }

@@ -412,3 +412,12 @@ export const getTrainingsPageQuery = defineQuery(`
     }
   }
 `);
+
+export const getGalleryPageQuery = defineQuery(`*[_type == "galleryPage"][0] {
+  images[] {
+    asset->{
+      url
+    }
+  },
+  seo
+}`);

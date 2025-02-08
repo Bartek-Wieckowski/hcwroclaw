@@ -118,6 +118,10 @@
     "title1": "Harmonogram",
     "title2": "treningów"
   },
+  "galleryPage": {
+    "title1": "Galeria",
+    "title2": "zdjęć"
+  },
   "transferTax": {
     "button": "Przekaż",
     "percentage": "1.5%"
