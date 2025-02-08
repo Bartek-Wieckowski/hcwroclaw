@@ -44,7 +44,12 @@ const misterPablo = localFont({
   src: '../../../assets/fonts/mister-pablo.ttf',
   variable: '--font-mister-pablo',
 });
-const fontClasses = `${robotoRegular.variable} ${robotoThin.variable} ${robotoBold.variable} ${outfitRegular.variable} ${outfitThin.variable} ${outfitBold.variable} ${misterPablo.variable}`;
+const russoOne = localFont({
+  src: '../../../assets/fonts/RussoOne-Regular.ttf',
+  variable: '--font-russo-one',
+  weight: '400',
+});
+const fontClasses = `${robotoRegular.variable} ${robotoThin.variable} ${robotoBold.variable} ${outfitRegular.variable} ${outfitThin.variable} ${outfitBold.variable} ${misterPablo.variable} ${russoOne.variable}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(

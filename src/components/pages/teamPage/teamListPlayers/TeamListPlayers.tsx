@@ -15,8 +15,69 @@ type PlayerArray = NonNullable<GetTeamPageDataQueryResult>[
   | 'defenders'
   | 'forwards'];
 
+type SinglePlayer = PlayerArray extends Array<infer T> ? T : never;
+
 type TeamListProps = {
   players: PlayerArray;
+};
+
+type GoalkeeperStats = SinglePlayer & {
+  position: 'goalkeeper';
+  goalsAgainstAverage?: number | null;
+  savePercentage?: number | null;
+};
+
+type PlayerStats = SinglePlayer & {
+  position: 'player';
+  goals?: number | null;
+  assists?: number | null;
+};
+
+const renderPlayerStats = (player: SinglePlayer) => {
+  const renderGoalkeeperStats = (player: GoalkeeperStats) => (
+    <>
+      <div className={styles.statColumn}>
+        <div className={styles.statTitle}>GAA</div>
+        <div className={styles.statValue}>
+          {player.goalsAgainstAverage
+            ? player.goalsAgainstAverage.toFixed(2)
+            : '-'}
+        </div>
+      </div>
+      <div className={styles.statColumn}>
+        <div className={styles.statTitle}>SVS%</div>
+        <div className={styles.statValue}>
+          {player.savePercentage ? `${player.savePercentage.toFixed(1)}` : '-'}
+        </div>
+      </div>
+    </>
+  );
+
+  const renderFieldPlayerStats = (player: PlayerStats) => (
+    <>
+      <div className={styles.statColumn}>
+        <div className={styles.statTitle}>G</div>
+        <div className={styles.statValue}>{player.goals ?? '-'}</div>
+      </div>
+      <div className={styles.statColumn}>
+        <div className={styles.statTitle}>A</div>
+        <div className={styles.statValue}>{player.assists ?? '-'}</div>
+      </div>
+    </>
+  );
+
+  return (
+    <div className={styles.playerNumbersStatistisc}>
+      <div className={styles.statColumn}>
+        <div className={styles.statTitle}>GP</div>
+        <div className={styles.statValue}>{player.gamesPlayed ?? '-'}</div>
+      </div>
+
+      {player.position === 'goalkeeper'
+        ? renderGoalkeeperStats(player as GoalkeeperStats)
+        : renderFieldPlayerStats(player as PlayerStats)}
+    </div>
+  );
 };
 
 export default function TeamListPlayers({ players }: TeamListProps) {
@@ -86,14 +147,27 @@ export default function TeamListPlayers({ players }: TeamListProps) {
               <div className={styles.playerInfo}>
                 <div className={styles.basicInfo}>
                   <div className={styles.playerNumber}>#{player.number}</div>
-                  <h3 className={styles.playerName}>
-                    {player.firstName} {player.lastName}
-                  </h3>
+                  <div className={styles.playerName}>
+                    <h3>{player.firstName}</h3>
+                    <h3>{player.lastName}</h3>
+                    {player.playerNickname && (
+                      <span className={styles.nickname}>
+                        a.k.a &quot;{player.playerNickname}&quot;
+                      </span>
+                    )}
+                  </div>
+
                   {player.isCaptain && (
-                    <span className={styles.captainLabel}>&quot;C&quot;</span>
+                    <div className={styles.captainContainer}>
+                      <span className={styles.captainLabel}>&quot;C&quot;</span>
+                    </div>
                   )}
                   {player.isAssistantCaptain && (
-                    <span className={styles.assistantLabel}>&quot;A&quot;</span>
+                    <div className={styles.captainContainer}>
+                      <span className={styles.assistantLabel}>
+                        &quot;A&quot;
+                      </span>
+                    </div>
                   )}
                 </div>
               </div>
@@ -167,6 +241,7 @@ export default function TeamListPlayers({ players }: TeamListProps) {
                     )}
                   </div>
                 </div>
+                {renderPlayerStats(player)}
                 <div className={styles.playerRoles}>
                   {player.isCaptain && (
                     <span className={styles.captain}>

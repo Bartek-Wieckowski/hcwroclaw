@@ -307,6 +307,7 @@ export type TeamPage = {
     firstName: string;
     lastName: string;
     number: number;
+    playerNickname?: string;
     photo?: {
       asset?: {
         _ref: string;
@@ -334,6 +335,12 @@ export type TeamPage = {
     height?: string;
     weight?: string;
     stickHand?: "left" | "right";
+    position: "player" | "goalkeeper";
+    gamesPlayed?: number;
+    goals?: number;
+    assists?: number;
+    goalsAgainstAverage?: number;
+    savePercentage?: number;
     _type: "player";
     _key: string;
   }>;
@@ -341,6 +348,7 @@ export type TeamPage = {
     firstName: string;
     lastName: string;
     number: number;
+    playerNickname?: string;
     photo?: {
       asset?: {
         _ref: string;
@@ -368,6 +376,12 @@ export type TeamPage = {
     height?: string;
     weight?: string;
     stickHand?: "left" | "right";
+    position: "player" | "goalkeeper";
+    gamesPlayed?: number;
+    goals?: number;
+    assists?: number;
+    goalsAgainstAverage?: number;
+    savePercentage?: number;
     _type: "player";
     _key: string;
   }>;
@@ -375,6 +389,7 @@ export type TeamPage = {
     firstName: string;
     lastName: string;
     number: number;
+    playerNickname?: string;
     photo?: {
       asset?: {
         _ref: string;
@@ -402,6 +417,12 @@ export type TeamPage = {
     height?: string;
     weight?: string;
     stickHand?: "left" | "right";
+    position: "player" | "goalkeeper";
+    gamesPlayed?: number;
+    goals?: number;
+    assists?: number;
+    goalsAgainstAverage?: number;
+    savePercentage?: number;
     _type: "player";
     _key: string;
   }>;
@@ -840,7 +861,7 @@ export type GetSingleNewsQueryResult = {
   date: string;
 } | null;
 // Variable: getTeamPageDataQuery
-// Query: *[_type == "teamPage"][0] {    teamSliderImages[] {      asset->{        url,        _id,      }    },    goalkeepers[] {      _key,      firstName,      lastName,      number,      height,      weight,      stickHand,      isCaptain,      isAssistantCaptain,      photo {        asset->{          url,          _id        }      },      actionPhoto {        asset->{          url,          _id        }      }    },    defenders[] {      _key,      firstName,      lastName,      number,      height,      weight,      stickHand,      isCaptain,      isAssistantCaptain,      photo {        asset->{          url,          _id        }      },      actionPhoto {        asset->{          url,          _id        }      }    },    forwards[] {      _key,      firstName,      lastName,      number,      height,      weight,      stickHand,      isCaptain,      isAssistantCaptain,      photo {        asset->{          url,          _id        }      },      actionPhoto {        asset->{          url,          _id        }      }    }  }
+// Query: *[_type == "teamPage"][0] {    teamSliderImages[] {      asset->{        url,        _id,      }    },    goalkeepers[] {      _key,      firstName,      lastName,      number,      playerNickname,      height,      weight,      stickHand,      isCaptain,      isAssistantCaptain,      position,      gamesPlayed,      goalsAgainstAverage,      savePercentage,      photo {        asset->{          url,          _id        }      },      actionPhoto {        asset->{          url,          _id        }      }    },    defenders[] {      _key,      firstName,      lastName,      number,      playerNickname,      height,      weight,      stickHand,      isCaptain,      isAssistantCaptain,      position,      gamesPlayed,      goals,      assists,      photo {        asset->{          url,          _id        }      },      actionPhoto {        asset->{          url,          _id        }      }    },    forwards[] {      _key,      firstName,      lastName,      number,      playerNickname,      height,      weight,      stickHand,      isCaptain,      isAssistantCaptain,      position,      gamesPlayed,      goals,      assists,      photo {        asset->{          url,          _id        }      },      actionPhoto {        asset->{          url,          _id        }      }    }  }
 export type GetTeamPageDataQueryResult = {
   teamSliderImages: Array<{
     asset: {
@@ -853,11 +874,16 @@ export type GetTeamPageDataQueryResult = {
     firstName: string;
     lastName: string;
     number: number;
+    playerNickname: string | null;
     height: string | null;
     weight: string | null;
     stickHand: "left" | "right" | null;
     isCaptain: boolean | null;
     isAssistantCaptain: boolean | null;
+    position: "goalkeeper" | "player";
+    gamesPlayed: number | null;
+    goalsAgainstAverage: number | null;
+    savePercentage: number | null;
     photo: {
       asset: {
         url: string | null;
@@ -876,11 +902,16 @@ export type GetTeamPageDataQueryResult = {
     firstName: string;
     lastName: string;
     number: number;
+    playerNickname: string | null;
     height: string | null;
     weight: string | null;
     stickHand: "left" | "right" | null;
     isCaptain: boolean | null;
     isAssistantCaptain: boolean | null;
+    position: "goalkeeper" | "player";
+    gamesPlayed: number | null;
+    goals: number | null;
+    assists: number | null;
     photo: {
       asset: {
         url: string | null;
@@ -899,11 +930,16 @@ export type GetTeamPageDataQueryResult = {
     firstName: string;
     lastName: string;
     number: number;
+    playerNickname: string | null;
     height: string | null;
     weight: string | null;
     stickHand: "left" | "right" | null;
     isCaptain: boolean | null;
     isAssistantCaptain: boolean | null;
+    position: "goalkeeper" | "player";
+    gamesPlayed: number | null;
+    goals: number | null;
+    assists: number | null;
     photo: {
       asset: {
         url: string | null;
@@ -1008,7 +1044,7 @@ declare module "@sanity/client" {
     "\n  *[_type == \"partnersLogo\"][0] {\n    sectionTitle {\n      en,\n      pl\n    },\n    partners[] {\n      name,\n      logo {\n        asset->{\n          _id,\n          url\n        }\n      },\n      hasWebsite,\n      url\n    }\n  }\n": GetPartnersQueryResult;
     "\n  *[_type == \"newsSinglePage\"] | order(date desc) [$start...$end] {\n    _id,\n    title{pl,en},\n    slugPL,\n    slugEN,\n    excerpt{pl,en},\n    mainPostImage{\n      asset->{\n        _id,\n        url\n      },\n      alt{\n        pl,\n        en\n      }\n    },\n    date\n  }\n": GetNewsQueryResult;
     "\n  *[_type == \"newsSinglePage\" && (slugEN.current == $slug || slugPL.current == $slug)][0] {\n    _id,\n    title{\n      pl,\n      en\n    },\n    excerpt{pl,en},\n    content{\n      pl,\n      en\n    },\n    mainPostImage {\n      asset->{\n        _id,\n        url\n      },\n      alt{\n        pl,\n        en\n      }\n    },\n    date\n  }\n": GetSingleNewsQueryResult;
-    "\n  *[_type == \"teamPage\"][0] {\n    teamSliderImages[] {\n      asset->{\n        url,\n        _id,\n      }\n    },\n    goalkeepers[] {\n      _key,\n      firstName,\n      lastName,\n      number,\n      height,\n      weight,\n      stickHand,\n      isCaptain,\n      isAssistantCaptain,\n      photo {\n        asset->{\n          url,\n          _id\n        }\n      },\n      actionPhoto {\n        asset->{\n          url,\n          _id\n        }\n      }\n    },\n    defenders[] {\n      _key,\n      firstName,\n      lastName,\n      number,\n      height,\n      weight,\n      stickHand,\n      isCaptain,\n      isAssistantCaptain,\n      photo {\n        asset->{\n          url,\n          _id\n        }\n      },\n      actionPhoto {\n        asset->{\n          url,\n          _id\n        }\n      }\n    },\n    forwards[] {\n      _key,\n      firstName,\n      lastName,\n      number,\n      height,\n      weight,\n      stickHand,\n      isCaptain,\n      isAssistantCaptain,\n      photo {\n        asset->{\n          url,\n          _id\n        }\n      },\n      actionPhoto {\n        asset->{\n          url,\n          _id\n        }\n      }\n    }\n  }\n": GetTeamPageDataQueryResult;
+    "\n  *[_type == \"teamPage\"][0] {\n    teamSliderImages[] {\n      asset->{\n        url,\n        _id,\n      }\n    },\n    goalkeepers[] {\n      _key,\n      firstName,\n      lastName,\n      number,\n      playerNickname,\n      height,\n      weight,\n      stickHand,\n      isCaptain,\n      isAssistantCaptain,\n      position,\n      gamesPlayed,\n      goalsAgainstAverage,\n      savePercentage,\n      photo {\n        asset->{\n          url,\n          _id\n        }\n      },\n      actionPhoto {\n        asset->{\n          url,\n          _id\n        }\n      }\n    },\n    defenders[] {\n      _key,\n      firstName,\n      lastName,\n      number,\n      playerNickname,\n      height,\n      weight,\n      stickHand,\n      isCaptain,\n      isAssistantCaptain,\n      position,\n      gamesPlayed,\n      goals,\n      assists,\n      photo {\n        asset->{\n          url,\n          _id\n        }\n      },\n      actionPhoto {\n        asset->{\n          url,\n          _id\n        }\n      }\n    },\n    forwards[] {\n      _key,\n      firstName,\n      lastName,\n      number,\n      playerNickname,\n      height,\n      weight,\n      stickHand,\n      isCaptain,\n      isAssistantCaptain,\n      position,\n      gamesPlayed,\n      goals,\n      assists,\n      photo {\n        asset->{\n          url,\n          _id\n        }\n      },\n      actionPhoto {\n        asset->{\n          url,\n          _id\n        }\n      }\n    }\n  }\n": GetTeamPageDataQueryResult;
     "\n  *[_type == \"clubPage\"][0] {\n    clubHistory {\n      pl,\n      en\n    },\n    titleIntroduction {\n      pl,\n      en\n    },\n    clubCrest {\n      pl,\n      en\n    },\n    sectionSummary {\n      pl,\n      en\n    }\n  }\n": GetClubPageQueryResult;
     "\n  *[_type == \"contactPage\"][0] {\n    contactOptions {\n      pl,\n      en\n    }\n  }\n": GetContactPageQueryResult;
     "\n  *[_type == \"becomePartnerPage\"][0] {\n    becomePartnerDesc {\n      pl,\n      en\n    }\n  }\n": GetBecomePartnerPageQueryResult;
