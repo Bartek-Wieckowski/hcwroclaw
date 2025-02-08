@@ -69,7 +69,6 @@
   font-family: var(--font-mister-pablo);
   font-size: min(12vw, 2.5rem);
   color: var(--hc-black);
-  background-color: var(--hc-red);
   width: 100%;
   height: 100%;
   min-width: 2.188rem;
