@@ -18,7 +18,7 @@ import player2 from '@/assets/images/additional/hcwroclawplayer2.png';
 import player3 from '@/assets/images/additional/hcwroclawplayer3.png';
 import player4 from '@/assets/images/additional/hcwroclawplayer4.png';
 
-type ContactOption = 'sparing' | 'join' | 'partner';
+type ContactOption = 'sparing' | 'join' | 'support';
 
 type FormData = {
   email: string;
@@ -83,7 +83,7 @@ export default function WriteToUs({ lng }: WriteToUsProps) {
   const options = [
     { value: 'sparing', label: t('options.sparing') },
     { value: 'join', label: t('options.join') },
-    { value: 'partner', label: t('options.partner') },
+    { value: 'support', label: t('options.support') },
   ];
 
   const selectedLabel = options.find(

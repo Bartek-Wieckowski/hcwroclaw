@@ -11,7 +11,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/teams', // assuming you have a teams page
     '/club', // assuming you have a club page
     '/contact', // assuming you have a contact page
-    '/become-a-partner', // assuming you have a become a partner page
+    '/support', // assuming you have a become a partner page
+    '/trainings', // assuming you have a become a partner page
+    '/gallery', // assuming you have a become a partner page
+    '/info', // assuming you have a become a partner page
+    '/calendar-all', // assuming you have a become a partner page
   ];
 
   // Create sitemap entries for each route in each language

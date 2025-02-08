@@ -31,13 +31,14 @@
     "options": {
       "sparing": "You want to play a friendly match",
       "join": "You want to join the club",
-      "partner": "You want to become a partner"
+      "support": "You want to support the club"
     },
     "placeholder": "Your message...",
     "button": "WRITE NOW →",
     "sending": "Sending...",
     "success": "Message has been sent!",
     "error": "An error occurred while sending the message",
+
     "email": "Email",
     "phone": "Phone number",
     "consent": "I consent to the processing of personal data provided in the form. Your data will be processed for purposes related to providing a response.",

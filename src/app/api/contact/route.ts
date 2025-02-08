@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     const typeMap = {
       sparing: 'Propozycja sparingu/meczu',
       join: 'Chęć dołączenia do klubu',
-      partner: 'Propozycja współpracy',
+      support: 'Propozycja wsparcia klubu',
     };
 
     const subject = typeMap[type as keyof typeof typeMap];
