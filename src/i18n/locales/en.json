@@ -8,7 +8,8 @@
     "support": "Support",
     "calendar": "Calendar",
     "gallery": "Gallery",
-    "info": "Info"
+    "info": "Info",
+    "trainings": "Trainings"
   },
   "common": {
     "calendar": "Calendar",
@@ -112,6 +113,10 @@
   "supportPage": {
     "title1": "Start supporting",
     "title2": "our hockey team!"
+  },
+  "trainingsPage": {
+    "title1": "Schedule",
+    "title2": "of trainings"
   },
   "transferTax": {
     "button": "Transfer",

@@ -9,4 +9,5 @@ export const ROUTES = {
   CALENDARALL: (lng: string) => `/${lng}/calendar-all`,
   GALLERY: (lng: string) => `/${lng}/gallery`,
   INFO: (lng: string) => `/${lng}/info`,
+  TRAININGS: (lng: string) => `/${lng}/trainings`,
 };

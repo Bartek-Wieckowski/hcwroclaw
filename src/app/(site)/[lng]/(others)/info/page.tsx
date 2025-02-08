@@ -45,6 +45,7 @@ export default async function InfoPage() {
   if (!data) {
     return <Spinner />;
   }
+
   return (
     <div className={styles.infoPage}>
       <InfoOptionsDesc description={data} lng={locale} />

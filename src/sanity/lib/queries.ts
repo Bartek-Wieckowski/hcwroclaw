@@ -403,3 +403,12 @@ export const getInfoPageQuery = defineQuery(`
     }
   }
 `);
+
+export const getTrainingsPageQuery = defineQuery(`
+  *[_type == "trainingsPage"][0] {
+    trainingsOptions {
+      pl,
+      en
+    }
+  }
+`);

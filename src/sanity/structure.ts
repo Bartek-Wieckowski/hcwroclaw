@@ -24,6 +24,9 @@ export const structure: StructureResolver = (S) =>
                 .title('Club Page')
                 .child(S.documentTypeList('clubPage')),
               S.listItem()
+                .title('Trainings Page')
+                .child(S.documentTypeList('trainingsPage')),
+              S.listItem()
                 .title('Contact Page')
                 .child(S.documentTypeList('contactPage')),
               S.listItem()

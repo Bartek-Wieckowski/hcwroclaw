@@ -23,9 +23,14 @@ export function useRoutesLinks() {
       path: ROUTES.CLUB(locale),
     },
     {
+      title: t('trainings'),
+      path: ROUTES.TRAININGS(locale),
+    },
+    {
       title: t('gallery'),
       path: ROUTES.GALLERY(locale),
     },
+
     {
       title: t('contact'),
       path: ROUTES.CONTACT(locale),
