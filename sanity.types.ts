@@ -151,6 +151,25 @@ export type NewsBlock = Array<{
   _key: string;
 }>;
 
+export type TaxTransferModalImg = {
+  _id: string;
+  _type: "taxTransferModalImg";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+};
+
 export type LeagueTablesOrder = {
   _id: string;
   _type: "leagueTablesOrder";
@@ -642,7 +661,7 @@ export type LocaleString = {
   en: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | PartnersLogo | Youtube | NewsBlock | LeagueTablesOrder | LeagueTables | GameCalendar | GameType | Team | SupportPage | InfoPage | ContactPage | GalleryPage | TrainingsPage | TeamPage | ClubPage | NewsSinglePage | Slug | HomePage | LocaleClubBlock | LocaleNewsBlock | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | LocaleText | LocaleString;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | PartnersLogo | Youtube | NewsBlock | TaxTransferModalImg | LeagueTablesOrder | LeagueTables | GameCalendar | GameType | Team | SupportPage | InfoPage | ContactPage | GalleryPage | TrainingsPage | TeamPage | ClubPage | NewsSinglePage | Slug | HomePage | LocaleClubBlock | LocaleNewsBlock | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | LocaleText | LocaleString;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: getGamesCalendarQuery
@@ -1110,6 +1129,16 @@ export type GetGalleryPageQueryResult = {
     desc?: LocaleString;
   } | null;
 } | null;
+// Variable: getTaxTransferModalImgQuery
+// Query: *[_type == "taxTransferModalImg"][0] {    image {      asset->{        _id,        url      }    }  }
+export type GetTaxTransferModalImgQueryResult = {
+  image: {
+    asset: {
+      _id: string;
+      url: string | null;
+    } | null;
+  };
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -1132,5 +1161,6 @@ declare module "@sanity/client" {
     "\n  *[_type == \"infoPage\"][0] {\n    infoOptions {\n      pl,\n      en\n    }\n  }\n": GetInfoPageQueryResult;
     "\n  *[_type == \"trainingsPage\"][0] {\n    trainingsOptions {\n      pl,\n      en\n    }\n  }\n": GetTrainingsPageQueryResult;
     "*[_type == \"galleryPage\"][0] {\n  images[] {\n    asset->{\n      url\n    }\n  },\n  seo\n}": GetGalleryPageQueryResult;
+    "\n  *[_type == \"taxTransferModalImg\"][0] {\n    image {\n      asset->{\n        _id,\n        url\n      }\n    }\n  }\n": GetTaxTransferModalImgQueryResult;
   }
 }

@@ -421,3 +421,14 @@ export const getGalleryPageQuery = defineQuery(`*[_type == "galleryPage"][0] {
   },
   seo
 }`);
+
+export const getTaxTransferModalImgQuery = defineQuery(`
+  *[_type == "taxTransferModalImg"][0] {
+    image {
+      asset->{
+        _id,
+        url
+      }
+    }
+  }
+`);

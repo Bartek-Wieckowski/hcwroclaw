@@ -55,6 +55,51 @@
   box-shadow: 0 0 0.625rem 0 rgba(0, 0, 0, 0.1);
 }
 
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modalContent {
+  background: transparent;
+  border-radius: 0.5rem;
+  position: relative;
+  width: 100%;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: hidden;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 75%;
+}
+
+.modalImage {
+  object-fit: contain;
+}
+
+.loading {
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
 @media (min-width: 335px) {
   .transferTaxBtn {
     height: 2.25rem;
@@ -82,5 +127,17 @@
   .percentage {
     padding: 0.8125rem 1.25rem;
     border-radius: 0.75rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .modalContent {
+    max-width: 70vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  .modalContent {
+    max-width: 60vw;
   }
 }
