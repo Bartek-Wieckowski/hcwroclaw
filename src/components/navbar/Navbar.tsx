@@ -3,7 +3,7 @@ import useClickOutside from '@/hooks/useClickOutside';
 import NavigationSocialMediaIcons from '../socialMediaIcons/NavigationSocialMediaIcons';
 import MenuLink from './menuLink/MenuLink';
 import LanguageSwitcher from '../languageSwitcher/LanguageSwitcher';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BiMenuAltRight, BiX } from 'react-icons/bi';
 import { GiPodium } from 'react-icons/gi';
 import { useRoutesLinks } from '@/hooks/useRoutesLinks';
@@ -22,6 +22,18 @@ export default function Navbar() {
   };
 
   const ref = useClickOutside<HTMLUListElement>(closeMenu);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    return () => {
+      document.body.classList.remove('overflow-hidden');
+    };
+  }, [isOpen]);
 
   return (
     <nav

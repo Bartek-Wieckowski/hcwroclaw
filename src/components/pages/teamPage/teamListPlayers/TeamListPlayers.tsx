@@ -152,7 +152,7 @@ export default function TeamListPlayers({ players }: TeamListProps) {
                     <h3>{player.lastName}</h3>
                     {player.playerNickname && (
                       <span className={styles.nickname}>
-                        a.k.a &quot;{player.playerNickname}&quot;
+                        a.k.a. &quot;{player.playerNickname}&quot;
                       </span>
                     )}
                   </div>

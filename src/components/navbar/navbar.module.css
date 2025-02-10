@@ -21,7 +21,7 @@
   position: fixed;
   right: -100%;
   top: 0;
-  height: 100vh;
+  height: 100svh;
   width: 60%;
   transition: all 0.3s ease;
   z-index: var(--z-hamburgerMenu);
@@ -29,6 +29,7 @@
   background-color: var(--bg-body-black);
   font-family: var(--font-roboto-bold);
   box-shadow: -4px 0 10px rgba(174, 172, 172, 0.5);
+  overflow-y: auto;
 }
 
 .active {

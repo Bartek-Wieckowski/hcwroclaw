@@ -32,7 +32,8 @@ export async function POST(request: NextRequest) {
 
     await transporter.sendMail({
       from: process.env.SMTP_BOT_EMAIL,
-      to: `${process.env.HCW_CONTACT_EMAIL}, ${process.env.HCW_CONTACT_EMAIL2}`,
+      // to: `${process.env.HCW_CONTACT_EMAIL}, ${process.env.HCW_CONTACT_EMAIL2}`,
+      to: `${process.env.HCW_CONTACT_EMAIL}`,
       subject: `${subject} - strona HC Wrocław`,
       text: `
         ${subject}
