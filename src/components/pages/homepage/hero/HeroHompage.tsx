@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import styles from './heroHomepage.module.css';
-import Image from 'next/image';
-import logo from '@assets/images/logo-home-hero.svg';
-import { useEffect, useRef } from 'react';
+import styles from "./heroHomepage.module.css";
+import Image from "next/image";
+import logo from "@assets/images/logo-home-hero.svg";
+import { useEffect, useRef } from "react";
 
 export default function HeroHomepage() {
   const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const video = document.querySelector('video');
+    const video = document.querySelector("video");
     const logo1 = document.querySelector(`.${styles.logo1basic}`);
     const logo2 = document.querySelector(`.${styles.logo2basic}`);
 
@@ -27,37 +27,38 @@ export default function HeroHomepage() {
     };
 
     const handleVisibilityChange = () => {
-      if (document.visibilityState === 'visible') {
+      if (document.visibilityState === "visible") {
         video.currentTime = 0;
         video.play().catch(() => {});
         resetAnimations();
       }
     };
 
-    video.addEventListener('play', resetAnimations);
+    video.addEventListener("play", resetAnimations);
 
-    video.addEventListener('ended', () => {
+    video.addEventListener("ended", () => {
       video.currentTime = 0;
       video.play().catch(() => {});
       resetAnimations();
     });
 
-    document.addEventListener('visibilitychange', handleVisibilityChange);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
-      video.removeEventListener('play', resetAnimations);
-      video.removeEventListener('ended', resetAnimations);
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      video.removeEventListener("play", resetAnimations);
+      video.removeEventListener("ended", resetAnimations);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, []);
 
   return (
     <section ref={heroRef} className={`${styles.hero} sectionWithMargin`}>
       <video
-        src="https://developedbybart.pl/videos/hero-homepage.mp4"
+        src="https://developedbybart.pl/_MEDIA_FOR_SITES/videos/HC_WROCLAW_hero-homepage.mp4"
         className={styles.backgroundVideo}
         autoPlay
         muted
+        playsInline
       />
       <div className={styles.logosContainer}>
         <div className={styles.logosVerticalColumn}>

@@ -101,6 +101,7 @@
     z-index: unset;
     background-color: unset;
     box-shadow: unset;
+    overflow-y: unset;
   }
 
   .navbarList > ul {
