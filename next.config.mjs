@@ -1,31 +1,31 @@
-import createNextIntlPlugin from 'next-intl/plugin';
+import createNextIntlPlugin from "next-intl/plugin";
 
 const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
+  output: "standalone",
   experimental: {
-    cpus: 1
+    cpus: 1,
   },
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'cdn.sanity.io',
-        port: '',
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+        port: "",
       },
       {
-        protocol: 'https',
-        hostname: 'developedbybart.pl',
-        port: '',
+        protocol: "https",
+        hostname: "developedbybart.pl",
+        port: "",
       },
     ],
   },
   webpack: (config) => {
     config.module.rules.push({
       test: /\.(woff|woff2|eot|ttf|otf)$/i,
-      type: 'asset/resource',
+      type: "asset/resource",
     });
     return config;
   },

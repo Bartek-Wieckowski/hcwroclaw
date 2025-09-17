@@ -126,5 +126,16 @@
   "transferTax": {
     "button": "Transfer",
     "percentage": "1.5%"
+  },
+  "socialMedia": {
+    "facebookLabel": "Visit our Facebook page",
+    "instagramLabel": "Visit our Instagram profile"
+  },
+  "accessibility": {
+    "fullCalendar": "View full games calendar",
+    "closeMenu": "Close menu",
+    "openMenu": "Open menu",
+    "leagueTables": "View league tables",
+    "heroVideo": "Background video showing hockey action"
   }
 }

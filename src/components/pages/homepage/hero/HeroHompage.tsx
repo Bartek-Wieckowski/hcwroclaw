@@ -4,9 +4,12 @@ import styles from "./heroHomepage.module.css";
 import Image from "next/image";
 import logo from "@assets/images/logo-home-hero.svg";
 import { useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
+import heroVideoPoster from "@assets/images/hero-video-poster.png";
 
 export default function HeroHomepage() {
   const heroRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations("accessibility");
 
   useEffect(() => {
     const video = document.querySelector("video");
@@ -59,7 +62,12 @@ export default function HeroHomepage() {
         autoPlay
         muted
         playsInline
-      />
+        poster={heroVideoPoster.src}
+        aria-label={t("heroVideo")}
+      >
+        <track kind="captions" src="" srcLang="pl" label="Polski" default />
+        <track kind="captions" src="" srcLang="en" label="English" />
+      </video>
       <div className={styles.logosContainer}>
         <div className={styles.logosVerticalColumn}>
           <div className={styles.logo1basicParent}>
