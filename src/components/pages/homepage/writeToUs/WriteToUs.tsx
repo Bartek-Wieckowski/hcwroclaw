@@ -188,6 +188,7 @@ export default function WriteToUs({ lng }: WriteToUsProps) {
           alt={playerImage.alt}
           width={400}
           height={600}
+          sizes="100%"
           className={styles.image}
           priority
         />

@@ -116,10 +116,11 @@ export default function CalendarAllGames({
                 {game.firstTeam.logo?.asset?.url && (
                   <div className={styles.logoWrapper}>
                     <Image
-                      src={urlFor(game.firstTeam.logo).width(40).height(40).format('webp').quality(80).url()}
+                      src={urlFor(game.firstTeam.logo).format('webp').quality(80).url()}
                       alt={game.firstTeam.name}
                       width={40}
                       height={40}
+                      sizes="40px"
                       className={styles.teamLogo}
                     />
                   </div>
@@ -149,10 +150,11 @@ export default function CalendarAllGames({
                 {game.secondTeam.logo?.asset?.url && (
                   <div className={styles.logoWrapper}>
                     <Image
-                      src={urlFor(game.secondTeam.logo).width(40).height(40).format('webp').quality(80).url()}
+                      src={urlFor(game.secondTeam.logo).format('webp').quality(80).url()}
                       alt={game.secondTeam.name}
                       width={40}
                       height={40}
+                      sizes="40px"
                       className={styles.teamLogo}
                     />
                   </div>

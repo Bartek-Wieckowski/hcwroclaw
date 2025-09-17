@@ -24,7 +24,7 @@ export default function PartnersSlider({ partners }: PartnersSliderProps) {
           src={urlFor(partner.logo).format('webp').quality(80).url()}
           alt={partner.name}
           fill
-          sizes="33vw"
+          sizes="100px"
           className={styles.partnersImage}
         />
       )}
