@@ -7,7 +7,7 @@ import { getClubPageQuery } from '@/sanity/lib/queries';
 import { Locale } from '@/i18n/i18n';
 import { Metadata } from 'next';
 
-export const revalidate = 300;
+export const revalidate = 30;
 
 type ClubPageProps = {
   params: {

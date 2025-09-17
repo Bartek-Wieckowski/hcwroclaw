@@ -7,7 +7,7 @@ import { getInfoPageQuery } from '@/sanity/lib/queries';
 import { getLocale } from 'next-intl/server';
 import { Locale } from '@/i18n/i18n';
 
-export const revalidate = 300;
+export const revalidate = 30;
 
 type InfoPageProps = {
   params: {

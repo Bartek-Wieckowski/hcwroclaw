@@ -2,13 +2,21 @@ import '../../../app/globals.css';
 import localFont from 'next/font/local';
 import QueryProvider from '@/lib/queryProvider';
 import LeagueTablesWrapper from '@/components/leagueTables/LeagueTablesWrapper';
-import LeagueTables from '@/components/leagueTables/LeagueTables';
-import CookieBarInfo from '@/components/cookieBarInfo/CookieBarInfo';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import { locales } from '@/i18n/i18n';
-import { Toaster } from 'react-hot-toast';
 import { Metadata } from 'next';
+import dynamic from "next/dynamic";
+
+const LeagueTables = dynamic(() => import('@/components/leagueTables/LeagueTables'), {
+  ssr: false,
+});
+const CookieBarInfo = dynamic(() => import("@/components/cookieBarInfo/CookieBarInfo"), {
+  ssr: false,
+});
+const Toaster = dynamic(() => import("react-hot-toast").then((mod) => mod.Toaster), {
+  ssr: false,
+});
 
 const robotoThin = localFont({
   src: '../../../assets/fonts/RobotoCondensed-Thin.ttf',
@@ -55,6 +63,22 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
   ),
+  title: 'HC Wrocław - Drużyna hokejowa',
+  description: 'Oficjalna strona drużyny hokejowej HC Wrocław. Najnowsze informacje, mecze, treningi i aktualności.',
+  icons: {
+    icon: '/icon.png',
+    apple: '/apple-icon.png',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'pl_PL',
+    siteName: 'HC Wrocław',
+    images: ['/opengraph-image'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/opengraph-image'],
+  },
 };
 
 export function generateStaticParams() {

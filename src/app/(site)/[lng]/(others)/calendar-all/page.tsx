@@ -9,7 +9,7 @@ import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { getLocale } from 'next-intl/server';
 
-export const revalidate = 300;
+export const revalidate = 30;
 
 type CalendarAllPageProps = {
   params: {

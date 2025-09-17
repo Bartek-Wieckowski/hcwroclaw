@@ -6,7 +6,7 @@ import { getTranslations } from 'next-intl/server';
 import { client } from '@/sanity/lib/client';
 import { GetGamesCalendarQueryResult } from '../../../sanity.types';
 
-export const revalidate = 300;
+export const revalidate = 30;
 
 type GameCalendarProps = {
   withMargin: boolean;

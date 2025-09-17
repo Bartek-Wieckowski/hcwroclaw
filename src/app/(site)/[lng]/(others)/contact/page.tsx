@@ -8,7 +8,7 @@ import { client } from '@/sanity/lib/client';
 import { Metadata } from 'next';
 import { getContactPageQuery } from '@/sanity/lib/queries';
 
-export const revalidate = 300;
+export const revalidate = 30;
 
 type ContactPageProps = {
   params: {

@@ -1,7 +1,7 @@
 import styles from './spinner.module.css';
 import Image from 'next/image';
-import hcLoader from '@/assets/images/loaderBest.png';
-import hcLoaderArrow from '@/assets/images/loaderBestArrow.png';
+import hcLoader from '@/assets/images/loaderBest.webp';
+import hcLoaderArrow from '@/assets/images/loaderBestArrow.webp';
 
 export default function Spinner() {
   return (

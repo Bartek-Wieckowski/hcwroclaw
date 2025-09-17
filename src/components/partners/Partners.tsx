@@ -5,7 +5,7 @@ import { Locale } from '@/i18n/i18n';
 import { getPartnersQuery } from '@/sanity/lib/queries';
 import { client } from '@/sanity/lib/client';
 
-export const revalidate = 300;
+export const revalidate = 30;
 
 export default async function Partners() {
   const lng = (await getLocale()) as Locale;

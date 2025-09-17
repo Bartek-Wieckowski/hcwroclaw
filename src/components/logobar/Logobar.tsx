@@ -1,7 +1,7 @@
 import styles from './logobar.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
-import logoText from '@/assets/images/text-club-name.png';
+import logoText from '@/assets/images/text-club-name.webp';
 import NavigationSocialMediaIcons from '../socialMediaIcons/NavigationSocialMediaIcons';
 import { ROUTES } from '@/lib/routes';
 import { useLocale } from 'next-intl';

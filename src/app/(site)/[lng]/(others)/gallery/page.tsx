@@ -8,7 +8,7 @@ import { getGalleryPageQuery } from '@/sanity/lib/queries';
 import { Locale } from '@/i18n/i18n';
 import { getTranslations } from 'next-intl/server';
 
-export const revalidate = 300;
+export const revalidate = 30;
 
 type GalleryPageProps = {
   params: {

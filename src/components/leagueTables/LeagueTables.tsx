@@ -13,7 +13,7 @@ const LeagueTablesModal = dynamic(() => import('./LeagueTablesModal'), {
   ssr: false,
 });
 
-export const revalidate = 300;
+export const revalidate = 30;
 
 type LeagueTablesProps = {
   isModal?: boolean;

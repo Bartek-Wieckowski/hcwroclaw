@@ -8,7 +8,7 @@ import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 import { Locale } from '@/i18n/i18n';
 
-export const revalidate = 300;
+export const revalidate = 30;
 
 type TeamPageProps = {
   params: {

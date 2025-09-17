@@ -2,8 +2,8 @@
 
 import styles from './teamListPlayers.module.css';
 import Image from 'next/image';
-import defaultSkaterBasicPhoto from '@/assets/images/default-skater.png';
-import defaultSkaterActionPhoto from '@/assets/images/default-skater-in-action.png';
+import defaultSkaterBasicPhoto from '@/assets/images/default-skater.webp';
+import defaultSkaterActionPhoto from '@/assets/images/default-skater-in-action.webp';
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { GetTeamPageDataQueryResult } from '../../../../../sanity.types';

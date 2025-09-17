@@ -9,8 +9,13 @@ import { GiPodium } from "react-icons/gi";
 import { useRoutesLinks } from "@/hooks/useRoutesLinks";
 import { useHeader } from "@/contexts/HeaderContext";
 import { useLeagueTables } from "@/contexts/LeagueTablesContext";
-import TransferTaxBtn from "../transferTaxBtn/TransferTaxBtn";
 import { useTranslations } from "next-intl";
+
+import dynamic from "next/dynamic";
+
+const TransferTaxBtn = dynamic(() => import("../transferTaxBtn/TransferTaxBtn"), {
+  ssr: false,
+});
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);

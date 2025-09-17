@@ -5,7 +5,7 @@ import { loadMoreNews } from '@/actions/actions';
 import { NEWS_PER_PAGE } from '@/lib/constants';
 import { Metadata } from 'next';
 
-export const revalidate = 300;
+export const revalidate = 30;
 
 type NewsPageProps = {
   params: {

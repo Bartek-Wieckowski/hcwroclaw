@@ -1,11 +1,6 @@
 import styles from "./homepage.module.css";
-import GameCalendar from "@/components/gameCalendar/GameCalendar";
 import HeroHomepage from "@/components/pages/homepage/hero/HeroHompage";
 import SectionTitle from "@/components/sectionTitle/SectionTitle";
-import MeetClub from "@/components/pages/homepage/meetClub/MeetClub";
-import WriteToUs from "@/components/pages/homepage/writeToUs/WriteToUs";
-import LeagueTables from "@/components/leagueTables/LeagueTables";
-import LatestNews from "@/components/pages/homepage/latestNews/LatestNews";
 import Link from "next/link";
 import { getTranslations, getLocale } from "next-intl/server";
 import { Locale } from "@/i18n/i18n";
@@ -13,8 +8,25 @@ import { Metadata } from "next";
 import { client } from "@/sanity/lib/client";
 import { BsCalendar2Date } from "react-icons/bs";
 import { ROUTES } from "@/lib/routes";
+import dynamic from "next/dynamic";
 
-export const revalidate = 300;
+const GameCalendar = dynamic(() => import("@/components/gameCalendar/GameCalendar"), {
+  ssr: false,
+});
+const MeetClub = dynamic(() => import("@/components/pages/homepage/meetClub/MeetClub"), {
+  ssr: false,
+});
+const WriteToUs = dynamic(() => import("@/components/pages/homepage/writeToUs/WriteToUs"), {
+  ssr: false,
+});
+const LatestNews = dynamic(() => import("@/components/pages/homepage/latestNews/LatestNews"), {
+  ssr: false,
+});
+const LeagueTables = dynamic(() => import("@/components/leagueTables/LeagueTables"), {
+  ssr: false,
+});
+
+export const revalidate = 30;
 
 type HomePageProps = {
   params: {

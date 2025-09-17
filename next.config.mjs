@@ -21,6 +21,7 @@ const nextConfig = {
         port: "",
       },
     ],
+    formats: ["image/webp", "image/avif"],
   },
   webpack: (config) => {
     config.module.rules.push({

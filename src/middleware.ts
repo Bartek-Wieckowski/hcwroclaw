@@ -12,7 +12,7 @@ export default createMiddleware({
 
 export const config = {
   matcher: [
-    '/((?!api|_next/static|_next/image|images|favicon.ico|studio|opengraph-image).*)',
+    '/((?!api|_next/static|_next/image|images|favicon.ico|studio|opengraph-image|icon.png|apple-icon.png).*)',
     '/',
   ],
 };

@@ -5,7 +5,7 @@ import Image from "next/image";
 import logo from "@assets/images/logo-home-hero.svg";
 import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
-import heroVideoPoster from "@assets/images/hero-video-poster.png";
+import heroVideoPoster from "@assets/images/hero-video-poster.webp";
 
 export default function HeroHomepage() {
   const heroRef = useRef<HTMLDivElement>(null);
