@@ -17,6 +17,7 @@ import player1 from '@/assets/images/additional/hcwroclawplayer1.png';
 import player2 from '@/assets/images/additional/hcwroclawplayer2.png';
 import player3 from '@/assets/images/additional/hcwroclawplayer3.png';
 import player4 from '@/assets/images/additional/hcwroclawplayer4.png';
+import { urlFor } from '@/sanity/lib/image';
 
 type ContactOption = 'sparing' | 'join' | 'support';
 
@@ -70,7 +71,8 @@ export default function WriteToUs({ lng }: WriteToUsProps) {
     const availableImages = sanityPlayers?.images?.length
       ? sanityPlayers.images
           .map((img, index) => ({
-            src: img.asset?.url || '',
+            src: urlFor(img).format('webp')
+            .quality(80).url() || '',
             alt: `Hockey Player ${index + 1}`,
           }))
           .filter((img) => Boolean(img.src))
