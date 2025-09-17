@@ -23,6 +23,10 @@ const nextConfig = {
     ],
     formats: ["image/webp", "image/avif"],
   },
+  experimental: {
+    optimizeFonts: true,
+    optimizeCss: true,
+  },
   webpack: (config) => {
     config.module.rules.push({
       test: /\.(woff|woff2|eot|ttf|otf)$/i,

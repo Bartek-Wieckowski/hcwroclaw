@@ -12,10 +12,7 @@ import { useInView } from 'framer-motion';
 import toast from 'react-hot-toast';
 import { usePlayersNextToTheForm } from '@/hooks/tanstack/queries/usePlayersNextToTheForm';
 import { StaticImageData } from 'next/image';
-
-import player1 from '@/assets/images/additional/hcwroclawplayer1.png';
-import player2 from '@/assets/images/additional/hcwroclawplayer2.png';
-import player3 from '@/assets/images/additional/hcwroclawplayer3.png';
+import playerFallback from '@/assets/images/additional/hcwroclawplayer3.png';
 import { urlFor } from '@/sanity/lib/image';
 
 type ContactOption = 'sparing' | 'join' | 'support';
@@ -37,9 +34,7 @@ type PlayerImage = {
 };
 
 const fallbackPlayerImages: PlayerImage[] = [
-  { src: player1, alt: 'Hockey Player 1' },
-  { src: player2, alt: 'Hockey Player 2' },
-  { src: player3, alt: 'Hockey Player 3' },
+  { src: playerFallback, alt: 'Hockey Player' },
 ];
 
 export default function WriteToUs({ lng }: WriteToUsProps) {

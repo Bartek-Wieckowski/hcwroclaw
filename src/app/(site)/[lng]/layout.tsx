@@ -5,7 +5,6 @@ import LeagueTablesWrapper from '@/components/leagueTables/LeagueTablesWrapper';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import { locales } from '@/i18n/i18n';
-import { Metadata } from 'next';
 import dynamic from "next/dynamic";
 
 const LeagueTables = dynamic(() => import('@/components/leagueTables/LeagueTables'), {
@@ -59,27 +58,30 @@ const russoOne = localFont({
 });
 const fontClasses = `${robotoRegular.variable} ${robotoThin.variable} ${robotoBold.variable} ${outfitRegular.variable} ${outfitThin.variable} ${outfitBold.variable} ${misterPablo.variable} ${russoOne.variable}`;
 
-export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
-  ),
-  title: 'HC Wrocław - Drużyna hokejowa',
-  description: 'Oficjalna strona drużyny hokejowej HC Wrocław. Najnowsze informacje, mecze, treningi i aktualności.',
-  icons: {
-    icon: '/icon.png',
-    apple: '/apple-icon.png',
-  },
-  openGraph: {
-    type: 'website',
-    locale: 'pl_PL',
-    siteName: 'HC Wrocław',
-    images: ['/opengraph-image'],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    images: ['/opengraph-image'],
-  },
-};
+
+export async function generateMetadata(){
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL!;
+
+  return {
+    title: 'HC Wrocław - Drużyna hokejowa',
+    description: 'Oficjalna strona drużyny hokejowej HC Wrocław. Najnowsze informacje, mecze, treningi i aktualności.',
+    metadataBase: new URL(siteUrl),
+    icons: {
+      icon: '/icon.png',
+      apple: '/apple-icon.png',
+    },
+    openGraph: {
+      type: 'website',
+      locale: 'pl_PL',
+      siteName: 'HC Wrocław',
+      images: [`${siteUrl}/opengraph-image.png`], 
+    },
+    twitter: {
+      card: 'summary_large_image',
+      images: [`${siteUrl}/opengraph-image.png`], 
+    },
+  }
+}
 
 export function generateStaticParams() {
   return locales.map((lng) => ({ lng }));
