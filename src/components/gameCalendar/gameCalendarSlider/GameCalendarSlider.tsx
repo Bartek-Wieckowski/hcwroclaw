@@ -130,7 +130,7 @@ export default function GameCalendarSlider({
                     </small>
                     {findLeagueLogo(game.gameType.name) && (
                       <Image
-                        src={findLeagueLogo(game.gameType.name)!}
+                        src={urlFor(findLeagueLogo(game.gameType.name)!).format('webp').quality(80).url()}
                         alt={game.gameType.name[lng] || game.gameType.name.pl}
                         width={20}
                         height={20}
@@ -163,7 +163,7 @@ export default function GameCalendarSlider({
                     <div className={styles.teamLogoAndName}>
                       {game.firstTeam.logo ? (
                         <Image
-                          src={urlFor(game.firstTeam.logo).url()}
+                          src={urlFor(game.firstTeam.logo).format('webp').quality(80).url()}
                           alt={game.firstTeam?.name || ''}
                           height={25}
                           width={25}
@@ -187,7 +187,7 @@ export default function GameCalendarSlider({
                     <div className={styles.teamLogoAndName}>
                       {game.secondTeam.logo ? (
                         <Image
-                          src={urlFor(game.secondTeam.logo).url()}
+                          src={urlFor(game.secondTeam.logo).format('webp').quality(80).url()}
                           alt={game.secondTeam.name}
                           height={25}
                           width={25}

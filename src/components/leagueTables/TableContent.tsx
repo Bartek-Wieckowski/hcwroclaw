@@ -69,7 +69,7 @@ export default function TableContent({ data, lng }: TableContentProps) {
                 <div className={styles.tableHeaderWithLogo}>
                   <>
                     <Image
-                      src={urlFor(table.logo).url()}
+                      src={urlFor(table.logo).format('webp').quality(80).url()}
                       alt={table.title}
                       width={25}
                       height={25}

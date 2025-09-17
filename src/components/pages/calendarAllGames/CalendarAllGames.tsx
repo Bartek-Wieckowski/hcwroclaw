@@ -8,6 +8,7 @@ import { Locale } from '@/i18n/i18n';
 import { GetAllGamesByYearQueryResult } from '../../../../sanity.types';
 import { useGames } from '@/hooks/tanstack/queries/useGames';
 import { motion, AnimatePresence } from 'framer-motion';
+import { urlFor } from '@/sanity/lib/image';
 
 type CalendarAllGamesProps = {
   initialGames: GetAllGamesByYearQueryResult;
@@ -115,7 +116,7 @@ export default function CalendarAllGames({
                 {game.firstTeam.logo?.asset?.url && (
                   <div className={styles.logoWrapper}>
                     <Image
-                      src={game.firstTeam.logo.asset.url}
+                      src={urlFor(game.firstTeam.logo).format('webp').quality(80).url()}
                       alt={game.firstTeam.name}
                       width={40}
                       height={40}
@@ -148,7 +149,7 @@ export default function CalendarAllGames({
                 {game.secondTeam.logo?.asset?.url && (
                   <div className={styles.logoWrapper}>
                     <Image
-                      src={game.secondTeam.logo.asset.url}
+                      src={urlFor(game.secondTeam.logo).format('webp').quality(80).url()}
                       alt={game.secondTeam.name}
                       width={40}
                       height={40}

@@ -23,7 +23,7 @@ export function NewsSinglePage({ news, lng }: NewsSinglePageProps) {
       {news.mainPostImage && (
         <div className={styles.mainImageWrapper}>
           <Image
-            src={urlFor(news.mainPostImage).url()}
+            src={urlFor(news.mainPostImage).format('webp').quality(80).url()}
             alt={news.mainPostImage.alt[lng] || ''}
             fill
             className={styles.mainImage}

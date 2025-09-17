@@ -136,7 +136,7 @@ export default function TeamListPlayers({ players }: TeamListProps) {
                 <Image
                   src={
                     player.photo?.asset?.url
-                      ? urlFor(player.photo).url()
+                      ? urlFor(player.photo).format('webp').quality(80).url()
                       : defaultSkaterBasicPhoto.src
                   }
                   fill
@@ -190,7 +190,7 @@ export default function TeamListPlayers({ players }: TeamListProps) {
                 <Image
                   src={
                     player.actionPhoto?.asset?.url
-                      ? urlFor(player.actionPhoto).url()
+                      ? urlFor(player.actionPhoto).format('webp').quality(80).url()
                       : defaultSkaterActionPhoto.src
                   }
                   fill

@@ -4,6 +4,7 @@ import styles from './gallery.module.css';
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import { GetGalleryPageQueryResult } from '../../../../sanity.types';
+import { urlFor } from '@/sanity/lib/image';
 
 type GalleryProps = {
   data: NonNullable<GetGalleryPageQueryResult>;
@@ -12,8 +13,8 @@ type GalleryProps = {
 export default function Gallery({ data }: GalleryProps) {
   const images =
     data.images?.map((img) => ({
-      original: img.asset?.url || '',
-      thumbnail: img.asset?.url || '',
+      original: urlFor(img).format('webp').quality(80).url() || '',
+      thumbnail: urlFor(img).format('webp').quality(80).url() || '',
       originalAlt: 'HC Wrocław hockey player during game or training',
       thumbnailAlt: 'HC Wrocław hockey player during game or training',
     })) || [];

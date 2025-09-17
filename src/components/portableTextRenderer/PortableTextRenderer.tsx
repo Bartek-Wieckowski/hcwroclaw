@@ -42,7 +42,7 @@ export function PortableTextRenderer({
         <div className={styles.imageContainer}>
           <div className={styles.imageWrapper}>
             <Image
-              src={urlFor(value.asset).url()}
+              src={urlFor(value.asset).format('webp').quality(80).url()}
               alt={value.alt || ''}
               fill
               className={styles.image}
@@ -66,7 +66,7 @@ export function PortableTextRenderer({
           </div>
           <div className={styles.imageWrapper}>
             <Image
-              src={urlFor(value.image).url()}
+              src={urlFor(value.image).format('webp').quality(80).url()}
               alt={value.image.alt || ''}
               fill
               className={styles.image}

@@ -49,7 +49,7 @@ export default async function LatestNews() {
           <Link href={ROUTES.SINGLENEWS(lng, getSlugByLocale(latestNews))}>
             <div className={styles.featuredImageWrapper}>
               <Image
-                src={urlFor(latestNews.mainPostImage).url()}
+                src={urlFor(latestNews.mainPostImage).format('webp').quality(80).url()}
                 alt={latestNews.title[lng]}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -71,7 +71,7 @@ export default async function LatestNews() {
               <Link href={ROUTES.SINGLENEWS(lng, getSlugByLocale(newsItem))}>
                 <div className={styles.imageWrapper}>
                   <Image
-                    src={urlFor(newsItem.mainPostImage).url()}
+                    src={urlFor(newsItem.mainPostImage).format('webp').quality(80).url()}
                     alt={newsItem.title[lng]}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"

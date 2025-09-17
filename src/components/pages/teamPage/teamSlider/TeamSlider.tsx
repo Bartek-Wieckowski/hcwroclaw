@@ -35,7 +35,7 @@ export default function TeamSlider({ images }: TeamSliderProps) {
         <SwiperSlide key={image.asset?._id} className={styles.slide}>
           {image.asset?.url && (
             <Image
-              src={urlFor(image).url()}
+              src={urlFor(image).format('webp').quality(80).url()}
               alt="HC Wroclaw"
               width={1920}
               height={1080}

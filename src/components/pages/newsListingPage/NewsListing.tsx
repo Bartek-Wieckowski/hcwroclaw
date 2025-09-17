@@ -83,7 +83,7 @@ export default function NewsListing({ initialNews, lng }: NewsListingProps) {
           >
             <div className={styles.featuredImageWrapper}>
               <Image
-                src={urlFor(allNews[0].mainPostImage).url()}
+                src={urlFor(allNews[0].mainPostImage).format('webp').quality(80).url()}
                 alt={allNews[0].mainPostImage.alt[lng]}
                 fill
                 className={styles.featuredImage}
@@ -114,7 +114,7 @@ export default function NewsListing({ initialNews, lng }: NewsListingProps) {
             >
               <div className={styles.imageWrapper}>
                 <Image
-                  src={urlFor(item.mainPostImage).url()}
+                  src={urlFor(item.mainPostImage).format('webp').quality(80).url()}
                   alt={item.mainPostImage.alt[lng]}
                   fill
                   className={styles.image}

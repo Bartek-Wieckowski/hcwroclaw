@@ -67,7 +67,7 @@ export default function TransferTaxBtn() {
               modalImage?.image && (
                 <div className={styles.imageWrapper}>
                   <Image
-                    src={urlFor(modalImage.image).url()}
+                    src={urlFor(modalImage.image).format('webp').quality(80).url()}
                     alt="Tax transfer information"
                     fill
                     sizes="(max-width: 768px) 90vw, (max-width: 1200px) 70vw, 60vw"
