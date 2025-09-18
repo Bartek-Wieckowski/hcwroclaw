@@ -71,7 +71,7 @@ export default async function LatestNews() {
               <Link href={ROUTES.SINGLENEWS(lng, getSlugByLocale(newsItem))}>
                 <div className={styles.imageWrapper}>
                   <Image
-                    src={urlFor(newsItem.mainPostImage).format('webp').quality(80).url()}
+                    src={urlFor(newsItem.mainPostImage).format('webp').width(330).height(220).quality(80).url()}
                     alt={newsItem.title[lng]}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"

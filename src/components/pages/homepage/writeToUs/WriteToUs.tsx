@@ -12,7 +12,6 @@ import { useInView } from 'framer-motion';
 import toast from 'react-hot-toast';
 import { usePlayersNextToTheForm } from '@/hooks/tanstack/queries/usePlayersNextToTheForm';
 import { StaticImageData } from 'next/image';
-import playerFallback from '@/assets/images/additional/hcwroclawplayer3.png';
 import { urlFor } from '@/sanity/lib/image';
 
 type ContactOption = 'sparing' | 'join' | 'support';
@@ -33,9 +32,7 @@ type PlayerImage = {
   alt: string;
 };
 
-const fallbackPlayerImages: PlayerImage[] = [
-  { src: playerFallback, alt: 'Hockey Player' },
-];
+
 
 export default function WriteToUs({ lng }: WriteToUsProps) {
   const { data: sanityPlayers } = usePlayersNextToTheForm();
@@ -50,9 +47,7 @@ export default function WriteToUs({ lng }: WriteToUsProps) {
     consent: false,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [playerImage, setPlayerImage] = useState<PlayerImage>(
-    fallbackPlayerImages[0]
-  );
+  const [playerImage, setPlayerImage] = useState<PlayerImage | null>(null);
   const t = useTranslations('writeToUs');
   const isInView = useInView(playerRef, { once: true, amount: 0.3 });
   const dropdownRef = useClickOutside<HTMLDivElement>(() => {
@@ -61,18 +56,19 @@ export default function WriteToUs({ lng }: WriteToUsProps) {
   const [errors, setErrors] = useState<Partial<FormData>>({});
 
   useEffect(() => {
-    const availableImages = sanityPlayers?.images?.length
-      ? sanityPlayers.images
-          .map((img, index) => ({
-            src: urlFor(img).format('webp')
-            .quality(80).url() || '',
-            alt: `Hockey Player ${index + 1}`,
-          }))
-          .filter((img) => Boolean(img.src))
-      : fallbackPlayerImages;
+    if (sanityPlayers?.images?.length) {
+      const availableImages = sanityPlayers.images
+        .map((img, index) => ({
+          src: urlFor(img).format('webp').quality(80).url() || '',
+          alt: `Hockey Player ${index + 1}`,
+        }))
+        .filter((img) => Boolean(img.src));
 
-    const randomIndex = Math.floor(Math.random() * availableImages.length);
-    setPlayerImage(availableImages[randomIndex]);
+      if (availableImages.length > 0) {
+        const randomIndex = Math.floor(Math.random() * availableImages.length);
+        setPlayerImage(availableImages[randomIndex]);
+      }
+    }
   }, [sanityPlayers]);
 
   const options = [
@@ -180,18 +176,19 @@ export default function WriteToUs({ lng }: WriteToUsProps) {
         ref={playerRef}
         className={styles.playerImage}
         initial={{ opacity: 0, y: 100 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+        animate={isInView && playerImage ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
-        <Image
-          src={playerImage.src}
-          alt={playerImage.alt}
-          width={400}
-          height={600}
-          sizes="100%"
-          className={styles.image}
-          priority
-        />
+        {playerImage && (
+          <Image
+            src={playerImage.src}
+            alt={playerImage.alt}
+            width={400}
+            height={600}
+            sizes="25vw"
+            className={styles.image}
+          />
+        )}
       </motion.div>
 
       <div className={styles.formWrapper}>

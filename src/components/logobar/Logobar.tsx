@@ -16,7 +16,7 @@ export default function Logobar() {
             src={logoText}
             alt="Hockey Club Wrocław"
             fill
-            sizes="100px"
+            sizes="15vw"
             className={styles.logoText}
             priority
           />
