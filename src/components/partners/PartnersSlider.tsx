@@ -21,10 +21,9 @@ export default function PartnersSlider({ partners }: PartnersSliderProps) {
     <div className={styles.logoWrapper}>
       {partner.logo.asset && (
         <Image
-          src={urlFor(partner.logo).format('webp').quality(80).url()}
+          src={urlFor(partner.logo).width(280).height(280).format('webp').quality(80).url()}
           alt={partner.name}
           fill
-          sizes="100px"
           className={styles.partnersImage}
         />
       )}
