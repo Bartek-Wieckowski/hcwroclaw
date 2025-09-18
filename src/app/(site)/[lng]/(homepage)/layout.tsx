@@ -1,6 +1,12 @@
 import HeaderHomepage from '@/components/header/headerHomepage/HeaderHomepage';
-import Footer from '@/components/footer/Footer';
-import Partners from '@/components/partners/Partners';
+import dynamic from "next/dynamic";
+
+const Partners = dynamic(() => import('@/components/partners/Partners'), {
+  ssr: false,
+});
+const Footer = dynamic(() => import('@/components/footer/Footer'), {
+  ssr: false,
+});
 
 type HomepageLayoutProps = {
   children: React.ReactNode;
