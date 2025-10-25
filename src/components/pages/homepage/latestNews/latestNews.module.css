@@ -13,7 +13,6 @@
   position: relative;
   width: 100%;
   background: var(--bg-body-black);
-  border-radius: var(--border-radius-img);
   overflow: hidden;
 }
 
@@ -24,12 +23,12 @@
 .featuredImageWrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 16/9;
+  /* aspect-ratio: 16/9; */
   overflow: hidden;
 }
 
 .featuredImage {
-  object-fit: cover;
+  /* object-fit: cover; */
   transition: filter 0.3s ease;
 }
 
@@ -94,13 +93,13 @@
 .imageWrapper {
   position: relative;
   flex: 0 0 40%;
-  aspect-ratio: 4/3;
-  border-radius: var(--border-radius-img);
+  /* aspect-ratio: 4/3; */
+  /* border-radius: var(--border-radius-img); */
   overflow: hidden;
 }
 
 .image {
-  object-fit: cover;
+  /* object-fit: cover; */
   transition: filter 0.3s linear;
 }
 

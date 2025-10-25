@@ -1,22 +1,22 @@
-'use client';
+"use client";
 
-import styles from './newsListing.module.css';
-import Image from 'next/image';
-import Link from 'next/link';
-import Spinner from '@/components/spinner/Spinner';
-import { useEffect } from 'react';
-import { format } from 'date-fns';
-import { pl, enUS } from 'date-fns/locale';
-import { useInfiniteQuery } from '@tanstack/react-query';
-import { useInView } from 'react-intersection-observer';
-import { Locale } from '@/i18n/i18n';
-import { GetNewsQueryResult } from '../../../../sanity.types';
-import { urlFor } from '@/sanity/lib/image';
-import { loadMoreNews } from '@/actions/actions';
-import { QUERY_KEYS } from '@/lib/queryKeys';
-import { ROUTES } from '@/lib/routes';
-import { NEWS_PER_PAGE } from '@/lib/constants';
-import { useTranslations } from 'use-intl';
+import styles from "./newsListing.module.css";
+import Image from "next/image";
+import Link from "next/link";
+import Spinner from "@/components/spinner/Spinner";
+import { useEffect } from "react";
+import { format } from "date-fns";
+import { pl, enUS } from "date-fns/locale";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { useInView } from "react-intersection-observer";
+import { Locale } from "@/i18n/i18n";
+import { GetNewsQueryResult } from "../../../../sanity.types";
+import { urlFor } from "@/sanity/lib/image";
+import { loadMoreNews } from "@/actions/actions";
+import { QUERY_KEYS } from "@/lib/queryKeys";
+import { ROUTES } from "@/lib/routes";
+import { NEWS_PER_PAGE } from "@/lib/constants";
+import { useTranslations } from "use-intl";
 
 type NewsListingProps = {
   initialNews: GetNewsQueryResult;
@@ -24,10 +24,10 @@ type NewsListingProps = {
 };
 
 export default function NewsListing({ initialNews, lng }: NewsListingProps) {
-  const t = useTranslations('newsListingPage');
+  const t = useTranslations("newsListingPage");
   const { ref, inView } = useInView({
     threshold: 0,
-    rootMargin: '100px',
+    rootMargin: "100px",
   });
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
@@ -52,8 +52,8 @@ export default function NewsListing({ initialNews, lng }: NewsListingProps) {
   }, [inView, hasNextPage, isFetchingNextPage, fetchNextPage]);
 
   const formatDate = (date: string) => {
-    return format(new Date(date), 'dd MMMM yyyy', {
-      locale: lng === 'pl' ? pl : enUS,
+    return format(new Date(date), "dd MMMM yyyy", {
+      locale: lng === "pl" ? pl : enUS,
     });
   };
 
@@ -63,7 +63,7 @@ export default function NewsListing({ initialNews, lng }: NewsListingProps) {
     return (
       <div className={styles.newsListingContainer}>
         <div className={styles.noNews}>
-          <p>{t('noNews')}</p>
+          <p>{t("noNews")}</p>
         </div>
       </div>
     );
@@ -76,18 +76,30 @@ export default function NewsListing({ initialNews, lng }: NewsListingProps) {
           <Link
             href={ROUTES.SINGLENEWS(
               lng,
-              lng === 'pl'
+              lng === "pl"
                 ? allNews[0].slugPL.current
                 : allNews[0].slugEN.current
             )}
           >
-            <div className={styles.featuredImageWrapper}>
+            <div
+              className={styles.featuredImageWrapper}
+              style={{
+                aspectRatio: allNews[0].imageAspectRatio || "16/9",
+              }}
+            >
               <Image
-                src={urlFor(allNews[0].mainPostImage).format('webp').quality(80).url()}
+                src={urlFor(allNews[0].mainPostImage)
+                  .fit("crop")
+                  .format("webp")
+                  .quality(80)
+                  .url()}
                 alt={allNews[0].mainPostImage.alt[lng]}
                 fill
                 className={styles.featuredImage}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                style={{
+                  objectFit: allNews[0].imageObjectFit || "cover",
+                }}
               />
             </div>
             <div className={styles.featuredContent}>
@@ -109,16 +121,28 @@ export default function NewsListing({ initialNews, lng }: NewsListingProps) {
             <Link
               href={ROUTES.SINGLENEWS(
                 lng,
-                lng === 'pl' ? item.slugPL.current : item.slugEN.current
+                lng === "pl" ? item.slugPL.current : item.slugEN.current
               )}
             >
-              <div className={styles.imageWrapper}>
+              <div
+                className={styles.imageWrapper}
+                style={{
+                  aspectRatio: item.imageAspectRatio || "16/9",
+                }}
+              >
                 <Image
-                  src={urlFor(item.mainPostImage).format('webp').quality(80).url()}
+                  src={urlFor(item.mainPostImage)
+                    .fit("crop")
+                    .format("webp")
+                    .quality(80)
+                    .url()}
                   alt={item.mainPostImage.alt[lng]}
                   fill
                   className={styles.image}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  style={{
+                    objectFit: item.imageObjectFit || "cover",
+                  }}
                 />
               </div>
               <div className={styles.content}>

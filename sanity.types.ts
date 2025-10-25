@@ -560,6 +560,8 @@ export type NewsSinglePage = {
     alt: LocaleString;
     _type: "image";
   };
+  imageAspectRatio: "16/9" | "1/.85";
+  imageObjectFit: "cover" | "contain";
   content?: LocaleNewsBlock;
 };
 
@@ -849,7 +851,7 @@ export type GetHomePageAboutUsSectionQueryResult = {
   };
 } | null;
 // Variable: getHomePageLatestNewsQuery
-// Query: *[_type == "newsSinglePage"] | order(date desc) [0..3] {      _id,      title{pl,en},      slugPL,      slugEN,      excerpt{pl,en},      mainPostImage{asset, alt{pl, en}},      date    }
+// Query: *[_type == "newsSinglePage"] | order(date desc) [0..3] {      _id,      title{pl,en},      slugPL,      slugEN,      excerpt{pl,en},      mainPostImage{        asset->{          _id,          url,        },        alt{pl, en},        hotspot {          x,          y,          height,          width        },        crop {          top,          bottom,          left,          right        }      },      imageAspectRatio,      imageObjectFit,      date    }
 export type GetHomePageLatestNewsQueryResult = Array<{
   _id: string;
   title: {
@@ -864,16 +866,28 @@ export type GetHomePageLatestNewsQueryResult = Array<{
   };
   mainPostImage: {
     asset: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      _id: string;
+      url: string | null;
     } | null;
     alt: {
       pl: string;
       en: string;
     };
+    hotspot: {
+      x: number | null;
+      y: number | null;
+      height: number | null;
+      width: number | null;
+    } | null;
+    crop: {
+      top: number | null;
+      bottom: number | null;
+      left: number | null;
+      right: number | null;
+    } | null;
   };
+  imageAspectRatio: "1/.85" | "16/9";
+  imageObjectFit: "contain" | "cover";
   date: string;
 }>;
 // Variable: getPartnersQuery
@@ -896,7 +910,7 @@ export type GetPartnersQueryResult = {
   }>;
 } | null;
 // Variable: getNewsQuery
-// Query: *[_type == "newsSinglePage"] | order(date desc) [$start...$end] {    _id,    title{pl,en},    slugPL,    slugEN,    excerpt{pl,en},    mainPostImage{      asset->{        _id,        url      },      alt{        pl,        en      }    },    date  }
+// Query: *[_type == "newsSinglePage"] | order(date desc) [$start...$end] {    _id,    title{pl,en},    slugPL,    slugEN,    excerpt{pl,en},    mainPostImage{      asset->{        _id,        url      },      alt{        pl,        en      },      hotspot {        x,        y,        height,        width      },      crop {        top,        bottom,        left,        right      }    },    imageAspectRatio,    imageObjectFit,    date  }
 export type GetNewsQueryResult = Array<{
   _id: string;
   title: {
@@ -918,11 +932,25 @@ export type GetNewsQueryResult = Array<{
       pl: string;
       en: string;
     };
+    hotspot: {
+      x: number | null;
+      y: number | null;
+      height: number | null;
+      width: number | null;
+    } | null;
+    crop: {
+      top: number | null;
+      bottom: number | null;
+      left: number | null;
+      right: number | null;
+    } | null;
   };
+  imageAspectRatio: "1/.85" | "16/9";
+  imageObjectFit: "contain" | "cover";
   date: string;
 }>;
 // Variable: getSingleNewsQuery
-// Query: *[_type == "newsSinglePage" && (slugEN.current == $slug || slugPL.current == $slug)][0] {    _id,    title{      pl,      en    },    excerpt{pl,en},    content{      pl,      en    },    mainPostImage {      asset->{        _id,        url      },      alt{        pl,        en      }    },    date  }
+// Query: *[_type == "newsSinglePage" && (slugEN.current == $slug || slugPL.current == $slug)][0] {    _id,    title{      pl,      en    },    excerpt{pl,en},    content{      pl,      en    },    mainPostImage {      asset->{        _id,        url      },      alt{        pl,        en      },      hotspot {        x,        y,        height,        width      },      crop {        top,        bottom,        left,        right      }    },    imageAspectRatio,    imageObjectFit,    date  }
 export type GetSingleNewsQueryResult = {
   _id: string;
   title: {
@@ -946,7 +974,21 @@ export type GetSingleNewsQueryResult = {
       pl: string;
       en: string;
     };
+    hotspot: {
+      x: number | null;
+      y: number | null;
+      height: number | null;
+      width: number | null;
+    } | null;
+    crop: {
+      top: number | null;
+      bottom: number | null;
+      left: number | null;
+      right: number | null;
+    } | null;
   };
+  imageAspectRatio: "1/.85" | "16/9";
+  imageObjectFit: "contain" | "cover";
   date: string;
 } | null;
 // Variable: getTeamPageDataQuery
@@ -1178,10 +1220,10 @@ declare module "@sanity/client" {
     "\n  *[_type == \"leagueTablesOrder\"][0] {\n    tables[]-> {\n      _createdAt,\n      _updatedAt,\n      _id,\n      title,\n      logo {\n        asset->{\n          _id,\n          url\n        }\n      },\n      headers[] { \n        pl,\n        en\n      },\n      rows[] {\n        cells\n      }\n    }\n  }\n": GetLeagueTablesOrderQueryResult;
     "\n  *[_type == \"leagueTables\"] {\n    _createdAt,\n    _updatedAt,\n    _id,\n    title,\n    logo {\n      asset->{\n        _id,\n        url\n      }\n    },\n    headers[] { \n      pl,\n      en\n    },\n    rows[] {\n      cells\n    }\n  }\n": GetLeagueTablesQueryResult;
     "\n *[_type == \"homePage\"][0] {\n    aboutUsSection {\n      description{en, pl},\n      activePlayers{number, text{en, pl}},\n      gamePerSeasson{number, text{en, pl}},\n      trainingAtWeek{number, text{en, pl}},\n      leagueNumbers{number, text{en, pl}}\n    }\n}": GetHomePageAboutUsSectionQueryResult;
-    "\n  *[_type == \"newsSinglePage\"] | order(date desc) [0..3] {\n      _id,\n      title{pl,en},\n      slugPL,\n      slugEN,\n      excerpt{pl,en},\n      mainPostImage{asset, alt{pl, en}},\n      date\n    }\n  ": GetHomePageLatestNewsQueryResult;
+    "\n  *[_type == \"newsSinglePage\"] | order(date desc) [0..3] {\n      _id,\n      title{pl,en},\n      slugPL,\n      slugEN,\n      excerpt{pl,en},\n      mainPostImage{\n        asset->{\n          _id,\n          url,\n        },\n        alt{pl, en},\n        hotspot {\n          x,\n          y,\n          height,\n          width\n        },\n        crop {\n          top,\n          bottom,\n          left,\n          right\n        }\n      },\n      imageAspectRatio,\n      imageObjectFit,\n      date\n    }\n  ": GetHomePageLatestNewsQueryResult;
     "\n  *[_type == \"partnersLogo\"][0] {\n    sectionTitle {\n      en,\n      pl\n    },\n    partners[] {\n      name,\n      logo {\n        asset->{\n          _id,\n          url\n        }\n      },\n      hasWebsite,\n      url\n    }\n  }\n": GetPartnersQueryResult;
-    "\n  *[_type == \"newsSinglePage\"] | order(date desc) [$start...$end] {\n    _id,\n    title{pl,en},\n    slugPL,\n    slugEN,\n    excerpt{pl,en},\n    mainPostImage{\n      asset->{\n        _id,\n        url\n      },\n      alt{\n        pl,\n        en\n      }\n    },\n    date\n  }\n": GetNewsQueryResult;
-    "\n  *[_type == \"newsSinglePage\" && (slugEN.current == $slug || slugPL.current == $slug)][0] {\n    _id,\n    title{\n      pl,\n      en\n    },\n    excerpt{pl,en},\n    content{\n      pl,\n      en\n    },\n    mainPostImage {\n      asset->{\n        _id,\n        url\n      },\n      alt{\n        pl,\n        en\n      }\n    },\n    date\n  }\n": GetSingleNewsQueryResult;
+    "\n  *[_type == \"newsSinglePage\"] | order(date desc) [$start...$end] {\n    _id,\n    title{pl,en},\n    slugPL,\n    slugEN,\n    excerpt{pl,en},\n    mainPostImage{\n      asset->{\n        _id,\n        url\n      },\n      alt{\n        pl,\n        en\n      },\n      hotspot {\n        x,\n        y,\n        height,\n        width\n      },\n      crop {\n        top,\n        bottom,\n        left,\n        right\n      }\n    },\n    imageAspectRatio,\n    imageObjectFit,\n    date\n  }\n": GetNewsQueryResult;
+    "\n  *[_type == \"newsSinglePage\" && (slugEN.current == $slug || slugPL.current == $slug)][0] {\n    _id,\n    title{\n      pl,\n      en\n    },\n    excerpt{pl,en},\n    content{\n      pl,\n      en\n    },\n    mainPostImage {\n      asset->{\n        _id,\n        url\n      },\n      alt{\n        pl,\n        en\n      },\n      hotspot {\n        x,\n        y,\n        height,\n        width\n      },\n      crop {\n        top,\n        bottom,\n        left,\n        right\n      }\n    },\n    imageAspectRatio,\n    imageObjectFit,\n    date\n  }\n": GetSingleNewsQueryResult;
     "\n  *[_type == \"teamPage\"][0] {\n    teamSliderImages[] {\n      asset->{\n        url,\n        _id,\n      }\n    },\n    goalkeepers[] {\n      _key,\n      firstName,\n      lastName,\n      number,\n      playerNickname,\n      height,\n      weight,\n      stickHand,\n      isCaptain,\n      isAssistantCaptain,\n      position,\n      gamesPlayed,\n      goalsAgainstAverage,\n      savePercentage,\n      photo {\n        asset->{\n          url,\n          _id\n        }\n      },\n      actionPhoto {\n        asset->{\n          url,\n          _id\n        }\n      }\n    },\n    defenders[] {\n      _key,\n      firstName,\n      lastName,\n      number,\n      playerNickname,\n      height,\n      weight,\n      stickHand,\n      isCaptain,\n      isAssistantCaptain,\n      position,\n      gamesPlayed,\n      goals,\n      assists,\n      photo {\n        asset->{\n          url,\n          _id\n        }\n      },\n      actionPhoto {\n        asset->{\n          url,\n          _id\n        }\n      }\n    },\n    forwards[] {\n      _key,\n      firstName,\n      lastName,\n      number,\n      playerNickname,\n      height,\n      weight,\n      stickHand,\n      isCaptain,\n      isAssistantCaptain,\n      position,\n      gamesPlayed,\n      goals,\n      assists,\n      photo {\n        asset->{\n          url,\n          _id\n        }\n      },\n      actionPhoto {\n        asset->{\n          url,\n          _id\n        }\n      }\n    }\n  }\n": GetTeamPageDataQueryResult;
     "\n  *[_type == \"clubPage\"][0] {\n    clubHistory {\n      pl,\n      en\n    },\n    titleIntroduction {\n      pl,\n      en\n    },\n    clubCrest {\n      pl,\n      en\n    },\n    sectionSummary {\n      pl,\n      en\n    }\n  }\n": GetClubPageQueryResult;
     "\n  *[_type == \"contactPage\"][0] {\n    contactOptions {\n      pl,\n      en\n    }\n  }\n": GetContactPageQueryResult;

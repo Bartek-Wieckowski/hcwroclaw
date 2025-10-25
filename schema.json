@@ -3333,6 +3333,40 @@
         },
         "optional": false
       },
+      "imageAspectRatio": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "union",
+          "of": [
+            {
+              "type": "string",
+              "value": "16/9"
+            },
+            {
+              "type": "string",
+              "value": "1/.85"
+            }
+          ]
+        },
+        "optional": false
+      },
+      "imageObjectFit": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "union",
+          "of": [
+            {
+              "type": "string",
+              "value": "cover"
+            },
+            {
+              "type": "string",
+              "value": "contain"
+            }
+          ]
+        },
+        "optional": false
+      },
       "content": {
         "type": "objectAttribute",
         "value": {

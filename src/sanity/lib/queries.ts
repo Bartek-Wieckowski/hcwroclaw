@@ -1,4 +1,4 @@
-import { defineQuery } from 'next-sanity';
+import { defineQuery } from "next-sanity";
 
 export const getGamesCalendarQuery = defineQuery(`{
   "pastGames": *[_type == "gameCalendar" && dateTime(date) < dateTime(now())] | 
@@ -147,7 +147,27 @@ export const getHomePageLatestNewsQuery = defineQuery(`
       slugPL,
       slugEN,
       excerpt{pl,en},
-      mainPostImage{asset, alt{pl, en}},
+      mainPostImage{
+        asset->{
+          _id,
+          url,
+        },
+        alt{pl, en},
+        hotspot {
+          x,
+          y,
+          height,
+          width
+        },
+        crop {
+          top,
+          bottom,
+          left,
+          right
+        }
+      },
+      imageAspectRatio,
+      imageObjectFit,
       date
     }
   `);
@@ -187,8 +207,22 @@ export const getNewsQuery = defineQuery(`
       alt{
         pl,
         en
+      },
+      hotspot {
+        x,
+        y,
+        height,
+        width
+      },
+      crop {
+        top,
+        bottom,
+        left,
+        right
       }
     },
+    imageAspectRatio,
+    imageObjectFit,
     date
   }
 `);
@@ -213,8 +247,22 @@ export const getSingleNewsQuery = defineQuery(`
       alt{
         pl,
         en
+      },
+      hotspot {
+        x,
+        y,
+        height,
+        width
+      },
+      crop {
+        top,
+        bottom,
+        left,
+        right
       }
     },
+    imageAspectRatio,
+    imageObjectFit,
     date
   }
 `);

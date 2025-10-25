@@ -1,30 +1,30 @@
-import styles from './latestNews.module.css';
-import Image from 'next/image';
-import Link from 'next/link';
-import SectionTitle from '@/components/sectionTitle/SectionTitle';
-import { getLocale } from 'next-intl/server';
-import { client } from '@/sanity/lib/client';
-import { Locale } from '@/i18n/i18n';
-import { urlFor } from '@/sanity/lib/image';
-import { getHomePageLatestNewsQuery } from '@/sanity/lib/queries';
-import { getTranslations } from 'next-intl/server';
-import { ROUTES } from '@/lib/routes';
+import styles from "./latestNews.module.css";
+import Image from "next/image";
+import Link from "next/link";
+import SectionTitle from "@/components/sectionTitle/SectionTitle";
+import { getLocale } from "next-intl/server";
+import { client } from "@/sanity/lib/client";
+import { Locale } from "@/i18n/i18n";
+import { urlFor } from "@/sanity/lib/image";
+import { getHomePageLatestNewsQuery } from "@/sanity/lib/queries";
+import { getTranslations } from "next-intl/server";
+import { ROUTES } from "@/lib/routes";
 
 export default async function LatestNews() {
   const lng = (await getLocale()) as Locale;
   const news = await client.fetch(getHomePageLatestNewsQuery);
-  const t = await getTranslations('homePage.latestNews');
+  const t = await getTranslations("homePage.latestNews");
 
   if (!news || news.length === 0) {
     return (
       <div className={styles.latestNews}>
         <SectionTitle
-          part1={t('sectionTitle1')}
-          part2={t('sectionTitle2')}
+          part1={t("sectionTitle1")}
+          part2={t("sectionTitle2")}
           variant="primary-secondary"
         />
         <div className={styles.noNews}>
-          <p>{t('noNews')}</p>
+          <p>{t("noNews")}</p>
         </div>
       </div>
     );
@@ -33,27 +33,39 @@ export default async function LatestNews() {
   const [latestNews, ...recentNews] = news;
 
   const getSlugByLocale = (item: typeof latestNews) => {
-    return lng === 'pl' ? item.slugPL.current : item.slugEN.current;
+    return lng === "pl" ? item.slugPL.current : item.slugEN.current;
   };
 
   return (
     <div className={styles.latestNews}>
       <SectionTitle
-        part1={t('sectionTitle1')}
-        part2={t('sectionTitle2')}
+        part1={t("sectionTitle1")}
+        part2={t("sectionTitle2")}
         variant="primary-secondary"
       />
 
       <div className={styles.newsGrid}>
         <article className={styles.featuredNews}>
           <Link href={ROUTES.SINGLENEWS(lng, getSlugByLocale(latestNews))}>
-            <div className={styles.featuredImageWrapper}>
+            <div
+              className={styles.featuredImageWrapper}
+              style={{
+                aspectRatio: latestNews.imageAspectRatio || "16/9",
+              }}
+            >
               <Image
-                src={urlFor(latestNews.mainPostImage).format('webp').quality(80).url()}
+                src={urlFor(latestNews.mainPostImage)
+                  .fit("crop")
+                  .format("webp")
+                  .quality(80)
+                  .url()}
                 alt={latestNews.title[lng]}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className={styles.featuredImage}
+                style={{
+                  objectFit: latestNews.imageObjectFit || "cover",
+                }}
               />
             </div>
             <div className={styles.featuredContent}>
@@ -69,13 +81,25 @@ export default async function LatestNews() {
           {recentNews.map((newsItem) => (
             <article key={newsItem._id} className={styles.newsCard}>
               <Link href={ROUTES.SINGLENEWS(lng, getSlugByLocale(newsItem))}>
-                <div className={styles.imageWrapper}>
+                <div
+                  className={styles.imageWrapper}
+                  style={{
+                    aspectRatio: newsItem.imageAspectRatio || "16/9",
+                  }}
+                >
                   <Image
-                    src={urlFor(newsItem.mainPostImage).format('webp').width(330).height(220).quality(80).url()}
+                    src={urlFor(newsItem.mainPostImage)
+                      .fit("crop")
+                      .format("webp")
+                      .quality(80)
+                      .url()}
                     alt={newsItem.title[lng]}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className={styles.image}
+                    style={{
+                      objectFit: newsItem.imageObjectFit || "cover",
+                    }}
                   />
                 </div>
                 <div className={styles.content}>

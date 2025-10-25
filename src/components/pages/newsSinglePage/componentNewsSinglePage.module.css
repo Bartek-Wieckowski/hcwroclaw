@@ -25,13 +25,22 @@
 .mainImageWrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 16/9;
   margin-bottom: 2rem;
 }
 
-.mainImage {
+/* .mainImageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  aspect-ratio: 16/14;
+  aspect-ratio: 1/1;
+  margin-bottom: 2rem;
+} */
+
+/* .mainImage {
   object-fit: cover;
-}
+  object-fit: contain;
+} */
 
 .content {
   padding-inline: var(--container-padding);
